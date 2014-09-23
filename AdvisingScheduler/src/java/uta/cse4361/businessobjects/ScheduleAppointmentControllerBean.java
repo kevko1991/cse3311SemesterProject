@@ -10,6 +10,8 @@ package uta.cse4361.businessobjects;
  * @author Han
  */
 public class ScheduleAppointmentControllerBean {
+    final static String INITIALIZE_APPOINTMENT_FAIL = "Error when assign studentID, check Appointment.java class";
+    
     private int apptID = 0;
     private String studentName = null;
     private String studentID = null;
@@ -27,7 +29,7 @@ public class ScheduleAppointmentControllerBean {
         Appointment a = new Appointment();
         boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.description, this.date, this.startTime, this.duration);
         if(r == false)
-            return "Error when assign studentID, check Appointment.java class";
+            return this.INITIALIZE_APPOINTMENT_FAIL;
         //Scheduler s = new Schedule();
         String msg = ""; 
         //msg = s.schedule(a);
