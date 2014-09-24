@@ -12,13 +12,15 @@ package uta.cse4361.businessobjects;
 public class ScheduleAppointmentControllerBean {
     final static String INITIALIZE_APPOINTMENT_FAIL = "Error when assign studentID, check Appointment.java class";
     
-    private int apptID = 0;
+    private static int apptID = 0;
     private String studentName = null;
     private String studentID = null;
     private String advisorName = null;
     private String description = null;
-    private int startTime = 0;
-    private int duration = 0;
+    private int startHour = 0;
+    private int startMinute = 0;
+    private int endHour = 0;
+    private int endMinute = 0;
     private String date = null;
 
     public ScheduleAppointmentControllerBean() {
@@ -27,7 +29,7 @@ public class ScheduleAppointmentControllerBean {
     
     public String scheduleAppointment() {
         Appointment a = new Appointment();
-        boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.description, this.date, this.startTime, this.duration);
+        boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.description, this.date, this.startHour, this.endHour, this.startMinute, this.endMinute);
         if(r == false)
             return this.INITIALIZE_APPOINTMENT_FAIL;
         //Scheduler s = new Schedule();
@@ -37,8 +39,8 @@ public class ScheduleAppointmentControllerBean {
     }
     
     // Setters
-    public void setApptID(int ID) {
-        this.apptID = ID;
+    public void setApptID() {
+        this.apptID++;
     }
     public void setStudentName(String sName) {
         this.studentName = sName;
@@ -55,11 +57,17 @@ public class ScheduleAppointmentControllerBean {
     public void setDate(String d) {
         this.date = d;
     }
-    public void setStartTime(int start) {
-        this.startTime = start;
+    public void setStartHour(int sH) {
+        this.startHour = sH;
     }
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setEndHour(int eH) {
+        this.endHour = eH;
+    }
+    public void setStartMinute(int sM) {
+        this.startMinute = sM;
+    }
+    public void setEndMinute(int eM) {
+        this.endMinute = eM;
     }
 
     // Getters
@@ -78,11 +86,17 @@ public class ScheduleAppointmentControllerBean {
     public String getDescription() {
         return this.description;
     }
-    public int getStartTime() {
-        return this.startTime;
+    public int getStartHour() {
+        return this.startHour;
     }
-    public int getDuration() {
-        return this.duration;
+    public int getEndHour() {
+        return this.endHour;
+    }
+    public int getStartMinute() {
+        return this.startMinute;
+    }
+    public int getEndMinute() {
+        return this.endMinute;
     }
     public String getDate() {
         return this.date;

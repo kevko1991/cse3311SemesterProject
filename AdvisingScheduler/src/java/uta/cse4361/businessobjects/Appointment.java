@@ -11,34 +11,38 @@ package uta.cse4361.businessobjects;
  */
 public class Appointment implements java.io.Serializable {
 
-    private int apptID = 0;
+    private static int apptID = 0;
     private String studentName = null;
     private String studentID = null;
     private String advisorName = null;
     private String description = null;
-    private int startTime = 0;
-    private int duration = 0;
+    private int startHour = 0;
+    private int startMinute = 0;
+    private int endHour = 0;
+    private int endMinute = 0;
     private String date = null;
 
     public Appointment() {
 
     }
     
-    public boolean initialize(String sName, String sID, String aName, String dp, String date, int sTime, int duration) {
+    public boolean initialize(String sName, String sID, String aName, String dp, String date, int sH, int eH, int sM, int eM) {
         this.setStudentName(sName);
         if(this.setStudentID(sID) == false)
             return false;
         this.setAdvisorName(aName);
         this.setDescription(dp);
         this.setDate(date);
-        this.setStartTime(sTime);
-        this.setDuration(duration);
+        this.setStartHour(sH);
+        this.setEndHour(eH);
+        this.setStartMinute(sM);
+        this.setEndMinute(eM);
         return true;
     }
     
     // Setters
-    public void setApptID(int ID) {
-        this.apptID = ID;
+    public void setApptID() {
+        this.apptID++;
     }
     public void setStudentName(String sName) {
         this.studentName = sName;
@@ -59,11 +63,17 @@ public class Appointment implements java.io.Serializable {
     public void setDate(String d) {
         this.date = d;
     }
-    public void setStartTime(int start) {
-        this.startTime = start;
+    public void setStartHour(int sH) {
+        this.startHour = sH;
     }
-    public void setDuration(int end) {
-        this.duration = end;
+    public void setEndHour(int eH) {
+        this.endHour = eH;
+    }
+    public void setStartMinute(int sM) {
+        this.startMinute = sM;
+    }
+    public void setEndMinute(int eM) {
+        this.endMinute = eM;
     }
 
     // Getters
@@ -82,11 +92,17 @@ public class Appointment implements java.io.Serializable {
     public String getDescription() {
         return this.description;
     }
-    public int getStartTime() {
-        return this.startTime;
+    public int getStartHour() {
+        return this.startHour;
     }
-    public int getDuration() {
-        return this.duration;
+    public int getEndHour() {
+        return this.endHour;
+    }
+    public int getStartMinute() {
+        return this.startMinute;
+    }
+    public int getEndMinute() {
+        return this.endMinute;
     }
     public String getDate() {
         return this.date;
