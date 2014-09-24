@@ -67,7 +67,7 @@ public abstract class Flyweight implements Serializable{
         return date;
     }
     
-    public void setDate(Date newDate)
+    private void setDate(Date newDate)
     {
         date = newDate;
     }
@@ -77,7 +77,7 @@ public abstract class Flyweight implements Serializable{
         time = newTime;
     }
     
-    public boolean setTime(int hour, int minute)
+    private boolean setTime(int hour, int minute)
     {
         boolean isAccurate = true;
         

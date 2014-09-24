@@ -13,7 +13,9 @@
             817-272-2011
         </div>
         <script type="text/javascript" src= "js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>   
+        <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
     </footer>
 </div>
 </html>
