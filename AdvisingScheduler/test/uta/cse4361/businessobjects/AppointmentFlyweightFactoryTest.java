@@ -12,14 +12,21 @@ import static org.junit.Assert.*;
  *
  * @author Frank R.
  */
+
 public class AppointmentFlyweightFactoryTest {
     
     public AppointmentFlyweightFactoryTest() {
     }
 
+    @Test
+    public void defaultTest()
+    {
+        assert(true);
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     // @Test
     // public void hello() {}
 }
+

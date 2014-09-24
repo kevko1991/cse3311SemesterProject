@@ -19,11 +19,6 @@ public class FlyweightDatabaseManager {
         
     }
     
-    private boolean isFree(Date date, int startTime, int endTime)
-    {
-        return false;
-    }
-    
     public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute)
     {
         return false;
@@ -38,6 +33,12 @@ public class FlyweightDatabaseManager {
     {
         return new ArrayList<Flyweight> ();
     }
+    
+    public Flyweight[] getDaysFlyweightsArray(Date date)
+    {
+        return new Flyweight[1];
+    }
+        
 
 
 }
