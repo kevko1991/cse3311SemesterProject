@@ -30,7 +30,7 @@ public class AppointmentFlyweightFactory {
         private static final AppointmentFlyweightFactory INSTANCE = new AppointmentFlyweightFactory();
     }
     
-    public String createFlyweights(Date date, int startTime, int endTime, String key)
+    public String createFlyweights(Date date, int startHour, int endHour, int startMinute, int endMinute, String key)
     {
         return "";
     }

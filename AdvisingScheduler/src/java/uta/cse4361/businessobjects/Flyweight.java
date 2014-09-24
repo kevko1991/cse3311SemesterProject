@@ -12,7 +12,8 @@ import java.util.Date;
  *
  * @author Frank R.
  */
-public abstract class Flyweight implements Serializable{
+public abstract class Flyweight implements Serializable, Comparable<Flyweight>
+{
     
     final static int MIN_HOUR = 0;
     final static int MAX_HOUR = 23;
@@ -97,5 +98,13 @@ public abstract class Flyweight implements Serializable{
         }
         
         return isAccurate;
+    }
+    
+    @Override
+    public int compareTo(Flyweight another) {
+        Flyweight toCompare = another;
+        int compare = 0;
+        compare = this.getTime() - another.getTime();
+        return compare;
     }
 }

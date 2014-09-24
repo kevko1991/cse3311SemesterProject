@@ -16,6 +16,6 @@ public class AppointmentFlyweight extends Flyweight{
     public AppointmentFlyweight(int newAppointmentId, Date newDate, 
             int newHour, int newMinute) throws IllegalArgumentException      
     {
-        super(true, newAppointmentId, newDate, newHour, newMinute);
+        super(true, newAppointmentId, newDate, newHour, newMinute); 
     }
 }
