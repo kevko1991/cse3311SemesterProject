@@ -16,8 +16,10 @@ public class TimeAllocationSlotBean {
     final static String AVAILABLE_FLYWEIGHT_KEY = "AvailableFlyweight";
     
     private Date date;
-    private int startTime = 0;
-    private int endTime = 0;
+    private int startHour = 0;
+    private int endHour = 0;
+    private int startMinute = 0;
+    private int endMinute = 0;
     
     public TimeAllocationSlotBean(){
         
@@ -26,23 +28,35 @@ public class TimeAllocationSlotBean {
     public String allocateTime() {
         String msg = SUCCESS_MSG;
         AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
-        msg = aff.createFlyweights(date, this.startTime, this.endTime, AVAILABLE_FLYWEIGHT_KEY);
+        msg = aff.createFlyweights(date, this.startHour, this.startHour, this.startMinute, this.endMinute, AVAILABLE_FLYWEIGHT_KEY);
         return msg;
     }
     
     // Setters
-    public void setStartTime(int sTime) {
-        this.startTime = sTime;
+    public void setStartHour(int sH) {
+        this.startHour = sH;
     }
-    public void setEndTime(int eTime) {
-        this.endTime = eTime;
+    public void setEndHour(int eH) {
+        this.startHour = eH;
+    }
+    public void setStartMinute(int sM) {
+        this.startHour = sM;
+    }
+    public void setEndMinute(int eM) {
+        this.endMinute = eM;
     }
     
     // Getters
-    public int getStartTime() {
-        return this.startTime;
+    public int getStartHour() {
+        return this.startHour;
     }
-    public int getEndTime() {
-        return this.endTime;
+    public int getEndHour() {
+        return this.endHour;
+    }
+    public int getStartMinute() {
+        return this.endHour;
+    }
+    public int getEndMinute() {
+        return this.endHour;
     }
 }
