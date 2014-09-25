@@ -61,7 +61,25 @@ public class FlyweightDatabaseManager {
     
     public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute)
     {
-        return false;
+        ArrayList<Flyweight> daysFlyweights = flyweightDatabase.get(date);
+        
+        boolean isFree = true;
+        
+        int startTime = (startHour * 60) + startMinute;
+        int endTime = (endHour * 60) + endMinute;
+        
+        for(Flyweight flyweight: daysFlyweights)
+        {
+            if(flyweight.isAppointment())
+            {
+                if((flyweight.getTime() >= startTime) && (flyweight.getTime() <= endTime))
+                {
+                    isFree = isFree && false;
+                }
+            }
+        }
+        
+        return isFree;        
     }
     
     public String saveFlyweights(ArrayList<Flyweight> flyweights)
@@ -100,12 +118,42 @@ public class FlyweightDatabaseManager {
     
     public ArrayList<Flyweight> getDaysFlyweights(Date date)
     {
-        return flyweightDatabase.get(date);
+        ArrayList<Flyweight> daysFlyweights = flyweightDatabase.get(date);
+        if(daysFlyweights == null)
+        {
+            daysFlyweights = new ArrayList<Flyweight>();
+        }
+        
+        //Collections.sort(daysFlyweights);
+        
+        ArrayList<Flyweight> finalDaysFlyweights = new ArrayList<Flyweight>();
+        ArrayList<Integer> appointmentTimes = new ArrayList<Integer>();
+        Flyweight previousFlyweight = null;
+        
+        for(Flyweight currentFlyweight: daysFlyweights)
+        {
+            if(currentFlyweight.isAppointment())
+            {
+                finalDaysFlyweights.add(currentFlyweight);
+                appointmentTimes.add(currentFlyweight.getTime());
+            }
+        }
+        
+        for(Flyweight currentFlyweight: daysFlyweights)
+        {
+            if(!appointmentTimes.contains(currentFlyweight.getTime()))
+            {
+                finalDaysFlyweights.add(currentFlyweight);
+            }
+        }
+        
+        Collections.sort(finalDaysFlyweights);
+        return finalDaysFlyweights;
     }
     
     public Flyweight[] getDaysFlyweightsArray(Date date)
     {
-        return (Flyweight[])flyweightDatabase.get(date).toArray();
+        return (Flyweight[])getDaysFlyweights(date).toArray();
     }
         
 

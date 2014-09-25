@@ -19,12 +19,7 @@ public class FlyweightDatabaseManagerTest {
     
     public FlyweightDatabaseManagerTest() {
     }
-    @Test
-    public void defaultTest()
-    {
-        assert(true);
-    }
-    /*
+    
     private Date currentDate;
     @Before
     public void setUp()
@@ -98,13 +93,21 @@ public class FlyweightDatabaseManagerTest {
         
         assertEquals("The FDB did not return the same number of flyweights as availableFlyweights were created.", availableFlys.size(), savedFlyweights.size());
         
-        assertEquals("The FDB did not return an appointmentFlyweight as the first member", true, savedFlyweights.get(0).isAppointment());
+        for(int i = 0; i < availableFlys.size(); i++)
+        {
+            if (i < appointmentFlys.size())
+            {
+                assertEquals("The FDB did not return an appointmentFlyweight as the member", true, savedFlyweights.get(i).isAppointment());
+            }
+            else
+            {
+                assertEquals("The FDB did not return an availableFlyweight as the  member", false, savedFlyweights.get(i).isAppointment());
+            }
+        }
         
-        assertEquals("The FDB did not return an appointmentFlyweight as the second member", true, savedFlyweights.get(1).isAppointment());
         
-        assertEquals("The FDB did not return an availableFlyweight as the third member", false, savedFlyweights.get(2).isAppointment());
-        
-        assertEquals("The FDB did not return an availableFlyweight as the fourth member", false, savedFlyweights.get(3).isAppointment());
+
+
 
     } 
     
@@ -127,13 +130,13 @@ public class FlyweightDatabaseManagerTest {
     {
         FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
         
-        ArrayList<Flyweight> availableFlys = createAvailableFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
+        ArrayList<Flyweight> appointmentFlys = createAppointmentFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
         
-        fdb.saveFlyweights(availableFlys);
+        fdb.saveFlyweights(appointmentFlys);
         
         boolean free = fdb.isFree(currentDate, Flyweight.MIN_HOUR, Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45);
         
         assertEquals("The time that should not be free was shown as  free.", false, free);
     }
-    */
+    
 }
