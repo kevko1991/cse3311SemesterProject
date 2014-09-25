@@ -5,6 +5,8 @@
  */
 package uta.cse4361.businessobjects;
 
+import java.util.Date;
+
 /**
  *
  * @author Han
@@ -21,7 +23,7 @@ public class ScheduleAppointmentControllerBean {
     private int startMinute = 0;
     private int endHour = 0;
     private int endMinute = 0;
-    private String date = null;
+    private Date date = null;
 
     public ScheduleAppointmentControllerBean() {
 
@@ -54,7 +56,7 @@ public class ScheduleAppointmentControllerBean {
     public void setDescription(String dp) {
         this.description = dp;
     }
-    public void setDate(String d) {
+    public void setDate(Date d) {
         this.date = d;
     }
     public void setStartHour(int sH) {
@@ -98,7 +100,7 @@ public class ScheduleAppointmentControllerBean {
     public int getEndMinute() {
         return this.endMinute;
     }
-    public String getDate() {
+    public Date getDate() {
         return this.date;
     }
 }

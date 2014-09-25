@@ -5,6 +5,8 @@
  */
 package uta.cse4361.businessobjects;
 
+import java.util.Date;
+
 /**
  *
  * @author Han
@@ -20,13 +22,13 @@ public class Appointment implements java.io.Serializable {
     private int startMinute = 0;
     private int endHour = 0;
     private int endMinute = 0;
-    private String date = null;
+    private Date date = null;
 
     public Appointment() {
 
     }
     
-    public boolean initialize(String sName, String sID, String aName, String dp, String date, int sH, int eH, int sM, int eM) {
+    public boolean initialize(String sName, String sID, String aName, String dp, Date date, int sH, int eH, int sM, int eM) {
         this.setStudentName(sName);
         if(this.setStudentID(sID) == false)
             return false;
@@ -41,8 +43,8 @@ public class Appointment implements java.io.Serializable {
     }
     
     // Setters
-    public void setApptID() {
-        this.apptID++;
+    public void setApptID(int apptID) {
+        this.apptID = apptID;
     }
     public void setStudentName(String sName) {
         this.studentName = sName;
@@ -60,7 +62,7 @@ public class Appointment implements java.io.Serializable {
     public void setDescription(String dp) {
         this.description = dp;
     }
-    public void setDate(String d) {
+    public void setDate(Date d) {
         this.date = d;
     }
     public void setStartHour(int sH) {
@@ -104,7 +106,7 @@ public class Appointment implements java.io.Serializable {
     public int getEndMinute() {
         return this.endMinute;
     }
-    public String getDate() {
+    public Date getDate() {
         return this.date;
     }
 }
