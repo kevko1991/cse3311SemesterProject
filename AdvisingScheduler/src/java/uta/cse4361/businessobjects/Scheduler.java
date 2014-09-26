@@ -16,7 +16,7 @@ public class Scheduler {
     Appointment a =new Appointment();
     AppointmentDatabaseManager adm = new  AppointmentDatabaseManager();
     final static String SUCCESS_MSG = ""; 
-    final static String AVAILABLE_FLYWEIGHT_KEY = "AvailableFlyweight";
+    final static String TIME_IS_NOT_FREE_FAULT = "The time for the appointment is not free.";
     public Scheduler()
     {
         
@@ -27,11 +27,16 @@ public class Scheduler {
         String msg = SUCCESS_MSG;
         if (fdm.isFree(a.getDate(), a.getStartHour(), a.getEndHour(), a.getStartMinute(),a.getEndMinute())== true )
         {
-            msg = aff.createFlyweights(a.getDate(), a.getStartHour(), a.getEndHour(),a.getStartMinute(), a.getEndMinute(), AVAILABLE_FLYWEIGHT_KEY);   
-                adm.saveAppointment(a);
+            msg = aff.createFlyweights(a.getDate(), a.getStartHour(), a.getEndHour(),a.getStartMinute(), a.getEndMinute(), 
+                    adm.getNextId(), AppointmentFlyweightFactory.APPOINTMENT_FLYWEIGHT_KEY);   
         }
         else
-            msg = "";
+            msg = TIME_IS_NOT_FREE_FAULT;
+        
+        if(msg == SUCCESS_MSG)
+        {
+            adm.saveAppointment(a);
+        }
         return msg;
     }
     

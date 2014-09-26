@@ -28,7 +28,7 @@ public class TimeAllocationSlotBean {
     public String allocateTime() {
         String msg = SUCCESS_MSG;
         AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
-        msg = aff.createFlyweights(date, this.startHour, this.startHour, this.startMinute, this.endMinute, AVAILABLE_FLYWEIGHT_KEY);
+        msg = aff.createFlyweights(date, this.startHour, this.startHour, this.startMinute, this.endMinute, 0, AVAILABLE_FLYWEIGHT_KEY);
         return msg;
     }
     

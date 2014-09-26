@@ -5,11 +5,14 @@
  */
 package uta.cse4361.businessobjects;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -25,6 +28,45 @@ public class FlyweightDatabaseManagerTest {
     public void setUp()
     {
         currentDate = new Date();
+    }
+    
+    @BeforeClass
+    public static void beforeClass()
+    {
+        /*
+        File dataFile = new File(FlyweightDatabaseManager.FDB_FILE_NAME);
+        File tempDataFile = new File("backup_FDB_file");
+        
+        tempDataFile.delete();
+        
+        if(dataFile.exists())
+        {
+            if(!dataFile.renameTo(tempDataFile))
+            {
+                fail();
+            }
+        }
+        */
+    }
+    
+    @AfterClass
+    public static void afterClass()
+    {
+        /*
+        File dataFile = new File(FlyweightDatabaseManager.FDB_FILE_NAME);
+        File tempDataFile = new File("backup_FDB_file");
+        
+        if(tempDataFile.exists())
+        {
+            if(!tempDataFile.renameTo(dataFile))
+            {
+                fail();
+            }
+        }
+        
+        File toDelete = new File("backup_FDB_file");
+        toDelete.delete();
+        */
     }
 
     private ArrayList<Flyweight> createAvailableFlyweights(int startTime, int endTime, int hour)
