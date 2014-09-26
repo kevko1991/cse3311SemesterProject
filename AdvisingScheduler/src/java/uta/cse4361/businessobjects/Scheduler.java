@@ -23,7 +23,7 @@ public class Scheduler {
     }
 
     
-    public String Schedule(Appointment a){
+    public String schedule(Appointment a){
         String msg = SUCCESS_MSG;
         if (fdm.isFree(a.getDate(), a.getStartHour(), a.getEndHour(), a.getStartMinute(),a.getEndMinute())== true )
         {

@@ -33,9 +33,9 @@ public class ScheduleAppointmentControllerBean {
         boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.description, this.date, this.startHour, this.endHour, this.startMinute, this.endMinute);
         if(r == false)
             return this.INITIALIZE_APPOINTMENT_FAIL;
-        //Scheduler s = new Schedule();
+        Scheduler s = new Scheduler();
         String msg = ""; 
-        //msg = s.schedule(a);
+        msg = s.schedule(a);
         return msg;
     }
     
