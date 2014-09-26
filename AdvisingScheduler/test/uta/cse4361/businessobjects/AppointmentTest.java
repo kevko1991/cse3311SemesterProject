@@ -214,114 +214,114 @@ public class AppointmentTest {
         assertEquals(44, instance.getEndMinute());
     }
 
-    /**
-     * Test of getApptID method, of class Appointment.
-     */
-    @Test
-    public void testGetApptID() {
-        Appointment instance = new Appointment();
-        int expResult = 0;
-        int result = instance.getApptID();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getStudentName method, of class Appointment.
-     */
-    @Test
-    public void testGetStudentName() {
-        Appointment instance = new Appointment();
-        String expResult = "";
-        String result = instance.getStudentName();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getStudentID method, of class Appointment.
-     */
-    @Test
-    public void testGetStudentID() {
-        Appointment instance = new Appointment();
-        String expResult = "";
-        String result = instance.getStudentID();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getAdvisorName method, of class Appointment.
-     */
-    @Test
-    public void testGetAdvisorName() {
-        Appointment instance = new Appointment();
-        String expResult = "";
-        String result = instance.getAdvisorName();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getDescription method, of class Appointment.
-     */
-    @Test
-    public void testGetDescription() {
-        Appointment instance = new Appointment();
-        String expResult = "";
-        String result = instance.getDescription();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getStartHour method, of class Appointment.
-     */
-    @Test
-    public void testGetStartHour() {
-        Appointment instance = new Appointment();
-        int expResult = 0;
-        int result = instance.getStartHour();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getEndHour method, of class Appointment.
-     */
-    @Test
-    public void testGetEndHour() {
-        Appointment instance = new Appointment();
-        int expResult = 0;
-        int result = instance.getEndHour();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getStartMinute method, of class Appointment.
-     */
-    @Test
-    public void testGetStartMinute() {
-        Appointment instance = new Appointment();
-        int expResult = 0;
-        int result = instance.getStartMinute();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getEndMinute method, of class Appointment.
-     */
-    @Test
-    public void testGetEndMinute() {
-        Appointment instance = new Appointment();
-        int expResult = 0;
-        int result = instance.getEndMinute();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getDate method, of class Appointment.
-     */
-    @Test
-    public void testGetDate() {
-        Appointment instance = new Appointment();
-        Date expResult = null;
-        Date result = instance.getDate();
-        assertEquals(expResult, result);
-    }
+//    /**
+//     * Test of getApptID method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetApptID() {
+//        Appointment instance = new Appointment();
+//        int expResult = 0;
+//        int result = instance.getApptID();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getStudentName method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetStudentName() {
+//        Appointment instance = new Appointment();
+//        String expResult = "";
+//        String result = instance.getStudentName();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getStudentID method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetStudentID() {
+//        Appointment instance = new Appointment();
+//        String expResult = "";
+//        String result = instance.getStudentID();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getAdvisorName method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetAdvisorName() {
+//        Appointment instance = new Appointment();
+//        String expResult = "";
+//        String result = instance.getAdvisorName();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getDescription method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetDescription() {
+//        Appointment instance = new Appointment();
+//        String expResult = "";
+//        String result = instance.getDescription();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getStartHour method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetStartHour() {
+//        Appointment instance = new Appointment();
+//        int expResult = 0;
+//        int result = instance.getStartHour();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getEndHour method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetEndHour() {
+//        Appointment instance = new Appointment();
+//        int expResult = 0;
+//        int result = instance.getEndHour();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getStartMinute method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetStartMinute() {
+//        Appointment instance = new Appointment();
+//        int expResult = 0;
+//        int result = instance.getStartMinute();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getEndMinute method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetEndMinute() {
+//        Appointment instance = new Appointment();
+//        int expResult = 0;
+//        int result = instance.getEndMinute();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of getDate method, of class Appointment.
+//     */
+//    @Test
+//    public void testGetDate() {
+//        Appointment instance = new Appointment();
+//        Date expResult = null;
+//        Date result = instance.getDate();
+//        assertEquals(expResult, result);
+//    }
     
 }
