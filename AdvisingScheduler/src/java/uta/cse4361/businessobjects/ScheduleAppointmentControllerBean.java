@@ -14,7 +14,6 @@ import java.util.Date;
 public class ScheduleAppointmentControllerBean {
     final static String INITIALIZE_APPOINTMENT_FAIL = "Error when assign studentID, check Appointment.java class";
     
-    private static int apptID = 0;
     private String studentName = null;
     private String studentID = null;
     private String advisorName = null;
@@ -41,9 +40,6 @@ public class ScheduleAppointmentControllerBean {
     }
     
     // Setters
-    public void setApptID() {
-        this.apptID++;
-    }
     public void setStudentName(String sName) {
         this.studentName = sName;
     }
@@ -73,9 +69,6 @@ public class ScheduleAppointmentControllerBean {
     }
 
     // Getters
-    public int getApptID() {
-        return this.apptID;
-    }
     public String getStudentName() {
         return this.studentName;
     }

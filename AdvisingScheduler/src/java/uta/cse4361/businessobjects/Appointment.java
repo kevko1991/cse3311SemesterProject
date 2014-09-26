@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Appointment implements java.io.Serializable {
 
-    private static int apptID = 0;
+    private int apptID = 0;
     private String studentName = null;
     private String studentID = null;
     private String advisorName = null;
@@ -50,9 +50,10 @@ public class Appointment implements java.io.Serializable {
         this.studentName = sName;
     }
     public boolean setStudentID(String sID) {
-        if((sID.length() != 10) || (sID.indexOf(0) != 1) || (sID.indexOf(0) != 6)) {
-            return false;
-        }
+        if (sID.length() != 10)
+          return false;
+      else if (!sID.startsWith("1000") && !sID.startsWith("6000"))
+          return false;
         this.studentID = sID;
         return true;
     }
