@@ -43,7 +43,7 @@ public class AppointmentTest {
      * If provided a correct student ID, the initializer should correctly initialize
      */
     @Test
-    public void testCorrectInitialize() {
+    public void testInitializeSuccess() {
         String sName = "First Last";
         String sID = "1000123456";
         String aName = "Advisor Name";
@@ -64,7 +64,7 @@ public class AppointmentTest {
      * With a wrong given student ID, the initializer should return fail
      */
     @Test
-    public void testWrongInitialize() {
+    public void testInitializeFail() {
         String sName = "First Last";
         String sID = "3000123456";
         String aName = "Advisor Name";

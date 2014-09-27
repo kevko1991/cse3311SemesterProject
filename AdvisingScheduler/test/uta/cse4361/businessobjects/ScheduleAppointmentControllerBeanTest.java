@@ -72,6 +72,9 @@ public class ScheduleAppointmentControllerBeanTest {
     @Test
     public void testScheduleAppointmentSuccess() {
         ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
+        AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
+        aff.createFlyweights(d, sH, eH, sM, eM, adm.getNextId(), AppointmentFlyweightFactory.AVAILABLE_FLYWEIGHT_KEY);
         instance.setStudentID(sID);
         instance.setStudentName(sName);
         instance.setAdvisorName(aName);
