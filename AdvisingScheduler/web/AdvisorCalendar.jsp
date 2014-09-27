@@ -20,7 +20,30 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
         <jsp:include page="header.jsp" />
-        
+        <%
+           
+           java.util.Date date[][] = new java.util.Date[1][2];
+           java.util.Date d = new java.util.Date();
+           d.setDate(22);
+           d.setHours(5);
+           d.setMinutes(30);
+           d.setYear(2014);
+           d.setMonth(8);
+           date[0][1] = d;
+           
+//            int[][] test = new int[1][2];
+//            test[0][0] = 1;
+//            test[0][1] = 2;
+//            out.print(test[0][0]);
+//        %>
+            <script type="text/javascript">
+            foo();
+            function foo() {
+                var value = "<%=date[0][1]%>";
+                alert(value);
+            }
+            </script>
+
         
     <body>
         <div class="ui-widget-header">UTA Advising</div>
@@ -84,5 +107,5 @@ and open the template in the editor.
         <jsp:include page="footer.jsp" />
         <script type="text/javascript" src="js/fullcalendar/moment.min.js"></script>
         <script type="text/javascript" src="js/fullcalendar/fullcalendar.js"></script>
-        <script type="text/javascript" src="js/Calendar.js"></script>
+        <script type="text/javascript" src="js/AdvisorCalendar.js"></script>
 </html>

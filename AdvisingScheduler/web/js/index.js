@@ -8,3 +8,5 @@ $(function() {
 $( "#timeaccordion" ).accordion({ heightStyle: "content" });
 //$( ".selector" ).accordion({ header: "h3" });
 //$( "#date" ).datepicker();
+
+$( "#tabs" ).tabs();
