@@ -62,7 +62,7 @@ public class AppointmentFlyweightFactory {
     public String createFlyweights(Date date, int startHour, int endHour, int startMinute, int endMinute, int apptId, String key)
     {
                 
-        if((startHour > endHour) || (startMinute > endMinute))
+        if((startHour > endHour) || ((startHour == endHour) && (startMinute > endMinute)))
         {
             return ILLEGAL_ARGUMENT_FAULT;
         }
