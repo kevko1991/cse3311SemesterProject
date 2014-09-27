@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package uta.cse4361.businessobjects;
+
 import java.util.*;
 import java.io.*;
 
@@ -15,8 +16,8 @@ public class AppointmentDatabaseManager {
 
     Appointment an = new Appointment();
 
-    FileInputStream fileIn = null;
-    FileOutputStream fileOut = null;
+    
+    
     Hashtable<Integer, Appointment> has = new Hashtable<Integer, Appointment>();
 
     public AppointmentDatabaseManager() {
@@ -24,14 +25,14 @@ public class AppointmentDatabaseManager {
     }
 
     public void saveAppointment(Appointment an) {
-
         has.put(an.getApptID(), an);
         saveHashtable();
     }
 
     private void saveHashtable() {
         try {
-            fileOut = new FileOutputStream("example.txt");
+            FileOutputStream fileOut = null;
+            fileOut = new FileOutputStream("example.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(has);
 
@@ -45,7 +46,8 @@ public class AppointmentDatabaseManager {
 
     private void loadHashTable() {
         try {
-            fileIn = new FileInputStream("example.txt");
+            FileInputStream fileIn = null;
+            fileIn = new FileInputStream("example.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             has = (Hashtable) in.readObject();
             in.close();
@@ -65,12 +67,6 @@ public class AppointmentDatabaseManager {
     public Appointment getAppointment(int id) {
 
         loadHashTable();
-        /*
-        System.out.println("Printing out loaded elements...");
-        for (Enumeration e = has.keys(); e.hasMoreElements();) {
-            Object obj = e.nextElement();
-            System.out.println("  - Element(" + obj + ") = " + has.get(obj));
-        }*/
         return has.get(id);
     }
 
