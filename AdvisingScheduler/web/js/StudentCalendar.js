@@ -33,7 +33,8 @@ $(document).ready(function() {
         var k;       
         for (var k = 0; k < day.length; k++) {
         formattedEventData.push({            
-            start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0)             
+            title: 'Available',
+            start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0)            
              });
         };
         

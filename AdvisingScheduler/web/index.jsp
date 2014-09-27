@@ -73,7 +73,9 @@ and open the template in the editor.
                             </ul>                              
                             <a href="schedule.jsp">Schedule Appointment</a><br>
                             <a href="StudentCalendar.jsp">Student Calendar</a><br>
-                            <a href="AdvisorCalendar.jsp">Advisor Calendar</a>
+                            <a href="AdvisorCalendar.jsp">Advisor Calendar</a><br>
+                            <a href="AllocateTime.jsp">Allocate Time</a><br>
+                            <a href="saveAppointment.jsp">Save Appointment</a><br>
                         </div>
                     </div>                   
                 </td>

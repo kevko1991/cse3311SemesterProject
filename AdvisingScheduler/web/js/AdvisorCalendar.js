@@ -6,47 +6,81 @@ $( "#timeaccordion" ).accordion({ heightStyle: "content" });
 
 $(document).ready(function() {
     // page is now ready, initialize the calendar...
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        var temp = new Date();
+//        var date = new Date();
+//        var d = date.getDate();
+//        var m = date.getMonth();
+//        var y = date.getFullYear();
+//        var temp = new Date();
         
         //Create  array with data
-        var myArray = [];
-        for(var i = 1; i < 20; i+=2){
-            temp = new Date(2014, 8, i);
-            myArray.push(['Test'+i, temp]);
-        }
-
+//        var myArray = [];
+//        for(var i = 1; i < 20; i+=2){
+//            temp = new Date(2014, 8, i);
+//            myArray.push(['Test'+i, temp]);
+//        }
+        //alert(window.value);
 
         //Format the data according to eventObject specifications
-        var formattedEventData = [], k;       
-        for (var k = 0; k < myArray.length; k++) {
-        formattedEventData.push({
-            title: myArray[k][0],
-            start: myArray[k][1],
-            allDay: true
+//        var formattedEventData = [], k;       
+//        for (var k = 0; k < myArray.length; k++) {
+//        formattedEventData.push({
+//            title: myArray[k][0],
+//            start: myArray[k][1],
+//            allDay: true
+//             });
+//        };
+        
+        var k;       
+        for (var k = 0; k < day.length; k++) {
+        formattedEventData.push({            
+            start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0)             
              });
         };
         
         //Creating test data for showing occupied time slots
-        var sDate = new Date(2014, 8, 25, 5, 30, 20, 0); 
-        var eDate = new Date(2014, 8, 25, 7, 30, 20, 0);
+//        var sDate = new Date(2014, 8, 25, 5, 30, 20, 0); 
+//        var eDate = new Date(2014, 8, 25, 7, 30, 20, 0);
                   //new Date(year, month, day, hours, minutes, seconds, milliseconds);        
-        formattedEventData.push({
-            title: 'Why do you torture me so!',
-            start: sDate,
-            end: eDate,
-            color: 'yellow',
-            textColor: 'black'
-        });
-   
+//        formattedEventData.push({
+//            title: 'Why do you torture me so!',
+//            start: sDate,
+//            end: eDate,
+//            color: 'yellow',
+//            textColor: 'black'
+//        });
+//        
+
+
+//
+//        formattedEventData.push({
+//                title: 'this is important',
+//                start: new Date(2014, 8, window.array[0], 7, 30, 20, 0), 
+//                end: new Date(2014, 8, window.array[0], 7, 30, 20, 0),
+//                color: 'yellow',
+//                textColor: 'black'
+//                });
+                
+                
+                
+                
+//        alert(window.array[0]);
 //        $('#targetElement').fullCalendar({
 //            events: formattedEventData,
 //            color: 'yellow',
 //            textColor: 'black'
 //        });
+
+//        var value = "<%=d2%>";
+//                var formattedEventData = []; 
+//                formattedEventData.push({
+//                title: 'this is important',
+//                start: value,
+//                end: value,
+//                color: 'yellow',
+//                textColor: 'black'
+//                });
+//                alert(value);
+
 
     
     //customize calendar settings

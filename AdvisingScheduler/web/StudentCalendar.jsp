@@ -14,7 +14,7 @@ and open the template in the editor.
 <html>
     
     <head>        
-                 <%
+           <%
            java.util.Date date[][] = new java.util.Date[1][2];
            java.util.Date d = new java.util.Date();
            java.util.Date d2 = new java.util.Date();
@@ -25,15 +25,18 @@ and open the template in the editor.
            d.setMonth(8);
            date[0][1] = d;
            
+  
+          
            uta.cse4361.businessobjects.FlyweightDatabaseManager fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
-           uta.cse4361.businessobjects.AppointmentFlyweight fwa[] = new uta.cse4361.businessobjects.AppointmentFlyweight[4];
-           uta.cse4361.businessobjects.AppointmentFlyweight fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1, d, 6, 15);
+           uta.cse4361.businessobjects.AvailableFlyweight fwa[] = new uta.cse4361.businessobjects.AvailableFlyweight[4];
+           
+           uta.cse4361.businessobjects.AvailableFlyweight fw = new uta.cse4361.businessobjects.AvailableFlyweight(d, 6, 15);
            fwa[0] = fw;
-           fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1, new java.util.Date(2014, 8, 2, 4, 10), 6, 15);
+           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 2, 4, 10), 6, 15);
            fwa[1] = fw;
-           fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1, new java.util.Date(2014, 8, 5, 6, 20), 6, 15);
+           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 5, 6, 20), 6, 15);
            fwa[2] = fw;
-           fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1, new java.util.Date(2014, 8, 8, 7, 30), 6, 15);
+           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 8, 7, 30), 6, 15);
            fwa[3] = fw;
            
            d2 = fwa[0].getDate();

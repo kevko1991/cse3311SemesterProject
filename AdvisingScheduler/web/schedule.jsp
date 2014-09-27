@@ -8,10 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-        <link rel="stylesheet" href="/resources/demos/style.css">
+        <jsp:include page="header.jsp" />
         <script>
             $(function () {
                 $("#date").datepicker();
@@ -44,23 +41,61 @@
         <title>Schedule Appointment</title>
     </head>
     <body>
-        <form name="schedule" action="saveAppointment.jsp" onSubmit="return validate();">
-            Student ID:
-            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="sID" id="sID" value=""><br>
-            Student Name:
-            <input type="text" name="sName" id="sName" value=""><br>
-            Advisor:
-            <select name="aName" id="aName">
-                <option value="Linda Barasch">Linda Barasch</option>
-                <option value="Bob Weems">Bob Weems</option>
-            </select><br>
-            Date:
-            <input type="text" name="date" id="date" readonly="true"><br>
-            Description: 
-            <textarea name="description" id="description" rows="6" cols="50" value=""></textarea><br>
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-        </form>
+        <div id="accordion">
+            <h3>Schedule Appointment</h3>
+            <div>
+ 
+                <form name="schedule" action="saveAppointment.jsp" onSubmit="return validate();">
+                    <table>
+                        <tr>
+                            <td>
+                    Student ID:
+                            </td>
+                            <td>
+                    <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="sID" id="sID" value=""><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                    Student Name:
+                            </td>
+                            <td>
+                    <input type="text" name="sName" id="sName" value=""><br>
+                            </td>
+                        </tr>
+                    <tr>
+                            <td>
+                    Advisor:
+                            </td>
+                            <td>
+                    <select name="aName" id="aName">
+                        <option value="Linda Barasch">Linda Barasch</option>
+                        <option value="Bob Weems">Bob Weems</option>
+                    </select><br>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                    Date:
+                            </td>
+                            <td>
+                    <input type="text" name="date" id="date" readonly="true"><br>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                    Description: 
+                            </td>
+                            <td>
+                    <textarea name="description" id="description" rows="6" cols="50" value=""></textarea><br>
+                            </td>
+                    <tr>
+                    </table>
+                    <input type="submit" value="Submit" id="submitBtn">
+                    <input type="reset" value="Reset" id="resetBtn">
+                </form>
+            </div>
+        </div>
         <br>
         <%
             String date = request.getParameter("date");
@@ -79,4 +114,6 @@
             }
         %>
     </body>
+    <jsp:include page="footer.jsp" />
+    <script type="text/javascript" src="js/schedule.js"></script>    
 </html>
