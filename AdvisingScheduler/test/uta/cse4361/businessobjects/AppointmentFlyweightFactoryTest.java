@@ -142,7 +142,7 @@ public class AppointmentFlyweightFactoryTest {
         assertEquals("An invalid hour did not produce an error", AppointmentFlyweightFactory.ILLEGAL_ARGUMENT_FAULT, result);
         
         result =AppointmentFlyweightFactory.getInstance().
-                createFlyweights(currentDate, Flyweight.MIN_HOUR, Flyweight.MIN_HOUR + 2, 
+                createFlyweights(currentDate, Flyweight.MIN_HOUR, Flyweight.MIN_HOUR, 
                         Flyweight.MIN_MINUTE+ 15, Flyweight.MIN_MINUTE, 0, AppointmentFlyweightFactory.AVAILABLE_FLYWEIGHT_KEY);
         
         assertEquals("An invalid minute did not produce an error", AppointmentFlyweightFactory.ILLEGAL_ARGUMENT_FAULT, result);
