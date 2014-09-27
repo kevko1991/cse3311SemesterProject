@@ -86,12 +86,10 @@ $(document).ready(function() {
     
     //customize calendar settings
 var calendar = $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-	},       
-        
+        defaultView: 'agendaDay',
+        //weekends: day,
+        defaultDate: new Date(year[0], month[0], day[0], hour[0], min[0], 0, 0), 
+       
         //When you click a day, create a new object
         dayClick: function(date, jsEvent, view) {
 //            $(this).css('background-color', 'red');             
