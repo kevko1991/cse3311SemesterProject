@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class ScheduleAppointmentControllerBean {
     final static String INITIALIZE_APPOINTMENT_FAIL = "Error when assign studentID, check Appointment.java class";
+    final static String SUCCESS_MESSAGE = "";
     
     private String studentName = null;
     private String studentID = null;
@@ -29,12 +30,12 @@ public class ScheduleAppointmentControllerBean {
     }
     
     public String scheduleAppointment() {
+        String msg = SUCCESS_MESSAGE;
         Appointment a = new Appointment();
         boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.description, this.date, this.startHour, this.endHour, this.startMinute, this.endMinute);
         if(r == false)
             return this.INITIALIZE_APPOINTMENT_FAIL;
         Scheduler s = new Scheduler();
-        String msg = ""; 
         msg = s.schedule(a);
         return msg;
     }
