@@ -66,23 +66,24 @@ and open the template in the editor.
                 </td>
                 
                 <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="timeaccordion">
-                        <h3>Time Slots</h3>
-                        <div>
-                            Put time slot here!
+                    <div style="width:780px" id="tabs">
+                        <div id="tabs-1">
+                            <ul>
+                                <li><a href="#tabs-1">Links</a></li>
+                            </ul>                              
+                            <a href="schedule.jsp">Schedule Appointment</a><br>
+                            <a href="StudentCalendar.jsp">Student Calendar</a><br>
+                            <a href="AdvisorCalendar.jsp">Advisor Calendar</a><br>
+                            <a href="AllocateTime.jsp">Allocate Time</a><br>
+                            <a href="saveAppointment.jsp">Save Appointment</a><br>
                         </div>
-                    </div>
+                    </div>                   
                 </td>
                 
                 
             </tr>
             
         </table>
-
-       <!-- <form>
-        <input type="text" name="date" id="date">
-        </form>
-       -->
        
     </body>
     
