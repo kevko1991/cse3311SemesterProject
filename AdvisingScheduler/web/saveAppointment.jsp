@@ -13,11 +13,15 @@
         <title>Insert title here</title> 
     </head> 
     <body bgcolor="#99CCFF"> 
+        <%
+            java.text.DateFormat format = new java.text.SimpleDateFormat("MM/dd/yyyy");
+            java.util.Date newDate = format.parse(request.getParameter("date"));
+        %>;
         
         <jsp:useBean id="newAppt" class="uta.cse4361.businessobjects.ScheduleAppointmentControllerBean"/> 
         <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
-        <jsp:setProperty name="newAppt" property="date" param="date" /> 
+        <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
         <jsp:setProperty name="newAppt" property="description" param="description" /> 
         <div align="center">
             <h2> Appointment Bean Test</h2> 

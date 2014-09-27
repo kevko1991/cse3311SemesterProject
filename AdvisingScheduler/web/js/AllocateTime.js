@@ -7,5 +7,12 @@ $( "#accordion" ).accordion({ heightStyle: "content" });
 $(function() {
     $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+14D" });
 });
-$('#starttimepicker').timepicker({ 'step': 15 });
-$('#endtimepicker').timepicker({ 'step': 15 });
+
+options = {'step': 15, 
+    'minTime': '7:00am',
+    'maxTime': '7:00pm',
+     'timeFormat': 'h:i A'};
+
+$('#starttimepicker').timepicker(options);
+
+$('#endtimepicker').timepicker(options);
