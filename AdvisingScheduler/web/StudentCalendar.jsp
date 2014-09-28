@@ -69,13 +69,7 @@
    </head>
         <jsp:include page="header.jsp" />
 
-    <body>
-        <div class="ui-widget-header">Advising Calendar</div>
-        
-        <div class="ui-widget">
-            
-        </div>
-       
+    <body>    
         <table id="table">
             <tr>
                 <jsp:include page="sidebar.jsp" />
