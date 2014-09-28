@@ -45,7 +45,7 @@
             <h3>Schedule Appointment</h3>
             <div>
  
-                <form name="schedule" action="saveAppointment.jsp" onSubmit="return validate();">
+                <form name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();">
                     <table>
                         <tr>
                             <td>

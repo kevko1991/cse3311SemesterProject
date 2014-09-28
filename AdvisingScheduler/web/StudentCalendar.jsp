@@ -6,51 +6,28 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     
-    <head>        
-           <%
-           java.util.Date date[][] = new java.util.Date[1][2];
-           java.util.Date d = new java.util.Date();
-           java.util.Date d2 = new java.util.Date();
-           d.setDate(22);
-           d.setHours(5);
-           d.setMinutes(30);
-           d.setYear(2014);
-           d.setMonth(8);
-           date[0][1] = d;
-           
+    <head>    
+        
+        
+        <%
+            java.text.DateFormat format = new java.text.SimpleDateFormat("MM/dd/yyyy");
+            java.util.Date newDate = format.parse(request.getParameter("date"));
   
-          
+          //new java.util.Date(year, month, date, hrs, min)
            uta.cse4361.businessobjects.FlyweightDatabaseManager fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
            uta.cse4361.businessobjects.AvailableFlyweight fwa[] = new uta.cse4361.businessobjects.AvailableFlyweight[4];
            
-           uta.cse4361.businessobjects.AvailableFlyweight fw = new uta.cse4361.businessobjects.AvailableFlyweight(d, 6, 15);
+           uta.cse4361.businessobjects.AvailableFlyweight fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 5, 30), 6, 15);
            fwa[0] = fw;
            fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 2, 4, 10), 6, 15);
            fwa[1] = fw;
            fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 5, 6, 20), 6, 15);
            fwa[2] = fw;
-           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 8, 7, 30), 6, 15);
+           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 7, 30), 6, 15);
            fwa[3] = fw;
-           
-           d2 = fwa[0].getDate();
-           
-           int test[] =  new int[20];
-           test[0] = 1;
-           test[1] = 2;
-           test[3] = 3;
-           int day = 1;//d2.getDate();
-           int hour = d2.getHours();
-           int min = d2.getMinutes();
-           int month = d2.getMonth();
-           int year = d2.getYear();
-           
            
            //Retrieve all the data into seperate parts
            StringBuilder sbDay = new StringBuilder();
@@ -73,36 +50,18 @@ and open the template in the editor.
            for(int i=0;i<fwa.length;i++) 
                sbYear.append(fwa[i].getDate().getYear()+",");
                   
-
+           
+           String desc = request.getParameter("description");
         %>
-            <script type="text/javascript">  
-                //Convert all Java arrays to Javascript arrays
-                var temp="<%=sbDay.toString()%>";
-                var day = new Array();
-                window.day = temp.split(',','<%=test.length%>');
-                
-                var temp="<%=sbHour.toString()%>";
-                var hour = new Array();
-                window.hour = temp.split(',','<%=test.length%>');
-                
-                var temp="<%=sbMin.toString()%>";
-                var min = new Array();
-                window.min = temp.split(',','<%=test.length%>');
-                
-                var temp="<%=sbMonth.toString()%>";
-                var month = new Array();
-                window.month = temp.split(',','<%=test.length%>');
-                
-                var temp="<%=sbYear.toString()%>";
-                var year = new Array();
-                window.year = temp.split(',','<%=test.length%>');
-
-                //alert("array: "+array);
-                
-                window.formattedEventData = []; 
-                
-                //alert(value);  
-                         </script>
+        
+        <!--<script type="text/javascript" src="js/arrayProcess.js"></script>-->                
+        <jsp:useBean id="newAppt" class="uta.cse4361.businessobjects.ScheduleAppointmentControllerBean"/> 
+        <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
+        <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
+        <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
+        <jsp:setProperty name="newAppt" property="description" param="description" /> 
+        
+        
         <title>UTA Advising</title>
         <link rel='stylesheet' href='css/fullcalendar.css' />
         <meta charset="UTF-8">
@@ -117,48 +76,65 @@ and open the template in the editor.
             
         </div>
        
-        <table id="leftnavigation">
+        <table id="table">
             <tr>
-                <td style="vertical-align: top">
-                    <div style="width:310px" id="accordion">
-                        <h3>Subject</h3>
-                        <div>
-                            <select id="subjectselectmenu">
-                                    <option selected="selected">Computer Science</option>
-                                    <option>Software Engineering</option>
-                                    <option>Computer Engineering</option>
-                            </select>                            
-                        </div>
-                        <h3>Service</h3>
-                        <div>
-                            <select id="serviceselectmenu">
-                                    <option>Registration</option>
-                                    <option>General Questions</option>
-                                    <option>Major Change</option>
-                                    <option selected="selected">Add/Drop/Withdrawal</option>
-                                    <option>Probation/Dismissal</option>
-                                    <option>Academic Resource Referral</option>
-                                    <option>Re-admission</option>
-                                    <option>TSI</option>
-                                    <option>Grade Exclusion</option>
-                                    <option>Major Exploration</option>
-                                    <option>45 Hour Hold</option>
-                                    <option>Schedule Changes</option>
-                            </select>                                
-                        </div>
-                    </div>
-                    
-                </td>
-                <td>
-                    
-                </td>
-                
+                <jsp:include page="sidebar.jsp" />
+        
                 <td style="vertical-align: top; float: right;">
                     <div style="width:780px" id="timeaccordion">
                         <h3>Calendar</h3>
-                        <div id="calendar">
-                            
-                        </div>
+                        <div id="calendar">                            
+                        </div>                        
+                        <h3>Appointment Summary</h3>
+                        <div>                         
+                                        <form name="appointmentSummary">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                            Student ID:
+                                                    </td>
+                                                    <td>
+                                            <input type="text" name="sID" id="sID" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly"><br>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                            Student Name:
+                                                    </td>
+                                                    <td>
+                                            <input type="text" name="sName" id="sName" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
+                                                    </td>
+                                                </tr>
+<!--                                            <tr>
+                                                    <td>
+                                            Advisor:
+                                                    </td>
+                                                    <td>
+                                            <select name="aName" id="aName" readonly="readonly">
+                                                <option value="Linda Barasch">Linda Barasch</option>
+                                                <option value="Bob Weems">Bob Weems</option>
+                                            </select><br>
+                                                    </td>
+                                            </tr>-->
+                                            <tr>
+                                                    <td>
+                                            Date:
+                                                    </td>
+                                                    <td>
+                                            <input type="text" name="date" id="date" size="52" value="<jsp:getProperty name="newAppt" property="date"/>" readonly="readonly"><br>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>
+                                            Description: 
+                                                    </td>
+                                                    <td>
+                                            <textarea name="description" id="description" rows="6" cols="50" value="" readonly="readonly"></textarea><br>
+                                                    </td>
+                                            </table>
+                                            <input type="submit" value="Make Appointment" id="submitBtn">
+                                        </form>
+                        </div>                            
                     </div>
                 </td>
                 
@@ -170,6 +146,37 @@ and open the template in the editor.
     </body>
     
         <jsp:include page="footer.jsp" />
+                <script type="text/javascript">
+                    
+                window.eHour = 0;
+                window.eMin = 0;
+                var temp="<%=sbDay.toString()%>";
+                var day = new Array();
+                window.day = temp.split(',','<%=fwa.length%>');
+                
+                var temp="<%=sbHour.toString()%>";
+                var hour = new Array();
+                window.hour = temp.split(',','<%=fwa.length%>');
+                
+                var temp="<%=sbMin.toString()%>";
+                var min = new Array();
+                window.min = temp.split(',','<%=fwa.length%>');
+                
+                var temp="<%=sbMonth.toString()%>";
+                var month = new Array();
+                window.month = temp.split(',','<%=fwa.length%>');
+                
+                var temp="<%=sbYear.toString()%>";
+                var year = new Array();
+                window.year = temp.split(',','<%=fwa.length%>');
+                
+                
+                
+                //alert("array: "+array);
+                
+                window.formattedEventData = []; 
+                var desc = "<%=desc%>";
+        </script> 
         <script type="text/javascript" src="js/fullcalendar/moment.min.js"></script>
         <script type="text/javascript" src="js/fullcalendar/fullcalendar.js"></script>
         <script type="text/javascript" src="js/StudentCalendar.js"></script>

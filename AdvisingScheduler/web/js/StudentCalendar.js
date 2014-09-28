@@ -1,7 +1,11 @@
-$( "#navigationAccordion" ).accordion({ heightStyle: "content" });
+$( "#timeaccordion" ).accordion({
+heightStyle: "content",
+collapsible: true
+});
+$( "#navigationAccordion" ).accordion({ heightStyle: "content", collapsible: true});
 $( "#subjectselectmenu" ).selectmenu();
 $( "#serviceselectmenu" ).selectmenu();
-$( "#timeaccordion" ).accordion({ heightStyle: "content" });
+//$( "#timeaccordion" ).accordion({ heightStyle: "content" });
 $("#submitBtn").button().click(function(){});
 
 
@@ -17,7 +21,7 @@ $(document).ready(function() {
  
 //force description into textarea...
 $('#description').val(desc);
-//        alert(a.toString());
+
     //customize calendar settings
 var calendar = $('#calendar').fullCalendar({
         defaultView: 'agendaDay',
@@ -37,36 +41,12 @@ var calendar = $('#calendar').fullCalendar({
             eHour = cDate.getHours();
             eMin = cDate.getMinutes();
             $('input[name="date"]').val(event.start.toString());
-     //alert(event.title + ' has been deleted');
-        //calendar.fullCalendar( 'removeEvents', event._id );
-        //alert('Description: ' + event.description);        
-        //event.title = "CLICKED!";
-        //calendar.fullCalendar('updateEvent', event);
-//        alert(eHour +':'+ eMin);
         },
         
         
         //load events
         events: formattedEventData
-        
-        
-                //When you click a day, create a new object
-//        dayClick: function(date, jsEvent, view) {
-//            $(this).css('background-color', 'red');             
-//            var eventObject = {
-//			id:    				111,
-//			title: 				''+date.format(), 
-//			start: 				new Date(date.get('year'), date.get('month'), date.get('date')).toISOString(),
-//			end: 				new Date(date.get('year'), date.get('month'), date.get('date')).toISOString(),
-//			backgroundColor: 	$(ui.item).css('background-color'),
-//                        borderColor: 		$(ui.item).css('background-color'),
-//                        textColor: 			$(ui.item).css('color'),
-//                        allDay: true 
-//                        }; //eventobject end
-//             calendar.fullCalendar('renderEvent', eventObject ,true);
-            //window.location.href = "Calendar.jsp"; //redirect once click on day
-//        },
-                      
+                          
     })//fullcalendar end
   
 });//ready end
