@@ -52,10 +52,11 @@
                      <jsp:setProperty name="allocateTimeBean" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
                      <jsp:setProperty name="allocateTimeBean" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
                     <%
-                    if(allocateTimeBean.allocateTime() == "")
+                    String result = allocateTimeBean.allocateTime();
+                    if(result == "")
                         out.println("Time Allocation Success, Thank You.");
                     else
-                        out.println(allocateTimeBean.allocateTime());}
+                        out.println(result);}
                     else if(formSubmitted){
                         if(!dateSubmitted){
                             out.println("Please select a date.\n");
