@@ -26,44 +26,9 @@ and open the template in the editor.
         <a class="ui-widget-header" href="Calendar.jsp">See Event Calendar</a>
 
        
-        <table id="leftnavigation">
+        <table id="table">
             <tr>
-                <td style="vertical-align: top">
-                    <div style="width:310px" id="accordion">
-                        <h3>Subject</h3>
-                        <div>
-                            <select id="subjectselectmenu">
-                                    <option selected="selected">Computer Science</option>
-                                    <option>Software Engineering</option>
-                                    <option>Computer Engineering</option>
-                            </select>                            
-                        </div>
-                        <h3>Service</h3>
-                        <div>
-                            <select id="serviceselectmenu">
-                                    <option>Registration</option>
-                                    <option>General Questions</option>
-                                    <option>Major Change</option>
-                                    <option selected="selected">Add/Drop/Withdrawal</option>
-                                    <option>Probation/Dismissal</option>
-                                    <option>Academic Resource Referral</option>
-                                    <option>Re-admission</option>
-                                    <option>TSI</option>
-                                    <option>Grade Exclusion</option>
-                                    <option>Major Exploration</option>
-                                    <option>45 Hour Hold</option>
-                                    <option>Schedule Changes</option>
-                            </select>                                
-                        </div>
-                        <h3>Date</h3>
-                        <div id="datepicker">
-                        </div>
-                    </div>
-                    
-                </td>
-                <td>
-                    
-                </td>
+                <jsp:include page="sidebar.jsp" />
                 
                 <td style="vertical-align: top; float: right;">
                     <div style="width:780px" id="tabs">

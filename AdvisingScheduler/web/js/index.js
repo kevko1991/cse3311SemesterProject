@@ -1,4 +1,4 @@
-$( "#accordion" ).accordion({ heightStyle: "content" });
+$( "#navigationAccordion" ).accordion({ heightStyle: "content" });
 $( "#subjectselectmenu" ).selectmenu();
 $( "#serviceselectmenu" ).selectmenu();
 $(function() {
