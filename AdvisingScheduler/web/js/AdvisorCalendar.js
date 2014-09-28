@@ -1,7 +1,8 @@
-$( "#accordion" ).accordion({ heightStyle: "content" });
+$( "#navigationAccordion" ).accordion({ heightStyle: "content" });
 $( "#subjectselectmenu" ).selectmenu();
 $( "#serviceselectmenu" ).selectmenu();
 $( "#timeaccordion" ).accordion({ heightStyle: "content", collapsible: "true" });
+$( "#button").button(); 
 
 //Andrews code
 $(function() {

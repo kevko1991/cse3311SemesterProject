@@ -21,11 +21,6 @@ and open the template in the editor.
         
         
     <body>
-        <div class="ui-widget-header">UTA Advising</div>
-        
-        <a class="ui-widget-header" href="Calendar.jsp">See Event Calendar</a>
-
-       
         <table id="table">
             <tr>
                 <jsp:include page="sidebar.jsp" />
