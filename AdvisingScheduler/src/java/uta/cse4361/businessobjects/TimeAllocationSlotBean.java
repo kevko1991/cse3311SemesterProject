@@ -28,7 +28,9 @@ public class TimeAllocationSlotBean implements java.io.Serializable {
     public String allocateTime() {
         String msg = SUCCESS_MSG;
         AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
-        msg = aff.createFlyweights(date, this.startHour, this.endHour, this.startMinute, this.endMinute, 0, AVAILABLE_FLYWEIGHT_KEY);
+        AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
+        int id = adm.getNextId();
+        msg = aff.createFlyweights(date, this.startHour, this.endHour, this.startMinute, this.endMinute, id, AVAILABLE_FLYWEIGHT_KEY);
         return msg;
     }
     

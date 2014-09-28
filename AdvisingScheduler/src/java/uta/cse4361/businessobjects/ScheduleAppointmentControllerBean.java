@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Han
  */
 public class ScheduleAppointmentControllerBean {
-    final static String INITIALIZE_APPOINTMENT_FAIL = "Error when assign studentID, check Appointment.java class";
+    final static String INITIALIZE_APPOINTMENT_FAIL = "Error when assign studentID, ID must be 10 digit number starting with 1000 or 6000";
     final static String SUCCESS_MESSAGE = "";
     
     private String studentName = null;
