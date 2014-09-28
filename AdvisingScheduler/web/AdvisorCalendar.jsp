@@ -99,7 +99,7 @@ and open the template in the editor.
                 
                 //alert(value);  
                          </script>
-        <title>UTA Advising</title>
+        <title>Advisor Calendar</title>
         <link rel='stylesheet' href='css/fullcalendar.css' />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,7 +108,7 @@ and open the template in the editor.
 
         
     <body>
-        <div class="ui-widget-header">UTA Advising</div>
+        <div class="ui-widget-header">Advisor Calendar</div>
         
         <div class="ui-widget">
             
@@ -156,6 +156,77 @@ and open the template in the editor.
                         <div id="calendar">
                             
                         </div>
+                        
+                        
+                        <!--Andrews code-->
+                         <%!
+                            public int getHour(String time){
+                                int hour = Integer.parseInt(time.substring(0,2));
+                                if("PM".equalsIgnoreCase(time.substring(time.length() - 2))){
+                                    if(hour!=12){hour += 12;};
+                                };
+                                return hour;
+                            }
+                            public int getMin(String time){
+                                return Integer.parseInt(time.substring(3,5));
+                            }
+                            %>
+                            <% boolean dateSubmitted = !(request.getParameter("date")==null || request.getParameter("date")=="");
+                                boolean startSubmitted =  !(request.getParameter("startTime")==null || request.getParameter("startTime")=="");
+                                boolean endSubmitted = !(request.getParameter("endTime")==null || request.getParameter("endTime")=="");
+                                boolean formSubmitted = dateSubmitted || startSubmitted || endSubmitted;
+                                boolean validFormSubmitted = dateSubmitted && startSubmitted && endSubmitted;%>
+                        
+                        <h3>Allocate Time</h3>
+                        <div>
+                            <form>
+                                <table>
+                                    <tr>
+                                        <td>Date:</td>
+                                        <td>
+                                            <input type="text" id="datepicker" name="date"<% if (dateSubmitted){out.println(" value=\""+request.getParameter("date")+"\"");}%> readonly></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Start Time:</td>
+                                        <td>
+                                            <input type="datetime" id = "starttimepicker" name="startTime"<% if (startSubmitted){out.println(" value=\""+request.getParameter("startTime")+"\"");}%>></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>End Time:</td>
+                                        <td>
+                                            <input type="datetime" id ="endtimepicker" name="endTime"<% if (endSubmitted){out.println(" value=\""+request.getParameter("endTime")+"\"");}%>></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            <input type="submit" value="Submit">
+                            </form>
+                            <% if (validFormSubmitted){
+                                   java.text.DateFormat format = new java.text.SimpleDateFormat("MM/dd/yyyy");
+                                   java.util.Date newDate = format.parse(request.getParameter("date"));
+                                %>
+                                 <jsp:useBean id="allocateTimeBean" class="uta.cse4361.businessobjects.TimeAllocationSlotBean" scope="session"/>
+                                 <jsp:setProperty name="allocateTimeBean" property="date" value= '<%= newDate %>'/>
+                                 <jsp:setProperty name="allocateTimeBean" property="startHour" value= '<%= getHour(request.getParameter("startTime")) %>'/>
+                                 <jsp:setProperty name="allocateTimeBean" property="startMinute" value= '<%= getMin(request.getParameter("startTime")) %>'/>
+                                 <jsp:setProperty name="allocateTimeBean" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
+                                 <jsp:setProperty name="allocateTimeBean" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
+                                <%
+                                out.println(allocateTimeBean.allocateTime());}
+                                else if(formSubmitted){
+                                    if(!dateSubmitted){
+                                        out.println("Please select a date.\n");
+                                    }
+                                    if (!startSubmitted){
+                                        out.println("Please select a start time.\n");
+                                    }
+                                    if (!endSubmitted){
+                                        out.println("Please select an end time.\n");
+                                    }
+                                }%>
+                        </div>
+                        <!--Andrew's code end-->
                     </div>
                 </td>
                 
@@ -167,6 +238,14 @@ and open the template in the editor.
     </body>
     
         <jsp:include page="footer.jsp" />
+        <script type="text/javascript">
+            document.getElementById('starttimepicker').onkeydown = function(e){
+                e.preventDefault();
+            }
+             document.getElementById('endtimepicker').onkeydown = function(e){
+                e.preventDefault();
+            }
+        </script>
         <script type="text/javascript" src="js/fullcalendar/moment.min.js"></script>
         <script type="text/javascript" src="js/fullcalendar/fullcalendar.js"></script>
         <script type="text/javascript" src="js/AdvisorCalendar.js"></script>

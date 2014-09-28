@@ -1,7 +1,21 @@
 $( "#accordion" ).accordion({ heightStyle: "content" });
 $( "#subjectselectmenu" ).selectmenu();
 $( "#serviceselectmenu" ).selectmenu();
-$( "#timeaccordion" ).accordion({ heightStyle: "content" });
+$( "#timeaccordion" ).accordion({ heightStyle: "content", collapsible: "true" });
+
+//Andrews code
+$(function() {
+    $( "#datepicker" ).datepicker({ minDate: 0, maxDate: "+14D" });
+});
+
+options = {'step': 15, 
+    'minTime': '7:00am',
+    'maxTime': '7:00pm',
+     'timeFormat': 'h:i A'};
+
+$('#starttimepicker').timepicker(options);
+
+$('#endtimepicker').timepicker(options);
 
 
 $(document).ready(function() {

@@ -62,7 +62,7 @@
         <jsp:setProperty name="newAppt" property="description" param="description" /> 
         
         
-        <title>UTA Advising</title>
+        <title>Advising Calendar</title>
         <link rel='stylesheet' href='css/fullcalendar.css' />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +70,7 @@
         <jsp:include page="header.jsp" />
 
     <body>
-        <div class="ui-widget-header">UTA Advising</div>
+        <div class="ui-widget-header">Advising Calendar</div>
         
         <div class="ui-widget">
             
