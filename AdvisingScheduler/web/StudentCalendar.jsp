@@ -8,7 +8,17 @@
 <html>
     <head>    
         <jsp:useBean id="fdm" class="uta.cse4361.businessobjects.FlyweightDatabaseManager" scope="session"/>
-        <%
+        <%!
+        public int getHour(String time){
+            String[] hour = time.split(":");
+            return Integer.parseInt(hour[0]);
+        }
+        public int getMin(String time){
+            return Integer.parseInt(time.substring(time.length()-2));
+        }
+        %>
+        
+        <% 
             
             java.text.DateFormat format = new java.text.SimpleDateFormat("MM/dd/yyyy");
             java.util.Date newDate = format.parse(request.getParameter("date"));
@@ -41,7 +51,11 @@
                   
            
            String desc = request.getParameter("description");
+           
+           boolean timeSubmitted =  !(request.getParameter("startTime")==null || request.getParameter("startTime")=="");
         %>
+        
+        
         
         <!--<script type="text/javascript" src="js/arrayProcess.js"></script>-->                
         <jsp:useBean id="newAppt" class="uta.cse4361.businessobjects.ScheduleAppointmentControllerBean"/> 
@@ -49,8 +63,12 @@
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
         <jsp:setProperty name="newAppt" property="description" param="description" /> 
-        
-        
+        <% if(timeSubmitted){ %>
+        <jsp:setProperty name="newAppt" property="startHour" value= '<%= getHour(request.getParameter("startTime")) %>'/>
+        <jsp:setProperty name="newAppt" property="startMinute" value= '<%= getMin(request.getParameter("startTime")) %>'/>
+        <jsp:setProperty name="newAppt" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
+        <jsp:setProperty name="newAppt" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
+        <%}%>
         <title>Advising Calendar</title>
         <link rel='stylesheet' href='css/fullcalendar.css' />
         <meta charset="UTF-8">
@@ -104,7 +122,23 @@
                                             Date:
                                                     </td>
                                                     <td>
-                                            <input type="text" name="date" id="date" size="52" value="<jsp:getProperty name="newAppt" property="date"/>" readonly="readonly"><br>
+                                            <input type="text" name="date" id="date" size="52" value="<%= request.getParameter("date") %>" readonly="readonly"><br>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>
+                                            Start Time:
+                                                    </td>
+                                                    <td>
+                                            <input type="text" id="startTime" name="startTime" size="52" value="" readonly="readonly"><br>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>
+                                            End Time:
+                                                    </td>
+                                                    <td>
+                                            <input type="text" id="endTime" name="endTime" size="52" value="" readonly="readonly"><br>
                                                     </td>
                                             </tr>
                                             <tr>
@@ -117,6 +151,15 @@
                                             </table>
                                             <input type="submit" value="Make Appointment" id="submitBtn">
                                         </form>
+                                        <%if(timeSubmitted){
+                                                String result = newAppt.scheduleAppointment(); 
+                                                if(result==""){
+                                                    response.sendRedirect("index.jsp");
+                                                }
+                                                else{
+                                                    out.println(result);
+                                                }
+                                            }%>
                         </div>                            
                     </div>
                 </td>

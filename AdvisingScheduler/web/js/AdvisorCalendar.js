@@ -25,7 +25,7 @@ $(document).ready(function() {
     {
             for (var k = 0; k < size; k++) {
             formattedEventData.push({            
-                start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
+                start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0),     
                 title: "Timeslot"
                  });
             };
