@@ -21,7 +21,7 @@
             ArrayList<String> availables = new ArrayList<String>();
             for (Date d : availableDates) {
                 int dd = d.getDate();
-                int mm = d.getMonth();
+                int mm = d.getMonth()+1;
                 int yy = d.getYear() + 1900;
                 String newRecord = "" + dd + "-" + mm + "-" + yy;
                 availables.add(newRecord);
