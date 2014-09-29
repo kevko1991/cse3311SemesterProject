@@ -104,7 +104,8 @@ public class FlyweightDatabaseManagerTest {
         
         ArrayList<Flyweight> flyweights = createAvailableFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
         
-        fdb.saveFlyweights(flyweights);
+        String result = fdb.saveFlyweights(flyweights);
+        assertEquals("Did not get valid return from saving", "", result);
         
         fdb = null;
         
@@ -123,7 +124,8 @@ public class FlyweightDatabaseManagerTest {
         
         ArrayList<Flyweight> availableFlys = createAvailableFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
         
-        fdb.saveFlyweights(availableFlys);
+        String result = fdb.saveFlyweights(availableFlys);
+        assertEquals("Did not get valid return from saving", "", result);
         
         ArrayList<Flyweight> appointmentFlys = createAppointmentFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 15, Flyweight.MIN_HOUR);
         
@@ -162,7 +164,8 @@ public class FlyweightDatabaseManagerTest {
         
         ArrayList<Flyweight> availableFlys = createAvailableFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
         
-        fdb.saveFlyweights(availableFlys);
+        String result = fdb.saveFlyweights(availableFlys);
+        assertEquals("Did not get valid return from saving", "", result);
         
         boolean free = fdb.isFree(currentDate, Flyweight.MIN_HOUR + 1, Flyweight.MIN_HOUR + 1, Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45);
         
@@ -176,7 +179,8 @@ public class FlyweightDatabaseManagerTest {
         
         ArrayList<Flyweight> appointmentFlys = createAppointmentFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
         
-        fdb.saveFlyweights(appointmentFlys);
+        String result = fdb.saveFlyweights(appointmentFlys);
+        assertEquals("Did not get valid return from saving", "", result);
         
         boolean free = fdb.isFree(currentDate, Flyweight.MIN_HOUR, Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45);
         
@@ -190,11 +194,53 @@ public class FlyweightDatabaseManagerTest {
         
         ArrayList<Flyweight> availableFlys = createAvailableFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
         
-        fdb.saveFlyweights(availableFlys);
+        String result = fdb.saveFlyweights(availableFlys);
+        assertEquals("Did not get valid return from saving", "", result);
         
         ArrayList<Date> dates = fdb.getDatesForAvailability();
         
         assertEquals("There is only one available date", 1, dates.size());
+        
+    }
+    
+    @Test
+    public void emptyFlyweightsTest()
+    {
+        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        
+        ArrayList<Flyweight> availableFlys = new ArrayList<Flyweight>();
+        
+        String result = fdb.saveFlyweights(availableFlys);
+        assertEquals("The error message did not indicate the list was empty", FlyweightDatabaseManager.FLYWEIGHTS_EMPTY_FAULT, result);
+        
+        availableFlys = null;
+        
+        result = fdb.saveFlyweights(availableFlys);
+        assertEquals("The error message did not indicate the list was empty", FlyweightDatabaseManager.FLYWEIGHTS_EMPTY_FAULT, result);
+        
+    }
+    
+    @Test
+    public void badDateFlyweights()
+    {
+        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        
+        ArrayList<Flyweight> availableFlys = createAvailableFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
+        
+        availableFlys.add(new AvailableFlyweight(new Date(5, 5, 5), Flyweight.MIN_MINUTE, Flyweight.MIN_HOUR));
+        
+        String result = fdb.saveFlyweights(availableFlys);
+        assertEquals("The error message did not indicate the list had different days", FlyweightDatabaseManager.FLYWEIGHTS_DIFFERENT_DATE_FAULT, result);
+    }
+    
+    @Test
+    public void getEmptyFlyweightList()
+    {
+        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        
+        ArrayList<Flyweight> savedFlyweights = fdb.getDaysFlyweights(currentDate);
+        
+        assertEquals("The list should be empty", 0, savedFlyweights.size());
     }
     
 }
