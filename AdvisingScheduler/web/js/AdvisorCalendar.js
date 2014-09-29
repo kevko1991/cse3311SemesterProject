@@ -36,7 +36,7 @@ if(size>0)
              });
         };
         }
-        alert("p3: " + size);
+//        alert("p3: " + size);
 var calendar = $('#calendar').fullCalendar({
 
         header: {
