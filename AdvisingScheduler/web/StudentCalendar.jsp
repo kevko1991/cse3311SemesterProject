@@ -5,50 +5,52 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
 <html>
-    
     <head>    
-        
-        
+        <jsp:useBean id="fdm" class="uta.cse4361.businessobjects.FlyweightDatabaseManager" scope="session"/>
         <%
+            
             java.text.DateFormat format = new java.text.SimpleDateFormat("MM/dd/yyyy");
             java.util.Date newDate = format.parse(request.getParameter("date"));
+            
+            
+            fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
+            java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(newDate);
   
           //new java.util.Date(year, month, date, hrs, min)
-           uta.cse4361.businessobjects.FlyweightDatabaseManager fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
-           uta.cse4361.businessobjects.AvailableFlyweight fwa[] = new uta.cse4361.businessobjects.AvailableFlyweight[4];
-           
-           uta.cse4361.businessobjects.AvailableFlyweight fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 5, 30), 6, 15);
-           fwa[0] = fw;
-           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 2, 4, 10), 6, 15);
-           fwa[1] = fw;
-           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 5, 6, 20), 6, 15);
-           fwa[2] = fw;
-           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 7, 30), 6, 15);
-           fwa[3] = fw;
-           
+//           uta.cse4361.businessobjects.FlyweightDatabaseManager fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
+//           uta.cse4361.businessobjects.AvailableFlyweight fwa[] = new uta.cse4361.businessobjects.AvailableFlyweight[4];
+//           
+//           uta.cse4361.businessobjects.AvailableFlyweight fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 5, 30), 6, 15);
+//           fwa[0] = fw;
+//           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 2, 4, 10), 6, 15);
+//           fwa[1] = fw;
+//           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 5, 6, 20), 6, 15);
+//           fwa[2] = fw;
+//           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 7, 30), 6, 15);
+            
+//           fwa[3] = fw;
+           int fwsize= fw.size();
            //Retrieve all the data into seperate parts
-           StringBuilder sbDay = new StringBuilder();
-           for(int i=0;i<fwa.length;i++) 
-               sbDay.append(fwa[i].getDate().getDate()+",");
-           
-           StringBuilder sbHour = new StringBuilder();
-           for(int i=0;i<fwa.length;i++) 
-               sbHour.append(fwa[i].getDate().getHours()+",");
-           
-           StringBuilder sbMin = new StringBuilder();
-           for(int i=0;i<fwa.length;i++) 
-               sbMin.append(fwa[i].getDate().getMinutes()+",");
-           
-           StringBuilder sbMonth = new StringBuilder();
-           for(int i=0;i<fwa.length;i++) 
-               sbMonth.append(fwa[i].getDate().getMonth()+",");
-           
-           StringBuilder sbYear = new StringBuilder();
-           for(int i=0;i<fwa.length;i++) 
-               sbYear.append(fwa[i].getDate().getYear()+",");
+            StringBuilder sbDay = new StringBuilder();
+            for(int i=0;i<fwsize;i++) 
+                sbDay.append(fw.get(i).getDate().getDate()+",");
+
+            StringBuilder sbHour = new StringBuilder();
+            for(int i=0;i<fwsize;i++) 
+                sbHour.append(fw.get(i).getTime()/60+",");
+
+            StringBuilder sbMin = new StringBuilder();
+            for(int i=0;i<fwsize;i++) 
+                sbMin.append(fw.get(i).getTime()%60+",");
+
+            StringBuilder sbMonth = new StringBuilder();
+            for(int i=0;i<fwsize;i++) 
+                sbMonth.append(fw.get(i).getDate().getMonth()+",");
+
+            StringBuilder sbYear = new StringBuilder();
+            for(int i=0;i<fwsize;i++) 
+                sbYear.append((fw.get(i).getDate().getYear()+1900)+",");     
                   
            
            String desc = request.getParameter("description");
@@ -142,33 +144,32 @@
         <jsp:include page="footer.jsp" />
                 <script type="text/javascript">
                     
-                window.eHour = 0;
-                window.eMin = 0;
-                var temp="<%=sbDay.toString()%>";
-                var day = new Array();
-                window.day = temp.split(',','<%=fwa.length%>');
-                
+                window.size = '<%=fwsize%>';
+                                    
+                var temp="<%=sbDay.toString()%>";                               
+                var day = new Array(); 
+                window.day = temp.split(',',size);
+
                 var temp="<%=sbHour.toString()%>";
                 var hour = new Array();
-                window.hour = temp.split(',','<%=fwa.length%>');
-                
+                window.hour = temp.split(',',size);
+
                 var temp="<%=sbMin.toString()%>";
                 var min = new Array();
-                window.min = temp.split(',','<%=fwa.length%>');
-                
+                window.min = temp.split(',',size);
+
                 var temp="<%=sbMonth.toString()%>";
                 var month = new Array();
-                window.month = temp.split(',','<%=fwa.length%>');
-                
+                window.month = temp.split(',',size);
+
                 var temp="<%=sbYear.toString()%>";
                 var year = new Array();
-                window.year = temp.split(',','<%=fwa.length%>');
-                
+                window.year = temp.split(',',size);
+
                 
                 
                 //alert("array: "+array);
                 
-                window.formattedEventData = []; 
                 var desc = "<%=desc%>";
         </script> 
         <script type="text/javascript" src="js/fullcalendar/moment.min.js"></script>
