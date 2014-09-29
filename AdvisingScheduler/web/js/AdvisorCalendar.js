@@ -1,6 +1,5 @@
 $( "#navigationAccordion" ).accordion({ heightStyle: "content" });
-$( "#subjectselectmenu" ).selectmenu();
-$( "#serviceselectmenu" ).selectmenu();
+$( "#allocateAccordion" ).accordion({ heightStyle: "content" });
 $( "#timeaccordion" ).accordion({ heightStyle: "content", collapsible: "true" });
 $( "#button").button(); 
 

@@ -104,62 +104,70 @@
         <title>Schedule Appointment</title>
     </head>
     <p id="demo"></p>
+    
     <body>
-        <div id="accordion">
-            <h3>Schedule Appointment</h3>
-            <div>
+        <table id="table">
+            <tr>
+                <jsp:include page="sidebar.jsp" />
+                <td style="vertical-align: top; float: right;">
+                        <div id="accordion" style="width:780px">
+                            <h3>Schedule Appointment</h3>
+                            <div>
 
-                <form name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();">
-                    <table>
-                        <tr>
-                            <td>
-                                Student ID:
-                            </td>
-                            <td>
-                                <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value=""><br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Student Name:
-                            </td>
-                            <td>
-                                <input type="text" name="sName" id="sName" value=""><br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Advisor:
-                            </td>
-                            <td>
-                                <select name="aName" id="aName">
-                                    <option value="Linda Barasch">Linda Barasch</option>
-                                    <option value="Bob Weems">Bob Weems</option>
-                                </select><br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Date:
-                            </td>
-                            <td>
-                                <input type="text" name="date" id="date" readonly="true"><br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Description: 
-                            </td>
-                            <td>
-                                <textarea name="description" id="description" rows="6" cols="50" value=""></textarea><br>
-                            </td>
-                        <tr>
-                    </table>
-                    <input type="submit" value="Submit" id="submitBtn">
-                    <input type="reset" value="Reset" id="resetBtn">
-                </form>
-            </div>
-        </div>
+                                <form name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Student ID:
+                                            </td>
+                                            <td>
+                                                <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value=""><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Student Name:
+                                            </td>
+                                            <td>
+                                                <input type="text" name="sName" id="sName" value=""><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Advisor:
+                                            </td>
+                                            <td>
+                                                <select name="aName" id="aName">
+                                                    <option value="Linda Barasch">Linda Barasch</option>
+                                                    <option value="Bob Weems">Bob Weems</option>
+                                                </select><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Date:
+                                            </td>
+                                            <td>
+                                                <input type="text" name="date" id="date" readonly="true"><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Description: 
+                                            </td>
+                                            <td>
+                                                <textarea name="description" id="description" rows="6" cols="50" value=""></textarea><br>
+                                            </td>
+                                        <tr>
+                                    </table>
+                                    <input type="submit" value="Submit" id="submitBtn">
+                                    <input type="reset" value="Reset" id="resetBtn">
+                                </form>
+                            </div>
+                        </div>
+                </td>
+            </tr>
+        </table>
         <br>
     </body>
     <jsp:include page="footer.jsp" />

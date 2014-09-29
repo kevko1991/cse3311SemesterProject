@@ -15,7 +15,7 @@ and open the template in the editor.
     <head>
         <title>UTA Advising</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
    </head>
         <jsp:include page="header.jsp" />
         
@@ -26,16 +26,13 @@ and open the template in the editor.
                 <jsp:include page="sidebar.jsp" />
                 
                 <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="tabs">
-                        <div id="tabs-1">
-                            <ul>
-                                <li><a href="#tabs-1">Links</a></li>
-                            </ul>                              
-                            <a href="schedule.jsp">Schedule Appointment</a><br>   
-                            <a href="AdvisorCalendar.jsp">Advisor Calendar</a><br>
-                            <a href="AllocateTime.jsp">Allocate Time</a><br>
-                            <a href="saveAppointment.jsp">Save Appointment</a><br>
-                        </div>
+                    <div style="width:780px" id="mainAccordion">
+
+                            <h3>Welcome</h3>
+                            <div>
+                            Welcome to UTA Advising DEMO.
+                            </div>
+
                     </div>                   
                 </td>
                 

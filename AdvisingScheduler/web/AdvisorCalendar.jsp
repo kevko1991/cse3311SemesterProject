@@ -94,13 +94,16 @@
     <body>           
         <table id="table">
             <tr>
-                <jsp:include page="sidebar.jsp" />
-                
-                <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="timeaccordion">
-                        <h3>Calendar</h3>
-                        <div id="calendar"></div>
-                                              
+                <%--<jsp:include page="sidebar.jsp" />--%>
+                <td style="vertical-align: top">
+                    <div style="width:325px" id="navigationAccordion">
+                        <h3>Navigation</h3>
+                        <div>
+                            <a href="schedule.jsp">Schedule Appointment</a><br>
+                            <a href="AdvisorCalendar.jsp">Advisor Calendar</a><br>                    
+                        </div>   
+                    </div>
+                     <div style="width:325px" id="allocateAccordion">
                         <!--Andrews code-->
                          <%!
                             public int getHour(String time){
@@ -236,7 +239,16 @@
                                         out.println("Please select an end time.\n");
                                     }
                                 }%>
-                        </div><!--Andrew's code end-->                       
+       
+                        
+                    </div> 
+                     </div>
+                </td>
+                
+                <td style="vertical-align: top; float: right;">
+                    <div style="width:765px" id="timeaccordion">
+                        <h3>Calendar</h3>
+                        <div id="calendar"></div>                        
                     </div> <!--timeaccordion end-->
                 </td>       
             </tr>           
@@ -244,7 +256,7 @@
 
     </body>
 
-        <jsp:include page="footer.jsp" />
+     
         <script type="text/javascript">
             document.getElementById('starttimepicker').onkeydown = function(e){
                 e.preventDefault();
@@ -253,6 +265,7 @@
                 e.preventDefault();
             }
         </script>
+        <jsp:include page="footer.jsp" />
         <script type="text/javascript" src="js/fullcalendar/moment.min.js"></script>
         <script type="text/javascript" src="js/fullcalendar/fullcalendar.js"></script>
         <script type="text/javascript" src="js/AdvisorCalendar.js"></script>

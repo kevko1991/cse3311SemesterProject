@@ -79,89 +79,104 @@
     <body>    
         <table id="table">
             <tr>
-                <jsp:include page="sidebar.jsp" />
-        
+                    <div style="width:1090px" id="navigationAccordion">
+                        <h3>Navigation</h3>
+                        <div>
+                            <a href="schedule.jsp">Schedule Appointment</a><br>
+                            <a href="AdvisorCalendar.jsp">Advisor Calendar</a><br>                    
+                        </div>
+                    </div>
+                
+            </tr>          
+            <tr>
+                <td style="vertical-align: top; width:545px">
+                    
+                        <div style="width:545px" id="scheduleAccordion">
+                            <h3>Appointment Summary</h3>
+                                <div>                         
+                                    <form name="appointmentSummary">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                        Student ID:
+                                                </td>
+                                                <td>
+                                        <input type="text" name="sID" id="sID" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly"><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                        Student Name:
+                                                </td>
+                                                <td>
+                                        <input type="text" name="sName" id="sName" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
+                                                </td>
+                                            </tr>
+<!--                                            <tr>
+                                                <td>
+                                        Advisor:
+                                                </td>
+                                                <td>
+                                        <select name="aName" id="aName" readonly="readonly">
+                                            <option value="Linda Barasch">Linda Barasch</option>
+                                            <option value="Bob Weems">Bob Weems</option>
+                                        </select><br>
+                                                </td>
+                                        </tr>-->
+                                        <tr>
+                                                <td>
+                                        Date:
+                                                </td>
+                                                <td>
+                                        <input type="text" name="date" id="date" size="52" value="<%= request.getParameter("date") %>" readonly="readonly"><br>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                        Start Time:
+                                                </td>
+                                                <td>
+                                        <input type="text" id="startTime" name="startTime" size="52" value="" readonly="readonly"><br>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                        End Time:
+                                                </td>
+                                                <td>
+                                        <input type="text" id="endTime" name="endTime" size="52" value="" readonly="readonly"><br>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                        Description: 
+                                                </td>
+                                                <td>
+                                        <textarea name="description" id="description" rows="6" cols="50" value="" readonly="readonly"></textarea><br>
+                                                </td>
+                                        </table>
+                                        <input type="submit" value="Make Appointment" id="submitBtn">
+                                    </form>
+                                    <%if(timeSubmitted){
+                                            String result = newAppt.scheduleAppointment(); 
+
+                                            if(result==""){
+                                                response.sendRedirect("AppointmentDetails.jsp");
+                                            }
+                                            else{
+                                                out.println(result);
+                                            }
+                                        }%>
+                                </div>                              
+                        </div>
+
                 <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="timeaccordion">
+                    <div style="vertical-align: top; float: right; width:545px" id="timeaccordion">
                         <h3>Calendar</h3>
                         <div id="calendar">                            
-                        </div>                        
-                        <h3>Appointment Summary</h3>
-                        <div>                         
-                                        <form name="appointmentSummary">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                            Student ID:
-                                                    </td>
-                                                    <td>
-                                            <input type="text" name="sID" id="sID" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly"><br>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                            Student Name:
-                                                    </td>
-                                                    <td>
-                                            <input type="text" name="sName" id="sName" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
-                                                    </td>
-                                                </tr>
-<!--                                            <tr>
-                                                    <td>
-                                            Advisor:
-                                                    </td>
-                                                    <td>
-                                            <select name="aName" id="aName" readonly="readonly">
-                                                <option value="Linda Barasch">Linda Barasch</option>
-                                                <option value="Bob Weems">Bob Weems</option>
-                                            </select><br>
-                                                    </td>
-                                            </tr>-->
-                                            <tr>
-                                                    <td>
-                                            Date:
-                                                    </td>
-                                                    <td>
-                                            <input type="text" name="date" id="date" size="52" value="<%= request.getParameter("date") %>" readonly="readonly"><br>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                    <td>
-                                            Start Time:
-                                                    </td>
-                                                    <td>
-                                            <input type="text" id="startTime" name="startTime" size="52" value="" readonly="readonly"><br>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                    <td>
-                                            End Time:
-                                                    </td>
-                                                    <td>
-                                            <input type="text" id="endTime" name="endTime" size="52" value="" readonly="readonly"><br>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                    <td>
-                                            Description: 
-                                                    </td>
-                                                    <td>
-                                            <textarea name="description" id="description" rows="6" cols="50" value="" readonly="readonly"></textarea><br>
-                                                    </td>
-                                            </table>
-                                            <input type="submit" value="Make Appointment" id="submitBtn">
-                                        </form>
-                                        <%if(timeSubmitted){
-                                                String result = newAppt.scheduleAppointment(); 
-                                                if(result==""){
-                                                    response.sendRedirect("index.jsp");
-                                                }
-                                                else{
-                                                    out.println(result);
-                                                }
-                                            }%>
-                        </div>                            
+                        </div>                                           
                     </div>
+                </td>
                 </td>
                 
                 
