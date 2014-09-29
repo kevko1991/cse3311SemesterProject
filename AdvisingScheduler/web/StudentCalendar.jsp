@@ -107,7 +107,7 @@
                                         Student ID:
                                                 </td>
                                                 <td>
-                                        <input type="text" name="sID" id="sID" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly"><br>
+                                        <input type="text" name="sID" id="sID" size="30" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly"><br>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -115,7 +115,7 @@
                                         Student Name:
                                                 </td>
                                                 <td>
-                                        <input type="text" name="sName" id="sName" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
+                                        <input type="text" name="sName" id="sName" size="30" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
                                                 </td>
                                             </tr>
 <!--                                            <tr>
@@ -134,7 +134,7 @@
                                         Date:
                                                 </td>
                                                 <td>
-                                        <input type="text" name="date" id="date" size="52" value="<%= request.getParameter("date") %>" readonly="readonly"><br>
+                                        <input type="text" name="date" id="date" size="30" value="<%= request.getParameter("date") %>" readonly="readonly"><br>
                                                 </td>
                                         </tr>
                                         <tr>
@@ -142,7 +142,7 @@
                                         Start Time:
                                                 </td>
                                                 <td>
-                                        <input type="text" id="startTime" name="startTime" size="52" value="" readonly="readonly"><br>
+                                        <input type="text" id="startTime" name="startTime" size="30" value="" readonly="readonly"><br>
                                                 </td>
                                         </tr>
                                         <tr>
@@ -150,7 +150,7 @@
                                         End Time:
                                                 </td>
                                                 <td>
-                                        <input type="text" id="endTime" name="endTime" size="52" value="" readonly="readonly"><br>
+                                        <input type="text" id="endTime" name="endTime" size="30" value="" readonly="readonly"><br>
                                                 </td>
                                         </tr>
                                         <tr>
@@ -158,7 +158,7 @@
                                         Description: 
                                                 </td>
                                                 <td>
-                                        <textarea name="description" id="description" rows="6" cols="50" value="" readonly="readonly"></textarea><br>
+                                        <textarea name="description" id="description" rows="6" cols="30" value="" readonly="readonly"></textarea><br>
                                                 </td>
                                         </table>
                                         <input type="submit" value="Make Appointment" id="submitBtn">
