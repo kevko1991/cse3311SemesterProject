@@ -21,22 +21,15 @@ $('#endtimepicker').timepicker(options);
 $(document).ready(function() {
 
     var k; 
-//    
-//        formattedEventData.push({            
-//            start: new Date(2014, 8, 3, 1, 30, 0, 0), 
-//            title: "Timeslot"
-//             });
-//             alert(size);
-if(size>0)
-{
-        for (var k = 0; k < size; k++) {
-        formattedEventData.push({            
-            start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
-            title: "Timeslot"
-             });
-        };
-        }
-//        alert("p3: " + size);
+    if(size>0)
+    {
+            for (var k = 0; k < size; k++) {
+            formattedEventData.push({            
+                start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
+                title: "Timeslot"
+                 });
+            };
+            }
 var calendar = $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
@@ -45,8 +38,9 @@ var calendar = $('#calendar').fullCalendar({
 	},       
         
         //load events
-        events: formattedEventData
+        events: formattedEventData,
+        
+        
                       
     })//fullcalendar end
-  
 });//ready end

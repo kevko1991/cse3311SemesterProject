@@ -177,7 +177,12 @@ public class FlyweightDatabaseManager {
         return availableDates;
     }
         
-
+/**
+ * getMaxDaysInMonth - calculates the number of a days in a certain month and year
+ * @param month
+ * @param year
+ * @return 
+ */
         public int getMaxDaysInMonth(int month, int year){
         Calendar cal=Calendar.getInstance();
         cal.set(Calendar.DATE, 1);
@@ -187,10 +192,14 @@ public class FlyweightDatabaseManager {
 
         return cal.get(Calendar.DATE);
     }
-        
+    /**
+     * getMonthFlyweights - Uses date to get year and month. Returns all the flyweights within the month.
+     * @param date
+     * @return 
+     */    
     public ArrayList<Flyweight> getMonthFlyweights(Date date)
     {
-        int day = 28;
+        int day = 1;
         ArrayList<Flyweight> monthFlyweights = new ArrayList<Flyweight>(); 
         ArrayList<Flyweight> daysFlyweights = new ArrayList<Flyweight>();//flyweightDatabase.get(date);       
         Date tempDate = new Date(date.getYear(), date.getMonth(), day);
@@ -238,5 +247,28 @@ public class FlyweightDatabaseManager {
         
         Collections.sort(finalDaysFlyweights);
         return finalDaysFlyweights;
+    }
+    
+    public ArrayList<Flyweight> getYearFlyweights(Date date)
+    {
+        ArrayList<Flyweight> yearFlyweights = new ArrayList<Flyweight>(); 
+        
+        int month = 0;
+//        Date tempDate = new Date(date.getYear(), month, 1);
+//        Date tempDate = new Date(date.getYear(), month, date.getDate());
+        for(month=0; month<12; month++)
+        {
+            Date tempDate = new Date(date.getYear(), month, date.getDate());
+            
+            if(getMonthFlyweights(tempDate) == null)
+            {
+                
+            }
+            else
+            {
+                yearFlyweights.addAll(getMonthFlyweights(tempDate));
+            }
+        }
+        return yearFlyweights;
     }
 }

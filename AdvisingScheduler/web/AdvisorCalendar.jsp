@@ -4,6 +4,7 @@
     Author     : Melissa
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -15,12 +16,81 @@
         <jsp:include page="header.jsp" />
         <jsp:useBean id="fdm" class="uta.cse4361.businessobjects.FlyweightDatabaseManager" scope="session"/>
         <%
+            
             int fwsize = 0;
+            fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager(); 
+            Date currDate = new Date();
+            java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getYearFlyweights(currDate);  
+            
+            StringBuilder sbDay = new StringBuilder();
+                                StringBuilder sbHour = new StringBuilder();
+                                StringBuilder sbMin = new StringBuilder();
+                                StringBuilder sbMonth = new StringBuilder(); 
+                                StringBuilder sbYear = new StringBuilder();       
+                                    if(fw.isEmpty())
+                                    {
+                                        fwsize = 0;
+                                    }
+                                    else
+                                    {
+                                        fwsize = fw.size();                                
+                                    
+                                            
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbDay.append(fw.get(i).getDate().getDate()+",");
+
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbHour.append(fw.get(i).getTime()/60+",");
+
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbMin.append(fw.get(i).getTime()%60+",");
+
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbMonth.append(fw.get(i).getDate().getMonth()+",");
+
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbYear.append((fw.get(i).getDate().getYear()+1900)+",");     
+                                        }
             %>
             <script type="text/javascript">
                 var size = '<%=fwsize%>';
 //                alert("p1: " + size);
             </script>
+            
+            <script type="text/javascript">  
+                                    //Parse String Flyweights to array
+                                    var size = '<%=fwsize%>';
+                                    if(size==0)
+                                    {
+                                        
+                                    }
+                                    else
+                                    {
+                                    var temp="<%=sbDay.toString()%>";                               
+                                    var day = new Array(); 
+                                    window.day = temp.split(',',size);
+
+                                    var temp="<%=sbHour.toString()%>";
+                                    var hour = new Array();
+                                    window.hour = temp.split(',',size);
+
+                                    var temp="<%=sbMin.toString()%>";
+                                    var min = new Array();
+                                    window.min = temp.split(',',size);
+
+                                    var temp="<%=sbMonth.toString()%>";
+                                    var month = new Array();
+                                    window.month = temp.split(',',size);
+
+                                    var temp="<%=sbYear.toString()%>";
+                                    var year = new Array();
+                                    window.year = temp.split(',',size);
+//                                    alert("p2:" + size);
+                                }
+                                   
+				</script>
+            
+            
     <body>           
         <table id="table">
             <tr>
@@ -52,7 +122,7 @@
                         
                         <h3>Allocate Time</h3>
                         <div>
-                            <form>
+                            <form action="AdvisorCalendar.jsp" method="post">
                                 <table>
                                     <tr>
                                         <td>Date:</td>
@@ -88,19 +158,16 @@
                                  <jsp:setProperty name="allocateTimeBean" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
                                 <%
                                 allocateTimeBean.allocateTime();
-                                //--------------
                                 
-                                    
-                                
-                                    //Flyweight array to Strings 
-                                fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();  
-                                //java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(allocateTimeBean.getDate()); 
-                                java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getMonthFlyweights(allocateTimeBean.getDate());   
-                                StringBuilder sbDay = new StringBuilder();
-                                StringBuilder sbHour = new StringBuilder();
-                                StringBuilder sbMin = new StringBuilder();
-                                StringBuilder sbMonth = new StringBuilder(); 
-                                StringBuilder sbYear = new StringBuilder();       
+                                //new fdm to get a fresh copy of the flyweights
+                                fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager(); 
+                                fw = fdm.getYearFlyweights(currDate);  
+
+                                 sbDay = new StringBuilder();
+                                 sbHour = new StringBuilder();
+                                 sbMin = new StringBuilder();
+                                 sbMonth = new StringBuilder(); 
+                                 sbYear = new StringBuilder();       
                                     if(fw.isEmpty())
                                     {
                                         fwsize = 0;
@@ -125,17 +192,13 @@
                                         for(int i=0;i<fwsize;i++) 
                                             sbYear.append((fw.get(i).getDate().getYear()+1900)+",");     
                                         }
-                                    
-                                //---------------    
-                                    %>
-                                    
-                                <script type="text/javascript">  
-                                    //Parse String Flyweights to array
+                                
+                                %>
+                                
+                                    <script type="text/javascript">
                                     var size = '<%=fwsize%>';
-                                    if(size==0)
-                                    {
-                                        
-                                    }
+                   
+                                    if(size==0){}
                                     else
                                     {
                                     var temp="<%=sbDay.toString()%>";                               
@@ -157,21 +220,11 @@
                                     var temp="<%=sbYear.toString()%>";
                                     var year = new Array();
                                     window.year = temp.split(',',size);
-//                                    alert("p2:" + size);
                                 }
-                                   
-				</script>
-				
-                                    
-                                    
-                                    <%
-                                out.println("Date " + allocateTimeBean.getDate() + "<br> " + 
-                                        "Day" + allocateTimeBean.getDate().getDate() + "<br> " + 
-                                        "Month " + allocateTimeBean.getDate().getMonth() + "<br> " +
-                                        "Year " + (allocateTimeBean.getDate().getYear()+1900) + "<br> " + 
-                                        "StartHour:StartMinute " + allocateTimeBean.getStartHour() + ":" + allocateTimeBean.getStartMinute() + "<br>" +
-                                        "EndHour:EndMinute" + allocateTimeBean.getEndHour() + ":" + allocateTimeBean.getEndMinute());
-                                }
+                                            </script>
+                                  
+                                <%    
+                                }                           
                                 else if(formSubmitted){
                                     if(!dateSubmitted){
                                         out.println("Please select a date.\n");
