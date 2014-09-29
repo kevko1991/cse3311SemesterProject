@@ -21,7 +21,7 @@
             ArrayList<String> availables = new ArrayList<String>();
             for (Date d : availableDates) {
                 int dd = d.getDate();
-                int mm = d.getMonth()+1;
+                int mm = d.getMonth() + 1;
                 int yy = d.getYear() + 1900;
                 String newRecord = "" + dd + "-" + mm + "-" + yy;
                 availables.add(newRecord);
@@ -31,7 +31,7 @@
                 sb.append(availables.get(i) + ",");
             }
         %>
-        
+
         <script type="text/javascript">
             temp = "<%=sb.toString()%>";
             var availableDates = new Array();
@@ -53,6 +53,17 @@
 
 
         <script type="text/javascript">
+
+            function isNumberKey(evt)
+            {
+                var e = evt || window.event; //window.event is safer, thanks @ThiefMaster
+                var charCode = e.which || e.keyCode;
+                if (charCode > 31 && (charCode < 47 || charCode > 57))
+                    return false;
+                if (e.shiftKey)
+                    return false;
+                return true;
+            }
             function validate() {
                 var sID = document.forms["schedule"]["sID"].value;
                 var sName = document.forms["schedule"]["sName"].value;
@@ -105,7 +116,7 @@
                                 Student ID:
                             </td>
                             <td>
-                                <input type="text" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 8 || event.charCode == 9" name="sID" id="sID" value=""><br>
+                                <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value=""><br>
                             </td>
                         </tr>
                         <tr>
