@@ -9,10 +9,10 @@ $( "#accordion" ).accordion({ heightStyle: "content" });
 
 $("#submitBtn").button().click(function(){
 });
-
+/*
 $(function () {
                 $("#date").datepicker();
             });
-
+*/
 $("#resetBtn").button().click(function(){
 });

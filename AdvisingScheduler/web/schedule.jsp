@@ -4,17 +4,51 @@
     Author     : Han
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@page import="uta.cse4361.businessobjects.FlyweightDatabaseManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="header.jsp" />
-        <script>
-            $(function () {
-                $("#date").datepicker();
-            });
-        </script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 
+        <jsp:include page="header.jsp" />
+        <%
+            FlyweightDatabaseManager fdm = new FlyweightDatabaseManager();
+            ArrayList<Date> availableDates = fdm.getDatesForAvailability();
+            ArrayList<String> availables = new ArrayList<>();
+            for (Date d : availableDates) {
+                int dd = d.getDate();
+                int mm = d.getMonth();
+                int yy = d.getYear() + 1900;
+                String newRecord = "" + dd + "-" + mm + "-" + yy;
+                availables.add(newRecord);
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < availables.size(); i++) {
+                sb.append(availables.get(i) + ",");
+            }
+        %>
+        <script type="text/javascript">
+            temp = "<%=sb.toString()%>";
+            var availableDates = new Array();
+            availableDates = temp.split(',', '<%=availables.size()%>');
+
+            alert("array: " + availableDates);
+            function available(date) {
+                dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                if ($.inArray(dmy, availableDates) !== -1) {
+                    return [true, "", "Available"];
+                } else {
+                    return [false, "", "unAvailable"];
+                }
+            }
+            $(function () {
+                $('#date').datepicker({beforeShowDay: available});
+            })
+        </script>
         <script type="text/javascript">
             function validate() {
                 var sID = document.forms["schedule"]["sID"].value;
@@ -25,7 +59,7 @@
                     document.forms["schedule"]["sID"].focus();
                     return false;
                 }
-                if(isNaN(sID)) {
+                if (isNaN(sID)) {
                     alert("Student ID must be number");
                     document.forms["schedule"]["sID"].focus();
                     return false;
@@ -55,6 +89,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Schedule Appointment</title>
     </head>
+    <p id="demo"></p>
     <body>
         <div id="accordion">
             <h3>Schedule Appointment</h3>
