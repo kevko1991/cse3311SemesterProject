@@ -38,7 +38,6 @@ if(size>0)
         }
 //        alert("p3: " + size);
 var calendar = $('#calendar').fullCalendar({
-
         header: {
             left: 'prev,next today',
             center: 'title',

@@ -17,19 +17,6 @@
             fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
             java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(newDate);
   
-          //new java.util.Date(year, month, date, hrs, min)
-//           uta.cse4361.businessobjects.FlyweightDatabaseManager fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
-//           uta.cse4361.businessobjects.AvailableFlyweight fwa[] = new uta.cse4361.businessobjects.AvailableFlyweight[4];
-//           
-//           uta.cse4361.businessobjects.AvailableFlyweight fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 5, 30), 6, 15);
-//           fwa[0] = fw;
-//           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 2, 4, 10), 6, 15);
-//           fwa[1] = fw;
-//           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 5, 6, 20), 6, 15);
-//           fwa[2] = fw;
-//           fw = new uta.cse4361.businessobjects.AvailableFlyweight(new java.util.Date(2014, 8, 22, 7, 30), 6, 15);
-            
-//           fwa[3] = fw;
            int fwsize= fw.size();
            //Retrieve all the data into seperate parts
             StringBuilder sbDay = new StringBuilder();

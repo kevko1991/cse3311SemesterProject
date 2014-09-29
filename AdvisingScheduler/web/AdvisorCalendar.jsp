@@ -94,7 +94,8 @@
                                 
                                     //Flyweight array to Strings 
                                 fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();  
-                                java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(allocateTimeBean.getDate());                                
+                                //java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(allocateTimeBean.getDate()); 
+                                java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getMonthFlyweights(allocateTimeBean.getDate());   
                                 StringBuilder sbDay = new StringBuilder();
                                 StringBuilder sbHour = new StringBuilder();
                                 StringBuilder sbMin = new StringBuilder();

@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -177,5 +178,65 @@ public class FlyweightDatabaseManager {
     }
         
 
+        public int getMaxDaysInMonth(int month, int year){
+        Calendar cal=Calendar.getInstance();
+        cal.set(Calendar.DATE, 1);
+        cal.set(Calendar.MONTH, month+1);
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.DATE, cal.get(Calendar.DATE)-1);
 
+        return cal.get(Calendar.DATE);
+    }
+        
+    public ArrayList<Flyweight> getMonthFlyweights(Date date)
+    {
+        int day = 28;
+        ArrayList<Flyweight> monthFlyweights = new ArrayList<Flyweight>(); 
+        ArrayList<Flyweight> daysFlyweights = new ArrayList<Flyweight>();//flyweightDatabase.get(date);       
+        Date tempDate = new Date(date.getYear(), date.getMonth(), day);
+        
+        do{
+            tempDate.setDate(day);
+            daysFlyweights = flyweightDatabase.get(tempDate);
+            if(daysFlyweights == null)
+            {
+                
+            }
+            else
+            {
+                monthFlyweights.addAll(daysFlyweights);
+            }
+            day++;
+        }while(day<=(getMaxDaysInMonth(date.getMonth(), 2014)));
+        
+        if(monthFlyweights == null)
+        {
+            monthFlyweights = new ArrayList<Flyweight>();
+        }
+        
+        //Collections.sort(daysFlyweights);
+        
+        ArrayList<Flyweight> finalDaysFlyweights = new ArrayList<Flyweight>();
+        ArrayList<Integer> appointmentTimes = new ArrayList<Integer>();
+        
+        for(Flyweight currentFlyweight: monthFlyweights)
+        {
+            if(currentFlyweight.isAppointment())
+            {
+                finalDaysFlyweights.add(currentFlyweight);
+                appointmentTimes.add(currentFlyweight.getTime());
+            }
+        }
+        
+        for(Flyweight currentFlyweight: monthFlyweights)
+        {
+            if(!appointmentTimes.contains(currentFlyweight.getTime()))
+            {
+                finalDaysFlyweights.add(currentFlyweight);
+            }
+        }
+        
+        Collections.sort(finalDaysFlyweights);
+        return finalDaysFlyweights;
+    }
 }
