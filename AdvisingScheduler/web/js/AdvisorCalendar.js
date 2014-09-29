@@ -15,48 +15,38 @@ options = {'step': 15,
      'timeFormat': 'h:i A'};
 
 $('#starttimepicker').timepicker(options);
-
 $('#endtimepicker').timepicker(options);
-
+    var formattedEventData = new Array();
 
 $(document).ready(function() {
-    var formattedEventData = new Array();
+
     var k; 
-    alert(size);
-        if (size == null) //If formatted EventData will not exist
-        { //Create a fake event data          
-            formattedEventData.push({
-                start: new Date(0, 0, 0, 0, 0, 0, 0)
-            });
-        }
-        else
-        {      
+//    
+//        formattedEventData.push({            
+//            start: new Date(2014, 8, 3, 1, 30, 0, 0), 
+//            title: "Timeslot"
+//             });
+//             alert(size);
+if(size>0)
+{
         for (var k = 0; k < size; k++) {
         formattedEventData.push({            
             start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
             title: "Timeslot"
              });
         };
-    }
-    
-    //customize calendar settings
+        }
+        alert("p3: " + size);
 var calendar = $('#calendar').fullCalendar({
+
         header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek'
 	},       
         
-        
-        //when you click a event delete it
-        eventClick: function(event, element) { 
-        //alert(event.title + ' has been deleted');
-           // calendar.fullCalendar( 'removeEvents', event._id );
-        },
-        
-        
         //load events
-        events: formattedEventData,
+        events: formattedEventData
                       
     })//fullcalendar end
   

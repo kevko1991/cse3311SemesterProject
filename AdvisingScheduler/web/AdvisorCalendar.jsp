@@ -14,6 +14,13 @@
    </head>
         <jsp:include page="header.jsp" />
         <jsp:useBean id="fdm" class="uta.cse4361.businessobjects.FlyweightDatabaseManager" scope="session"/>
+        <%
+            int fwsize = 0;
+            %>
+            <script type="text/javascript">
+                var size = '<%=fwsize%>';
+//                alert("p1: " + size);
+            </script>
     <body>           
         <table id="table">
             <tr>
@@ -87,38 +94,49 @@
                                 
                                     //Flyweight array to Strings 
                                 fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();  
-                                java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(allocateTimeBean.getDate());
-                                    int fwsize= fw.size();                                
+                                java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(allocateTimeBean.getDate());                                
+                                StringBuilder sbDay = new StringBuilder();
+                                StringBuilder sbHour = new StringBuilder();
+                                StringBuilder sbMin = new StringBuilder();
+                                StringBuilder sbMonth = new StringBuilder(); 
+                                StringBuilder sbYear = new StringBuilder();       
+                                    if(fw.isEmpty())
+                                    {
+                                        fwsize = 0;
+                                    }
+                                    else
+                                    {
+                                        fwsize = fw.size();                                
                                     
                                             
-                                    StringBuilder sbDay = new StringBuilder();
-                                    for(int i=0;i<fwsize;i++) 
-                                        sbDay.append(fw.get(i).getDate().getDate()+",");
-                                     
-                                    StringBuilder sbHour = new StringBuilder();
-                                    for(int i=0;i<fwsize;i++) 
-                                        sbHour.append(fw.get(i).getTime()/60+",");
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbDay.append(fw.get(i).getDate().getDate()+",");
 
-                                    StringBuilder sbMin = new StringBuilder();
-                                    for(int i=0;i<fwsize;i++) 
-                                        sbMin.append(fw.get(i).getTime()%60+",");
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbHour.append(fw.get(i).getTime()/60+",");
 
-                                    StringBuilder sbMonth = new StringBuilder();
-                                    for(int i=0;i<fwsize;i++) 
-                                        sbMonth.append(fw.get(i).getDate().getMonth()+",");
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbMin.append(fw.get(i).getTime()%60+",");
 
-                                    StringBuilder sbYear = new StringBuilder();
-                                    for(int i=0;i<fwsize;i++) 
-                                        sbYear.append((fw.get(i).getDate().getYear()+1900)+",");                 
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbMonth.append(fw.get(i).getDate().getMonth()+",");
+
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbYear.append((fw.get(i).getDate().getYear()+1900)+",");     
+                                        }
                                     
                                 //---------------    
                                     %>
                                     
                                 <script type="text/javascript">  
-                                    
                                     //Parse String Flyweights to array
-                                    window.size = '<%=fwsize%>';
-                                    
+                                    var size = '<%=fwsize%>';
+                                    if(size==0)
+                                    {
+                                        
+                                    }
+                                    else
+                                    {
                                     var temp="<%=sbDay.toString()%>";                               
                                     var day = new Array(); 
                                     window.day = temp.split(',',size);
@@ -138,9 +156,9 @@
                                     var temp="<%=sbYear.toString()%>";
                                     var year = new Array();
                                     window.year = temp.split(',',size);
+//                                    alert("p2:" + size);
+                                }
                                    
-                                   //Declare global
-                                   // window.formattedEventData = []; 
 				</script>
 				
                                     
@@ -171,44 +189,7 @@
         </table>
 
     </body>
-        <%       
-           //uta.cse4361.businessobjects.FlyweightDatabaseManager fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
-//           
-//           uta.cse4361.businessobjects.AppointmentFlyweight fwa[] = new uta.cse4361.businessobjects.AppointmentFlyweight[4];
-//           uta.cse4361.businessobjects.AppointmentFlyweight fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1,new java.util.Date(2014, 8, 22, 5, 30), 6, 15);
-//           fwa[0] = fw;
-//           fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1, new java.util.Date(2014, 8, 2, 4, 10), 6, 15);
-//           fwa[1] = fw;
-//           fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1, new java.util.Date(2014, 8, 5, 6, 20), 6, 15);
-//           fwa[2] = fw;
-//           fw = new uta.cse4361.businessobjects.AppointmentFlyweight(1, new java.util.Date(2014, 8, 8, 7, 30), 6, 15);
-//           fwa[3] = fw;      
-//           
-//           //Retrieve all the data into seperate parts
-//           StringBuilder sbDay = new StringBuilder();
-//           for(int i=0;i<fwa.length;i++) 
-//               sbDay.append(fwa[i].getDate().getDate()+",");
-//           
-//           StringBuilder sbHour = new StringBuilder();
-//           for(int i=0;i<fwa.length;i++) 
-//               sbHour.append(fwa[i].getDate().getHours()+",");
-//           
-//           StringBuilder sbMin = new StringBuilder();
-//           for(int i=0;i<fwa.length;i++) 
-//               sbMin.append(fwa[i].getDate().getMinutes()+",");
-//           
-//           StringBuilder sbMonth = new StringBuilder();
-//           for(int i=0;i<fwa.length;i++) 
-//               sbMonth.append(fwa[i].getDate().getMonth()+",");
-//           
-//           StringBuilder sbYear = new StringBuilder();
-//           for(int i=0;i<fwa.length;i++) 
-//               sbYear.append(fwa[i].getDate().getYear()+",");
-//                  
-           
-        %>
 
-    
         <jsp:include page="footer.jsp" />
         <script type="text/javascript">
             document.getElementById('starttimepicker').onkeydown = function(e){
