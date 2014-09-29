@@ -28,6 +28,11 @@
             java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(newDate);
   
            int fwsize= fw.size();
+           
+           StringBuilder sbAppt = new StringBuilder();
+            for(int i=0;i<fwsize;i++) 
+                    sbAppt.append(fw.get(i).isAppointment()+",");        
+                   
            //Retrieve all the data into seperate parts
             StringBuilder sbDay = new StringBuilder();
             for(int i=0;i<fwsize;i++) 
@@ -190,7 +195,11 @@
                 <script type="text/javascript">
                     
                 window.size = '<%=fwsize%>';
-                                    
+                
+                var temp="<%=sbAppt.toString()%>";                               
+                var isAppt = new Array(); 
+                window.isAppt = temp.split(',',size);   
+    
                 var temp="<%=sbDay.toString()%>";                               
                 var day = new Array(); 
                 window.day = temp.split(',',size);

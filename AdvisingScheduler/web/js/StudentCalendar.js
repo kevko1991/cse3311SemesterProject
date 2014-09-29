@@ -10,13 +10,25 @@ $(document).ready(function() {
     var k; 
     
     for (var k = 0; k < size; k++) {
+        if(isAppt[k] == "true"){
+            formattedEventData.push({            
+            start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
+            sHour: hour[k], 
+            sMin: min[k],  
+            title: "Occupied",
+            color: '#808080'
+                                });
+        }
+        else{
         formattedEventData.push({            
             start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
             sHour: hour[k], 
             sMin: min[k],  
-            title: "Timeslot"
-             });
-        };
+            title: "Available",
+            color: '#00377b'
+                                });
+         }
+                                    };
 //    }
  
 //force description into textarea...
@@ -37,28 +49,35 @@ var calendar = $('#calendar').fullCalendar({
             //get the date string and parse it to convert to a Date
             var eDate = Date.parse(event.start.toString());
             var cDate = new Date(eDate);
-            if(event.sMin === '0'){
-                $('input[name="startTime"]').val(event.sHour+":00"); //24 hour format
-            }
-            else{
-                $('input[name="startTime"]').val(event.sHour+":" + event.sMin); //24 hour format
-            }
-            //fix this later
-            if(event.sMin === '45')
+            if(event.title === 'Occupied')
             {
-                $('input[name="endTime"]').val((event.sHour+1)+":00");
+                
             }
-            if(event.sMin === '0')
+            else
             {
-                $('input[name="endTime"]').val((event.sHour)+":15");
-            }
-            if(event.sMin === '15')
-            {
-                $('input[name="endTime"]').val((event.sHour)+":30");
-            }
-            if(event.sMin === '30')
-            {
-                $('input[name="endTime"]').val((event.sHour)+":45");
+                if(event.sMin === '0'){
+                    $('input[name="startTime"]').val(event.sHour+":00"); //24 hour format
+                }
+                else{
+                    $('input[name="startTime"]').val(event.sHour+":" + event.sMin); //24 hour format
+                }
+                //fix this later
+                if(event.sMin === '45')
+                {
+                    $('input[name="endTime"]').val((event.sHour+1)+":00");
+                }
+                if(event.sMin === '0')
+                {
+                    $('input[name="endTime"]').val((event.sHour)+":15");
+                }
+                if(event.sMin === '15')
+                {
+                    $('input[name="endTime"]').val((event.sHour)+":30");
+                }
+                if(event.sMin === '30')
+                {
+                    $('input[name="endTime"]').val((event.sHour)+":45");
+                }
             }
         },
         
