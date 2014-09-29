@@ -18,7 +18,7 @@
         <%
             FlyweightDatabaseManager fdm = new FlyweightDatabaseManager();
             ArrayList<Date> availableDates = fdm.getDatesForAvailability();
-            ArrayList<String> availables = new ArrayList<>();
+            ArrayList<String> availables = new ArrayList<String>();
             for (Date d : availableDates) {
                 int dd = d.getDate();
                 int mm = d.getMonth();
@@ -31,12 +31,13 @@
                 sb.append(availables.get(i) + ",");
             }
         %>
+        
         <script type="text/javascript">
             temp = "<%=sb.toString()%>";
             var availableDates = new Array();
             availableDates = temp.split(',', '<%=availables.size()%>');
 
-            alert("array: " + availableDates);
+            //alert("array: " + availableDates);
             function available(date) {
                 dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
                 if ($.inArray(dmy, availableDates) !== -1) {
@@ -49,6 +50,8 @@
                 $('#date').datepicker({beforeShowDay: available});
             })
         </script>
+
+
         <script type="text/javascript">
             function validate() {
                 var sID = document.forms["schedule"]["sID"].value;
