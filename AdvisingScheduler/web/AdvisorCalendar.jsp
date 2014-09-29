@@ -86,7 +86,8 @@
                                     
                                 
                                     //Flyweight array to Strings 
-                                    java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(allocateTimeBean.getDate());
+                                fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();  
+                                java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(allocateTimeBean.getDate());
                                     int fwsize= fw.size();                                
                                     
                                             
