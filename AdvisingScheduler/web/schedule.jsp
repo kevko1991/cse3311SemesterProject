@@ -91,6 +91,14 @@
                         </tr>
                         <tr>
                             <td>
+                                Date:
+                            </td>
+                            <td>
+                                <input type="text" name="date" id="date" readonly="true"><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 Description: 
                             </td>
                             <td>
