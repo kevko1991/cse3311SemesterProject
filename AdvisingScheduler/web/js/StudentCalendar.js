@@ -8,11 +8,33 @@ $(document).ready(function() {
 // page is now ready, initialize the calendar...       
     var formattedEventData = new Array();
     var k; 
-    
+    var endHour, endMin;
     for (var k = 0; k < size; k++) {
-        if(isAppt[k] == "true"){
+        if(parseInt(min[k]) === 0)
+            {
+                endHour = parseInt(hour[k]);
+                endMin = 15;
+            }
+        if(parseInt(min[k]) === 15)
+        {
+                endHour = parseInt(hour[k]);
+                endMin = 30;
+        }
+        if(parseInt(min[k]) === 30)
+        {
+                endHour = parseInt(hour[k]);
+                endMin = 45;
+        }
+        if(parseInt(min[k])== 45)
+            {
+                endHour = parseInt(hour[k])+1;
+                endMin = 0;
+//                alert(endHour+":"+endMin);
+            }
+        if(isAppt[k] == "true"){          
             formattedEventData.push({            
             start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
+            end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
             sHour: hour[k], 
             sMin: min[k],  
             title: "Occupied",
@@ -22,6 +44,7 @@ $(document).ready(function() {
         else{
         formattedEventData.push({            
             start: new Date(year[k], month[k], day[k], hour[k], min[k], 0, 0), 
+            end: new Date(year[k], month[k], day[k], endHour, endMin, 0, 0), 
             sHour: hour[k], 
             sMin: min[k],  
             title: "Available",
@@ -38,6 +61,10 @@ $('#description').val(desc);
 var calendar = $('#calendar').fullCalendar({
         defaultView: 'agendaDay',
         defaultDate: $('#date').val(),
+        allDaySlot:false,
+        slotDuration: "00:15",
+        minTime: "07:00",
+        maxTime: "19:00",
         header: {
             left: '',
             center: 'title',
@@ -49,6 +76,7 @@ var calendar = $('#calendar').fullCalendar({
             //get the date string and parse it to convert to a Date
             var eDate = Date.parse(event.start.toString());
             var cDate = new Date(eDate);
+            
             if(event.title === 'Occupied')
             {
                 
@@ -64,7 +92,7 @@ var calendar = $('#calendar').fullCalendar({
                 //fix this later
                 if(event.sMin === '45')
                 {
-                    $('input[name="endTime"]').val((event.sHour+1)+":00");
+                    $('input[name="endTime"]').val((parseInt(event.sHour)+1)+":00");
                 }
                 if(event.sMin === '0')
                 {

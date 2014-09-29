@@ -28,6 +28,7 @@
             java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(newDate);
   
            int fwsize= fw.size();
+          
            
            StringBuilder sbAppt = new StringBuilder();
             for(int i=0;i<fwsize;i++) 

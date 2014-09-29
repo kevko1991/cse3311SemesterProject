@@ -26,7 +26,8 @@
                                 StringBuilder sbHour = new StringBuilder();
                                 StringBuilder sbMin = new StringBuilder();
                                 StringBuilder sbMonth = new StringBuilder(); 
-                                StringBuilder sbYear = new StringBuilder();       
+                                StringBuilder sbYear = new StringBuilder();    
+                                StringBuilder sbAppt = new StringBuilder();
                                     if(fw.isEmpty())
                                     {
                                         fwsize = 0;
@@ -35,7 +36,9 @@
                                     {
                                         fwsize = fw.size();                                
                                     
-                                            
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbAppt.append(fw.get(i).isAppointment()+",");   
+                                        
                                         for(int i=0;i<fwsize;i++) 
                                             sbDay.append(fw.get(i).getDate().getDate()+",");
 
@@ -66,6 +69,11 @@
                                     }
                                     else
                                     {
+                                        
+                                    var temp="<%=sbAppt.toString()%>";                               
+                                    var isAppt = new Array(); 
+                                    window.isAppt = temp.split(',',size);    
+                                        
                                     var temp="<%=sbDay.toString()%>";                               
                                     var day = new Array(); 
                                     window.day = temp.split(',',size);
@@ -170,7 +178,9 @@
                                  sbHour = new StringBuilder();
                                  sbMin = new StringBuilder();
                                  sbMonth = new StringBuilder(); 
-                                 sbYear = new StringBuilder();       
+                                 sbYear = new StringBuilder(); 
+                                 sbAppt = new StringBuilder();
+                                 
                                     if(fw.isEmpty())
                                     {
                                         fwsize = 0;
@@ -179,6 +189,8 @@
                                     {
                                         fwsize = fw.size();                                
                                     
+                                        for(int i=0;i<fwsize;i++) 
+                                            sbAppt.append(fw.get(i).isAppointment()+",");  
                                             
                                         for(int i=0;i<fwsize;i++) 
                                             sbDay.append(fw.get(i).getDate().getDate()+",");
@@ -204,6 +216,10 @@
                                     if(size==0){}
                                     else
                                     {
+                                    var temp="<%=sbAppt.toString()%>";                               
+                                    var isAppt = new Array(); 
+                                    window.isAppt = temp.split(',',size);    
+                                        
                                     var temp="<%=sbDay.toString()%>";                               
                                     var day = new Array(); 
                                     window.day = temp.split(',',size);
