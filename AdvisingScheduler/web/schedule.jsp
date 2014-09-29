@@ -105,7 +105,7 @@
                                 Student ID:
                             </td>
                             <td>
-                                <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="sID" id="sID" value=""><br>
+                                <input type="text" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 8 || event.charCode == 9" name="sID" id="sID" value=""><br>
                             </td>
                         </tr>
                         <tr>
