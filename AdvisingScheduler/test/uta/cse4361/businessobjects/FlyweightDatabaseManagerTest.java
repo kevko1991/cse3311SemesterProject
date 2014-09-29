@@ -28,6 +28,8 @@ public class FlyweightDatabaseManagerTest {
     public void setUp()
     {
         currentDate = new Date();
+        File dataFile = new File(FlyweightDatabaseManager.FDB_FILE_NAME);
+        dataFile.delete();
     }
     
     @BeforeClass
@@ -179,6 +181,20 @@ public class FlyweightDatabaseManagerTest {
         boolean free = fdb.isFree(currentDate, Flyweight.MIN_HOUR, Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45);
         
         assertEquals("The time that should not be free was shown as  free.", false, free);
+    }
+    
+    @Test
+    public void getDatesFreeTest()
+    {
+        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        
+        ArrayList<Flyweight> availableFlys = createAvailableFlyweights(Flyweight.MIN_MINUTE, Flyweight.MIN_MINUTE + 45, Flyweight.MIN_HOUR);
+        
+        fdb.saveFlyweights(availableFlys);
+        
+        ArrayList<Date> dates = fdb.getDatesForAvailability();
+        
+        assertEquals("There is only one available date", 1, dates.size());
     }
     
 }
