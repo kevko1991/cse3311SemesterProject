@@ -121,7 +121,7 @@
                                                 Student ID:
                                             </td>
                                             <td>
-                                                <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value=""><br>
+                                                <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID"  size="50" value=""><br>
                                             </td>
                                         </tr>
                                         <tr>
@@ -129,7 +129,7 @@
                                                 Student Name:
                                             </td>
                                             <td>
-                                                <input type="text" name="sName" id="sName" value=""><br>
+                                                <input type="text" name="sName" id="sName" size="50" value=""><br>
                                             </td>
                                         </tr>
                                         <tr>
@@ -148,7 +148,7 @@
                                                 Date:
                                             </td>
                                             <td>
-                                                <input type="text" name="date" id="date" readonly="true"><br>
+                                                <input type="text" name="date" size="50" id="date" readonly="true"><br>
                                             </td>
                                         </tr>
                                         <tr>
