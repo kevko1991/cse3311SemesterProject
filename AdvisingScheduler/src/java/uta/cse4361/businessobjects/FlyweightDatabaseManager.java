@@ -155,6 +155,26 @@ public class FlyweightDatabaseManager {
     {
         return (Flyweight[])getDaysFlyweights(date).toArray();
     }
+    
+    public ArrayList<Date> getDatesForAvailability()
+    {
+        ArrayList<Date> availableDates = new ArrayList<Date>();
+        for(Date date: flyweightDatabase.keySet())
+        {
+            ArrayList<Flyweight> flyweights = getDaysFlyweights(date);
+            
+            for(Flyweight flyweight: flyweights)
+            {
+                if (!flyweight.isAppointment())
+                {
+                    availableDates.add(date);
+                    break;
+                }
+            }
+        }
+        
+        return availableDates;
+    }
         
 
 
