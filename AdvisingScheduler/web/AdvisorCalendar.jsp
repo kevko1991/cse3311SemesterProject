@@ -168,7 +168,8 @@
                                  <jsp:setProperty name="allocateTimeBean" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
                                  <jsp:setProperty name="allocateTimeBean" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
                                 <%
-                                allocateTimeBean.allocateTime();
+                                //allocateTimeBean.allocateTime();
+                                allocateTimeBean.allocateTimeRepeat();
                                 
                                 //new fdm to get a fresh copy of the flyweights
                                 fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager(); 

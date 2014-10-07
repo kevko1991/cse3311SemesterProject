@@ -5,6 +5,7 @@
  */
 package uta.cse4361.businessobjects;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -20,6 +21,7 @@ public class TimeAllocationSlotBean implements java.io.Serializable {
     private int endHour = 0;
     private int startMinute = 0;
     private int endMinute = 0;
+    private int isRepeat = 0;
     
     public TimeAllocationSlotBean(){
         
@@ -33,6 +35,40 @@ public class TimeAllocationSlotBean implements java.io.Serializable {
         msg = aff.createFlyweights(date, this.startHour, this.endHour, this.startMinute, this.endMinute, id, AVAILABLE_FLYWEIGHT_KEY);
         return msg;
     }
+    
+    
+    public String allocateTimeRepeat() {
+        String msg = SUCCESS_MSG;
+        Date rDate = date;
+        int currDayOfWeek;
+        int selectedDayOfWeek;
+        int daysTillRepeatDay;        
+        int year;
+        int nextYear;
+
+
+
+        //Get the day of the week of the selected appointment date
+        Calendar cal = Calendar.getInstance();
+        currDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        Calendar selectedCal = Calendar.getInstance();
+        selectedCal.setTime(rDate);
+        selectedDayOfWeek = selectedCal.get(Calendar.DAY_OF_WEEK);
+        daysTillRepeatDay = selectedDayOfWeek - currDayOfWeek;        
+        year = cal.get(Calendar.YEAR);
+        nextYear = year+1;
+        int i = 0;
+        allocateTime();
+            
+        for (i=0; i<21; i++)
+        {
+            selectedCal.add(Calendar.DAY_OF_WEEK, 7);
+            date = selectedCal.getTime();
+            allocateTime();
+        }  
+        return "success";
+    }
+    
     
     // Setters
     public void setDate(Date d){
