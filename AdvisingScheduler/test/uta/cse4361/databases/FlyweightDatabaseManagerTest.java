@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uta.cse4361.businessobjects;
+package uta.cse4361.databases;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import uta.cse4361.businessobjects.AppointmentFlyweightTest;
 
 /**
  *
