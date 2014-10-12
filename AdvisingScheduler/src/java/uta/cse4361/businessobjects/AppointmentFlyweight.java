@@ -11,9 +11,9 @@ import java.util.Date;
  *
  * @author Frank R.
  */
-public class AppointmentFlyweight extends Flyweight{
+public class AppointmentSlot extends Flyweight{
     
-    public AppointmentFlyweight(int newAppointmentId, Date newDate, 
+    public AppointmentSlot(int newAppointmentId, Date newDate, 
             int newHour, int newMinute) throws IllegalArgumentException      
     {
         super(true, newAppointmentId, newDate, newHour, newMinute); 

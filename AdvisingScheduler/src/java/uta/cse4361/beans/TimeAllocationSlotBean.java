@@ -7,9 +7,9 @@ package uta.cse4361.beans;
 
 import java.util.Calendar;
 import java.util.Date;
-import uta.cse4361.databases.AppointmentDatabaseManager;
-import uta.cse4361.businessobjects.AppointmentFlyweightFactory;
 
+import uta.cse4361.businessobjects.AppointmentFlyweightFactory;
+import uta.cse4361.databases.AppointmentDatabaseManager;
 /**
  *
  * @author Han
