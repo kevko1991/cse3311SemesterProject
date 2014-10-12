@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uta.cse4361.businessobjects;
+package uta.cse4361.beans;
 
 import java.util.Calendar;
 import java.util.Date;
+import uta.cse4361.businessobjects.AppointmentDatabaseManager;
+import uta.cse4361.businessobjects.AppointmentFlyweightFactory;
 
 /**
  *

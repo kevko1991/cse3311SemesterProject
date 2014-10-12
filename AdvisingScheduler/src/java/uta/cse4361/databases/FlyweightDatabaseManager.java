@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uta.cse4361.businessobjects;
+package uta.cse4361.databases;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import uta.cse4361.businessobjects.Flyweight;
 
 /**
  *
