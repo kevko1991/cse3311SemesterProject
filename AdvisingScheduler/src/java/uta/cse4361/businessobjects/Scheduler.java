@@ -6,15 +6,15 @@
 package uta.cse4361.businessobjects;
 import java.util.*;
 import uta.cse4361.databases.AppointmentDatabaseManager;
-import uta.cse4361.databases.FlyweightDatabaseManager;
+import uta.cse4361.databases.SlotDatabaseManager;
 /**
  *
  * @author Nabin
  */
 public class Scheduler implements uta.cse4361.interfaces.Constants{
-    FlyweightDatabaseManager fdm =new FlyweightDatabaseManager();
+    SlotDatabaseManager fdm =new SlotDatabaseManager();
     Date date = new Date();
-    AppointmentFlyweightFactory aff =  AppointmentFlyweightFactory.getInstance();
+    SlotFactory aff =  SlotFactory.getInstance();
     Appointment a =new Appointment();
     AppointmentDatabaseManager adm = new  AppointmentDatabaseManager();
 
@@ -30,7 +30,7 @@ public class Scheduler implements uta.cse4361.interfaces.Constants{
         if (fdm.isFree(a.getDate(), a.getStartHour(), a.getEndHour(), a.getStartMinute(),a.getEndMinute())== true )
         {
             msg = aff.createFlyweights(a.getDate(), a.getStartHour(), a.getEndHour(),a.getStartMinute(), a.getEndMinute(), 
-                    adm.getNextId(), AppointmentFlyweightFactory.APPOINTMENT_FLYWEIGHT_KEY);   
+                    adm.getNextId(), SlotFactory.APPOINTMENT_FLYWEIGHT_KEY);   
         }
         else
             msg = TIME_IS_NOT_FREE_FAULT;

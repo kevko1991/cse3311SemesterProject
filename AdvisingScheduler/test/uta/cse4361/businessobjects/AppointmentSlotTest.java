@@ -13,17 +13,17 @@ import static org.junit.Assert.*;
  *
  * @author Frank R.
  */
-public class AppointmentFlyweightTest implements uta.cse4361.interfaces.Constants{
+public class AppointmentSlotTest implements uta.cse4361.interfaces.Constants{
     
     
     
-    public AppointmentFlyweightTest() {
+    public AppointmentSlotTest() {
     }
 
     @Test
     public void testHasAppointment() 
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE);
+        AppointmentSlot apptF = new AppointmentSlot(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE);
         
         boolean hasAppt = apptF.isAppointment();
         
@@ -34,7 +34,7 @@ public class AppointmentFlyweightTest implements uta.cse4361.interfaces.Constant
     @Test
     public void testGetAppointmentId()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE);
+        AppointmentSlot apptF = new AppointmentSlot(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE);
         
         int apptId = apptF.getAppointmentId();
         
@@ -45,7 +45,7 @@ public class AppointmentFlyweightTest implements uta.cse4361.interfaces.Constant
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowHourValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR - 1, MIN_MINUTE);
+        AppointmentSlot apptF = new AppointmentSlot(VALID_ID, new Date(), MIN_HOUR - 1, MIN_MINUTE);
         
         fail();
     }
@@ -53,7 +53,7 @@ public class AppointmentFlyweightTest implements uta.cse4361.interfaces.Constant
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighHourValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MAX_HOUR + 1, MIN_MINUTE);
+        AppointmentSlot apptF = new AppointmentSlot(VALID_ID, new Date(), MAX_HOUR + 1, MIN_MINUTE);
         
         fail();
     }
@@ -61,7 +61,7 @@ public class AppointmentFlyweightTest implements uta.cse4361.interfaces.Constant
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowMinuteValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE - 1);
+        AppointmentSlot apptF = new AppointmentSlot(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE - 1);
         
         fail();
     }
@@ -69,7 +69,7 @@ public class AppointmentFlyweightTest implements uta.cse4361.interfaces.Constant
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighMinuteValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MAX_HOUR, MAX_MINUTE + 1);
+        AppointmentSlot apptF = new AppointmentSlot(VALID_ID, new Date(), MAX_HOUR, MAX_MINUTE + 1);
         
         fail();
     }

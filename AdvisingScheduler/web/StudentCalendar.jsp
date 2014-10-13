@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>    
-        <jsp:useBean id="fdm" class="uta.cse4361.businessobjects.FlyweightDatabaseManager" scope="session"/>
+        <jsp:useBean id="fdm" class="uta.cse4361.databases.SlotDatabaseManager" scope="session"/>
         <%!
         public int getHour(String time){
             String[] hour = time.split(":");
@@ -24,8 +24,8 @@
             java.util.Date newDate = format.parse(request.getParameter("date"));
             
             
-            fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager();
-            java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getDaysFlyweights(newDate);
+            fdm = new uta.cse4361.databases.SlotDatabaseManager();
+            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = fdm.getDaysFlyweights(newDate);
   
            int fwsize= fw.size();
           
@@ -64,7 +64,7 @@
         
         
         <!--<script type="text/javascript" src="js/arrayProcess.js"></script>-->                
-        <jsp:useBean id="newAppt" class="uta.cse4361.businessobjects.ScheduleAppointmentControllerBean"/> 
+        <jsp:useBean id="newAppt" class="uta.cse4361.beans.ScheduleAppointmentBean"/> 
         <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 

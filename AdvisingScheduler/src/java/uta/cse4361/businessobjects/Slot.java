@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Frank R.
  */
-public abstract class Flyweight implements Serializable, Comparable<Flyweight>, uta.cse4361.interfaces.Constants
+public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse4361.interfaces.Constants
 {
     
     
@@ -25,7 +25,7 @@ public abstract class Flyweight implements Serializable, Comparable<Flyweight>, 
     
     private int time;
     
-    public Flyweight(boolean newHasAppointment, int newAppointmentId, Date newDate, int newHour, int newMinute)
+    public Slot(boolean newHasAppointment, int newAppointmentId, Date newDate, int newHour, int newMinute)
             throws IllegalArgumentException
     {
         hasAppointment = newHasAppointment;
@@ -37,10 +37,10 @@ public abstract class Flyweight implements Serializable, Comparable<Flyweight>, 
         if (validTime == false)
         {
             throw new IllegalArgumentException("The hour and minute provided were not within the ranges defined as valid.\n"
-                    + "MAX_HOUR = " + Flyweight.MAX_HOUR
-                    + ", MIN_HOUR = " + Flyweight.MIN_HOUR
-                    + ", MAX_MINUTE = " + Flyweight.MAX_MINUTE
-                    + ", MIN_MINUTE = " + Flyweight.MIN_MINUTE);
+                    + "MAX_HOUR = " + Slot.MAX_HOUR
+                    + ", MIN_HOUR = " + Slot.MIN_HOUR
+                    + ", MAX_MINUTE = " + Slot.MAX_MINUTE
+                    + ", MIN_MINUTE = " + Slot.MIN_MINUTE);
         }
     }
     
@@ -97,8 +97,8 @@ public abstract class Flyweight implements Serializable, Comparable<Flyweight>, 
     }
     
     @Override
-    public int compareTo(Flyweight another) {
-        Flyweight toCompare = another;
+    public int compareTo(Slot another) {
+        Slot toCompare = another;
         int compare = 0;
         compare = this.getTime() - another.getTime();
         return compare;

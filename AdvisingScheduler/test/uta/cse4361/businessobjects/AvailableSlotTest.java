@@ -13,15 +13,15 @@ import static org.junit.Assert.*;
  *
  * @author Frank R.
  */
-public class AvailableFlyweightTest implements uta.cse4361.interfaces.Constants{
+public class AvailableSlotTest implements uta.cse4361.interfaces.Constants{
     
-    public AvailableFlyweightTest() {
+    public AvailableSlotTest() {
     }
 
     @Test
     public void testHasAppointment() 
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE);
         
         boolean hasAppt = availableF.isAppointment();
         
@@ -32,7 +32,7 @@ public class AvailableFlyweightTest implements uta.cse4361.interfaces.Constants{
     @Test
     public void testGetAppointmentId()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE);
         
         int apptId = availableF.getAppointmentId();
         
@@ -43,7 +43,7 @@ public class AvailableFlyweightTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowHourValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR - 1, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR - 1, MIN_MINUTE);
         
         fail();
     }
@@ -51,7 +51,7 @@ public class AvailableFlyweightTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighHourValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MAX_HOUR + 1, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MAX_HOUR + 1, MIN_MINUTE);
         
         fail();
     }
@@ -59,7 +59,7 @@ public class AvailableFlyweightTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowMinuteValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR, MIN_MINUTE - 1);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE - 1);
         
         fail();
     }
@@ -67,7 +67,7 @@ public class AvailableFlyweightTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighMinuteValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MAX_HOUR, MAX_MINUTE + 1);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MAX_HOUR, MAX_MINUTE + 1);
         
         fail();
     }

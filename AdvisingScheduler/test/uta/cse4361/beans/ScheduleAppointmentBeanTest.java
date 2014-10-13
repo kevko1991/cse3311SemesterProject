@@ -13,13 +13,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import uta.cse4361.databases.AppointmentDatabaseManager;
-import uta.cse4361.businessobjects.AppointmentFlyweightFactory;
+import uta.cse4361.businessobjects.SlotFactory;
 
 /**
  *
  * @author Han
  */
-public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interfaces.Constants{
+public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Constants{
 
     private final String sName = "First Last";
     private final String sID = "1000123456";
@@ -32,7 +32,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
     private final int sM = 0;
     private final int eM = 33;
 
-    public ScheduleAppointmentControllerBeanTest() {
+    public ScheduleAppointmentBeanTest() {
     }
 
     @BeforeClass
@@ -56,7 +56,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testScheduleAppointmentFail() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setStudentID(wrongID);
         instance.setStudentName(sName);
         instance.setAdvisorName(aName);
@@ -73,8 +73,8 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
 
     @Test
     public void testScheduleAppointmentSuccess() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
-        AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
+        SlotFactory aff = SlotFactory.getInstance();
         AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
         aff.createFlyweights(d, sH, eH, sM, eM, adm.getNextId(), AVAILABLE_FLYWEIGHT_KEY);
         instance.setStudentID(sID);
@@ -96,7 +96,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetStudentName() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setStudentName(sName);
         assertEquals(sName, instance.getStudentName());
     }
@@ -106,7 +106,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetStudentID() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setStudentID(sID);
         assertEquals(sID, instance.getStudentID());
     }
@@ -116,7 +116,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetAdvisorName() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setAdvisorName(aName);
         assertEquals(aName, instance.getAdvisorName());
     }
@@ -126,7 +126,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetDescription() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setDescription(dp);
         assertEquals(dp, instance.getDescription());
     }
@@ -136,7 +136,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetDate() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setDate(d);
         assertEquals(d, instance.getDate());
     }
@@ -146,7 +146,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetStartHour() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setStartHour(sH);
         assertEquals(sH, instance.getStartHour());
     }
@@ -156,7 +156,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetEndHour() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setEndHour(eH);
         assertEquals(eH, instance.getEndHour());
     }
@@ -166,7 +166,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetStartMinute() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setStartMinute(sM);
         assertEquals(sM, instance.getStartMinute());
     }
@@ -176,7 +176,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testSetEndMinute() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setEndMinute(eM);
         assertEquals(eM, instance.getEndMinute());
     }
@@ -186,7 +186,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetStudentName() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         String expResult = "First Last";
         instance.setStudentName(expResult);
         String result = instance.getStudentName();
@@ -198,7 +198,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetStudentID() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         String expResult = "1000111122";
         instance.setStudentID(expResult);
         String result = instance.getStudentID();
@@ -210,7 +210,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetAdvisorName() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         String expResult = "Advisor Name";
         instance.setAdvisorName(expResult);
         String result = instance.getAdvisorName();
@@ -222,7 +222,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetDescription() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         String expResult = "The test of description";
         instance.setDescription(expResult);
         String result = instance.getDescription();
@@ -234,7 +234,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetStartHour() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         int expResult = 3;
         instance.setStartHour(expResult);
         int result = instance.getStartHour();
@@ -246,7 +246,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetEndHour() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         int expResult = 5;
         instance.setEndHour(expResult);
         int result = instance.getEndHour();
@@ -258,7 +258,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetStartMinute() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         int expResult = 27;
         instance.setStartMinute(expResult);
         int result = instance.getStartMinute();
@@ -270,7 +270,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetEndMinute() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         int expResult = 51;
         instance.setEndMinute(expResult);
         int result = instance.getEndMinute();
@@ -282,7 +282,7 @@ public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interf
      */
     @Test
     public void testGetDate() {
-        ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         Date expResult = new Date();
         instance.setDate(expResult);
         Date result = instance.getDate();

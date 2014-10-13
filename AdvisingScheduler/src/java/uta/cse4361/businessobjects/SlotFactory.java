@@ -7,21 +7,21 @@ package uta.cse4361.businessobjects;
 
 import java.util.ArrayList;
 import java.util.Date;
-import uta.cse4361.databases.FlyweightDatabaseManager;
+import uta.cse4361.databases.SlotDatabaseManager;
 
 /**
  *
  * @author Frank R.
  */
-public class AppointmentFlyweightFactory implements uta.cse4361.interfaces.Constants{
+public class SlotFactory implements uta.cse4361.interfaces.Constants{
 
     private int nextHour;
     private int nextMinute;
     
-    private AppointmentFlyweightFactory() {
+    private SlotFactory() {
     }
     
-    public static AppointmentFlyweightFactory getInstance() {
+    public static SlotFactory getInstance() {
         return AppointmentFlyweightFactoryHolder.INSTANCE;
     }
 
@@ -48,7 +48,7 @@ public class AppointmentFlyweightFactory implements uta.cse4361.interfaces.Const
     
     private static class AppointmentFlyweightFactoryHolder {
 
-        private static final AppointmentFlyweightFactory INSTANCE = new AppointmentFlyweightFactory();
+        private static final SlotFactory INSTANCE = new SlotFactory();
     }
     
     public String createFlyweights(Date date, int startHour, int endHour, int startMinute, int endMinute, int apptId, String key)
@@ -61,7 +61,7 @@ public class AppointmentFlyweightFactory implements uta.cse4361.interfaces.Const
         
         int numberOfFlyweights = determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
         
-        ArrayList<Flyweight> flyweightsToSave = new ArrayList<Flyweight>();
+        ArrayList<Slot> flyweightsToSave = new ArrayList<Slot>();
         
         nextHour = startHour;
         nextMinute = startMinute;
@@ -72,7 +72,7 @@ public class AppointmentFlyweightFactory implements uta.cse4361.interfaces.Const
             {
                 try
                 {
-                    flyweightsToSave.add(new AppointmentFlyweight(apptId, date, nextHour, nextMinute));
+                    flyweightsToSave.add(new AppointmentSlot(apptId, date, nextHour, nextMinute));
                 }
                 catch (IllegalArgumentException e)
                 {
@@ -87,7 +87,7 @@ public class AppointmentFlyweightFactory implements uta.cse4361.interfaces.Const
             {
                 try
                 {
-                    flyweightsToSave.add(new AvailableFlyweight(date, nextHour, nextMinute));
+                    flyweightsToSave.add(new AvailableSlot(date, nextHour, nextMinute));
                 }
                 catch (IllegalArgumentException e)
                 {
@@ -101,7 +101,7 @@ public class AppointmentFlyweightFactory implements uta.cse4361.interfaces.Const
             return ILLEGAL_KEY_FAULT;
         }
         
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
         return fdb.saveFlyweights(flyweightsToSave);
     }

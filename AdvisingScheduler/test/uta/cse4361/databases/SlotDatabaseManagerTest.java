@@ -13,18 +13,18 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import uta.cse4361.businessobjects.Flyweight;
-import uta.cse4361.businessobjects.AppointmentFlyweight;
-import uta.cse4361.businessobjects.AvailableFlyweight;
-import uta.cse4361.businessobjects.AppointmentFlyweightFactory;
+import uta.cse4361.businessobjects.Slot;
+import uta.cse4361.businessobjects.AppointmentSlot;
+import uta.cse4361.businessobjects.AvailableSlot;
+import uta.cse4361.businessobjects.SlotFactory;
 
 /**
  *
  * @author Frank R.
  */
-public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Constants{
+public class SlotDatabaseManagerTest implements uta.cse4361.interfaces.Constants{
     
-    public FlyweightDatabaseManagerTest() {
+    public SlotDatabaseManagerTest() {
     }
     
     private Date currentDate;
@@ -75,27 +75,27 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
         */
     }
 
-    private ArrayList<Flyweight> createAvailableFlyweights(int startTime, int endTime, int hour)
+    private ArrayList<Slot> createAvailableFlyweights(int startTime, int endTime, int hour)
     {
-        ArrayList<Flyweight> flyweights = new ArrayList<Flyweight>();
+        ArrayList<Slot> flyweights = new ArrayList<Slot>();
         
         for(int i = startTime; i < endTime; 
                 i = i + INCREMENT_GAP)
         {
-            AvailableFlyweight af = new AvailableFlyweight(currentDate, hour, i);
+            AvailableSlot af = new AvailableSlot(currentDate, hour, i);
             flyweights.add(af);
         }
         return flyweights;
     }
     
-    private ArrayList<Flyweight> createAppointmentFlyweights(int startTime, int endTime, int hour)
+    private ArrayList<Slot> createAppointmentFlyweights(int startTime, int endTime, int hour)
     {
-        ArrayList<Flyweight> flyweights = new ArrayList<Flyweight>();
+        ArrayList<Slot> flyweights = new ArrayList<Slot>();
         
         for(int i = startTime; i <= endTime; 
                 i = i + INCREMENT_GAP)
         {
-            AppointmentFlyweight af = new AppointmentFlyweight(VALID_ID, currentDate, hour, i);
+            AppointmentSlot af = new AppointmentSlot(VALID_ID, currentDate, hour, i);
             flyweights.add(af);
         }
         return flyweights;
@@ -104,18 +104,18 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void addFlyweightsTest()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> flyweights = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
+        ArrayList<Slot> flyweights = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
         
         String result = fdb.saveFlyweights(flyweights);
         assertEquals("Did not get valid return from saving", "", result);
         
         fdb = null;
         
-        fdb = new FlyweightDatabaseManager();
+        fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> savedFlyweights = fdb.getDaysFlyweights(currentDate);
+        ArrayList<Slot> savedFlyweights = fdb.getDaysFlyweights(currentDate);
         
         assertEquals("The number of flyweights saved and returned deviated.", flyweights.size(), savedFlyweights.size());
 
@@ -124,22 +124,22 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void addMixedFlyweightsTest()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
+        ArrayList<Slot> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
         
         String result = fdb.saveFlyweights(availableFlys);
         assertEquals("Did not get valid return from saving", "", result);
         
-        ArrayList<Flyweight> appointmentFlys = createAppointmentFlyweights(MIN_MINUTE, MIN_MINUTE + 15, MIN_HOUR);
+        ArrayList<Slot> appointmentFlys = createAppointmentFlyweights(MIN_MINUTE, MIN_MINUTE + 15, MIN_HOUR);
         
         fdb.saveFlyweights(appointmentFlys);
         
         fdb = null;
         
-        fdb = new FlyweightDatabaseManager();
+        fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> savedFlyweights = fdb.getDaysFlyweights(currentDate);
+        ArrayList<Slot> savedFlyweights = fdb.getDaysFlyweights(currentDate);
         
         assertEquals("The FDB did not return the same number of flyweights as availableFlyweights were created.", availableFlys.size(), savedFlyweights.size());
         
@@ -164,9 +164,9 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void isFreeValidTest()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
+        ArrayList<Slot> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
         
         String result = fdb.saveFlyweights(availableFlys);
         assertEquals("Did not get valid return from saving", "", result);
@@ -179,9 +179,9 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void isFreeInvalidTest()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> appointmentFlys = createAppointmentFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
+        ArrayList<Slot> appointmentFlys = createAppointmentFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
         
         String result = fdb.saveFlyweights(appointmentFlys);
         assertEquals("Did not get valid return from saving", "", result);
@@ -194,9 +194,9 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void getDatesFreeTest()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
+        ArrayList<Slot> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
         
         String result = fdb.saveFlyweights(availableFlys);
         assertEquals("Did not get valid return from saving", "", result);
@@ -210,9 +210,9 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void emptyFlyweightsTest()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> availableFlys = new ArrayList<Flyweight>();
+        ArrayList<Slot> availableFlys = new ArrayList<Slot>();
         
         String result = fdb.saveFlyweights(availableFlys);
         assertEquals("The error message did not indicate the list was empty", FLYWEIGHTS_EMPTY_FAULT, result);
@@ -227,11 +227,11 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void badDateFlyweights()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
+        ArrayList<Slot> availableFlys = createAvailableFlyweights(MIN_MINUTE, MIN_MINUTE + 45, MIN_HOUR);
         
-        availableFlys.add(new AvailableFlyweight(new Date(5, 5, 5), MIN_MINUTE, MIN_HOUR));
+        availableFlys.add(new AvailableSlot(new Date(5, 5, 5), MIN_MINUTE, MIN_HOUR));
         
         String result = fdb.saveFlyweights(availableFlys);
         assertEquals("The error message did not indicate the list had different days", FLYWEIGHTS_DIFFERENT_DATE_FAULT, result);
@@ -240,9 +240,9 @@ public class FlyweightDatabaseManagerTest implements uta.cse4361.interfaces.Cons
     @Test
     public void getEmptyFlyweightList()
     {
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> savedFlyweights = fdb.getDaysFlyweights(currentDate);
+        ArrayList<Slot> savedFlyweights = fdb.getDaysFlyweights(currentDate);
         
         assertEquals("The list should be empty", 0, savedFlyweights.size());
     }

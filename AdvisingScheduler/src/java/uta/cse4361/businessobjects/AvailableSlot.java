@@ -11,11 +11,11 @@ import java.util.Date;
  *
  * @author The Doctor
  */
-public class AvailableFlyweight extends Flyweight{
+public class AvailableSlot extends Slot{
     
-    public AvailableFlyweight(Date newDate, int newHour, int newMinute) throws IllegalArgumentException
+    public AvailableSlot(Date newDate, int newHour, int newMinute) throws IllegalArgumentException
     {
-        super(false, Flyweight.ILLEGAL_APPT_ID, newDate, newHour, newMinute);
+        super(false, Slot.ILLEGAL_APPT_ID, newDate, newHour, newMinute);
  
     }
     

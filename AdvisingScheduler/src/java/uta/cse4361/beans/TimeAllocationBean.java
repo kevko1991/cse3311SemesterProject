@@ -8,13 +8,13 @@ package uta.cse4361.beans;
 import java.util.Calendar;
 import java.util.Date;
 
-import uta.cse4361.businessobjects.AppointmentFlyweightFactory;
+import uta.cse4361.businessobjects.SlotFactory;
 import uta.cse4361.databases.AppointmentDatabaseManager;
 /**
  *
  * @author Han
  */
-public class TimeAllocationSlotBean implements uta.cse4361.interfaces.Constants, java.io.Serializable {
+public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, java.io.Serializable {
     //final static String SUCCESS_MSG = ""; 
     
     
@@ -25,13 +25,13 @@ public class TimeAllocationSlotBean implements uta.cse4361.interfaces.Constants,
     private int endMinute = 0;
     private int isRepeat = 0;
     
-    public TimeAllocationSlotBean(){
+    public TimeAllocationBean(){
         
     }
     
     public String allocateTime() {
         String msg = SUCCESS_MESSAGE;
-        AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
+        SlotFactory aff = SlotFactory.getInstance();
         AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
         int id = adm.getNextId();
         msg = aff.createFlyweights(date, this.startHour, this.endHour, this.startMinute, this.endMinute, id, AVAILABLE_FLYWEIGHT_KEY);

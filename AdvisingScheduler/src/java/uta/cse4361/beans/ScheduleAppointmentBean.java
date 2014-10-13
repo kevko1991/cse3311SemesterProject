@@ -14,7 +14,7 @@ import uta.cse4361.interfaces.Constants;
  *
  * @author Han
  */
-public class ScheduleAppointmentControllerBean implements Constants{
+public class ScheduleAppointmentBean implements Constants{
     
     
     private String studentName = null;
@@ -27,7 +27,7 @@ public class ScheduleAppointmentControllerBean implements Constants{
     private int endMinute = 0;
     private Date date = null;
 
-    public ScheduleAppointmentControllerBean() {
+    public ScheduleAppointmentBean() {
 
     }
     

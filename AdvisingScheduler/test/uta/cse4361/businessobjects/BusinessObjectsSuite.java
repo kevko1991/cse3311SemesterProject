@@ -13,7 +13,7 @@ import org.junit.runners.Suite;
  * @author Frank R.
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({uta.cse4361.businessobjects.AppointmentFlyweightFactoryTest.class})
+@Suite.SuiteClasses({uta.cse4361.businessobjects.SlotFactoryTest.class})
 public class BusinessObjectsSuite {
     
 }

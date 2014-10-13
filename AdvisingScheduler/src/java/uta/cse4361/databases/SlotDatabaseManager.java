@@ -15,18 +15,18 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import uta.cse4361.businessobjects.Flyweight;
+import uta.cse4361.businessobjects.Slot;
 
 /**
  *
  * @author Frank R.
  */
-public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constants{
+public class SlotDatabaseManager implements uta.cse4361.interfaces.Constants{
     
     
-    private HashMap<Date, ArrayList<Flyweight>> flyweightDatabase;
+    private HashMap<Date, ArrayList<Slot>> flyweightDatabase;
     
-    public FlyweightDatabaseManager()
+    public SlotDatabaseManager()
     {
         loadDatabase();
     }
@@ -36,12 +36,12 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         try{
             File saveFile = new File(FDB_FILE_NAME);
             ObjectInputStream inStream = new ObjectInputStream(new FileInputStream(saveFile));
-            flyweightDatabase = (HashMap<Date, ArrayList<Flyweight>>) inStream.readObject();
+            flyweightDatabase = (HashMap<Date, ArrayList<Slot>>) inStream.readObject();
             inStream.close();
         }
         catch(Exception e)
         {
-            flyweightDatabase = new HashMap<Date,ArrayList<Flyweight>>();
+            flyweightDatabase = new HashMap<Date,ArrayList<Slot>>();
             saveDatabase();
         }
     }
@@ -61,14 +61,14 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
     
     public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute)
     {
-        ArrayList<Flyweight> daysFlyweights = flyweightDatabase.get(date);
+        ArrayList<Slot> daysFlyweights = flyweightDatabase.get(date);
         
         boolean isFree = true;
         
         int startTime = (startHour * 60) + startMinute;
         int endTime = (endHour * 60) + endMinute;
         
-        for(Flyweight flyweight: daysFlyweights)
+        for(Slot flyweight: daysFlyweights)
         {
             if(flyweight.isAppointment())
             {
@@ -82,7 +82,7 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         return isFree;        
     }
     
-    public String saveFlyweights(ArrayList<Flyweight> flyweights)
+    public String saveFlyweights(ArrayList<Slot> flyweights)
     {
         if(flyweights == null || flyweights.size() == 0)
         {
@@ -90,7 +90,7 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         }
         Date fwDate = flyweights.get(0).getDate();
         
-        for(Flyweight flyweight: flyweights)
+        for(Slot flyweight: flyweights)
         {
             if(!flyweight.getDate().equals(fwDate))
             {
@@ -98,13 +98,13 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
             }
         }   
         
-        ArrayList<Flyweight> currentFwList = flyweightDatabase.get(fwDate);
+        ArrayList<Slot> currentFwList = flyweightDatabase.get(fwDate);
         if (currentFwList == null)
         {
-            currentFwList = new ArrayList<Flyweight>();
+            currentFwList = new ArrayList<Slot>();
         }
         
-        for(Flyweight flyweight: flyweights)
+        for(Slot flyweight: flyweights)
         {
             currentFwList.add(flyweight);
         }
@@ -116,21 +116,21 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         return "";
     }
     
-    public ArrayList<Flyweight> getDaysFlyweights(Date date)
+    public ArrayList<Slot> getDaysFlyweights(Date date)
     {
-        ArrayList<Flyweight> daysFlyweights = flyweightDatabase.get(date);
+        ArrayList<Slot> daysFlyweights = flyweightDatabase.get(date);
         if(daysFlyweights == null)
         {
-            daysFlyweights = new ArrayList<Flyweight>();
+            daysFlyweights = new ArrayList<Slot>();
         }
         
         //Collections.sort(daysFlyweights);
         
-        ArrayList<Flyweight> finalDaysFlyweights = new ArrayList<Flyweight>();
+        ArrayList<Slot> finalDaysFlyweights = new ArrayList<Slot>();
         ArrayList<Integer> appointmentTimes = new ArrayList<Integer>();
-        Flyweight previousFlyweight = null;
+        Slot previousFlyweight = null;
         
-        for(Flyweight currentFlyweight: daysFlyweights)
+        for(Slot currentFlyweight: daysFlyweights)
         {
             if(currentFlyweight.isAppointment())
             {
@@ -139,7 +139,7 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
             }
         }
         
-        for(Flyweight currentFlyweight: daysFlyweights)
+        for(Slot currentFlyweight: daysFlyweights)
         {
             if(!appointmentTimes.contains(currentFlyweight.getTime()))
             {
@@ -151,9 +151,9 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         return finalDaysFlyweights;
     }
     
-    public Flyweight[] getDaysFlyweightsArray(Date date)
+    public Slot[] getDaysFlyweightsArray(Date date)
     {
-        return (Flyweight[])getDaysFlyweights(date).toArray();
+        return (Slot[])getDaysFlyweights(date).toArray();
     }
     
     public ArrayList<Date> getDatesForAvailability()
@@ -161,9 +161,9 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         ArrayList<Date> availableDates = new ArrayList<Date>();
         for(Date date: flyweightDatabase.keySet())
         {
-            ArrayList<Flyweight> flyweights = getDaysFlyweights(date);
+            ArrayList<Slot> flyweights = getDaysFlyweights(date);
             
-            for(Flyweight flyweight: flyweights)
+            for(Slot flyweight: flyweights)
             {
                 if (!flyweight.isAppointment())
                 {
@@ -196,11 +196,11 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
      * @param date
      * @return 
      */    
-    public ArrayList<Flyweight> getMonthFlyweights(Date date)
+    public ArrayList<Slot> getMonthFlyweights(Date date)
     {
         int day = 1;
-        ArrayList<Flyweight> monthFlyweights = new ArrayList<Flyweight>(); 
-        ArrayList<Flyweight> daysFlyweights = new ArrayList<Flyweight>();//flyweightDatabase.get(date);       
+        ArrayList<Slot> monthFlyweights = new ArrayList<Slot>(); 
+        ArrayList<Slot> daysFlyweights = new ArrayList<Slot>();//flyweightDatabase.get(date);       
         Date tempDate = new Date(date.getYear(), date.getMonth(), day);
         
         do{
@@ -219,15 +219,15 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         
         if(monthFlyweights == null)
         {
-            monthFlyweights = new ArrayList<Flyweight>();
+            monthFlyweights = new ArrayList<Slot>();
         }
         
         //Collections.sort(daysFlyweights);
         
-        ArrayList<Flyweight> finalDaysFlyweights = new ArrayList<Flyweight>();
+        ArrayList<Slot> finalDaysFlyweights = new ArrayList<Slot>();
         ArrayList<Integer> appointmentTimes = new ArrayList<Integer>();
         
-        for(Flyweight currentFlyweight: monthFlyweights)
+        for(Slot currentFlyweight: monthFlyweights)
         {
             if(currentFlyweight.isAppointment())
             {
@@ -236,7 +236,7 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
             }
         }
         
-        for(Flyweight currentFlyweight: monthFlyweights)
+        for(Slot currentFlyweight: monthFlyweights)
         {
             if(!appointmentTimes.contains(currentFlyweight.getTime()))
             {
@@ -248,9 +248,9 @@ public class FlyweightDatabaseManager implements uta.cse4361.interfaces.Constant
         return finalDaysFlyweights;
     }
     
-    public ArrayList<Flyweight> getYearFlyweights(Date date)
+    public ArrayList<Slot> getYearFlyweights(Date date)
     {
-        ArrayList<Flyweight> yearFlyweights = new ArrayList<Flyweight>(); 
+        ArrayList<Slot> yearFlyweights = new ArrayList<Slot>(); 
         
         int month = 0;
 //        Date tempDate = new Date(date.getYear(), month, 1);

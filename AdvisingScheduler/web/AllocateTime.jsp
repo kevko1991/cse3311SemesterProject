@@ -45,7 +45,7 @@
                        java.text.DateFormat format = new java.text.SimpleDateFormat("MM/dd/yyyy");
                        java.util.Date newDate = format.parse(request.getParameter("date"));
                     %>
-                     <jsp:useBean id="allocateTimeBean" class="uta.cse4361.businessobjects.TimeAllocationSlotBean" scope="session"/>
+                     <jsp:useBean id="allocateTimeBean" class="uta.cse4361.beans.TimeAllocationBean" scope="session"/>
                      <jsp:setProperty name="allocateTimeBean" property="date" value= '<%= newDate %>'/>
                      <jsp:setProperty name="allocateTimeBean" property="startHour" value= '<%= getHour(request.getParameter("startTime")) %>'/>
                      <jsp:setProperty name="allocateTimeBean" property="startMinute" value= '<%= getMin(request.getParameter("startTime")) %>'/>

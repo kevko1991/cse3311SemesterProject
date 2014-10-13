@@ -18,7 +18,7 @@
             java.util.Date newDate = format.parse(request.getParameter("date"));
         %>;
         
-        <jsp:useBean id="newAppt" class="uta.cse4361.businessobjects.ScheduleAppointmentControllerBean"/> 
+        <jsp:useBean id="newAppt" class="uta.cse4361.beans.ScheduleAppointmentBean"/> 
         <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 

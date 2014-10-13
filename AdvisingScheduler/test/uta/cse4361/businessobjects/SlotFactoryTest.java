@@ -13,16 +13,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import uta.cse4361.databases.FlyweightDatabaseManager;
+import uta.cse4361.databases.SlotDatabaseManager;
 
 /**
  *
  * @author Frank R.
  */
 
-public class AppointmentFlyweightFactoryTest implements uta.cse4361.interfaces.Constants{
+public class SlotFactoryTest implements uta.cse4361.interfaces.Constants{
     
-    public AppointmentFlyweightFactoryTest() {
+    public SlotFactoryTest() {
     }
 
     Date currentDate;
@@ -75,22 +75,22 @@ public class AppointmentFlyweightFactoryTest implements uta.cse4361.interfaces.C
     @Test
     public void createAvailableFlyweightTest()
     {
-        String result = AppointmentFlyweightFactory.getInstance().
+        String result = SlotFactory.getInstance().
                 createFlyweights(currentDate, MIN_HOUR, MIN_HOUR + 1, 
                         MIN_MINUTE, MIN_MINUTE + 30, 0, AVAILABLE_FLYWEIGHT_KEY);
         
         assertEquals("The factory did not return success", "", result);
         
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> savedFlyweights = fdb.getDaysFlyweights(currentDate);
+        ArrayList<Slot> savedFlyweights = fdb.getDaysFlyweights(currentDate);
         
         int nextTime = savedFlyweights.get(0).getTime();
         
         assertEquals("The start hour was incorrect", MIN_HOUR, getHour(nextTime));
         assertEquals("The start minute was incorrect", MIN_MINUTE, getMinute(nextTime));
         
-        for(Flyweight flyweight: savedFlyweights)
+        for(Slot flyweight: savedFlyweights)
         {
             assertEquals("The time of the flyweight did not increment correctly.", nextTime, flyweight.getTime());
             assertEquals("The flyweight was not an available flyweight", false, flyweight.isAppointment());   
@@ -105,23 +105,23 @@ public class AppointmentFlyweightFactoryTest implements uta.cse4361.interfaces.C
     @Test
     public void createAppointmentFlyweightTest()
     {
-        String result = AppointmentFlyweightFactory.getInstance().
+        String result = SlotFactory.getInstance().
                 createFlyweights(currentDate, MIN_HOUR, MIN_HOUR + 2, 
                         MIN_MINUTE, MIN_MINUTE + 15, VALID_ID,
                         APPOINTMENT_FLYWEIGHT_KEY);
         
         assertEquals("The factory did not return success", "", result);
         
-        FlyweightDatabaseManager fdb = new FlyweightDatabaseManager();
+        SlotDatabaseManager fdb = new SlotDatabaseManager();
         
-        ArrayList<Flyweight> savedFlyweights = fdb.getDaysFlyweights(currentDate);
+        ArrayList<Slot> savedFlyweights = fdb.getDaysFlyweights(currentDate);
         
         int nextTime = savedFlyweights.get(0).getTime();
         
         assertEquals("The start hour was incorrect", MIN_HOUR, getHour(nextTime));
         assertEquals("The start minute was incorrect", MIN_MINUTE, getMinute(nextTime));
         
-        for(Flyweight flyweight: savedFlyweights)
+        for(Slot flyweight: savedFlyweights)
         {
             assertEquals("The time of the flyweight did not increment correctly.", nextTime, flyweight.getTime());
             assertEquals("The flyweight was not an appointment flyweight", true, flyweight.isAppointment());   
@@ -135,32 +135,32 @@ public class AppointmentFlyweightFactoryTest implements uta.cse4361.interfaces.C
     @Test
     public void createInvalidFlyweightTest()
     {
-        String result =AppointmentFlyweightFactory.getInstance().
+        String result =SlotFactory.getInstance().
                 createFlyweights(currentDate, MIN_HOUR + 2, MIN_HOUR, 
                         MIN_MINUTE, MIN_MINUTE + 15, VALID_ID, 
                         APPOINTMENT_FLYWEIGHT_KEY);
         
         assertEquals("An invalid hour did not produce an error", ILLEGAL_ARGUMENT_FAULT, result);
         
-        result =AppointmentFlyweightFactory.getInstance().
+        result =SlotFactory.getInstance().
                 createFlyweights(currentDate, MIN_HOUR, MIN_HOUR, 
                         MIN_MINUTE+ 15, MIN_MINUTE, 0, AVAILABLE_FLYWEIGHT_KEY);
         
         assertEquals("An invalid minute did not produce an error", ILLEGAL_ARGUMENT_FAULT, result);
         
-        result =AppointmentFlyweightFactory.getInstance().
+        result =SlotFactory.getInstance().
                 createFlyweights(currentDate, MIN_HOUR, MIN_HOUR + 2, 
                         MIN_MINUTE, MIN_MINUTE + 15, 0, "");
         
         assertEquals("An invalid key did not produce an error", ILLEGAL_KEY_FAULT, result);
         
-        result =AppointmentFlyweightFactory.getInstance().
+        result =SlotFactory.getInstance().
                 createFlyweights(currentDate, MIN_HOUR - 1, MIN_HOUR, 
                         MIN_MINUTE, MIN_MINUTE + 15, 0, AVAILABLE_FLYWEIGHT_KEY);
         
         assertEquals("An invalid flyweight time did not produce an error", ILLEGAL_FLYWEIGHT_FAULT, result);
         
-        result =AppointmentFlyweightFactory.getInstance().
+        result =SlotFactory.getInstance().
                 createFlyweights(currentDate, MIN_HOUR, MIN_HOUR + 1, 
                         MIN_MINUTE - 15, MIN_MINUTE, VALID_ID, 
                         APPOINTMENT_FLYWEIGHT_KEY);

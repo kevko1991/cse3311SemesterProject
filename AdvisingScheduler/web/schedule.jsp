@@ -6,7 +6,7 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
-<%@page import="uta.cse4361.businessobjects.FlyweightDatabaseManager"%>
+<%@page import="uta.cse4361.databases.SlotDatabaseManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 
         <jsp:include page="header.jsp" />
         <%
-            FlyweightDatabaseManager fdm = new FlyweightDatabaseManager();
+            SlotDatabaseManager fdm = new SlotDatabaseManager();
             ArrayList<Date> availableDates = fdm.getDatesForAvailability();
             ArrayList<String> availables = new ArrayList<String>();
             for (Date d : availableDates) {

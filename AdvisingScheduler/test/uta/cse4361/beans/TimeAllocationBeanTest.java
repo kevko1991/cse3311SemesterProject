@@ -17,9 +17,9 @@ import static org.junit.Assert.*;
  *
  * @author Han
  */
-public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Constants{
+public class TimeAllocationBeanTest implements uta.cse4361.interfaces.Constants{
     
-    public TimeAllocationSlotBeanTest() {
+    public TimeAllocationBeanTest() {
     }
     
     @BeforeClass
@@ -43,7 +43,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
      */
     @Test
     public void testAllocateTime() {
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         instance.setDate(new Date());
         instance.setStartHour(15);
         instance.setEndHour(15);
@@ -60,7 +60,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
     @Test
     public void testSetDate() {
         Date d = new Date();
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         instance.setDate(d);
         assertEquals(d, instance.getDate());
     }
@@ -71,7 +71,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
     @Test
     public void testSetStartHour() {
         int sH = 11;
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         instance.setStartHour(sH);
         assertEquals(sH, instance.getStartHour());
     }
@@ -82,7 +82,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
     @Test
     public void testSetEndHour() {
         int eH = 12;
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         instance.setEndHour(eH);
         assertEquals(eH, instance.getEndHour());
     }
@@ -93,7 +93,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
     @Test
     public void testSetStartMinute() {
         int sM = 30;
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         instance.setStartMinute(sM);
         assertEquals(sM, instance.getStartMinute());
     }
@@ -104,7 +104,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
     @Test
     public void testSetEndMinute() {
         int eM = 26;
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         instance.setEndMinute(eM);
         assertEquals(eM, instance.getEndMinute());
     }
@@ -114,7 +114,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
      */
     @Test
     public void testGetDate() {
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         Date expResult = new Date();
         instance.setDate(expResult);
         Date result = instance.getDate();
@@ -126,7 +126,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
      */
     @Test
     public void testGetStartHour() {
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         int expResult = 8;
         instance.setStartHour(expResult);
         int result = instance.getStartHour();
@@ -138,7 +138,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
      */
     @Test
     public void testGetEndHour() {
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         int expResult = 23;
         instance.setEndHour(expResult);
         int result = instance.getEndHour();
@@ -150,7 +150,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
      */
     @Test
     public void testGetStartMinute() {
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         int expResult = 0;
         instance.setStartMinute(expResult);
         int result = instance.getStartMinute();
@@ -162,7 +162,7 @@ public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Consta
      */
     @Test
     public void testGetEndMinute() {
-        TimeAllocationSlotBean instance = new TimeAllocationSlotBean();
+        TimeAllocationBean instance = new TimeAllocationBean();
         int expResult = 50;
         instance.setEndMinute(expResult);
         int result = instance.getEndMinute();

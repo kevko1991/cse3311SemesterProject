@@ -14,13 +14,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
         <jsp:include page="header.jsp" />
-        <jsp:useBean id="fdm" class="uta.cse4361.businessobjects.FlyweightDatabaseManager" scope="session"/>
+        <jsp:useBean id="fdm" class="uta.cse4361.databases.SlotDatabaseManager" scope="session"/>
         <%
             
             int fwsize = 0;
-            fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager(); 
+            fdm = new uta.cse4361.databases.SlotDatabaseManager(); 
             Date currDate = new Date();
-            java.util.ArrayList<uta.cse4361.businessobjects.Flyweight> fw = fdm.getYearFlyweights(currDate);  
+            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = fdm.getYearFlyweights(currDate);  
             
             StringBuilder sbDay = new StringBuilder();
                                 StringBuilder sbHour = new StringBuilder();
@@ -61,7 +61,7 @@
             </script>
             
             <script type="text/javascript">  
-                                    //Parse String Flyweights to array
+                                    //Parse String Slots to array
                                     var size = '<%=fwsize%>';
                                     if(size==0)
                                     {
@@ -161,7 +161,7 @@
                                    format.setLenient(false);
                                    java.util.Date newDate = format.parse(request.getParameter("date"));
                                 %>
-                                 <jsp:useBean id="allocateTimeBean" class="uta.cse4361.businessobjects.TimeAllocationSlotBean" scope="session"/>
+                                 <jsp:useBean id="allocateTimeBean" class="uta.cse4361.beans.TimeAllocationBean" scope="session"/>
                                  <jsp:setProperty name="allocateTimeBean" property="date" value= '<%= newDate %>'/>
                                  <jsp:setProperty name="allocateTimeBean" property="startHour" value= '<%= getHour(request.getParameter("startTime")) %>'/>
                                  <jsp:setProperty name="allocateTimeBean" property="startMinute" value= '<%= getMin(request.getParameter("startTime")) %>'/>
@@ -172,7 +172,7 @@
                                 allocateTimeBean.allocateTimeRepeat();
                                 
                                 //new fdm to get a fresh copy of the flyweights
-                                fdm = new uta.cse4361.businessobjects.FlyweightDatabaseManager(); 
+                                fdm = new uta.cse4361.databases.SlotDatabaseManager(); 
                                 fw = fdm.getYearFlyweights(currDate);  
 
                                  sbDay = new StringBuilder();
