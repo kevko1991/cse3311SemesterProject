@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  *
  * @author Han
  */
-public class TimeAllocationSlotBeanTest {
+public class TimeAllocationSlotBeanTest implements uta.cse4361.interfaces.Constants{
     
     public TimeAllocationSlotBeanTest() {
     }
@@ -49,7 +49,7 @@ public class TimeAllocationSlotBeanTest {
         instance.setEndHour(15);
         instance.setStartMinute(30);
         instance.setEndMinute(45);
-        String expResult = TimeAllocationSlotBean.SUCCESS_MSG;
+        String expResult = SUCCESS_MESSAGE;
         String result = instance.allocateTime();
         assertEquals(expResult, result);
     }

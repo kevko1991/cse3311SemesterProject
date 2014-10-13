@@ -13,17 +13,8 @@ import uta.cse4361.databases.FlyweightDatabaseManager;
  *
  * @author Frank R.
  */
-public class AppointmentFlyweightFactory {
-    
-    final static String APPOINTMENT_FLYWEIGHT_KEY = "AppointmentFlyweight";
-    final static String AVAILABLE_FLYWEIGHT_KEY = "AvailableFlyweight";
-    
-    final static String ILLEGAL_ARGUMENT_FAULT = "The times that you selected are not valid (i.e. the end hour was before the start hour)";
-    final static String ILLEGAL_KEY_FAULT = "The type of flyweight you were attempting to create was not valid.";
-    final static String ILLEGAL_FLYWEIGHT_FAULT = "The flyweights could not be created.";
-    
-    final static int INCREMENT_GAP = 15;
-    
+public class AppointmentFlyweightFactory implements uta.cse4361.interfaces.Constants{
+
     private int nextHour;
     private int nextMinute;
     

@@ -14,9 +14,9 @@ import uta.cse4361.databases.AppointmentDatabaseManager;
  *
  * @author Han
  */
-public class TimeAllocationSlotBean implements java.io.Serializable {
-    final static String SUCCESS_MSG = ""; 
-    final static String AVAILABLE_FLYWEIGHT_KEY = "AvailableFlyweight";
+public class TimeAllocationSlotBean implements uta.cse4361.interfaces.Constants, java.io.Serializable {
+    //final static String SUCCESS_MSG = ""; 
+    
     
     private Date date;
     private int startHour = 0;

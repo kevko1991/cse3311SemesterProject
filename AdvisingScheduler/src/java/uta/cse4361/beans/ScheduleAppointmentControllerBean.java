@@ -8,14 +8,14 @@ package uta.cse4361.beans;
 import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Scheduler;
+import uta.cse4361.interfaces.Constants;
 
 /**
  *
  * @author Han
  */
-public class ScheduleAppointmentControllerBean {
-    final static String INITIALIZE_APPOINTMENT_FAIL = "Error when assign studentID, ID must be 10 digit number starting with 1000 or 6000";
-    final static String SUCCESS_MESSAGE = "";
+public class ScheduleAppointmentControllerBean implements Constants{
+    
     
     private String studentName = null;
     private String studentID = null;

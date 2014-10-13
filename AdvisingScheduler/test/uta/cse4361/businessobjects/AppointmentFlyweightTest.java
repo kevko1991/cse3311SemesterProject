@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class AppointmentFlyweightTest {
     
-    final static int VALID_ID = 1;
+    
     
     public AppointmentFlyweightTest() {
     }

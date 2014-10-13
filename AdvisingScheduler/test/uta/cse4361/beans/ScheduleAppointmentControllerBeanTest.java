@@ -12,12 +12,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import uta.cse4361.databases.AppointmentDatabaseManager;
+import uta.cse4361.businessobjects.AppointmentFlyweightFactory;
 
 /**
  *
  * @author Han
  */
-public class ScheduleAppointmentControllerBeanTest {
+public class ScheduleAppointmentControllerBeanTest implements uta.cse4361.interfaces.Constants{
 
     private final String sName = "First Last";
     private final String sID = "1000123456";
@@ -64,7 +66,7 @@ public class ScheduleAppointmentControllerBeanTest {
         instance.setEndHour(eH);
         instance.setStartMinute(sM);
         instance.setEndMinute(eM);
-        String expResult = ScheduleAppointmentControllerBean.INITIALIZE_APPOINTMENT_FAIL;
+        String expResult = INITIALIZE_APPOINTMENT_FAIL;
         String result = instance.scheduleAppointment();
         assertEquals(expResult, result);
     }
@@ -74,7 +76,7 @@ public class ScheduleAppointmentControllerBeanTest {
         ScheduleAppointmentControllerBean instance = new ScheduleAppointmentControllerBean();
         AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
         AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
-        aff.createFlyweights(d, sH, eH, sM, eM, adm.getNextId(), AppointmentFlyweightFactory.AVAILABLE_FLYWEIGHT_KEY);
+        aff.createFlyweights(d, sH, eH, sM, eM, adm.getNextId(), AVAILABLE_FLYWEIGHT_KEY);
         instance.setStudentID(sID);
         instance.setStudentName(sName);
         instance.setAdvisorName(aName);
@@ -84,7 +86,7 @@ public class ScheduleAppointmentControllerBeanTest {
         instance.setEndHour(eH);
         instance.setStartMinute(sM);
         instance.setEndMinute(eM);
-        String expResult = ScheduleAppointmentControllerBean.SUCCESS_MESSAGE;
+        String expResult = SUCCESS_MESSAGE;
         String result = instance.scheduleAppointment();
         assertEquals(expResult, result);
     }

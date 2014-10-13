@@ -12,14 +12,10 @@ import java.util.Date;
  *
  * @author Frank R.
  */
-public abstract class Flyweight implements Serializable, Comparable<Flyweight>
+public abstract class Flyweight implements Serializable, Comparable<Flyweight>, uta.cse4361.interfaces.Constants
 {
     
-    final static int MIN_HOUR = 0;
-    final static int MAX_HOUR = 23;
-    final static int MIN_MINUTE = 0;
-    final static int MAX_MINUTE= 59;
-    final static int ILLEGAL_APPT_ID = -1;
+    
     
     private int appointmentId;
     

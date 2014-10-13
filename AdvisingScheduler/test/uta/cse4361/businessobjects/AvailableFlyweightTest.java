@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  *
  * @author Frank R.
  */
-public class AvailableFlyweightTest {
+public class AvailableFlyweightTest implements uta.cse4361.interfaces.Constants{
     
     public AvailableFlyweightTest() {
     }
@@ -21,7 +21,7 @@ public class AvailableFlyweightTest {
     @Test
     public void testHasAppointment() 
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE);
+        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR, MIN_MINUTE);
         
         boolean hasAppt = availableF.isAppointment();
         
@@ -32,18 +32,18 @@ public class AvailableFlyweightTest {
     @Test
     public void testGetAppointmentId()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE);
+        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR, MIN_MINUTE);
         
         int apptId = availableF.getAppointmentId();
         
         assertEquals("This AvailableFlyweight should have the invalid appointment Id.",
-                Flyweight.ILLEGAL_APPT_ID, apptId);
+                ILLEGAL_APPT_ID, apptId);
     }
     
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowHourValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), Flyweight.MIN_HOUR - 1, Flyweight.MIN_MINUTE);
+        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR - 1, MIN_MINUTE);
         
         fail();
     }
@@ -51,7 +51,7 @@ public class AvailableFlyweightTest {
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighHourValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), Flyweight.MAX_HOUR + 1, Flyweight.MIN_MINUTE);
+        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MAX_HOUR + 1, MIN_MINUTE);
         
         fail();
     }
@@ -59,7 +59,7 @@ public class AvailableFlyweightTest {
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowMinuteValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE - 1);
+        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MIN_HOUR, MIN_MINUTE - 1);
         
         fail();
     }
@@ -67,7 +67,7 @@ public class AvailableFlyweightTest {
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighMinuteValue()
     {
-        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), Flyweight.MAX_HOUR, Flyweight.MAX_MINUTE + 1);
+        AvailableFlyweight availableF = new AvailableFlyweight(new Date(), MAX_HOUR, MAX_MINUTE + 1);
         
         fail();
     }

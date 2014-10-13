@@ -11,14 +11,14 @@ import uta.cse4361.databases.FlyweightDatabaseManager;
  *
  * @author Nabin
  */
-public class Scheduler {
+public class Scheduler implements uta.cse4361.interfaces.Constants{
     FlyweightDatabaseManager fdm =new FlyweightDatabaseManager();
     Date date = new Date();
     AppointmentFlyweightFactory aff =  AppointmentFlyweightFactory.getInstance();
     Appointment a =new Appointment();
     AppointmentDatabaseManager adm = new  AppointmentDatabaseManager();
-    final static String SUCCESS_MSG = ""; 
-    final static String TIME_IS_NOT_FREE_FAULT = "The time for the appointment is not free.";
+
+    
     public Scheduler()
     {
         
@@ -26,7 +26,7 @@ public class Scheduler {
 
     
     public String schedule(Appointment a){
-        String msg = SUCCESS_MSG;
+        String msg = SUCCESS_MESSAGE;
         if (fdm.isFree(a.getDate(), a.getStartHour(), a.getEndHour(), a.getStartMinute(),a.getEndMinute())== true )
         {
             msg = aff.createFlyweights(a.getDate(), a.getStartHour(), a.getEndHour(),a.getStartMinute(), a.getEndMinute(), 
@@ -35,7 +35,7 @@ public class Scheduler {
         else
             msg = TIME_IS_NOT_FREE_FAULT;
         
-        if(msg == SUCCESS_MSG)
+        if(msg == SUCCESS_MESSAGE)
         {
             adm.saveAppointment(a);
         }
