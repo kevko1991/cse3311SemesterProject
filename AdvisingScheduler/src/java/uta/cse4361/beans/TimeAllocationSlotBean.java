@@ -30,7 +30,7 @@ public class TimeAllocationSlotBean implements uta.cse4361.interfaces.Constants,
     }
     
     public String allocateTime() {
-        String msg = SUCCESS_MSG;
+        String msg = SUCCESS_MESSAGE;
         AppointmentFlyweightFactory aff = AppointmentFlyweightFactory.getInstance();
         AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
         int id = adm.getNextId();
@@ -40,7 +40,7 @@ public class TimeAllocationSlotBean implements uta.cse4361.interfaces.Constants,
     
     
     public String allocateTimeRepeat() {
-        String msg = SUCCESS_MSG;
+        String msg = SUCCESS_MESSAGE;
         Date rDate = date;
         int currDayOfWeek;
         int selectedDayOfWeek;
