@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  *
  * @author Frank R.
  */
-public class AppointmentFlyweightTest {
+public class AppointmentFlyweightTest implements uta.cse4361.interfaces.Constants{
     
     
     
@@ -23,7 +23,7 @@ public class AppointmentFlyweightTest {
     @Test
     public void testHasAppointment() 
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE);
+        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE);
         
         boolean hasAppt = apptF.isAppointment();
         
@@ -34,7 +34,7 @@ public class AppointmentFlyweightTest {
     @Test
     public void testGetAppointmentId()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE);
+        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE);
         
         int apptId = apptF.getAppointmentId();
         
@@ -45,7 +45,7 @@ public class AppointmentFlyweightTest {
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowHourValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), Flyweight.MIN_HOUR - 1, Flyweight.MIN_MINUTE);
+        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR - 1, MIN_MINUTE);
         
         fail();
     }
@@ -53,7 +53,7 @@ public class AppointmentFlyweightTest {
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighHourValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), Flyweight.MAX_HOUR + 1, Flyweight.MIN_MINUTE);
+        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MAX_HOUR + 1, MIN_MINUTE);
         
         fail();
     }
@@ -61,7 +61,7 @@ public class AppointmentFlyweightTest {
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowMinuteValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), Flyweight.MIN_HOUR, Flyweight.MIN_MINUTE - 1);
+        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MIN_HOUR, MIN_MINUTE - 1);
         
         fail();
     }
@@ -69,7 +69,7 @@ public class AppointmentFlyweightTest {
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighMinuteValue()
     {
-        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), Flyweight.MAX_HOUR, Flyweight.MAX_MINUTE + 1);
+        AppointmentFlyweight apptF = new AppointmentFlyweight(VALID_ID, new Date(), MAX_HOUR, MAX_MINUTE + 1);
         
         fail();
     }
