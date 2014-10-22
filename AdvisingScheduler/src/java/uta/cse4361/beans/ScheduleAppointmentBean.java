@@ -34,7 +34,10 @@ public class ScheduleAppointmentBean implements Constants{
     public String scheduleAppointment() {
         String msg = SUCCESS_MESSAGE;
         Appointment a = new Appointment();
-        boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.description, this.date, this.startHour, this.endHour, this.startMinute, this.endMinute);
+        boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, 
+                this.description, this.date, 
+                this.startHour, this.endHour, 
+                this.startMinute, this.endMinute);
         if(r == false)
             return this.INITIALIZE_APPOINTMENT_FAIL;
         Scheduler s = new Scheduler();
