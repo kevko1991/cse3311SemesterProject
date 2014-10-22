@@ -5,18 +5,17 @@
  */
 package uta.cse4361.businessobjects;
 import java.util.*;
-import uta.cse4361.databases.AppointmentDatabaseManager;
-import uta.cse4361.databases.SlotDatabaseManager;
+import uta.cse4361.databases.DatabaseManager;
 /**
  *
  * @author Nabin
  */
 public class Scheduler implements uta.cse4361.interfaces.Constants{
-    SlotDatabaseManager fdm =new SlotDatabaseManager();
+    DatabaseManager databaseManager = new DatabaseManager();
     Date date = new Date();
     SlotFactory aff =  SlotFactory.getInstance();
-    Appointment a =new Appointment();
-    AppointmentDatabaseManager adm = new  AppointmentDatabaseManager();
+    Appointment appointment =new Appointment();
+    
 
     
     public Scheduler()
@@ -25,19 +24,15 @@ public class Scheduler implements uta.cse4361.interfaces.Constants{
     }
 
     
-    public String schedule(Appointment a){
+    public String schedule(Appointment newAppointment){
+        appointment = newAppointment;
         String msg = SUCCESS_MESSAGE;
-        if (fdm.isFree(a.getDate(), a.getStartHour(), a.getEndHour(), a.getStartMinute(),a.getEndMinute())== true )
+        boolean isFree = databaseManager.isFree(appointment.getDate(), 
+                appointment.getStartHour(), appointment.getEndHour(), 
+                appointment.getStartMinute(),appointment.getEndMinute());
+        if (isFree == true )
         {
-            msg = aff.createFlyweights(a.getDate(), a.getStartHour(), a.getEndHour(),a.getStartMinute(), a.getEndMinute(), 
-                    adm.getNextId(), SlotFactory.APPOINTMENT_FLYWEIGHT_KEY);   
-        }
-        else
-            msg = TIME_IS_NOT_FREE_FAULT;
-        
-        if(msg == SUCCESS_MESSAGE)
-        {
-            adm.saveAppointment(a);
+            databaseManager.saveAppointment(appointment);
         }
         return msg;
     }
