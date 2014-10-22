@@ -7,7 +7,7 @@ package uta.cse4361.businessobjects;
 
 import java.util.ArrayList;
 import java.util.Date;
-import uta.cse4361.databases.SlotDatabaseManager;
+import uta.cse4361.databases.DatabaseManager;
 
 /**
  *
@@ -51,21 +51,27 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
         private static final SlotFactory INSTANCE = new SlotFactory();
     }
     
-    public String createFlyweights(Date date, int startHour, int endHour, int startMinute, int endMinute, int apptId, String key)
+    private boolean isValidTime(int startHour, int endHour, int startMinute, int endMinute)
+    {
+        return (startHour > endHour) || ((startHour == endHour) && (startMinute > endMinute));
+    }
+    
+    public String createSlots(Date date, int startHour, int endHour, int startMinute, int endMinute,  String key)
     {
                 
-        if((startHour > endHour) || ((startHour == endHour) && (startMinute > endMinute)))
+        if(isValidTime(startHour, endHour, startMinute, endMinute))
         {
             return ILLEGAL_ARGUMENT_FAULT;
         }
         
         int numberOfFlyweights = determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
         
-        ArrayList<Slot> flyweightsToSave = new ArrayList<Slot>();
+        ArrayList<Slot> slotsToSave = new ArrayList<Slot>();
         
         nextHour = startHour;
         nextMinute = startMinute;
         
+        /*
         if(key.equals(APPOINTMENT_FLYWEIGHT_KEY))
         {
             for(int i = 0; i < numberOfFlyweights; i++)
@@ -81,13 +87,15 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
                 updateTimes();
             }
         }
-        else if(key.equals(AVAILABLE_FLYWEIGHT_KEY))
+        else 
+                */
+        if(key.equals(AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY))
         {
             for(int i = 0; i < numberOfFlyweights; i++)
             {
                 try
                 {
-                    flyweightsToSave.add(new AvailableSlot(date, nextHour, nextMinute));
+                    slotsToSave.add(new AvailableSlot(date, nextHour, nextMinute));
                 }
                 catch (IllegalArgumentException e)
                 {
@@ -101,9 +109,63 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
             return ILLEGAL_KEY_FAULT;
         }
         
-        SlotDatabaseManager fdb = new SlotDatabaseManager();
+        DatabaseManager databaseManager = new DatabaseManager();
         
-        return fdb.saveFlyweights(flyweightsToSave);
+        return databaseManager.saveSlots(slotsToSave);
+        
+    }
+    
+    public ArrayList<Slot> generateSlots(Date date, int startHour, int endHour, int startMinute, int endMinute, int apptId, String key)
+    {
+        if(isValidTime(startHour, endHour, startMinute, endMinute))
+        {
+            return null;
+        }
+        
+        int numberOfFlyweights = determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
+        
+        ArrayList<Slot> flyweightsToReturn = new ArrayList<Slot>();
+        
+        nextHour = startHour;
+        nextMinute = startMinute;
+        
+        
+        if(key.equals(APPOINTMENT_FLYWEIGHT_KEY))
+        {
+            for(int i = 0; i < numberOfFlyweights; i++)
+            {
+                try
+                {
+                    flyweightsToReturn.add(new AppointmentSlot(apptId, date, nextHour, nextMinute));
+                }
+                catch (IllegalArgumentException e)
+                {
+                    return null;
+                }
+                updateTimes();
+            }
+        }
+        else if(key.equals(AVAILABLE_FLYWEIGHT_KEY))
+        {
+            for(int i = 0; i < numberOfFlyweights; i++)
+            {
+                try
+                {
+                    flyweightsToReturn.add(new AvailableSlot(date, nextHour, nextMinute));
+                }
+                catch (IllegalArgumentException e)
+                {
+                    return null;
+                }
+                updateTimes();
+            }
+        }
+        else
+        {
+            return null;
+        }
+        
+        return flyweightsToReturn;
     }
     
     
