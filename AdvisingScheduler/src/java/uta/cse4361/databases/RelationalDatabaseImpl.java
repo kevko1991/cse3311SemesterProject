@@ -36,12 +36,12 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
-    public void modifyAppointment(int id, Appointment appt) {
+    public String modifyAppointment(int id, Appointment appt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void modifySlot(int slotID) {
+    public String modifySlot(int slotID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

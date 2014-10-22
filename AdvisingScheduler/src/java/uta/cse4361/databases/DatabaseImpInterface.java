@@ -15,6 +15,6 @@ public interface DatabaseImpInterface {
     public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute);
     public String saveSlots(ArrayList<Slot> slots);
     public String saveAppointment(Appointment appt);
-    public void modifyAppointment(int id, Appointment appt);
-    public void modifySlot(int slotID);
+    public String modifyAppointment(int id, Appointment appt);
+    public String modifySlot(int slotID);
 }

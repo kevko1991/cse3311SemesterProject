@@ -29,10 +29,10 @@ public class DatabaseManager {
         
         return "";
     }
-    public void modifyAppointment(int id, Appointment appt) {
-        imp.modifyAppointment(id, appt);
+    public String modifyAppointment(int id, Appointment appt) {
+        return imp.modifyAppointment(id, appt);
     }
-    public void modifySlot(int slotID) {
-        
+    public String modifySlot(int slotID) {
+        return imp.modifySlot(slotID);
     }
 }
