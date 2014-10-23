@@ -5,10 +5,29 @@
  */
 package uta.cse4361.databases;
 
+import java.sql.SQLException;
+import uta.cse4361.businessobjects.Appointment;
+
 /**
  *
  * @author Han
  */
-public class SaveAppointment {
+public class SaveAppointment extends RDBImplCommand{
+    
+    Appointment appointment;
+    
+    public SaveAppointment(Appointment appt) {
+        super();
+        this.appointment = appt;
+    }
+    @Override
+    public void queryDB() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void processResult() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
