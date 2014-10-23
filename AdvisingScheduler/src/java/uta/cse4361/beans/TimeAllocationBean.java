@@ -33,7 +33,7 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
         String msg = SUCCESS_MESSAGE;
         SlotFactory aff = SlotFactory.getInstance();
         AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
-        msg = aff.createFlyweights(date, this.startHour, this.endHour, this.startMinute, this.endMinute,  AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
+        msg = aff.createSlots(date, this.startHour, this.endHour, this.startMinute, this.endMinute,  AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
         return msg;
     }
     
