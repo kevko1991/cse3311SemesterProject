@@ -9,6 +9,7 @@ package uta.cse4361.databases;
  *
  * @author Han
  */
-public interface RDBImplCommand {
+public abstract class RDBImplCommand {
+    
     
 }
