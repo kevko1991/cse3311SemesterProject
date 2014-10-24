@@ -5,7 +5,8 @@
  */
 package uta.cse4361.databases;
 
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Properties;
 
 /**
  *
@@ -13,9 +14,12 @@ import java.sql.SQLException;
  */
 public abstract class RDBImplCommand {
     
-    Object result;
+    protected Object result;
+    protected Connection conn;
+    protected PreparedStatement statement;
+    protected ResultSet resultSet;
     
-    public void execute() {
+    public void execute() throws SQLException{
         try {
             connectDB();
             queryDB();
@@ -28,12 +32,12 @@ public abstract class RDBImplCommand {
         }
     }
     
-    private void connectDB() throws SQLException {
-        
+    protected void connectDB() throws SQLException {
+        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/advising;create=true;user=advising;password=advising");
     }
     
-    private void disconnectDB() {
-        
+    protected void disconnectDB() throws SQLException{
+        conn.close();
     }
     
     public Object getResult() {
