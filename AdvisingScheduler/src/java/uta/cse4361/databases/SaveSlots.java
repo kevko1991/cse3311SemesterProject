@@ -15,7 +15,7 @@ import uta.cse4361.businessobjects.Slot;
 
 public class SaveSlots extends RDBImplCommand {
     ArrayList<Slot> slots;
-    String sqlQuery = "INSERT INTO SLOT(SlotDate, SlotStartHour, SlotStartMin) VALUES (?, ?, ?)";
+    String sqlQuery = "INSERT INTO \"SLOT\"(\"SlotDate\", \"SlotStartHour\", \"SlotStartMin\") VALUES (?, ?, ?)";
     
     public SaveSlots(ArrayList<Slot> slots){
         this.slots = slots;
@@ -23,14 +23,15 @@ public class SaveSlots extends RDBImplCommand {
     
     public void queryDB() throws SQLException{
         try{
+            statement = conn.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
             for(Slot s: slots){
-                statement = conn.prepareStatement(sqlQuery);
                 statement.setDate(1, new java.sql.Date(s.getDate().getTime()));
-                statement.setInt(2, (s.getTime()/100));
-                statement.setInt(3, (s.getTime()%100));
+                statement.setInt(2, (s.getTime()/60));
+                statement.setInt(3, (s.getTime()%60));
                 statement.executeUpdate();
                 System.out.println("inserted data");
             }
+            resultSet = statement.getGeneratedKeys();
         }
         catch (SQLException e){
             System.out.println("failed");
@@ -40,6 +41,20 @@ public class SaveSlots extends RDBImplCommand {
             }
         }
     }
-    public void processResult(){};
-
+    //Result is the id's of inserted values
+    public void processResult(){
+        if(resultSet!=null){
+            result = new ArrayList<Integer>();
+            try{
+                //resultSet.next isnt getting values?
+                while(resultSet.next()){
+                    ((ArrayList<Integer>)result).add(resultSet.getInt("SlotID"));
+                    System.out.println("going");
+                }
+            }
+            catch(SQLException e){
+                System.out.println("process result exception");
+            }
+        }
+    }
 }

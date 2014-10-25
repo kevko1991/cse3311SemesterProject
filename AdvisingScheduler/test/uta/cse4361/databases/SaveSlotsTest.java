@@ -47,15 +47,23 @@ public class SaveSlotsTest {
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
         ArrayList<Slot> slots = new ArrayList<Slot>();
-        slots.add(new AvailableSlot(new Date(), 8, 0));
-        slots.add(new AvailableSlot(new Date(), 8, 15));
-        slots.add(new AvailableSlot(new Date(), 8, 30));
-        slots.add(new AvailableSlot(new Date(), 8, 45));
-        slots.add(new AvailableSlot(new Date(), 9, 0));
-        slots.add(new AvailableSlot(new Date(), 9, 15));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 15));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 30));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 45));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15));
         SaveSlots instance = new SaveSlots(slots);
-        instance.execute();
+        //instance.execute();
+        instance.connectDB();
+        instance.conn.setAutoCommit(false);
+        instance.queryDB();
+        instance.conn.rollback();
+        instance.disconnectDB();
+        instance.processResult();
+        assertNotNull(instance.result);
     }
+    
 
     /**
      * Test of processResult method, of class SaveSlots.
