@@ -21,6 +21,7 @@ public class ScheduleAppointmentBean implements Constants{
     private String studentID = null;
     private String advisorName = null;
     private String description = null;
+    private String type = null;
     private int startHour = 0;
     private int startMinute = 0;
     private int endHour = 0;
@@ -34,7 +35,7 @@ public class ScheduleAppointmentBean implements Constants{
     public String scheduleAppointment() {
         String msg = SUCCESS_MESSAGE;
         Appointment a = new Appointment();
-        boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, 
+        boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.type, 
                 this.description, this.date, 
                 this.startHour, this.endHour, 
                 this.startMinute, this.endMinute);
@@ -54,6 +55,9 @@ public class ScheduleAppointmentBean implements Constants{
     }
     public void setAdvisorName(String aName) {
         this.advisorName = aName;
+    }
+    public void setType(String type) {
+        this.type = type;
     }
     public void setDescription(String dp) {
         this.description = dp;
@@ -80,6 +84,9 @@ public class ScheduleAppointmentBean implements Constants{
     }
     public String getStudentID() {
         return this.studentID;
+    }
+    public String getType() {
+        return this.type;
     }
     public String getAdvisorName() {
         return this.advisorName;

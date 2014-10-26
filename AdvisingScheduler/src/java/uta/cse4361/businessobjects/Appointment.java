@@ -18,6 +18,7 @@ public class Appointment implements java.io.Serializable {
     private String studentID = null;
     private String advisorName = null;
     private String description = null;
+    private String type = null;
     private int startHour = 0;
     private int startMinute = 0;
     private int endHour = 0;
@@ -28,11 +29,12 @@ public class Appointment implements java.io.Serializable {
 
     }
     
-    public boolean initialize(String sName, String sID, String aName, String dp, Date date, int sH, int eH, int sM, int eM) {
+    public boolean initialize(String sName, String sID, String aName, String type, String dp, Date date, int sH, int eH, int sM, int eM) {
         this.setStudentName(sName);
         if(this.setStudentID(sID) == false)
             return false;
         this.setAdvisorName(aName);
+        this.setType(type);
         this.setDescription(dp);
         this.setDate(date);
         this.setStartHour(sH);
@@ -56,6 +58,9 @@ public class Appointment implements java.io.Serializable {
           return false;
         this.studentID = sID;
         return true;
+    }
+    public void setType(String type) {
+        this.type = type;
     }
     public void setAdvisorName(String aName) {
         this.advisorName = aName;
@@ -82,6 +87,9 @@ public class Appointment implements java.io.Serializable {
     // Getters
     public int getApptID() {
         return this.apptID;
+    }
+    public String getType() {
+        return this.type;
     }
     public String getStudentName() {
         return this.studentName;

@@ -15,6 +15,9 @@ import uta.cse4361.businessobjects.Appointment;
 public class SaveAppointment extends RDBImplCommand{
     
     Appointment appointment;
+    String sqlQuery = "INSERT INTO \"APPOINTMENT\"(\"ApptDate\", \"ApptStartHour\", \"ApptStartMin\", \"ApptEndHour\", \"ApptEndMinute\", "
+                                + "\"ApptType\", \"Description\", \"StudentID\", \"StudentName\", \"AdvisorName\") "
+                                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     public SaveAppointment(Appointment appt) {
         super();
@@ -22,7 +25,32 @@ public class SaveAppointment extends RDBImplCommand{
     }
     @Override
     public void queryDB() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            statement = conn.prepareStatement(sqlQuery,  new String[]{"ApptID"});
+            statement.setDate(1, new java.sql.Date(appointment.getDate().getTime()));
+            statement.setInt(2, appointment.getStartHour());
+            statement.setInt(3, appointment.getStartMinute());
+            statement.setInt(4, appointment.getEndHour());
+            statement.setInt(5, appointment.getEndMinute());
+            statement.setString(6, appointment.getType());
+            statement.setString(7, appointment.getDescription());
+            statement.setString(8, appointment.getStudentID());
+            statement.setString(9, appointment.getStudentName());
+            statement.setString(10, appointment.getAdvisorName());
+            statement.executeUpdate();
+            resultSet = statement.getGeneratedKeys();
+                if(resultSet.next() == true){
+                    result = resultSet.getInt("ApptID");
+                }
+        }
+        catch (SQLException e){
+            System.out.println("failed");
+            conn.close();
+        } finally {
+            if(statement != null){
+                statement.close();
+            }
+        }
     }
 
     @Override

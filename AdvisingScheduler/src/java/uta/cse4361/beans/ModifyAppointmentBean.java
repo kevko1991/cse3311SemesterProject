@@ -21,6 +21,7 @@ public class ModifyAppointmentBean implements Constants
     private String studentId = null;
     private String advisorName = null;
     private String description = null;
+    private String type = null;
     private int startHour = 0;
     private int startMinute = 0;
     private int endHour = 0;
@@ -36,8 +37,8 @@ public class ModifyAppointmentBean implements Constants
         Appointment appointment = new Appointment();
         DatabaseManager databaseManager = new DatabaseManager();
         
-        boolean result = appointment.initialize(this.studentName, this.studentId, 
-                this.advisorName, this.description, this.date, 
+        boolean result = appointment.initialize(this.studentName, this.studentId,
+                this.advisorName, this.type, this.description, this.date, 
                 this.startHour, this.endHour, 
                 this.startMinute, this.endMinute);
         if(result == false)
@@ -65,6 +66,9 @@ public class ModifyAppointmentBean implements Constants
     }
     public void setAdvisorName(String newAdvisorName) {
         this.advisorName = newAdvisorName;
+    }
+    public void setType(String type) {
+        this.type = type;
     }
     public void setDescription(String newDescription) {
         this.description = newDescription;
@@ -98,6 +102,9 @@ public class ModifyAppointmentBean implements Constants
     }
     public String getAdvisorName() {
         return this.advisorName;
+    }
+    public String getType() {
+        return this.type;
     }
     public String getDescription() {
         return this.description;
