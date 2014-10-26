@@ -26,7 +26,7 @@ public class SaveAppointment extends RDBImplCommand{
     }
 
     @Override
-    public void processResult() throws SQLException {
+    public void processResult() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
