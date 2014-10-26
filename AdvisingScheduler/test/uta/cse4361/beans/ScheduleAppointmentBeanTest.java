@@ -25,6 +25,7 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
     private final String sID = "1000123456";
     private final String wrongID = "30123";
     private final String aName = "Advisor Name";
+    private final String type = "Advising Type";
     private final String dp = "This is a description test";
     private final Date d = new Date();
     private final int sH = 11;
@@ -60,6 +61,7 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         instance.setStudentID(wrongID);
         instance.setStudentName(sName);
         instance.setAdvisorName(aName);
+        instance.setType(type);
         instance.setDate(d);
         instance.setDescription(dp);
         instance.setStartHour(sH);
@@ -76,10 +78,11 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         SlotFactory aff = SlotFactory.getInstance();
         AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
-        aff.createFlyweights(d, sH, eH, sM, eM, adm.getNextId(), AVAILABLE_FLYWEIGHT_KEY);
+        aff.createSlots(d, sH, eH, sM, eM, AVAILABLE_FLYWEIGHT_KEY);
         instance.setStudentID(sID);
         instance.setStudentName(sName);
         instance.setAdvisorName(aName);
+        instance.setType(type);
         instance.setDate(d);
         instance.setDescription(dp);
         instance.setStartHour(sH);
@@ -120,7 +123,17 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         instance.setAdvisorName(aName);
         assertEquals(aName, instance.getAdvisorName());
     }
-
+    
+    /**
+     * Test of setType method, of class ScheduleAppointmentControllerBean.
+     */
+    @Test
+    public void testSetType() {
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
+        instance.setType(type);
+        assertEquals(type, instance.getAdvisorName());
+    }
+    
     /**
      * Test of setDescription method, of class ScheduleAppointmentControllerBean.
      */

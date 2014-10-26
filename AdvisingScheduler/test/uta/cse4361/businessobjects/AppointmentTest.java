@@ -47,6 +47,7 @@ public class AppointmentTest {
         String sName = "First Last";
         String sID = "1000123456";
         String aName = "Advisor Name";
+        String type = "Advising Type";
         String dp = "This is the test ";
         Date date = new Date();
         int sH = 13;
@@ -55,7 +56,7 @@ public class AppointmentTest {
         int eM = 0;
         Appointment instance = new Appointment();
         boolean expResult = true;
-        boolean result = instance.initialize(sName, sID, aName, dp, date, sH, eH, sM, eM);
+        boolean result = instance.initialize(sName, sID, aName, type, dp, date, sH, eH, sM, eM);
         assertEquals(expResult, result);
     }
     
@@ -68,6 +69,7 @@ public class AppointmentTest {
         String sName = "First Last";
         String sID = "3000123456";
         String aName = "Advisor Name";
+        String type = "Advising Type";
         String dp = "This is the test ";
         Date date = new Date();
         int sH = 13;
@@ -76,7 +78,7 @@ public class AppointmentTest {
         int eM = 0;
         Appointment instance = new Appointment();
         boolean expResult = false;
-        boolean result = instance.initialize(sName, sID, aName, dp, date, sH, eH, sM, eM);
+        boolean result = instance.initialize(sName, sID, aName, type, dp, date, sH, eH, sM, eM);
         assertEquals(expResult, result);
     }
 

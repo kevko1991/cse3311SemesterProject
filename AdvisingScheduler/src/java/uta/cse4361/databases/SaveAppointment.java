@@ -26,7 +26,8 @@ public class SaveAppointment extends RDBImplCommand{
     @Override
     public void queryDB() throws SQLException {
         try{
-            statement = conn.prepareStatement(sqlQuery,  new String[]{"ApptID"});
+            result = new String();
+            statement = conn.prepareStatement(sqlQuery);
             statement.setDate(1, new java.sql.Date(appointment.getDate().getTime()));
             statement.setInt(2, appointment.getStartHour());
             statement.setInt(3, appointment.getStartMinute());
@@ -38,10 +39,7 @@ public class SaveAppointment extends RDBImplCommand{
             statement.setString(9, appointment.getStudentName());
             statement.setString(10, appointment.getAdvisorName());
             statement.executeUpdate();
-            resultSet = statement.getGeneratedKeys();
-                if(resultSet.next() == true){
-                    result = resultSet.getInt("ApptID");
-                }
+            result = "";
         }
         catch (SQLException e){
             System.out.println("failed");
