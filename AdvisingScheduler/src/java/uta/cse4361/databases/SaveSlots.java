@@ -23,15 +23,19 @@ public class SaveSlots extends RDBImplCommand {
     
     public void queryDB() throws SQLException{
         try{
-            statement = conn.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+            statement = conn.prepareStatement(sqlQuery,  new String[]{"SlotID"});
+            result = new ArrayList<Integer>();
             for(Slot s: slots){
                 statement.setDate(1, new java.sql.Date(s.getDate().getTime()));
                 statement.setInt(2, (s.getTime()/60));
                 statement.setInt(3, (s.getTime()%60));
                 statement.executeUpdate();
-                System.out.println("inserted data");
+                resultSet = statement.getGeneratedKeys();
+                if(resultSet.next() == true){
+                    ((ArrayList<Integer>)result).add(resultSet.getInt(1));
+                    System.out.println("inserted data");
+                }
             }
-            resultSet = statement.getGeneratedKeys();
         }
         catch (SQLException e){
             System.out.println("failed");
@@ -39,22 +43,14 @@ public class SaveSlots extends RDBImplCommand {
             if(statement != null){
                 statement.close();
             }
+            
+            for(Integer i: (ArrayList<Integer>)result){
+                System.out.println(i.toString());
+            }
         }
     }
     //Result is the id's of inserted values
+    //Must be done with each insert
     public void processResult(){
-        if(resultSet!=null){
-            result = new ArrayList<Integer>();
-            try{
-                //resultSet.next isnt getting values?
-                while(resultSet.next()){
-                    ((ArrayList<Integer>)result).add(resultSet.getInt("SlotID"));
-                    System.out.println("going");
-                }
-            }
-            catch(SQLException e){
-                System.out.println("process result exception");
-            }
-        }
     }
 }

@@ -60,8 +60,8 @@ public class SaveSlotsTest {
         instance.queryDB();
         instance.conn.rollback();
         instance.disconnectDB();
-        instance.processResult();
-        assertNotNull(instance.result);
+        //must have inserted all instances to result
+        assertNotNull(((ArrayList<Integer>)instance.result).get(5));
     }
     
 
