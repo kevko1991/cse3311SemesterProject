@@ -33,19 +33,15 @@ public class SaveSlots extends RDBImplCommand {
                 resultSet = statement.getGeneratedKeys();
                 if(resultSet.next() == true){
                     ((ArrayList<Integer>)result).add(resultSet.getInt(1));
-                    System.out.println("inserted data");
                 }
             }
         }
         catch (SQLException e){
             System.out.println("failed");
+            conn.close();
         } finally {
             if(statement != null){
                 statement.close();
-            }
-            
-            for(Integer i: (ArrayList<Integer>)result){
-                System.out.println(i.toString());
             }
         }
     }
