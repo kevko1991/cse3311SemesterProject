@@ -64,6 +64,7 @@ public class DeleteSlotTest {
         System.out.println("processResult");
         DeleteSlot instance = new DeleteSlot(0);
         instance.processResult();
+        assertNotNull(instance.getResult());
     }
     
 }

@@ -61,7 +61,7 @@ public class SaveSlotsTest {
         instance.conn.rollback();
         instance.disconnectDB();
         //must have inserted all instances to result
-        assertNotNull(((ArrayList<Integer>)instance.result).get(5));
+        assertNotNull(((ArrayList<Integer>)instance.getResult()).get(5));
     }
     
 
