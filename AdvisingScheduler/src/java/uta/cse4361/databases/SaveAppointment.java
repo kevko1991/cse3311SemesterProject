@@ -12,20 +12,21 @@ import uta.cse4361.businessobjects.Appointment;
  *
  * @author Han
  */
-public class SaveAppointment extends RDBImplCommand{
-    
-    Appointment appointment;
-    String sqlQuery = "INSERT INTO \"APPOINTMENT\"(\"ApptDate\", \"ApptStartHour\", \"ApptStartMin\", \"ApptEndHour\", \"ApptEndMinute\", "
-                                + "\"ApptType\", \"Description\", \"StudentID\", \"StudentName\", \"AdvisorName\") "
-                                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
+public class SaveAppointment extends RDBImplCommand {
+
+    private Appointment appointment;
+    private String sqlQuery = "INSERT INTO \"APPOINTMENT\"(\"ApptDate\", \"ApptStartHour\", \"ApptStartMin\", \"ApptEndHour\", \"ApptEndMin\", "
+            + "\"ApptType\", \"Description\", \"StudentID\", \"StudentName\", \"AdvisorName\") "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     public SaveAppointment(Appointment appt) {
         super();
         this.appointment = appt;
     }
+
     @Override
     public void queryDB() throws SQLException {
-        try{
+        try {
             result = new String();
             statement = conn.prepareStatement(sqlQuery);
             statement.setDate(1, new java.sql.Date(appointment.getDate().getTime()));
@@ -40,12 +41,11 @@ public class SaveAppointment extends RDBImplCommand{
             statement.setString(10, appointment.getAdvisorName());
             statement.executeUpdate();
             result = "";
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("failed");
             conn.close();
         } finally {
-            if(statement != null){
+            if (statement != null) {
                 statement.close();
             }
         }
@@ -55,5 +55,5 @@ public class SaveAppointment extends RDBImplCommand{
     public void processResult() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

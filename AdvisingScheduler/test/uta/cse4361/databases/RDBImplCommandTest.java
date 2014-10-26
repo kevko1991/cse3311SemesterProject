@@ -88,5 +88,5 @@ public class RDBImplCommandTest{
         public void processResult() {
         }
     }
-    
+
 }
