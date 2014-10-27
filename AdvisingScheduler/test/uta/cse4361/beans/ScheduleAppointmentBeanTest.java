@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import uta.cse4361.databases.AppointmentDatabaseManager;
+import uta.cse4361.databases.DatabaseManager;
 import uta.cse4361.businessobjects.SlotFactory;
 
 /**
@@ -77,7 +77,7 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
     public void testScheduleAppointmentSuccess() {
         ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         SlotFactory aff = SlotFactory.getInstance();
-        AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
+        DatabaseManager dbMgr = new DatabaseManager();
         aff.createSlots(d, sH, eH, sM, eM, AVAILABLE_FLYWEIGHT_KEY);
         instance.setStudentID(sID);
         instance.setStudentName(sName);

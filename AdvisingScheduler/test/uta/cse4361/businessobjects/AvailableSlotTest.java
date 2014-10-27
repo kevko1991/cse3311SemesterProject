@@ -21,7 +21,7 @@ public class AvailableSlotTest implements uta.cse4361.interfaces.Constants{
     @Test
     public void testHasAppointment() 
     {
-        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE, 0);
         
         boolean hasAppt = availableF.isAppointment();
         
@@ -32,7 +32,7 @@ public class AvailableSlotTest implements uta.cse4361.interfaces.Constants{
     @Test
     public void testGetAppointmentId()
     {
-        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE, 0);
         
         int apptId = availableF.getAppointmentId();
         
@@ -43,7 +43,7 @@ public class AvailableSlotTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowHourValue()
     {
-        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR - 1, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR - 1, MIN_MINUTE, 0);
         
         fail();
     }
@@ -51,7 +51,7 @@ public class AvailableSlotTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighHourValue()
     {
-        AvailableSlot availableF = new AvailableSlot(new Date(), MAX_HOUR + 1, MIN_MINUTE);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MAX_HOUR + 1, MIN_MINUTE, 0);
         
         fail();
     }
@@ -59,7 +59,7 @@ public class AvailableSlotTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectLowMinuteValue()
     {
-        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE - 1);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MIN_HOUR, MIN_MINUTE - 1, 0);
         
         fail();
     }
@@ -67,7 +67,7 @@ public class AvailableSlotTest implements uta.cse4361.interfaces.Constants{
     @Test(expected=IllegalArgumentException.class)
     public void testIncorrectHighMinuteValue()
     {
-        AvailableSlot availableF = new AvailableSlot(new Date(), MAX_HOUR, MAX_MINUTE + 1);
+        AvailableSlot availableF = new AvailableSlot(new Date(), MAX_HOUR, MAX_MINUTE + 1, 0);
         
         fail();
     }

@@ -47,12 +47,12 @@ public class SaveSlotsTest {
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
         ArrayList<Slot> slots = new ArrayList<Slot>();
-        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0));
-        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 15));
-        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 30));
-        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 45));
-        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0));
-        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 15, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 30, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 45, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         SaveSlots instance = new SaveSlots(slots);
         //instance.execute();
         instance.connectDB();

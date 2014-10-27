@@ -46,7 +46,7 @@ public class DeleteSlotTest {
     @Test
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
-        Slot slot = new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0);
+        Slot slot = new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0, 0);
         ArrayList<Slot> slots = new ArrayList<Slot>();
         slots.add(slot);
         SaveSlots saveInstance = new SaveSlots(slots);
