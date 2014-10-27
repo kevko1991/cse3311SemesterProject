@@ -5,9 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="uta.cse4361.databases.DatabaseManager"%>
 <html>
     <head>    
-        <jsp:useBean id="fdm" class="uta.cse4361.databases.SlotDatabaseManager" scope="session"/>
+        <jsp:useBean id="dm" class="DatabaseManager" scope="session"/>
         <%!
         public int getHour(String time){
             String[] hour = time.split(":");
@@ -24,8 +25,8 @@
             java.util.Date newDate = format.parse(request.getParameter("date"));
             
             
-            fdm = new uta.cse4361.databases.SlotDatabaseManager();
-            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = fdm.getDaysFlyweights(newDate);
+            dm = new DatabaseManager();
+            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getSlots();
   
            int fwsize= fw.size();
           

@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="java.util.Date"%>
+<%@page import="uta.cse4361.databases.DatabaseManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -14,13 +15,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
         <jsp:include page="header.jsp" />
-        <jsp:useBean id="fdm" class="uta.cse4361.databases.SlotDatabaseManager" scope="session"/>
+        <jsp:useBean id="dm" class="DatabaseManager" scope="session"/>
         <%
             
             int fwsize = 0;
-            fdm = new uta.cse4361.databases.SlotDatabaseManager(); 
+            dm = new DatabaseManager(); 
             Date currDate = new Date();
-            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = fdm.getYearFlyweights(currDate);  
+            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getSlots();  
             
             StringBuilder sbDay = new StringBuilder();
                                 StringBuilder sbHour = new StringBuilder();
@@ -172,8 +173,8 @@
                                 allocateTimeBean.allocateTimeRepeat();
                                 
                                 //new fdm to get a fresh copy of the flyweights
-                                fdm = new uta.cse4361.databases.SlotDatabaseManager(); 
-                                fw = fdm.getYearFlyweights(currDate);  
+                                dm = new DatabaseManager(); 
+                                fw = dm.getSlots();  
 
                                  sbDay = new StringBuilder();
                                  sbHour = new StringBuilder();
