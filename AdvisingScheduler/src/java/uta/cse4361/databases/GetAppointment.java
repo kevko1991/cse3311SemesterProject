@@ -13,11 +13,11 @@ import uta.cse4361.businessobjects.Appointment;
  *
  * @author Han
  */
-public class GetAppointment extends RDBImplCommand{
-    
+public class GetAppointment extends RDBImplCommand {
+
     private int id;
-    private String sqlQuery = "SELECT * FROM APPOINTMENT FROM \"ApptID\" = ?";
-    
+    private String sqlQuery = "SELECT * FROM \"APPOINTMENT\" WHERE \"ApptID\" = ?";
+
     public GetAppointment(int apptID) {
         super();
         id = apptID;
@@ -29,40 +29,37 @@ public class GetAppointment extends RDBImplCommand{
             statement = conn.prepareStatement(sqlQuery);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
+            processResult();
         } catch (SQLException e) {
-            System.out.println("failed");
+            System.out.println("GetAppointment query failed");
             conn.close();
-        } finally {
-            if (statement != null) {
-                statement.close();
-            }
         }
     }
 
     @Override
     public void processResult() {
-        result = new Appointment();
         try {
-                            Appointment appt = new Appointment();
-
-        int id = resultSet.getInt("ApptID");
-                Date date = resultSet.getDate("ApptDate");
-                int sHour = resultSet.getInt("ApptStartHour");
-                int sMinute = resultSet.getInt("ApptStartMin");
-                int eHour = resultSet.getInt("ApptEndHour");
-                int eMinute = resultSet.getInt("ApptEndMin");
-                String type = resultSet.getString("ApptType");
-                String description = resultSet.getString("Description");
-                String sID = resultSet.getString("StudentID");
-                String sName = resultSet.getString("StudentName");
-                String aName = resultSet.getString("AdvisorName");
-                appt.setApptID(id);
-                                if (appt.initialize(sName, sID, aName, type, description, date, sHour, eHour, sMinute, eMinute))
-                                    result = appt;
+            resultSet.next();
+            result = new Appointment();
+            Appointment appt = new Appointment();
+            Date date = resultSet.getDate("ApptDate");
+            int sHour = resultSet.getInt("ApptStartHour");
+            int sMinute = resultSet.getInt("ApptStartMin");
+            int eHour = resultSet.getInt("ApptEndHour");
+            int eMinute = resultSet.getInt("ApptEndMin");
+            String type = resultSet.getString("ApptType");
+            String description = resultSet.getString("Description");
+            String sID = resultSet.getString("StudentID");
+            String sName = resultSet.getString("StudentName");
+            String aName = resultSet.getString("AdvisorName");
+            appt.setApptID(id);
+            appt.initialize(sName, sID, aName, type, description, date, sHour, eHour, sMinute, eMinute);
+            result = appt;
         } catch (SQLException e) {
-            System.out.println("Get appintment failed");
+            System.out.println("GetAppintment process result failed");
+            e.printStackTrace();
         }
-        
+
     }
-    
+
 }

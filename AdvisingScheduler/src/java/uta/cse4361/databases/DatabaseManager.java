@@ -17,6 +17,10 @@ import uta.cse4361.businessobjects.Slot;
 public class DatabaseManager {
     DatabaseImpInterface imp = new RelationalDatabaseImpl();
     
+    public DatabaseManager() {
+        
+    }
+    
     public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute) {
         
         return true;
