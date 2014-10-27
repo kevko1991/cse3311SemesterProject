@@ -39,6 +39,7 @@ public class SaveAppointment extends RDBImplCommand {
             statement.setString(9, appointment.getStudentName());
             statement.setString(10, appointment.getAdvisorName());
             statement.executeUpdate();
+            processResult();
         } catch (SQLException e) {
             System.out.println("SaveAppointment query Failed");
             conn.close();
@@ -51,7 +52,6 @@ public class SaveAppointment extends RDBImplCommand {
 
     @Override
     public void processResult() {
-        result = new String();
         result = "";
     }
 

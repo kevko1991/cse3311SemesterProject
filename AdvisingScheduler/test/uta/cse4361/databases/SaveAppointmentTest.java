@@ -65,6 +65,7 @@ public class SaveAppointmentTest {
         instance.conn.rollback();
         instance.disconnectDB();
         String result = (String)instance.getResult();
+        System.out.println(result);
         assertEquals(result, expectedResult);
     }
     

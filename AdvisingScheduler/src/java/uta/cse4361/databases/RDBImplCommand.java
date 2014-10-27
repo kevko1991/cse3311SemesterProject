@@ -24,8 +24,6 @@ public abstract class RDBImplCommand {
             connectDB();
             queryDB();
             disconnectDB();
-            processResult();
-
         } catch (SQLException e) {
             e.printStackTrace(System.err);
             disconnectDB();

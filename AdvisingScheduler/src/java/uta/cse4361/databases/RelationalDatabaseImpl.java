@@ -65,7 +65,9 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
 
     @Override
     public Appointment getAppointment(int apptID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RDBImplCommand getAppointment = new GetAppointment(apptID);
+        getAppointment.execute();
+        return (Appointment) getAppointment.getResult();
     }
     
 }

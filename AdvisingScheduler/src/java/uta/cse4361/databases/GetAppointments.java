@@ -27,6 +27,7 @@ public class GetAppointments extends RDBImplCommand {
         try {
             statement = conn.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
+            processResult();
         } catch (SQLException e) {
             System.out.println("failed");
             conn.close();
@@ -39,8 +40,8 @@ public class GetAppointments extends RDBImplCommand {
 
     @Override
     public void processResult() {
-        result = new ArrayList<Appointment>();
         try {
+            result = new ArrayList<Appointment>();
             while (resultSet.next()) {
                 Appointment appt = new Appointment();
                 int id = resultSet.getInt("ApptID");
@@ -55,8 +56,9 @@ public class GetAppointments extends RDBImplCommand {
                 String sName = resultSet.getString("StudentName");
                 String aName = resultSet.getString("AdvisorName");
                 appt.setApptID(id);
-                if (appt.initialize(sName, sID, aName, type, description, date, sHour, eHour, sMinute, eMinute))
+                if (appt.initialize(sName, sID, aName, type, description, date, sHour, eHour, sMinute, eMinute)) {
                     ((ArrayList<Appointment>) result).add(appt);
+                }
             }
         } catch (SQLException e) {
             System.out.println("GetAppointments Failed");
