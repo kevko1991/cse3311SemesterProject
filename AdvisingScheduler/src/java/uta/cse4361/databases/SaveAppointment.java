@@ -40,7 +40,7 @@ public class SaveAppointment extends RDBImplCommand {
             statement.setString(10, appointment.getAdvisorName());
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("failed");
+            System.out.println("SaveAppointment query Failed");
             conn.close();
         } finally {
             if (statement != null) {
