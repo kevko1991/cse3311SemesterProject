@@ -27,7 +27,7 @@
 
                             <h3>Appointments</h3>
                             <div>
-                                <table border="1" id="appointmentList">
+                                <table border="1" id="appointmentList" cellpadding= "3" cellspacing= "0" style="border: 1pt solid #000000; border-Collapse: collapse">
                                     <tr>
                                         <td>
                                             Date
