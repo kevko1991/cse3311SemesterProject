@@ -19,4 +19,5 @@ public interface DatabaseImpInterface {
     public Appointment getAppointment(int apptID);
     public String modifyAppointment(int id, Appointment appt);
     public String modifySlot(int slotID);
+    public ArrayList<Slot> getSlot();
 }

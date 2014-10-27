@@ -49,6 +49,8 @@ public class DatabaseManager {
     }
     
     public ArrayList<Slot> getSlots(){
-        return null;
+        return imp.getSlot();
     }
+    
+    
 }

@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Andrew
  */
-public class GetAllSlotsTest {
+public class GetSlotTest {
     
-    public GetAllSlotsTest() {
+    public GetSlotTest() {
     }
     
     @BeforeClass
@@ -43,11 +43,9 @@ public class GetAllSlotsTest {
     @Test
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
-        GetAllSlots instance = new GetAllSlots();
+        GetSlot instance = new GetSlot();
         instance.execute();
         assertNotNull(instance.getResult());
     }
-
-    
     
 }

@@ -70,4 +70,11 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         return (Appointment) getAppointment.getResult();
     }
     
+    @Override
+    public ArrayList<Slot> getSlot(){
+        RDBImplCommand getSlots = new GetSlot();
+        getSlots.execute();
+        return (ArrayList<Slot>) getSlots.getResult();
+    }
+    
 }
