@@ -6,7 +6,6 @@
 package uta.cse4361.databases;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;
 
@@ -14,18 +13,21 @@ import uta.cse4361.businessobjects.Appointment;
  *
  * @author Han
  */
-public class GetAppointments extends RDBImplCommand {
-
-    private String sqlQuery = "SELECT * FROM APPOINTMENT";
-
-    public GetAppointments() {
+public class GetAppointment extends RDBImplCommand{
+    
+    private int id;
+    private String sqlQuery = "SELECT * FROM APPOINTMENT FROM \"ApptID\" = ?";
+    
+    public GetAppointment(int apptID) {
         super();
+        id = apptID;
     }
 
     @Override
     public void queryDB() throws SQLException {
         try {
             statement = conn.prepareStatement(sqlQuery);
+            statement.setInt(1, id);
             resultSet = statement.executeQuery();
         } catch (SQLException e) {
             System.out.println("failed");
@@ -39,11 +41,11 @@ public class GetAppointments extends RDBImplCommand {
 
     @Override
     public void processResult() {
-        result = new ArrayList<Appointment>();
+        result = new Appointment();
         try {
-            while (resultSet.next()) {
-                Appointment appt = new Appointment();
-                int id = resultSet.getInt("ApptID");
+                            Appointment appt = new Appointment();
+
+        int id = resultSet.getInt("ApptID");
                 Date date = resultSet.getDate("ApptDate");
                 int sHour = resultSet.getInt("ApptStartHour");
                 int sMinute = resultSet.getInt("ApptStartMin");
@@ -55,12 +57,12 @@ public class GetAppointments extends RDBImplCommand {
                 String sName = resultSet.getString("StudentName");
                 String aName = resultSet.getString("AdvisorName");
                 appt.setApptID(id);
-                if (appt.initialize(sName, sID, aName, type, description, date, sHour, eHour, sMinute, eMinute))
-                    ((ArrayList<Appointment>) result).add(appt);
-            }
+                                if (appt.initialize(sName, sID, aName, type, description, date, sHour, eHour, sMinute, eMinute))
+                                    result = appt;
         } catch (SQLException e) {
-            System.out.println("GetAppointments Failed");
+            System.out.println("Get appintment failed");
         }
+        
     }
-
+    
 }
