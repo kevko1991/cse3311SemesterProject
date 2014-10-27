@@ -5,12 +5,14 @@
  */
 package uta.cse4361.databases;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import uta.cse4361.businessobjects.Appointment;
 
 /**
  *
@@ -44,21 +46,15 @@ public class GetAppointmentsTest {
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
         GetAppointments instance = new GetAppointments();
+        instance.connectDB();
         instance.queryDB();
+        instance.disconnectDB();
+        ArrayList<Appointment> appts = (ArrayList<Appointment>)instance.getResult();
+        for (Appointment a: appts) {
+            System.out.println(a.getAdvisorName());
+        }
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of processResult method, of class GetAppointments.
-     */
-    @Test
-    public void testProcessResult() {
-        System.out.println("processResult");
-        GetAppointments instance = new GetAppointments();
-        instance.processResult();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(appts.size()!=0);
     }
     
 }
