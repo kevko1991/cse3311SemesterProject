@@ -21,13 +21,17 @@ public class DatabaseManager {
         
         return true;
     }
+    
+    public ArrayList<Appointment> getAppointments() {
+        return imp.getAppointments();
+    }
+    
     public String saveSlots(ArrayList<Slot> slots) {
         
         return "";
     }
     public String saveAppointment(Appointment appt) {
-        
-        return "";
+        return imp.saveAppointment(appt);
     }
     public String modifyAppointment(int id, Appointment appt) {
         return imp.modifyAppointment(id, appt);

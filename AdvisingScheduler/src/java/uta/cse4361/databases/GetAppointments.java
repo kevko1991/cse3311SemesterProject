@@ -19,9 +19,8 @@ public class GetAppointments extends RDBImplCommand {
     private int id;
     private String sqlQuery = "SELECT * FROM APPOINTMENT";
 
-    public GetAppointments(int apptID) {
+    public GetAppointments() {
         super();
-        this.id = apptID;
     }
 
     @Override

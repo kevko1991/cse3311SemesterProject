@@ -32,16 +32,36 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
 
     @Override
     public String saveAppointment(Appointment appt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RDBImplCommand saveAppointment = new SaveAppointment(appt);
+        saveAppointment.execute();
+        return (String)saveAppointment.getResult();
     }
 
     @Override
     public String modifyAppointment(int id, Appointment appt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (appt == null) {
+            //delete
+        } else {
+            //modify
+        }
+        return "";
     }
 
     @Override
     public String modifySlot(int slotID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Appointment> getAppointments() {
+        RDBImplCommand getAppointments = new GetAppointments();
+        getAppointments.execute();
+        return (ArrayList<Appointment>) getAppointments.getResult();
+        
+    }
+
+    @Override
+    public Appointment getAppointment(int apptID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -13,37 +13,42 @@ import java.util.Properties;
  * @author Han
  */
 public abstract class RDBImplCommand {
-    
+
     protected Object result;
     protected Connection conn;
     protected PreparedStatement statement;
     protected ResultSet resultSet;
-    
-    public void execute() throws SQLException{
+
+    public void execute() {
         try {
             connectDB();
             queryDB();
             disconnectDB();
             processResult();
-            
+
         } catch (SQLException e) {
             e.printStackTrace(System.err);
             disconnectDB();
         }
     }
-    
+
     protected void connectDB() throws SQLException {
         conn = DriverManager.getConnection("jdbc:derby://localhost:1527/advising;create=true;user=advising;password=advising");
     }
-    
-    protected void disconnectDB() throws SQLException{
-        conn.close();
+
+    protected void disconnectDB() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+        }
     }
-    
+
     public Object getResult() {
         return result;
     }
-    
+
     public abstract void queryDB() throws SQLException;
+
     public abstract void processResult();
 }
