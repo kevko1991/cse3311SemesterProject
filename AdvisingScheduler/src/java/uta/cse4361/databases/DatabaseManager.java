@@ -43,4 +43,8 @@ public class DatabaseManager {
     public String modifySlot(int slotID) {
         return imp.modifySlot(slotID);
     }
+    
+    public ArrayList<Slot> getSlots(){
+        return null;
+    }
 }
