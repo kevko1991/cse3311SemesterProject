@@ -17,7 +17,7 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
     
     
     
-    private int appointmentId;
+    private int id;
     
     private boolean hasAppointment;
     
@@ -29,7 +29,7 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
             throws IllegalArgumentException
     {
         hasAppointment = newHasAppointment;
-        appointmentId = newAppointmentId;
+        id = newAppointmentId;
         date = newDate;
         
         boolean validTime = this.setTime(newHour, newMinute);
@@ -51,7 +51,7 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
     
     public int getAppointmentId()
     {
-        return appointmentId;
+        return id;
     }
     
     public int getTime()

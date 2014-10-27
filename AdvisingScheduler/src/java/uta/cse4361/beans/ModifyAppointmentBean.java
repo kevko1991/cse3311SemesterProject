@@ -27,6 +27,7 @@ public class ModifyAppointmentBean implements Constants
     private int endHour = 0;
     private int endMinute = 0;
     private Date date = null;
+    private boolean remove = false;
 
     public ModifyAppointmentBean() {
 
@@ -36,16 +37,25 @@ public class ModifyAppointmentBean implements Constants
         String returnMessage = SUCCESS_MESSAGE;
         Appointment appointment = new Appointment();
         DatabaseManager databaseManager = new DatabaseManager();
+        boolean result = false;
         
-        boolean result = appointment.initialize(this.studentName, this.studentId,
-                this.advisorName, this.type, this.description, this.date, 
-                this.startHour, this.endHour, 
-                this.startMinute, this.endMinute);
-        if(result == false)
+        if(remove == true)
         {
-            returnMessage = INITIALIZE_APPOINTMENT_FAIL;
+            appointment = null;
+            result = true;
         }
         else
+        {
+            result = appointment.initialize(this.studentName, this.studentId,
+                    this.advisorName, this.type, this.description, this.date, 
+                    this.startHour, this.endHour, 
+                    this.startMinute, this.endMinute);
+            if(result == false)
+            {
+                returnMessage = INITIALIZE_APPOINTMENT_FAIL;
+            }
+        }
+        if (result == true)
         {
             returnMessage = databaseManager.modifyAppointment(this.appointmentId, appointment);
         }
@@ -53,6 +63,11 @@ public class ModifyAppointmentBean implements Constants
     }
     
     // Setters
+    public void setRemove(boolean newRemove)
+    {
+        this.remove = newRemove;
+    }
+    
     public void setAppointmentId(int newAppointmentId)
     {
         this.appointmentId = newAppointmentId;
@@ -90,6 +105,10 @@ public class ModifyAppointmentBean implements Constants
     }
 
     // Getters
+    public boolean getRemove()
+    {
+        return this.remove;
+    }
     public int getAppointmentId()
     {
         return this.appointmentId;
