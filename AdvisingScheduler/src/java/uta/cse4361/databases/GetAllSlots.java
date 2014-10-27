@@ -44,7 +44,7 @@ public class GetAllSlots extends RDBImplCommand{
                 ((ArrayList<Slot>) result).add(s);
             }
         } catch (SQLException e) {
-            System.out.println("GetAppointments Failed");
+            System.out.println("Get Slotsa Failed");
             result = null;
         }
     }
