@@ -95,7 +95,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
             {
                 try
                 {
-                    slotsToSave.add(new AvailableSlot(date, nextHour, nextMinute));
+                    slotsToSave.add(new AvailableSlot(date, nextHour, nextMinute, 0));
                 }
                 catch (IllegalArgumentException e)
                 {
@@ -151,7 +151,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
             {
                 try
                 {
-                    flyweightsToReturn.add(new AvailableSlot(date, nextHour, nextMinute));
+                    flyweightsToReturn.add(new AvailableSlot(date, nextHour, nextMinute, 0));
                 }
                 catch (IllegalArgumentException e)
                 {
