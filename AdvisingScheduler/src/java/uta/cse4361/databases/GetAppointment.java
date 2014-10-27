@@ -33,6 +33,10 @@ public class GetAppointment extends RDBImplCommand {
         } catch (SQLException e) {
             System.out.println("GetAppointment query failed");
             conn.close();
+        } finally {
+            if(statement != null){
+                statement.close();
+            }
         }
     }
 

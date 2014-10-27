@@ -45,7 +45,7 @@ public class GetAppointmentTest {
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
         int expectedID = 1;
-        GetAppointment instance = new GetAppointment(expectedID);
+        RDBImplCommand instance = new GetAppointment(expectedID);
         instance.connectDB();
         instance.conn.setAutoCommit(false);
         instance.queryDB();

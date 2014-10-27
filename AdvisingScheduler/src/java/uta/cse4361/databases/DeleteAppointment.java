@@ -27,9 +27,10 @@ public class DeleteAppointment extends RDBImplCommand{
             statement = conn.prepareStatement(sqlQuery);
             statement.setInt(1, id);
             statement.executeUpdate();
+            processResult();
         }
         catch (SQLException e){
-            System.out.println("failed");
+            System.out.println("DeleteAppointment query failed");
             conn.close();
         } finally {
             if(statement != null){
