@@ -14,8 +14,14 @@ import uta.cse4361.businessobjects.Appointment;
  */
 public class EditAppointment extends RDBImplCommand{
     
-    int id;
-    Appointment appointment;
+    private int id;
+    private Appointment appointment;
+    private String sqlQuery = "UPDATE \"APPOINTMENT\" SET \"ApptDate\" = ?, \"ApptStartHour\" = ?, \"ApptStartMin\" = ?, "
+                                                        + "\"ApptEndHour\" = ?, \"ApptEndMin\" = ?, \"ApptType\" = ?, "
+                                                        + "\"Description\" = ?, \"StudentID\" = ?, \"StudentName\" = ?, \"AdvisorName\" = ? "
+                                                        + "WHERE \"ApptID\" = ?";
+    
+    
     
     public EditAppointment (int apptID, Appointment appt) {
         super();
@@ -25,12 +31,34 @@ public class EditAppointment extends RDBImplCommand{
 
     @Override
     public void queryDB() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            statement = conn.prepareStatement(sqlQuery);
+            statement.setDate(1, new java.sql.Date(appointment.getDate().getTime()));
+            statement.setInt(2, appointment.getStartHour());
+            statement.setInt(3, appointment.getStartMinute());
+            statement.setInt(4, appointment.getEndHour());
+            statement.setInt(5, appointment.getEndMinute());
+            statement.setString(6, appointment.getType());
+            statement.setString(7, appointment.getDescription());
+            statement.setString(8, appointment.getStudentID());
+            statement.setString(9, appointment.getStudentName());
+            statement.setString(10, appointment.getAdvisorName());
+            statement.setInt(11, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("failed");
+            conn.close();
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+        }
     }
 
     @Override
     public void processResult() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        result = new String();
+        result = "";
     }
     
 }

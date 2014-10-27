@@ -26,6 +26,10 @@ public class DatabaseManager {
         return imp.getAppointments();
     }
     
+    public Appointment getAppointment(int apptID) {
+        return imp.getAppointment(apptID);
+    }
+    
     public String saveSlots(ArrayList<Slot> slots) {
         
         return "";

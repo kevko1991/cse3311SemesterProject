@@ -13,7 +13,8 @@ import java.sql.SQLException;
  */
 public class DeleteAppointment extends RDBImplCommand{
     
-    int id;
+    private int id;
+    private String sqlQuery = "DELETE FROM \"APPOINTMENT\" WHERE \"ApptID\" = ?";
     
     public DeleteAppointment(int apptID) {
         super();
@@ -22,12 +23,24 @@ public class DeleteAppointment extends RDBImplCommand{
 
     @Override
     public void queryDB() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            statement = conn.prepareStatement(sqlQuery);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+        catch (SQLException e){
+            System.out.println("failed");
+            conn.close();
+        } finally {
+            if(statement != null){
+                statement.close();
+            }
+        }
     }
 
     @Override
     public void processResult() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        result = "";
     }
     
 }

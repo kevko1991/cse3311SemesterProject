@@ -27,7 +27,6 @@ public class SaveAppointment extends RDBImplCommand {
     @Override
     public void queryDB() throws SQLException {
         try {
-            result = new String();
             statement = conn.prepareStatement(sqlQuery);
             statement.setDate(1, new java.sql.Date(appointment.getDate().getTime()));
             statement.setInt(2, appointment.getStartHour());
@@ -40,7 +39,6 @@ public class SaveAppointment extends RDBImplCommand {
             statement.setString(9, appointment.getStudentName());
             statement.setString(10, appointment.getAdvisorName());
             statement.executeUpdate();
-            result = "";
         } catch (SQLException e) {
             System.out.println("failed");
             conn.close();
@@ -53,7 +51,8 @@ public class SaveAppointment extends RDBImplCommand {
 
     @Override
     public void processResult() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        result = new String();
+        result = "";
     }
 
 }

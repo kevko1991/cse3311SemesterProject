@@ -16,7 +16,7 @@ import uta.cse4361.businessobjects.Slot;
 public class DeleteSlot extends RDBImplCommand{
     
     int slotID;
-    String sqlQuery = "DELETE FROM \"SLOT\" WHERE \"SlotID\" = ?";
+    private String sqlQuery = "DELETE FROM \"SLOT\" WHERE \"SlotID\" = ?";
 
     public DeleteSlot(int id){
         slotID = id;

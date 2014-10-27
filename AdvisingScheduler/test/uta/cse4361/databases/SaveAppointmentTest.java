@@ -68,4 +68,17 @@ public class SaveAppointmentTest {
         assertEquals(result, expectedResult);
     }
     
+    
+    /**
+     * Test of processResult method, of class SaveAppointment.
+     */
+    @Test
+    public void testProcessResult() {
+        System.out.println("processResult");
+        String expectedResult = "";
+        RDBImplCommand instance = new SaveAppointment(new Appointment());
+        instance.processResult();
+        String result = (String)instance.getResult();
+        assertEquals(result, expectedResult);
+    }
 }

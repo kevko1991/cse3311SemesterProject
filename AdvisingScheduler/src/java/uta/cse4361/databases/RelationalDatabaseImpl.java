@@ -40,11 +40,14 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     @Override
     public String modifyAppointment(int id, Appointment appt) {
         if (appt == null) {
-            //delete
+            RDBImplCommand deleteAppointment = new DeleteAppointment(id);
+            deleteAppointment.execute();
+            return (String)deleteAppointment.getResult();
         } else {
-            //modify
+            RDBImplCommand editAppointment = new EditAppointment(id, appt);
+            editAppointment.execute();
+            return (String)editAppointment.getResult();
         }
-        return "";
     }
 
     @Override
