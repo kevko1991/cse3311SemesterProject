@@ -8,7 +8,7 @@
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
 <html>
     <head>    
-        <jsp:useBean id="dm" class="DatabaseManager" scope="session"/>
+        <%--<jsp:useBean id="dm" class="DatabaseManager" scope="session"/>--%>
         <%!
         public int getHour(String time){
             String[] hour = time.split(":");
@@ -25,7 +25,7 @@
             java.util.Date newDate = format.parse(request.getParameter("date"));
             
             
-            dm = new DatabaseManager();
+            DatabaseManager dm = new DatabaseManager();
             java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots();
   
            int fwsize= fw.size();

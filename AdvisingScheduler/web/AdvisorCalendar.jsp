@@ -15,11 +15,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
         <jsp:include page="header.jsp" />
-        <jsp:useBean id="dm" class="DatabaseManager" scope="session"/>
+        <%--<jsp:useBean id="dm" class="DatabaseManager" scope="session"/>--%>
         <%
             
             int fwsize = 0;
-            dm = new DatabaseManager(); 
+            DatabaseManager dm = new DatabaseManager(); 
             Date currDate = new Date();
             java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots();  
             

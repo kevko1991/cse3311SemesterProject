@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import uta.cse4361.businessobjects.SlotFactory;
-import uta.cse4361.databases.AppointmentDatabaseManager;
+
 /**
  *
  * @author Han
@@ -32,8 +32,8 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
     public String allocateTime() {
         String msg = SUCCESS_MESSAGE;
         SlotFactory aff = SlotFactory.getInstance();
-        AppointmentDatabaseManager adm = new AppointmentDatabaseManager();
         msg = aff.createSlots(date, this.startHour, this.endHour, this.startMinute, this.endMinute,  AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
+        
         return msg;
     }
     
