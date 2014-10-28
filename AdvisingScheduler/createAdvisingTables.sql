@@ -19,12 +19,12 @@ CREATE TABLE "SLOT"(   "SlotID" INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS
 );
 
 CREATE VIEW "APPTFW" AS
-SELECT "ApptDate", "ApptStartHour", "ApptStartMin", "ApptEndHour", "ApptEndMin"
+SELECT "ApptID", "ApptDate", "ApptStartHour", "ApptStartMin", "ApptEndHour", "ApptEndMin"
 From APPOINTMENT
 ORDER BY "ApptDate";
 
 CREATE VIEW "APPTSLOT" AS
-SELECT SLOT.*
+SELECT SLOT.*, APPTFW."ApptID"
 FROM SLOT, APPTFW
 WHERE(SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" = APPTFW."ApptStartHour" AND SLOT."SlotStartMin" >= APPTFW."ApptStartMin")
 OR (SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" > APPTFW."ApptStartHour" AND SLOT."SlotStartHour" < APPTFW."ApptEndHour")
@@ -32,4 +32,4 @@ OR (SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" = APPTFW."ApptE
 
 CREATE VIEW "AVAILSLOT" AS 
 SELECT * FROM SLOT
-EXCEPT SELECT * FROM APPTSLOT;
+EXCEPT SELECT "SlotID", "SlotDate", "SlotStartHour", "SlotStartMin" FROM APPTSLOT;
