@@ -60,6 +60,6 @@ public class DeleteSlot extends RDBImplCommand{
     }
     
     public void processResult(){
-            result = "true";
+            result = "";
     }
 }

@@ -25,7 +25,7 @@ public class SlotFactory implements uta.cse4361.interfaces.Constants{
         return AppointmentFlyweightFactoryHolder.INSTANCE;
     }
 
-    private int determineNumberOfFlyweights(int startHour, int endHour, int startMinute, int endMinute) {
+    public int determineNumberOfFlyweights(int startHour, int endHour, int startMinute, int endMinute) {
         
         int hours = endHour - startHour;
         int numOfFlyweights = hours * (60 / INCREMENT_GAP);

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
+import uta.cse4361.businessobjects.SlotFactory;
 
 /**
  *
@@ -22,8 +23,13 @@ public class DatabaseManager {
     }
     
     public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute) {
-        
-        return true;
+        ArrayList<Slot> slots = imp.getAvailSlotsByTime(date, startHour, endHour, startMinute, endMinute);
+        SlotFactory f = SlotFactory.getInstance();
+        int apptSize = f.determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
+        if(slots.size() == apptSize){
+            return true;
+        }
+        return false;
     }
     
     public ArrayList<Appointment> getAppointments() {
@@ -35,8 +41,7 @@ public class DatabaseManager {
     }
     
     public String saveSlots(ArrayList<Slot> slots) {
-        
-        return "";
+        return imp.saveSlots(slots);
     }
     public String saveAppointment(Appointment appt) {
         return imp.saveAppointment(appt);

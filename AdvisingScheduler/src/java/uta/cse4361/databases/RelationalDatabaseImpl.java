@@ -21,13 +21,14 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
-    public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String saveSlots(ArrayList<Slot> slots) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RDBImplCommand saveSlots = new SaveSlots(slots);
+        saveSlots.execute();
+        ArrayList<Integer> savedSlots = (ArrayList<Integer>)saveSlots.getResult();
+        if(savedSlots.size()>0){
+            return "";
+        }
+        return "failed";
     }
 
     @Override
@@ -88,6 +89,13 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     @Override
     public ArrayList<Slot> getAvailSlots(){
         RDBImplCommand getAvailSlot = new GetAvailSlots();
+        getAvailSlot.execute();
+        return(ArrayList<Slot>) getAvailSlot.getResult();
+    }
+    
+    @Override
+    public ArrayList<Slot> getAvailSlotsByTime(Date d, int startHour, int endHour, int startMin, int endMin){
+        RDBImplCommand getAvailSlot = new GetAvailSlotsByTime(d, startHour, endHour, startMin, endMin);
         getAvailSlot.execute();
         return(ArrayList<Slot>) getAvailSlot.getResult();
     }

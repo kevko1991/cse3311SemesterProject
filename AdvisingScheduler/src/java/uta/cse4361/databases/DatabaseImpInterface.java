@@ -12,7 +12,6 @@ import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
 
 public interface DatabaseImpInterface {
-    public boolean isFree(Date date, int startHour, int endHour, int startMinute, int endMinute);
     public String saveSlots(ArrayList<Slot> slots);
     public String saveAppointment(Appointment appt);
     public ArrayList<Appointment> getAppointments();
@@ -22,4 +21,5 @@ public interface DatabaseImpInterface {
     public ArrayList<Slot> getSlot();
     public ArrayList<Slot> getApptSlots();
     public ArrayList<Slot> getAvailSlots();
+    public ArrayList<Slot> getAvailSlotsByTime(Date d, int startHour, int endHour, int startMin, int endMin);
 }
