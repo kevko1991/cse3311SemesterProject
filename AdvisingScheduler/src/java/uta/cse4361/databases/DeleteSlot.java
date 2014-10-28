@@ -25,7 +25,7 @@ public class DeleteSlot extends RDBImplCommand{
             + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? )" //slots during start hour
             + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" > ? AND \"SlotStartHour\" < ?)"//slots between start and end hour
             + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)"; // slots during end hour
-    public DeleteSlot(java.util.Date date, int startHour, int startMin, int endHour, int endMin){
+    public DeleteSlot(java.util.Date date, int startHour, int endHour, int startMin, int endMin){
         this.startHour = startHour;
         this.startMin = startMin;
         this.endHour = endHour;
