@@ -23,7 +23,7 @@
 
                             <h3>Timeslots</h3>
                             <div>
-                                <form  name="appointmentForm" action="" onsubmit="">
+                                <form  name="appointmentForm" action="timeslotEdit.jsp">
                                 <table border="1" id="appointmentList" cellpadding= "3" cellspacing= "0" style="border: 1pt solid #000000; border-Collapse: collapse">
                                     <tr>
                                         <td>
@@ -70,13 +70,13 @@
                                             out.print("No Appointment");
                                         }
                                         out.print("</td>");
+                                        out.print("<td>");
+                                        out.print("<input type='radio' name='slotID' value='" +s.getAppointmentId()+"'>");
+                                        out.print("</td>");
                                         out.print("</tr>");
-                                        out.print("</script>");
                                     }
                                     %>
                                 </table>
-
-                                    <input type="hidden" name="slotID" id="slotID" size="50" value="">
                                     <input type="submit" value="Modify Timeslots" id="submitBtn">
                                 </form>
                             </div>

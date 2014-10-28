@@ -66,7 +66,7 @@
                                         <input type="submit" value="Edit Appointment" id="submitBtn">
                                 </form>
                                         
-                                        <form name="edit" action="" onSubmit="">
+                                        <form name="cancel" action="" onSubmit="">
                                             <input type="submit" value="Cancel Appointment" id="cancelBtn">
                                         </form>
                                             
