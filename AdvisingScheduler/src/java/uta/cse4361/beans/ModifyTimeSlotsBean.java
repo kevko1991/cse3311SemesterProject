@@ -5,14 +5,13 @@
  */
 package uta.cse4361.beans;
 import java.util.Date;
-import uta.cse4361.databases.AppointmentDatabaseManager;
+import uta.cse4361.databases.DatabaseManager;
 import uta.cse4361.interfaces.Constants;
-import static uta.cse4361.interfaces.Constants.SUCCESS_MESSAGE;
 /**
  *
  * @author Nabin
  */
-public class ModifyTimeSlotsBean {
+public class ModifyTimeSlotsBean implements Constants{
      private int StartHr = 0;
     private int StartMin =0;
     private int EndHr =0;
@@ -75,11 +74,10 @@ public class ModifyTimeSlotsBean {
     
     public String modifySlot(){
          String msg = SUCCESS_MESSAGE;
-         AppointmentDatabaseManager dm = new AppointmentDatabaseManager();
+         DatabaseManager dm = new DatabaseManager();
          
-         boolean a = dm.ModifySlot(date,StartHr, EndHr, StartMin, EndMin);
-         if (a == false)
-             return this.NO_SLOTS_TO_DELETE;
+         msg = dm.modifySlot(date, StartHr, StartMin, EndHr, EndMin);
+         
          return msg;
     }
     
