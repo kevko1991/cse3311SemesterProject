@@ -27,6 +27,7 @@
 
                             <h3>Appointments</h3>
                             <div>
+                                <form  name="appointmentForm" action="" onsubmit="">
                                 <table border="1" id="appointmentList" cellpadding= "3" cellspacing= "0" style="border: 1pt solid #000000; border-Collapse: collapse">
                                     <tr>
                                         <td>
@@ -52,7 +53,7 @@
                                     for(Appointment a: appts) {
                                         out.print("<tr>");
                                         out.print("<td>");
-                                        out.print(a.getDate());
+                                        out.print(a.getDate().getMonth()+1+"/"+a.getDate().getDate()+"/"+(a.getDate().getYear()+1900));
                                         out.print("</td>");
                                         out.print("<td>");
                                         out.print(a.getStartHour() +":" + a.getStartHour());
@@ -67,9 +68,17 @@
                                         out.print(a.getType());
                                         out.print("</td>");
                                         out.print("</tr>");
+                                        out.print("<script type=\"text/javascript\">");
+                                        out.print("document.getElementById(\"apptID\").value = ");
+                                        out.print("'" + a.getApptID() + "'");
+                                        out.print("</script>");
                                     }
                                     %>
                                 </table>
+
+                                    <input type="hidden" name="apptID" id="apptID" size="50" value="">
+                                    <input type="submit" value="Modify Appointments" id="submitBtn">
+                                </form>
                             </div>
 
                     </div>                   

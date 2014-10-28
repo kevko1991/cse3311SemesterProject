@@ -59,6 +59,16 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
         return time;
     }
     
+    public int getHour()
+    {
+        return time/60;
+    }
+    
+    public int getMinute()
+    {
+        return time%60;
+    }
+    
     public Date getDate()
     {
         return date;
