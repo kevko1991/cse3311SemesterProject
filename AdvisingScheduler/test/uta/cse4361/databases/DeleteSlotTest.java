@@ -49,22 +49,14 @@ public class DeleteSlotTest {
         Slot slot = new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0, 0);
         ArrayList<Slot> slots = new ArrayList<Slot>();
         slots.add(slot);
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 15, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 30, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 45, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         SaveSlots saveInstance = new SaveSlots(slots);
         saveInstance.execute();
-        DeleteSlot deleteInstance = new DeleteSlot(((ArrayList<Integer>)saveInstance.getResult()).get(0).intValue());
-        
+        DeleteSlot deleteInstance = new DeleteSlot(new Date(System.currentTimeMillis()), 8, 0, 9, 30); // 
         deleteInstance.execute();
     }
-
-    /**
-     * Test of processResult method, of class DeleteSlot.
-     */
-    @Test
-    public void testProcessResult() {
-        System.out.println("processResult");
-        DeleteSlot instance = new DeleteSlot(0);
-        instance.processResult();
-        assertNotNull(instance.getResult());
-    }
-    
 }

@@ -44,8 +44,8 @@ public class DatabaseManager {
     public String modifyAppointment(int id, Appointment appt) {
         return imp.modifyAppointment(id, appt);
     }
-    public String modifySlot(int slotID) {
-        return imp.modifySlot(slotID);
+    public String modifySlot(Date d, int startHour, int startMin, int endHour, int endMin) {
+        return imp.modifySlot(d, startHour, startMin, endHour, endMin);
     }
     
     public ArrayList<Slot> getSlots(){

@@ -15,21 +15,42 @@ import uta.cse4361.businessobjects.Slot;
  */
 public class DeleteSlot extends RDBImplCommand{
     
-    int slotID;
-    private String sqlQuery = "DELETE FROM \"SLOT\" WHERE \"SlotID\" = ?";
-
-    public DeleteSlot(int id){
-        slotID = id;
+    int startHour;
+    int startMin;
+    int endHour;
+    int endMin;
+    java.sql.Date date;
+    
+    private String sqlQuery = "DELETE FROM \"SLOT\" WHERE "
+            + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? )" //slots during start hour
+            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" > ? AND \"SlotStartHour\" < ?)"//slots between start and end hour
+            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)"; // slots during end hour
+    public DeleteSlot(java.util.Date date, int startHour, int endHour, int startMin, int endMin){
+        this.startHour = startHour;
+        this.startMin = startMin;
+        this.endHour = endHour;
+        this.endMin = endMin;
+        this.date = new java.sql.Date(date.getTime());
     }
     
     public void queryDB() throws SQLException{
         try{
             statement = conn.prepareStatement(sqlQuery);
-            statement.setInt(1, slotID);
+            statement.setDate(1, date);
+            statement.setInt(2, startHour);
+            statement.setInt(3, startMin); //slots during start hour
+            statement.setDate(4, date);
+            statement.setInt(5, startHour);
+            statement.setInt(6, endHour); //slots between start and end hour
+            statement.setDate(7,date);
+            statement.setInt(8, endHour);
+            statement.setInt(9, endMin); // slots during end hour
             statement.executeUpdate();
+            processResult();
         }
         catch (SQLException e){
             System.out.println("failed");
+            e.printStackTrace();
             conn.close();
         } finally {
             if(statement != null){

@@ -51,8 +51,10 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
-    public String modifySlot(int slotID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String modifySlot(Date d, int startHour, int endHour, int startMin, int endMin) {
+        RDBImplCommand modifySlot = new DeleteSlot(d, startHour, endHour, startMin, endMin);
+        modifySlot.execute();
+        return (String) modifySlot.getResult();
     }
 
     @Override
