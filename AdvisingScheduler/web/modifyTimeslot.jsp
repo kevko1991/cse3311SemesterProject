@@ -39,7 +39,7 @@
                                     </tr>
                                 <%
                                     dm = new uta.cse4361.databases.DatabaseManager(); 
-                                    java.util.ArrayList<Slot> slots = dm.getSlots(); 
+                                    java.util.ArrayList<Slot> slots = dm.getTypeSlots(); 
                                     for(Slot s: slots) {
                                         out.print("<tr>");
                                         out.print("<td>");
