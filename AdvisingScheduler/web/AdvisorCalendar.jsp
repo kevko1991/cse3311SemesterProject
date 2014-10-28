@@ -21,7 +21,7 @@
             int fwsize = 0;
             dm = new DatabaseManager(); 
             Date currDate = new Date();
-            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getSlots();  
+            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots();  
             
             StringBuilder sbDay = new StringBuilder();
                                 StringBuilder sbHour = new StringBuilder();

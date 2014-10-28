@@ -78,5 +78,18 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         getSlots.execute();
         return (ArrayList<Slot>) getSlots.getResult();
     }
+    @Override
+    public ArrayList<Slot> getApptSlots(){
+        RDBImplCommand getApptSlot = new GetApptSlots();
+        getApptSlot.execute();
+        return (ArrayList<Slot>) getApptSlot.getResult(); 
+    }
+    
+    @Override
+    public ArrayList<Slot> getAvailSlots(){
+        RDBImplCommand getAvailSlot = new GetAvailSlots();
+        getAvailSlot.execute();
+        return(ArrayList<Slot>) getAvailSlot.getResult();
+    }
     
 }

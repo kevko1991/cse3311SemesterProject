@@ -52,5 +52,11 @@ public class DatabaseManager {
         return imp.getSlot();
     }
     
+    public ArrayList<Slot> getTypeSlots(){
+        ArrayList<Slot> avail = imp.getAvailSlots();
+        ArrayList<Slot> appt = imp.getApptSlots();
+        avail.addAll(appt);
+        return avail;
+    }
     
 }

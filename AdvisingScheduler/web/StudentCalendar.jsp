@@ -26,7 +26,7 @@
             
             
             dm = new DatabaseManager();
-            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getSlots();
+            java.util.ArrayList<uta.cse4361.businessobjects.Slot> fw = dm.getTypeSlots();
   
            int fwsize= fw.size();
           
