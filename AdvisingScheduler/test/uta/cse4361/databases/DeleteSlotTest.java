@@ -56,7 +56,7 @@ public class DeleteSlotTest {
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         SaveSlots saveInstance = new SaveSlots(slots);
         saveInstance.execute();
-        DeleteSlot deleteInstance = new DeleteSlot(new Date(System.currentTimeMillis()), 8, 0, 9, 0); // 
+        DeleteSlot deleteInstance = new DeleteSlot(new Date(System.currentTimeMillis()), 8, 0, 9, 30); // 
         deleteInstance.execute();
     }
 }
