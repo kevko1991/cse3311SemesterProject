@@ -57,7 +57,18 @@
                                         }
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print("StudentName");
+                                        if (s.isAppointment())
+                                        {
+                                            out.print(dm.getAppointment(s.getAppointmentId()).getStudentName() + "at " +
+                                                    dm.getAppointment(s.getAppointmentId()).getStartHour() + ":" 
+                                                    + dm.getAppointment(s.getAppointmentId()).getStartMinute() + "to " + 
+                                                    + dm.getAppointment(s.getAppointmentId()).getEndHour() + ":" +
+                                                    dm.getAppointment(s.getAppointmentId()).getEndMinute());
+                                        }
+                                        else
+                                        {
+                                            out.print("No Appointment");
+                                        }
                                         out.print("</td>");
                                         out.print("</tr>");
                                         out.print("</script>");
