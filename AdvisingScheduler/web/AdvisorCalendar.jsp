@@ -155,6 +155,12 @@
                                             <input type="datetime" id ="endtimepicker" name="endTime"<% if (endSubmitted){out.println(" value=\""+request.getParameter("endTime")+"\"");}%>></p>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>Number of Repeating:</td>
+                                        <td>
+                                            <input type="number" id ="numbers" name="numbers"></p>
+                                        </td>
+                                    </tr>
                                 </table>
                             <input id="button" type="submit" value="Submit">
                             </form>
@@ -170,8 +176,10 @@
                                  <jsp:setProperty name="allocateTimeBean" property="endHour" value= '<%= getHour(request.getParameter("endTime")) %>'/>
                                  <jsp:setProperty name="allocateTimeBean" property="endMinute" value= '<%= getMin(request.getParameter("endTime")) %>'/>
                                 <%
+                                String r = request.getParameter("numbers");
+                                int times = Integer.parseInt(r);
                                 //allocateTimeBean.allocateTime();
-                                allocateTimeBean.allocateTimeRepeat();
+                                allocateTimeBean.allocateTimeRepeat(times);
                                 
                                 //new fdm to get a fresh copy of the flyweights
                                 dm = new DatabaseManager(); 

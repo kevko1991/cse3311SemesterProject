@@ -19,7 +19,7 @@
         <%
             DatabaseManager dm = new DatabaseManager();
 //            ArrayList<Date> availableDates = dm.getDatesForAvailability();
-            ArrayList<Slot> availableDates = dm.getSlots();
+            ArrayList<Slot> availableDates = dm.getAvailableSlots();
             ArrayList<String> availables = new ArrayList<String>();
             for (Slot s : availableDates) {
                 int dd = s.getDate().getDate();
