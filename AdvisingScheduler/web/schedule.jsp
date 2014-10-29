@@ -142,6 +142,22 @@
                                             <select name="aName" id="aName">
                                                 <option value="Linda Barasch">Linda Barasch</option>
                                                 <option value="Bob Weems">Bob Weems</option>
+                                                <option value="Ramez Elmasri">Ramez Elmasri</option>
+                                                <option value="Bahram Khalili">Bahram Khalili</option>
+                                            </select><br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Advising Type:
+                                        </td>
+                                        <td>
+                                            <select name="type" id="type">
+                                                <option value="New Student">New Student</option>
+                                                <option value="Returning Student">Returning Student</option>
+                                                <option value="Drop Course">Drop Course</option>
+                                                <option value="Enroll">Enroll</option>
+                                                <option value="Others">Others</option>
                                             </select><br>
                                         </td>
                                     </tr>

@@ -68,6 +68,8 @@
         <jsp:useBean id="newAppt" class="uta.cse4361.beans.ScheduleAppointmentBean"/> 
         <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
+        <jsp:setProperty name="newAppt" property="advisorName" param="aName" /> 
+        <jsp:setProperty name="newAppt" property="type" param="type" /> 
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
         <jsp:setProperty name="newAppt" property="description" param="description" /> 
         <% if(timeSubmitted){ %>
@@ -121,17 +123,22 @@
                                         <input type="text" name="sName" id="sName" size="30" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
                                                 </td>
                                             </tr>
-<!--                                            <tr>
+                                          <tr>
                                                 <td>
                                         Advisor:
                                                 </td>
                                                 <td>
-                                        <select name="aName" id="aName" readonly="readonly">
-                                            <option value="Linda Barasch">Linda Barasch</option>
-                                            <option value="Bob Weems">Bob Weems</option>
-                                        </select><br>
+                                        <input type="text" name="aName" id="aName" size="30" value="<jsp:getProperty name="newAppt" property="advisorName"/>" readonly="readonly"><br>
                                                 </td>
-                                        </tr>-->
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                        Advising Type:
+                                                </td>
+                                                <td>
+                                        <input type="text" name="type" id="type" size="30" value="<jsp:getProperty name="newAppt" property="type"/>" readonly="readonly"><br>
+                                                </td>
+                                        </tr>
                                         <tr>
                                                 <td>
                                         Date:
