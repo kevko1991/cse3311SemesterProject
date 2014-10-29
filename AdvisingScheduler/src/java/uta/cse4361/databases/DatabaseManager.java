@@ -6,6 +6,8 @@
 package uta.cse4361.databases;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
@@ -63,5 +65,7 @@ public class DatabaseManager {
         avail.addAll(appt);
         return avail;
     }
-    
+    public ArrayList<Slot> getAvailableSlots() {
+         return imp.getAvailSlots();
+     }
 }
