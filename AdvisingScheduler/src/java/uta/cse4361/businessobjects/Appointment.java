@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Han
  */
-public class Appointment implements java.io.Serializable {
+public class Appointment implements java.io.Serializable, Comparable<Appointment>{
 
     private int apptID = 0;
     private String studentName = null;
@@ -117,5 +117,23 @@ public class Appointment implements java.io.Serializable {
     }
     public Date getDate() {
         return this.date;
+    }
+
+    @Override
+    public int compareTo(Appointment other) {
+        Appointment toCompare = other;
+        int compare = 0;
+        compare = this.getDate().compareTo(toCompare.getDate());
+        
+        if(compare == 0)
+        {
+            compare = this.getStartHour() - toCompare.getStartHour();
+        }
+        if(compare == 0)
+        {
+            compare = this.getStartMinute() - toCompare.getStartMinute();
+        }
+        return compare;
+        
     }
 }

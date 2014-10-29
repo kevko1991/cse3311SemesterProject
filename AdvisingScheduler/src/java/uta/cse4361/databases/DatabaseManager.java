@@ -35,7 +35,10 @@ public class DatabaseManager {
     }
     
     public ArrayList<Appointment> getAppointments() {
-        return imp.getAppointments();
+        
+        ArrayList<Appointment> appointments = imp.getAppointments();
+        Collections.sort(appointments);
+        return appointments;
     }
     
     public Appointment getAppointment(int apptID) {
