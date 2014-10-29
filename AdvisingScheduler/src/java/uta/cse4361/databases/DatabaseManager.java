@@ -63,6 +63,7 @@ public class DatabaseManager {
         ArrayList<Slot> avail = imp.getAvailSlots();
         ArrayList<Slot> appt = imp.getApptSlots();
         avail.addAll(appt);
+        Collections.sort(avail);
         return avail;
     }
     public ArrayList<Slot> getAvailableSlots() {
