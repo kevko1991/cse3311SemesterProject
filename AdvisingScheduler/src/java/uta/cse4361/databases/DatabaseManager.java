@@ -26,7 +26,7 @@ public class DatabaseManager {
         ArrayList<Slot> slots = imp.getAvailSlotsByTime(date, startHour, endHour, startMinute, endMinute);
         SlotFactory f = SlotFactory.getInstance();
         int apptSize = f.determineNumberOfFlyweights(startHour, endHour, startMinute, endMinute);
-        if(slots.size() == apptSize){
+        if(slots.size() > apptSize){
             return true;
         }
         return false;
