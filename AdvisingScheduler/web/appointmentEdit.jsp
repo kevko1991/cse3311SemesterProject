@@ -54,6 +54,7 @@
                                     
                                     
                                     boolean descriptionSubmitted = !(request.getParameter("description")==null || request.getParameter("description")=="");
+                                    boolean deleteSubmitted = (request.getParameter("remove") == "true");
                                 %>
                                 
                                 <form name="edit" action="appointmentEdit.jsp" method="post">
@@ -120,8 +121,11 @@
                                             <input type="submit" value="Edit Appointment" id="submitBtn">
                                         </form>   
                                         
-                                        <form method="post" action="modifyAppointment.jsp">
-                                            <input type="hidden" value="true" id="remove">
+                                        <form method="submit" action="appointmentEdit.jsp">
+                                            <%
+                                            out.print("<input type='hidden' name='apptID' value='" +appt.getApptID()+"'>");
+                                            %>
+                                            <input type="hidden" value="true" name="remove">
                                             <input type="submit" value="Cancel Appointment" id="cancelBtn">
                                         </form>
                                         
@@ -146,6 +150,24 @@
                                                 <jsp:setProperty name="mab" property="remove" value= '<%= request.getParameter("remove") %>'/>
                                         <%
                                             mab.scheduleAppointment();
+                                            }
+                                            else if(deleteSubmitted){
+                                        %>
+                                            <jsp:useBean id="dab" class="uta.cse4361.beans.ModifyAppointmentBean" scope="session"/>
+                                            <jsp:setProperty name="dab" property="appointmentId" value= '<%= appt.getApptID() %>'/>
+                                            <jsp:setProperty name="dab" property="studentName" value= '<%= appt.getStudentName() %>'/>
+                                            <jsp:setProperty name="dab" property="studentId" value= '<%= appt.getStudentID() %>'/>
+                                            <jsp:setProperty name="dab" property="advisorName" value= '<%= appt.getAdvisorName() %>'/>
+                                            <jsp:setProperty name="dab" property="description" value= '<%= appt.getDescription() %>'/>
+                                            <jsp:setProperty name="dab" property="type" value= '<%= appt.getType() %>'/>
+                                            <jsp:setProperty name="dab" property="startHour" value= '<%= appt.getStartHour() %>'/>
+                                            <jsp:setProperty name="dab" property="startMinute" value= '<%= appt.getStartMinute() %>'/>
+                                            <jsp:setProperty name="dab" property="endHour" value= '<%= appt.getEndHour() %>'/>
+                                            <jsp:setProperty name="dab" property="endMinute" value= '<%= appt.getEndMinute() %>'/>
+                                            <jsp:setProperty name="dab" property="date" value= '<%= appt.getDate() %>'/>
+                                            <jsp:setProperty name="dab" property="remove" value= '<%= request.getParameter("remove") %>'/>
+                                        <%
+                                            dab.scheduleAppointment();
                                             }
                                         %>
                                             

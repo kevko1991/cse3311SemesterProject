@@ -26,9 +26,10 @@ ORDER BY "ApptDate";
 CREATE VIEW "APPTSLOT" AS
 SELECT SLOT.*, APPTFW."ApptID"
 FROM SLOT, APPTFW
-WHERE(SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" = APPTFW."ApptStartHour" AND SLOT."SlotStartMin" >= APPTFW."ApptStartMin")
+WHERE(SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" <> APPTFW."ApptEndHour" AND SLOT."SlotStartHour" = APPTFW."ApptStartHour" AND SLOT."SlotStartMin" >= APPTFW."ApptStartMin")
 OR (SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" > APPTFW."ApptStartHour" AND SLOT."SlotStartHour" < APPTFW."ApptEndHour")
-OR (SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" = APPTFW."ApptEndHour" AND SLOT."SlotStartMin" < APPTFW."ApptEndMin");
+OR (SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" <> APPTFW."ApptStartHour" AND SLOT."SlotStartHour" = APPTFW."ApptEndHour" AND SLOT."SlotStartMin" < APPTFW."ApptEndMin")
+OR (SLOT."SlotDate" = APPTFW."ApptDate" AND SLOT."SlotStartHour" = APPTFW."ApptStartHour" AND SLOT."SlotStartHour" = APPTFW."ApptEndHour" AND SLOT."SlotStartMin" >= APPTFW."ApptStartMin" AND SLOT."SlotStartMin" < APPTFW."ApptEndMin");
 
 CREATE VIEW "AVAILSLOT" AS 
 SELECT * FROM SLOT

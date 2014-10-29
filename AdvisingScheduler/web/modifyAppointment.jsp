@@ -59,7 +59,7 @@
                                         out.print(a.getDate().getMonth()+1+"/"+a.getDate().getDate()+"/"+(a.getDate().getYear()+1900));
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print(a.getStartHour() +":" + a.getStartHour());
+                                        out.print(a.getStartHour() +":" + a.getStartMinute());
                                         out.print("</td>");
                                         out.print("<td>");
                                         out.print(a.getEndHour() + ":" + a.getEndMinute());
