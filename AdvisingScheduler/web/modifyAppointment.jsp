@@ -46,6 +46,9 @@
                                         <td>
                                             Advising Type
                                         </td>
+                                        <td>
+                                            
+                                        </td>
                                     </tr>
                                 <%
                                     dm = new uta.cse4361.databases.DatabaseManager(); 
@@ -71,9 +74,6 @@
                                         out.print("<input type='radio' name='apptID' value='" +a.getApptID()+"'>");
                                         out.print("</td>");
                                         out.print("</tr>");
-//                                        out.print("<script type=\"text/javascript\">");
-//                                        out.print("document.getElementById(\"apptID\").value = ");
-//                                        out.print("'" + a.getApptID() + "'");
                                         out.print("</script>");
                                     }
                                     %>

@@ -36,6 +36,9 @@
                                         <td>
                                             Student Name
                                         </td>
+                                        <td>
+                                            
+                                        </td>
                                     </tr>
                                 <%
                                     dm = new uta.cse4361.databases.DatabaseManager(); 
