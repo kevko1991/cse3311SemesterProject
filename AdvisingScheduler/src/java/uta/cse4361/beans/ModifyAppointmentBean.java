@@ -16,7 +16,7 @@ import uta.cse4361.interfaces.Constants;
  */
 public class ModifyAppointmentBean implements Constants 
 {
-    private int appointmentId = 0;
+    private int apptID = 0;
     private String studentName = null;
     private String studentId = null;
     private String advisorName = null;
@@ -50,6 +50,7 @@ public class ModifyAppointmentBean implements Constants
                     this.advisorName, this.type, this.description, this.date, 
                     this.startHour, this.endHour, 
                     this.startMinute, this.endMinute);
+            appointment.setApptID(apptID);
             if(result == false)
             {
                 returnMessage = INITIALIZE_APPOINTMENT_FAIL;
@@ -57,7 +58,7 @@ public class ModifyAppointmentBean implements Constants
         }
         if (result == true)
         {
-            returnMessage = databaseManager.modifyAppointment(this.appointmentId, appointment);
+            returnMessage = databaseManager.modifyAppointment(this.apptID, appointment);
         }
         return returnMessage;
     }
@@ -68,9 +69,9 @@ public class ModifyAppointmentBean implements Constants
         this.remove = newRemove;
     }
     
-    public void setAppointmentId(int newAppointmentId)
+    public void setApptID(int newAppointmentId)
     {
-        this.appointmentId = newAppointmentId;
+        this.apptID = newAppointmentId;
     }
     
     public void setStudentName(String newStudnetName) {
@@ -109,9 +110,9 @@ public class ModifyAppointmentBean implements Constants
     {
         return this.remove;
     }
-    public int getAppointmentId()
+    public int getApptID()
     {
-        return this.appointmentId;
+        return this.apptID;
     }
     public String getStudentName() {
         return this.studentName;
