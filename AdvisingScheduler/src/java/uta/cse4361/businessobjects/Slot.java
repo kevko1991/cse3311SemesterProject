@@ -110,7 +110,11 @@ public abstract class Slot implements Serializable, Comparable<Slot>, uta.cse436
     public int compareTo(Slot another) {
         Slot toCompare = another;
         int compare = 0;
-        compare = this.getTime() - another.getTime();
+        compare = this.getDate().compareTo(another.getDate());
+        if(compare == 0)
+        {
+            compare = this.getTime() - another.getTime();
+        }
         return compare;
     }
 }

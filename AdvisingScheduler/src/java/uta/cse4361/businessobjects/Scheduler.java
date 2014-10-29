@@ -34,6 +34,10 @@ public class Scheduler implements uta.cse4361.interfaces.Constants{
         {
             databaseManager.saveAppointment(appointment);
         }
+        else
+        {
+            msg = TIME_IS_NOT_FREE_FAULT;
+        }
         return msg;
     }
     
