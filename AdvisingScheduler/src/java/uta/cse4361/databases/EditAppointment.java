@@ -45,6 +45,7 @@ public class EditAppointment extends RDBImplCommand{
             statement.setString(10, appointment.getAdvisorName());
             statement.setInt(11, id);
             statement.executeUpdate();
+            processResult();
         } catch (SQLException e) {
             System.out.println("EditAppointment query failed");
             conn.close();
