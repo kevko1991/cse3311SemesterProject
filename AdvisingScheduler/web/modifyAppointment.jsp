@@ -58,11 +58,27 @@
                                         out.print("<td>");
                                         out.print(a.getDate().getMonth()+1+"/"+a.getDate().getDate()+"/"+(a.getDate().getYear()+1900));
                                         out.print("</td>");
-                                        out.print("<td>");
-                                        out.print(a.getStartHour() +":" + a.getStartMinute());
+                                        out.print("<td>");                                       
+                                        out.print(a.getStartHour() +":");
+                                        if(a.getStartMinute() == 0)
+                                        {
+                                            out.print("00");
+                                        }
+                                        else
+                                        {
+                                            out.print(a.getStartMinute());
+                                        }
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print(a.getEndHour() + ":" + a.getEndMinute());
+                                        out.print(a.getEndHour() + ":" );
+                                        if(a.getEndMinute() == 0)
+                                        {
+                                            out.print("00");
+                                        }
+                                        else
+                                        {
+                                            out.print(a.getEndMinute());
+                                        }
                                         out.print("</td>");
                                         out.print("<td>");
                                         out.print(a.getAdvisorName());

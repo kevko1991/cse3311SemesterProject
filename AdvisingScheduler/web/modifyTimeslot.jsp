@@ -34,7 +34,7 @@
                                             Time
                                         </td>
                                         <td>
-                                            Student Name
+                                            Appointment Information
                                         </td>
                                         <td>
                                             
@@ -62,11 +62,25 @@
                                         out.print("<td>");
                                         if (s.isAppointment())
                                         {
-                                            out.print(dm.getAppointment(s.getAppointmentId()).getStudentName() + "at " +
-                                                    dm.getAppointment(s.getAppointmentId()).getStartHour() + ":" 
-                                                    + dm.getAppointment(s.getAppointmentId()).getStartMinute() + "to " + 
-                                                    + dm.getAppointment(s.getAppointmentId()).getEndHour() + ":" +
-                                                    dm.getAppointment(s.getAppointmentId()).getEndMinute());
+                                            out.print("Appointment with " + dm.getAppointment(s.getAppointmentId()).getStudentName() + " at " 
+                                                    + dm.getAppointment(s.getAppointmentId()).getStartHour() + ":" );
+                                            if(dm.getAppointment(s.getAppointmentId()).getStartMinute() == 0)
+                                            {
+                                                out.print("00"+ " to " );
+                                            }
+                                            else
+                                            {
+                                                out.print(dm.getAppointment(s.getAppointmentId()).getStartMinute()+ " to " );
+                                            }
+                                                out.print(dm.getAppointment(s.getAppointmentId()).getEndHour() + ":");
+                                            if(dm.getAppointment(s.getAppointmentId()).getEndMinute() == 0)
+                                            {
+                                                out.print("00");
+                                            }
+                                            else
+                                            {
+                                                out.print(dm.getAppointment(s.getAppointmentId()).getEndMinute());
+                                            }
                                         }
                                         else
                                         {
@@ -74,7 +88,14 @@
                                         }
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print("<input type='radio' name='slotID' value='" +s.getAppointmentId()+"'>");
+                                         if (s.isAppointment())
+                                         {
+                                            out.print("<input type='radio' name='slotID' value='" + "a"+s.getAppointmentId()+"'>");
+                                         }
+                                         else
+                                         {
+                                            out.print("<input type='radio' name='slotID' value='" + "s"+s.getAppointmentId()+"'>");
+                                         }
                                         out.print("</td>");
                                         out.print("</tr>");
                                     }

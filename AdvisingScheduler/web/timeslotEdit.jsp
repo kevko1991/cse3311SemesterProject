@@ -4,6 +4,7 @@
     Author     : Melissa
 --%>
 
+<%@page import="uta.cse4361.businessobjects.Appointment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="uta.cse4361.businessobjects.Slot"%>
 <%@page import="uta.cse4361.databases.DatabaseManager"%>
@@ -12,14 +13,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Modify Timeslot</title>
     </head>
             <jsp:include page="header.jsp" />
     <body>
         <table id="table">
             <tr>
                 <jsp:include page="sidebar.jsp" />
-                <jsp:useBean id="dm" class="uta.cse4361.databases.DatabaseManager" scope="session"/>
                 
                 <td style="vertical-align: top; float: right;">
                     <div style="width:780px" id="mainAccordion">
@@ -28,48 +28,57 @@
                             <div>
                                 
                                 <%
-                                dm = new DatabaseManager(); 
-                                    ArrayList<Slot> slots = dm.getSlots();//(Integer.parseInt(request.getParameter("slotID"))); 
-                                    Slot slot = null;
-                                    int i = 0;
-                                    while (slots.get(i).getAppointmentId() != (Integer.parseInt(request.getParameter("slotID"))))
+                                    if(request.getParameter("slotID") == null || request.getParameter("slotID").equals(""))
                                     {
-                                        if (slots.get(i).getAppointmentId() == (Integer.parseInt(request.getParameter("slotID"))))
-                                        {
-                                            slot = slots.get(i);
-                                        }
-                                        i++;
-                                    }
-                                    
-                                    if(slot == null)
-                                    {
-                                        
+                                        response.sendRedirect("modifyTimeslot.jsp");
                                     }
                                     else
                                     {
-                                        out.print("hi");
-                                        out.print(slot.getDate().getMonth()+1+"/"+slot.getDate().getDate()+"/"+(slot.getDate().getYear()+1900));
-                                        out.print(slot.getHour() + ":");
-                                         if(slot.getMinute() == 0)
+                                        DatabaseManager dm = new DatabaseManager(); 
+                                        int id = Integer.parseInt(request.getParameter("slotID").substring(1));
+
+                                        if(request.getParameter("slotID").substring(0, 1).equals("s"))
                                         {
-                                            out.print("00");
+                                            ArrayList<Slot> slots = dm.getSlots();//(Integer.parseInt(request.getParameter("slotID"))); 
+                                            Slot slot = null;
+                                            int i = 0;
+                                            while (slots.get(i).getAppointmentId() != (id))
+                                            {
+                                                if (slots.get(i).getAppointmentId() == (id))
+                                                {
+                                                    slot = slots.get(i);
+                                                }
+                                                i++;
+                                            }
+
+                                            if(slot == null)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                out.print(slot.getDate().getMonth()+1+"/"+slot.getDate().getDate()+"/"+(slot.getDate().getYear()+1900));
+                                                out.print(slot.getHour() + ":");
+                                                 if(slot.getMinute() == 0)
+                                                {
+                                                    out.print("00");
+                                                }
+                                                else
+                                                {
+                                                    out.print(slot.getMinute());
+                                                }
+
+                                            }
                                         }
                                         else
                                         {
-                                            out.print(slot.getMinute());
+                                            Appointment appt = dm.getAppointment(id); 
                                         }
-                                        
                                     }
-//                                    out.print(appt.getDate() + " " + appt.getAdvisorName());
-//                                    String advisorName = appt.getAdvisorName();
-//                                    String description= appt.getDescription();
-//                                    String date = "" + (appt.getDate().getMonth()+1) + "/" + appt.getDate().getDate() + "/" + (appt.getDate().getYear()+1900);
-//                                    String startTime = "" + appt.getStartHour() + ":" + appt.getStartMinute();
-//                                    String endTime = "" + appt.getEndHour() + ":" + appt.getEndMinute();
                                 %>
                             
-                                <form name="cancel" action="" onSubmit="">
-                                            <input type="submit" value="Cancel Timeslot" id="cancelBtn">
+                                <form name="cancel" action="" type="submit">
+                                <input type="submit" value="Cancel Timeslot" id="cancelBtn">
                                 </form>
                             </div>
 
