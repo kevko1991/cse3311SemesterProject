@@ -58,10 +58,9 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
         daysTillRepeatDay = selectedDayOfWeek - currDayOfWeek;        
         year = cal.get(Calendar.YEAR);
         nextYear = year+1;
-        int i = 0;
         allocateTime();
             
-        for (i=0; i<r; i++)
+        for (int i=1; i<r; i++)
         {
             selectedCal.add(Calendar.DAY_OF_WEEK, 7);
             date = selectedCal.getTime();

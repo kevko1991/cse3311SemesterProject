@@ -158,7 +158,14 @@
                                     <tr>
                                         <td>Number of Repeating:</td>
                                         <td>
-                                            <input type="number" id ="numbers" name="numbers"></p>
+                                            <select name="numbers" id="numbers">
+                                                <option value="1">1 Week</option>
+                                                <option value="2">2 Weeks</option>
+                                                <option value="3">3 Weeks</option>
+                                                <option value="4">4 Weeks</option>
+                                                <option value="6">6 Weeks</option>
+                                                <option value="8">8 Weeks</option>
+                                            </select></p>
                                         </td>
                                     </tr>
                                 </table>
