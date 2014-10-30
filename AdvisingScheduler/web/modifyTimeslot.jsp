@@ -101,6 +101,7 @@
                                     }
                                     %>
                                 </table>
+                                <input type="hidden" value ="true" name="first">
                                     <input type="submit" value="Modify Timeslots" id="submitBtn">
                                 </form>
                             </div>

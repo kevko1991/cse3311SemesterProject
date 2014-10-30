@@ -29,20 +29,33 @@
                             <div>
                                 
                                 <%
+                                    
+                                   
+                                    boolean dSubmit = false;
+                                    boolean startHourSubmit = false;
+                                    boolean endHourSubmit = false;
+                                    boolean startMinSubmit = false;
+                                    boolean endMinSubmit = false;
+                                    boolean readyToDelete = false;
+                                                                       
+                                    
+                                    Date d = null; 
+                                    int startHour = 0; 
+                                    int endHour = 0; 
+                                    int startMin = 0; 
+                                    int endMin = 0;
+
                                     if(request.getParameter("slotID") == null || request.getParameter("slotID").equals(""))
                                     {
                                         response.sendRedirect("modifyTimeslot.jsp");
                                     }
                                     else
                                     {
+                                        
                                         DatabaseManager dm = new DatabaseManager(); 
                                         int id = Integer.parseInt(request.getParameter("slotID").substring(1));
                                         
-                                        Date d; 
-                                        int startHour; 
-                                        int endHour; 
-                                        int startMin; 
-                                        int endMin;
+                                        
                                         
 
                                         if(request.getParameter("slotID").substring(0, 1).equals("s"))
@@ -205,14 +218,48 @@
                                             out.print("</tr>");
                                             
                                             out.print("</table>");
-         
+                                                    
                                         }
                                     }
+                                    
+                                    if(request.getParameter("first").equals("false"))
+                                    {
+                                        dSubmit = !(request.getParameter("d") == null)||(request.getParameter("d").equals(""));
+                                        startHourSubmit = !(request.getParameter("startHour") == null)||(request.getParameter("startHour").equals(""));
+                                        endHourSubmit = !(request.getParameter("endHour") == null)||(request.getParameter("endHour").equals(""));
+                                        startMinSubmit = !(request.getParameter("startMin") == null)||(request.getParameter("startMin").equals(""));
+                                        endMinSubmit = !(request.getParameter("endMin") == null)||(request.getParameter("endMin").equals(""));
+                                        readyToDelete = dSubmit && startHourSubmit && endHourSubmit && startMinSubmit && endMinSubmit;
+                                    }
+                                        
                                 %>
                             
-                                <form name="cancel" action="" type="submit">
+                                <form name="cancel" action="timeslotEdit.jsp" type="submit">
+                                    <input type="hidden" value="<%= request.getParameter("slotID") %>" name="slotID">
+                                    <input type="hidden" value="false" name="first">
+                                    <input type="hidden" value="<%= d %>" name="d">
+                                    <input type="hidden" value="<%= startHour %>" name="startHour">
+                                    <input type="hidden" value="<%= endHour %>" name="endHour">
+                                    <input type="hidden" value="<%= startMin%>" name="startMin">
+                                    <input type="hidden" value="<%= endMin%>" name="endMin">
                                 <input type="submit" value="Cancel Timeslot" id="cancelBtn">
                                 </form>
+ <%
+                                    if(readyToDelete)
+                                    {
+                                    %>
+                                    <jsp:useBean id="mtb" class="uta.cse4361.beans.ModifyTimeSlotsBean" scope="session"/> 
+                                    <jsp:setProperty name="mtb" property="date" value= "<%= d %>"/>
+                                    <jsp:setProperty name="mtb" property="StartHr" value= "<%= startHour %>"/>
+                                    <jsp:setProperty name="mtb" property="EndHr" value= "<%= endHour %>"/>
+                                    <jsp:setProperty name="mtb" property="StartMin" value= "<%= startMin %>"/>
+                                    <jsp:setProperty name="mtb" property="EndMin" value= "<%= endMin %>"/>
+                                    <%
+                                    mtb.modifySlot();
+                                    response.sendRedirect("modifyTimeslot.jsp");
+                                    }
+                                    %>
+                                
                             </div>
 
                     </div>                   
