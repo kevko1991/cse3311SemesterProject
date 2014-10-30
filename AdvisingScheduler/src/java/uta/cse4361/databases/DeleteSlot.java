@@ -22,11 +22,9 @@ public class DeleteSlot extends RDBImplCommand{
     java.sql.Date date;
     
     private String sqlQuery = "DELETE FROM \"SLOT\" WHERE "
-            + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? AND \"SlotStartHour\" <> ?)" //slots during start hour
+            + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? )" //slots during start hour
             + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" > ? AND \"SlotStartHour\" < ?)"//slots between start and end hour
-            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ? AND \"SlotStartHour\" <> ?)"// slots during end hour
-            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartHour\" = ? "
-            + "AND \"SlotStartMin\" >= ? AND \"SlotStartMin\" < ?)"; // slots within single hour
+            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)"; // slots during end hour
     public DeleteSlot(java.util.Date date, int startHour, int endHour, int startMin, int endMin){
         this.startHour = startHour;
         this.startMin = startMin;
@@ -41,19 +39,12 @@ public class DeleteSlot extends RDBImplCommand{
             statement.setDate(1, date);
             statement.setInt(2, startHour);
             statement.setInt(3, startMin); //slots during start hour
-            statement.setInt(4, endHour);
-            statement.setDate(5, date);
-            statement.setInt(6, startHour);
-            statement.setInt(7, endHour); //slots between start and end hour
-            statement.setDate(8,date);
-            statement.setInt(9, endHour);
-            statement.setInt(10, endMin); // slots during end hour
-            statement.setInt(11, startHour);
-            statement.setDate(12, date);
-            statement.setInt(13, startHour);
-            statement.setInt(14, endHour); //slots that start and end within same hour
-            statement.setInt(15, startMin);
-            statement.setInt(16, endMin);
+            statement.setDate(4, date);
+            statement.setInt(5, startHour);
+            statement.setInt(6, endHour); //slots between start and end hour
+            statement.setDate(7,date);
+            statement.setInt(8, endHour);
+            statement.setInt(9, endMin); // slots during end hour
             statement.executeUpdate();
             processResult();
         }
