@@ -6,7 +6,6 @@
                             <a href="AdvisorCalendar.jsp">Advisor Calendar</a><br>
                             <a href="modifyTimeslot.jsp">Modify Timeslot</a><br>
                             <a href="modifyAppointment.jsp">Modify Appointment</a><br>
-                            <a href="getCommandTest.jsp">Command Test</a><br>
                         </div>
                     </div>                   
                 </td>

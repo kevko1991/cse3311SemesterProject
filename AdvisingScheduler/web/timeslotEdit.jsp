@@ -4,6 +4,7 @@
     Author     : Melissa
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page import="uta.cse4361.businessobjects.Appointment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="uta.cse4361.businessobjects.Slot"%>
@@ -36,30 +37,64 @@
                                     {
                                         DatabaseManager dm = new DatabaseManager(); 
                                         int id = Integer.parseInt(request.getParameter("slotID").substring(1));
+                                        
+                                        Date d; 
+                                        int startHour; 
+                                        int endHour; 
+                                        int startMin; 
+                                        int endMin;
+                                        
 
                                         if(request.getParameter("slotID").substring(0, 1).equals("s"))
                                         {
                                             ArrayList<Slot> slots = dm.getSlots();//(Integer.parseInt(request.getParameter("slotID"))); 
                                             Slot slot = null;
                                             int i = 0;
-                                            while (slots.get(i).getAppointmentId() != (id))
+                                            for(Slot s : slots)
                                             {
-                                                if (slots.get(i).getAppointmentId() == (id))
+                                                if (s.getAppointmentId() == (id))
                                                 {
                                                     slot = slots.get(i);
+                                                    
                                                 }
-                                                i++;
                                             }
-
                                             if(slot == null)
                                             {
 
                                             }
                                             else
                                             {
+                                                d = slot.getDate(); 
+                                                startHour = slot.getHour(); 
+                                                endHour = startHour; 
+                                                startMin = slot.getMinute();
+                                                if(startMin ==45)
+                                                {
+                                                    endHour = endHour+1;
+                                                    endMin = 0;
+                                                }
+                                                else
+                                                {
+                                                    endMin = startMin + 15;
+                                                }
+                                                out.print("<table border='1' cellpadding= '3' cellspacing= '0' style='border: 1pt solid #000000; border-Collapse: collapse'>");
+                                                out.print("<tr>");                                          
+                                                out.print("<td>");
+                                                out.print("Date: ");
+                                                out.print("</td>");                                            
+                                                out.print("<td>");
                                                 out.print(slot.getDate().getMonth()+1+"/"+slot.getDate().getDate()+"/"+(slot.getDate().getYear()+1900));
-                                                out.print(slot.getHour() + ":");
-                                                 if(slot.getMinute() == 0)
+                                                out.print("</td>");
+                                                out.print("</tr>");
+
+
+                                                out.print("<tr>");
+                                                out.print("<td>");
+                                                out.print("Start Time: ");
+                                                out.print("</td>");                                            
+                                                out.print("<td>");
+                                                out.print(slot.getHour()+ ":");
+                                                if(slot.getMinute()== 0)
                                                 {
                                                     out.print("00");
                                                 }
@@ -67,12 +102,110 @@
                                                 {
                                                     out.print(slot.getMinute());
                                                 }
+                                                out.print("</td>");
+                                                out.print("</tr>");
+                                                out.print("</table>");
 
                                             }
                                         }
                                         else
                                         {
                                             Appointment appt = dm.getAppointment(id); 
+                                            d = appt.getDate(); 
+                                            startHour = appt.getStartHour(); 
+                                            endHour = appt.getEndHour(); 
+                                            startMin = appt.getStartMinute(); 
+                                            endMin = appt.getEndMinute();
+
+                                            out.print("<table border='1' cellpadding= '3' cellspacing= '0' style='border: 1pt solid #000000; border-Collapse: collapse'>");
+                                            out.print("<tr>");                                          
+                                            out.print("<td>");
+                                            out.print("Date: ");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getDate().getMonth()+1+"/"+appt.getDate().getDate()+"/"+(appt.getDate().getYear()+1900));
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
+                                            out.print("Start Time: ");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getStartHour()+ ":");
+                                            if(appt.getStartMinute()== 0)
+                                            {
+                                                out.print("00");
+                                            }
+                                            else
+                                            {
+                                                out.print(appt.getStartMinute());
+                                            }
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
+                                            out.print("End Time: ");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getEndHour()+ ":");
+                                            if(appt.getEndMinute()== 0)
+                                            {
+                                                out.print("00");
+                                            }
+                                            else
+                                            {
+                                                out.print(appt.getEndMinute());
+                                            }
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
+                                            out.print("Advisor: ");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getAdvisorName());
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
+                                            out.print("Advising Type: ");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getType());
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
+                                            out.print("Student: ");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getStudentName());
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
+                                            out.print("Description: ");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getDescription());
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            out.print("</table>");
+         
                                         }
                                     }
                                 %>
