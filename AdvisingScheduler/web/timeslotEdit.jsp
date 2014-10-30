@@ -60,7 +60,7 @@
 
                                         if(request.getParameter("slotID").substring(0, 1).equals("s"))
                                         {
-                                            ArrayList<Slot> slots = dm.getSlots();//(Integer.parseInt(request.getParameter("slotID"))); 
+                                            ArrayList<Slot> slots = dm.getAvailableSlots();
                                             Slot slot = null;
                                             int i = 0;
                                             for(Slot s : slots)
@@ -250,10 +250,10 @@
                                     %>
                                     <jsp:useBean id="mtb" class="uta.cse4361.beans.ModifyTimeSlotsBean" scope="session"/> 
                                     <jsp:setProperty name="mtb" property="date" value= "<%= d %>"/>
-                                    <jsp:setProperty name="mtb" property="StartHr" value= "<%= startHour %>"/>
-                                    <jsp:setProperty name="mtb" property="EndHr" value= "<%= endHour %>"/>
-                                    <jsp:setProperty name="mtb" property="StartMin" value= "<%= startMin %>"/>
-                                    <jsp:setProperty name="mtb" property="EndMin" value= "<%= endMin %>"/>
+                                    <jsp:setProperty name="mtb" property="startHr" value= "<%= startHour %>"/>
+                                    <jsp:setProperty name="mtb" property="endHr" value= "<%= endHour %>"/>
+                                    <jsp:setProperty name="mtb" property="startMin" value= "<%= startMin %>"/>
+                                    <jsp:setProperty name="mtb" property="endMin" value= "<%= endMin %>"/>
                                     <%
                                     mtb.modifySlot();
                                     response.sendRedirect("modifyTimeslot.jsp");

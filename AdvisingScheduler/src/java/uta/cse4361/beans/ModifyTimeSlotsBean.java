@@ -12,20 +12,20 @@ import uta.cse4361.interfaces.Constants;
  * @author Nabin
  */
 public class ModifyTimeSlotsBean implements Constants{
-     private int StartHr = 0;
-    private int StartMin =0;
-    private int EndHr =0;
-    private int EndMin =0;
+    private int startHr = 0;
+    private int startMin =0;
+    private int endHr =0;
+    private int endMin =0;
     
     Date date = new Date();
 
     public ModifyTimeSlotsBean() {
     }
     public ModifyTimeSlotsBean(int StartHr, int EndHr, int StartMin, int EndMin, Date date){
-        this.StartHr =StartHr;
-        this.EndHr =EndHr;
-        this.StartMin =StartMin;
-        this.EndMin =EndMin;
+        this.startHr =StartHr;
+        this.endHr =EndHr;
+        this.startMin =StartMin;
+        this.endMin =EndMin;
         this.date=date;
         
     }
@@ -39,35 +39,35 @@ public class ModifyTimeSlotsBean implements Constants{
     }
 
     public int getStartHr() {
-        return StartHr;
+        return startHr;
     }
 
     public int getStartMin() {
-        return StartMin;
+        return startMin;
     }
 
     public int getEndHr() {
-        return EndHr;
+        return endHr;
     }
 
     public int getEndMin() {
-        return EndMin;
+        return endMin;
     }
 
     public void setStartHr(int StartHr) {
-        this.StartHr = StartHr;
+        this.startHr = StartHr;
     }
 
     public void setStartMin(int StartMin) {
-        this.StartMin = StartMin;
+        this.startMin = StartMin;
     }
 
     public void setEndHr(int EndHr) {
-        this.EndHr = EndHr;
+        this.endHr = EndHr;
     }
 
     public void setEndMin(int EndMin) {
-        this.EndMin = EndMin;
+        this.endMin = EndMin;
     }
 
      
@@ -76,7 +76,7 @@ public class ModifyTimeSlotsBean implements Constants{
          String msg = SUCCESS_MESSAGE;
          DatabaseManager dm = new DatabaseManager();
          
-         msg = dm.modifySlot(date, StartHr, StartMin, EndHr, EndMin);
+         msg = dm.modifySlot(date, startHr, startMin, endHr, endMin);
          
          return msg;
     }
