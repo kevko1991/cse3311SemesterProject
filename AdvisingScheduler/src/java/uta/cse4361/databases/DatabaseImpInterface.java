@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
+import uta.cse4361.businessobjects.AdvisorAccount;
 
 public interface DatabaseImpInterface {
     public String saveSlots(ArrayList<Slot> slots);
@@ -22,4 +23,7 @@ public interface DatabaseImpInterface {
     public ArrayList<Slot> getApptSlots();
     public ArrayList<Slot> getAvailSlots();
     public ArrayList<Slot> getAvailSlotsByTime(Date d, int startHour, int endHour, int startMin, int endMin);
+    public String register(AdvisorAccount aa);
+    public String validate(String email, String password);
+    public AdvisorAccount getAccount(String email);
 }

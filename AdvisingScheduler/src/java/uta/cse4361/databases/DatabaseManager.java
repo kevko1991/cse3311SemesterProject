@@ -12,6 +12,7 @@ import java.util.Date;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
 import uta.cse4361.businessobjects.SlotFactory;
+import uta.cse4361.businessobjects.AdvisorAccount;
 
 /**
  *
@@ -72,4 +73,19 @@ public class DatabaseManager {
     public ArrayList<Slot> getAvailableSlots() {
          return imp.getAvailSlots();
      }
+    
+    //todo
+    public String register(AdvisorAccount aa){
+        return "";
+    }
+    
+    //todo
+    public String validate(String email, String password){
+        return "";
+    }
+    
+    //todo
+    public AdvisorAccount getAccount(String email){
+        return new AdvisorAccount();
+    }
 }
