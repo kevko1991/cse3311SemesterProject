@@ -74,14 +74,12 @@ public class DatabaseManager {
          return imp.getAvailSlots();
      }
     
-    //todo
     public String register(AdvisorAccount aa){
-        return "";
+        return imp.register(aa);
     }
     
-    //todo
     public String validate(String email, String password){
-        return "";
+        return imp.validate(email, password);
     }
     
     //todo

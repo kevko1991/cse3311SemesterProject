@@ -107,4 +107,12 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         register.execute();
         return (String)register.getResult();
     }
+    
+    @Override
+    public String validate(String email, String password){
+        RDBImplCommand validate = new ValidateLogin(email, password);
+        validate.execute();
+        return (String)validate.getResult();
+    }
+    
 }
