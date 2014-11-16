@@ -7,6 +7,7 @@ package uta.cse4361.databases;
 
 import java.util.ArrayList;
 import java.util.Date;
+import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.businessobjects.Appointment;
 import uta.cse4361.businessobjects.Slot;
 
@@ -100,4 +101,10 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         return(ArrayList<Slot>) getAvailSlot.getResult();
     }
     
+    @Override
+    public String register(AdvisorAccount aa){
+        RDBImplCommand register = new RegisterAdvisor(aa);
+        register.execute();
+        return (String)register.getResult();
+    }
 }
