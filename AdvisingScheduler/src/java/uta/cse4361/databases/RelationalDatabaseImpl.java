@@ -115,4 +115,10 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         return (String)validate.getResult();
     }
     
+    @Override
+    public AdvisorAccount getAccount(String email){
+        RDBImplCommand getAccount = new GetAdvisor(email);
+        getAccount.execute();
+        return (AdvisorAccount)getAccount.getResult();
+    }
 }

@@ -30,7 +30,7 @@ public class RegisterAdvisor extends RDBImplCommand {
             statement.setString(3, aa.getName());
             statement.setString(4, aa.getDepartment());
             statement.setInt(5, aa.getRank());
-            statement.executeQuery();
+            statement.executeUpdate();
             processResult();
         }
         catch(SQLException e){

@@ -11,15 +11,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import uta.cse4361.businessobjects.AdvisorAccount;
 
 /**
  *
  * @author Andrew
  */
-public class RegisterAdvisorTest {
+public class GetAdvisorTest {
     
-    public RegisterAdvisorTest() {
+    public GetAdvisorTest() {
     }
     
     @BeforeClass
@@ -39,21 +38,14 @@ public class RegisterAdvisorTest {
     }
 
     /**
-     * Test of queryDB method, of class RegisterAdvisor.
+     * Test of queryDB method, of class GetAdvisor.
      */
     @Test
     public void testQueryDB() throws Exception {
-        System.out.println("queryDB");
-        AdvisorAccount aa = new AdvisorAccount();
-        aa.initialize("admin", "admin@mavs.uta.edu", "CSE", "password", 0);
-        RegisterAdvisor instance = new RegisterAdvisor(aa);
-        instance.connectDB();
-        instance.conn.setAutoCommit(false);
-        instance.queryDB();
-        instance.conn.rollback();
-        instance.disconnectDB();
-        // TODO review the generated test code and remove the default call to fail.
+        GetAdvisor instance = new GetAdvisor("admin@uta.edu");
+        instance.execute();
         assertNotNull(instance.getResult());
     }
+
     
 }

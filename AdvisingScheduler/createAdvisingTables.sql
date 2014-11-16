@@ -26,6 +26,9 @@ CREATE TABLE "USER"( "UserID" INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS I
     "UserRank" INTEGER
 );
 
+INSERT INTO "USER" ("UserEmail", "UserPassword", "UserName", "UserDepartment", "UserRank") 
+VALUES ('admin@uta.edu', 'password', 'Admin', 'CSE', 0);
+
 CREATE VIEW "APPTFW" AS
 SELECT "ApptID", "ApptDate", "ApptStartHour", "ApptStartMin", "ApptEndHour", "ApptEndMin"
 From APPOINTMENT

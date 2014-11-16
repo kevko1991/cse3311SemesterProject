@@ -84,6 +84,6 @@ public class DatabaseManager {
     
     //todo
     public AdvisorAccount getAccount(String email){
-        return new AdvisorAccount();
+        return imp.getAccount(email);
     }
 }
