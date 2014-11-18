@@ -72,7 +72,7 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         String result = instance.scheduleAppointment();
         assertEquals(expResult, result);
     }
-
+/*
     @Test
     public void testScheduleAppointmentSuccess() {
         ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
@@ -92,8 +92,29 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         String expResult = SUCCESS_MESSAGE;
         String result = instance.scheduleAppointment();
         assertEquals(expResult, result);
-    }
+    }*/
+    
+    @Test
+    public void testGenerageMessage() {
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
+        instance.setStudentID(sID);
+        instance.setStudentName(sName);
+        instance.setAdvisorName(aName);
+        instance.setType(type);
+        instance.setDate(d);
+        instance.setDescription(dp);
+        instance.setStartHour(sH);
+        instance.setEndHour(eH);
+        instance.setStartMinute(sM);
+        instance.setEndMinute(eM);
+        String expectedResult = "You have an appointment with Advisor Name at 11/17/2014 from 11:0 to 13:33."
+                + "To view your appointment, please use the following link";
+        String result = instance.generateMessage();
+                instance.sendEmail("pacrocodile@gmail.com", result);
 
+        assertEquals(result, expectedResult);
+    }
+    
     /**
      * Test of setStudentName method, of class ScheduleAppointmentControllerBean.
      */
@@ -131,7 +152,7 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
     public void testSetType() {
         ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         instance.setType(type);
-        assertEquals(type, instance.getAdvisorName());
+        assertEquals(type, instance.getType());
     }
     
     /**
