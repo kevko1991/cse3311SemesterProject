@@ -21,8 +21,10 @@ import javax.mail.internet.MimeMessage;
  */
 public class ScheduleAppointmentBean implements Constants {
 
+    private String studentMajor = null;
     private String studentName = null;
     private String studentID = null;
+    private String studentEmail = null;
     private String advisorName = null;
     private String description = null;
     private String type = null;
@@ -39,7 +41,7 @@ public class ScheduleAppointmentBean implements Constants {
     public String scheduleAppointment() {
         String msg = SUCCESS_MESSAGE;
         Appointment a = new Appointment();
-        boolean r = a.initialize(this.studentName, this.studentID, this.advisorName, this.type,
+        boolean r = a.initialize(this.studentMajor, this.studentName, this.studentID, this.studentEmail, this.advisorName, this.type,
                 this.description, this.date,
                 this.startHour, this.endHour,
                 this.startMinute, this.endMinute);
@@ -59,16 +61,14 @@ public class ScheduleAppointmentBean implements Constants {
         return message;
     }
 
-    public void sendEmail(String receiptEmail, String msg) {
-        // Recipient's email ID needs to be mentioned.
-        //String to = "pacrocodile@gmail.com";//change accordingly
-
-        // Sender's email ID needs to be mentioned
+    public void sendEmail() {
+        String receiptEmail = this.studentEmail;
+        String msg = this.generateMessage();
+        
         String from = "cse4361fall14@gmail.com";
         final String username = "cse4361fall14";
         final String password = "design.pattern";
         
-        // Assuming you are sending email through relay.jangosmtp.net
         String host = "smtp.gmail.com";
 
         Properties props = new Properties();
@@ -111,12 +111,19 @@ public class ScheduleAppointmentBean implements Constants {
     }
 
     // Setters
+    public void setStudentMajor(String sMajor) {
+        this.studentMajor = sMajor;
+    }
     public void setStudentName(String sName) {
         this.studentName = sName;
     }
 
     public void setStudentID(String sID) {
         this.studentID = sID;
+    }
+    
+    public void setStudentEmail(String sEmail) {
+        this.studentEmail = sEmail;
     }
 
     public void setAdvisorName(String aName) {
@@ -152,12 +159,19 @@ public class ScheduleAppointmentBean implements Constants {
     }
 
     // Getters
+    public String getStudentMajor() {
+        return this.studentMajor;
+    }
     public String getStudentName() {
         return this.studentName;
     }
 
     public String getStudentID() {
         return this.studentID;
+    }
+    
+    public String getStudentEmail() {
+        return this.studentEmail;
     }
 
     public String getType() {

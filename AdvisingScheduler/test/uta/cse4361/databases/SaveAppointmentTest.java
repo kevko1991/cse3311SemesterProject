@@ -47,6 +47,7 @@ public class SaveAppointmentTest {
         System.out.println("queryDB");
         String sName = "First Last";
         String sID = "1000123456";
+        String sEmail = "test@test.com";
         String aName = "Advisor Name";
         String type = "Advising Type";
         String dp = "This is the test ";
@@ -57,16 +58,17 @@ public class SaveAppointmentTest {
         int eM = 0;
         String expectedResult = "";
         Appointment appt = new Appointment();
-        appt.initialize(sName, sID, aName, type, dp, date, sH, eH, sM, eM);
+        appt.initialize(sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         SaveAppointment instance = new SaveAppointment(appt);
         instance.connectDB();
-        instance.conn.setAutoCommit(false);
+        //instance.conn.setAutoCommit(false);
         instance.queryDB();
-        instance.conn.rollback();
+        //instance.conn.rollback();
         instance.disconnectDB();
+        
         String result = (String)instance.getResult();
         System.out.println(result);
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
     
     
@@ -80,6 +82,6 @@ public class SaveAppointmentTest {
         RDBImplCommand instance = new SaveAppointment(new Appointment());
         instance.processResult();
         String result = (String)instance.getResult();
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 }

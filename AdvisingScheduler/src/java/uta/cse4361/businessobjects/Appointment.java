@@ -14,8 +14,10 @@ import java.util.Date;
 public class Appointment implements java.io.Serializable, Comparable<Appointment>{
 
     private int apptID = 0;
+    private String studentMajor = null;
     private String studentName = null;
     private String studentID = null;
+    private String studentEmail = null;
     private String advisorName = null;
     private String description = null;
     private String type = null;
@@ -29,10 +31,12 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
 
     }
     
-    public boolean initialize(String sName, String sID, String aName, String type, String dp, Date date, int sH, int eH, int sM, int eM) {
+    public boolean initialize(String sMajor, String sName, String sID, String sEmail, String aName, String type, String dp, Date date, int sH, int eH, int sM, int eM) {
+        this.setStudentMajor(sMajor);
         this.setStudentName(sName);
         if(this.setStudentID(sID) == false)
             return false;
+        this.setStudentEmail(sEmail);
         this.setAdvisorName(aName);
         this.setType(type);
         this.setDescription(dp);
@@ -45,6 +49,9 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
     }
     
     // Setters
+    public void setStudentMajor(String sMajor) {
+        this.studentMajor = sMajor;
+    }
     public void setApptID(int apptID) {
         this.apptID = apptID;
     }
@@ -58,6 +65,9 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
           return false;
         this.studentID = sID;
         return true;
+    }
+    public void setStudentEmail(String sEmail) {
+        this.studentEmail = sEmail;
     }
     public void setType(String type) {
         this.type = type;
@@ -85,6 +95,9 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
     }
 
     // Getters
+    public String getStudentMajor() {
+        return this.studentMajor;
+    }
     public int getApptID() {
         return this.apptID;
     }
@@ -96,6 +109,9 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
     }
     public String getStudentID() {
         return this.studentID;
+    }
+    public String getStudentEmail() {
+        return this.studentEmail;
     }
     public String getAdvisorName() {
         return this.advisorName;

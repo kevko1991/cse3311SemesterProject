@@ -8,6 +8,8 @@ CREATE TABLE "APPOINTMENT"(   "ApptID" INTEGER NOT NULL PRIMARY KEY GENERATED AL
     "Description" VARCHAR(100),
     "StudentID" CHAR(10) NOT NULL,
     "StudentName" VARCHAR(20),
+    "StudentMajor" VARCHAR(20),
+    "StudentEmail" VARCHAR(40),
     "AdvisorName" VARCHAR(20) NOT NULL
 );
 

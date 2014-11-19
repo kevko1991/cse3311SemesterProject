@@ -12,8 +12,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import uta.cse4361.databases.DatabaseManager;
-import uta.cse4361.businessobjects.SlotFactory;
 
 /**
  *
@@ -21,13 +19,15 @@ import uta.cse4361.businessobjects.SlotFactory;
  */
 public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Constants{
 
+    private final String sMajor = "Software Engineering";
     private final String sName = "First Last";
     private final String sID = "1000123456";
+    private final String sEmail = "hzhang@mavs.uta.edu";
     private final String wrongID = "30123";
     private final String aName = "Advisor Name";
     private final String type = "Advising Type";
     private final String dp = "This is a description test";
-    private final Date d = new Date();
+    private final Date d = new Date(114, 10, 17);
     private final int sH = 11;
     private final int eH = 13;
     private final int sM = 0;
@@ -58,8 +58,10 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
     @Test
     public void testScheduleAppointmentFail() {
         ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
+        instance.setStudentMajor(sMajor);
         instance.setStudentID(wrongID);
         instance.setStudentName(sName);
+        instance.setStudentEmail(sEmail);
         instance.setAdvisorName(aName);
         instance.setType(type);
         instance.setDate(d);
@@ -97,8 +99,10 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
     @Test
     public void testGenerageMessage() {
         ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
+        instance.setStudentMajor(sMajor);
         instance.setStudentID(sID);
         instance.setStudentName(sName);
+        instance.setStudentEmail(sEmail);
         instance.setAdvisorName(aName);
         instance.setType(type);
         instance.setDate(d);
@@ -107,14 +111,18 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         instance.setEndHour(eH);
         instance.setStartMinute(sM);
         instance.setEndMinute(eM);
-        String expectedResult = "You have an appointment with Advisor Name at 11/17/2014 from 11:0 to 13:33."
-                + "To view your appointment, please use the following link";
+        String expectedResult = "You have an appointment with Advisor Name at 11/17/2014 from 11:0 to 13:33";
         String result = instance.generateMessage();
-                instance.sendEmail("pacrocodile@gmail.com", result);
-
-        assertEquals(result, expectedResult);
+        System.out.println(result);
+        assertEquals(expectedResult, result);
     }
     
+    @Test
+    public void testSetStudentMajor() {
+        ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
+        instance.setStudentMajor(sMajor);
+        assertEquals(sMajor, instance.getStudentMajor());
+    }
     /**
      * Test of setStudentName method, of class ScheduleAppointmentControllerBean.
      */

@@ -44,8 +44,10 @@ public class AppointmentTest {
      */
     @Test
     public void testInitializeSuccess() {
+        String sMajor = "Software Engineering";
         String sName = "First Last";
         String sID = "1000123456";
+        String sEmail = "hzhang@mavs.uta.edu";
         String aName = "Advisor Name";
         String type = "Advising Type";
         String dp = "This is the test ";
@@ -56,7 +58,7 @@ public class AppointmentTest {
         int eM = 0;
         Appointment instance = new Appointment();
         boolean expResult = true;
-        boolean result = instance.initialize(sName, sID, aName, type, dp, date, sH, eH, sM, eM);
+        boolean result = instance.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         assertEquals(expResult, result);
     }
     
@@ -66,8 +68,10 @@ public class AppointmentTest {
      */
     @Test
     public void testInitializeFail() {
+        String sMajor = "Software Engineering";
         String sName = "First Last";
         String sID = "3000123456";
+        String sEmail = "hzhang@mavs.uta.edu";
         String aName = "Advisor Name";
         String type = "Advising Type";
         String dp = "This is the test ";
@@ -78,10 +82,17 @@ public class AppointmentTest {
         int eM = 0;
         Appointment instance = new Appointment();
         boolean expResult = false;
-        boolean result = instance.initialize(sName, sID, aName, type, dp, date, sH, eH, sM, eM);
+        boolean result = instance.initialize(sMajor, sName, sID,sEmail, aName, type, dp, date, sH, eH, sM, eM);
         assertEquals(expResult, result);
     }
-
+    @Test
+    public void testSetStudentMajor() {
+        String sMajor = "Software Engineering";
+        Appointment instance = new Appointment();
+        instance.setStudentMajor(sMajor);
+        assertEquals(sMajor, instance.getStudentMajor());
+    }
+    
     /**
      * Test of setApptID method, of class Appointment.
      */
@@ -93,6 +104,13 @@ public class AppointmentTest {
         assertEquals(apptID, instance.getApptID());
     }
 
+    @Test
+    public void testSetStudentEmail() {
+        String sEmail = "test@test.com";
+        Appointment instance = new Appointment();
+        instance.setStudentEmail(sEmail);
+        assertEquals(sEmail, instance.getStudentEmail());
+    }
     /**
      * Test of setStudentName method, of class Appointment.
      */
