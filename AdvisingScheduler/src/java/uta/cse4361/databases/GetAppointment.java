@@ -57,9 +57,9 @@ public class GetAppointment extends RDBImplCommand {
             String sName = resultSet.getString("StudentName");
             String sEmail = resultSet.getString("StudentEmail");
             String aName = resultSet.getString("AdvisorName");
-            String major = resultSet.getString("Major");
+            String sMajor = resultSet.getString("StudentMajor");
             appt.setApptID(id);
-            appt.initialize(major, sName, sID, sEmail, aName, type, description, date, sHour, eHour, sMinute, eMinute);
+            appt.initialize(sMajor, sName, sID, sEmail, aName, type, description, date, sHour, eHour, sMinute, eMinute);
             result = appt;
         } catch (SQLException e) {
             System.out.println("GetAppintment process result failed");

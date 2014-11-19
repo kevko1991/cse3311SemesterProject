@@ -56,8 +56,9 @@ public class GetAppointments extends RDBImplCommand {
                 String sName = resultSet.getString("StudentName");
                 String sEmail = resultSet.getString("StudentEmail");
                 String aName = resultSet.getString("AdvisorName");
+                String sMajor = resultSet.getString("StudentMajor");
                 appt.setApptID(id);
-                if (appt.initialize(sName, sID, sEmail, aName, type, description, date, sHour, eHour, sMinute, eMinute)) {
+                if (appt.initialize(sMajor, sName, sID, sEmail, aName, type, description, date, sHour, eHour, sMinute, eMinute)) {
                     ((ArrayList<Appointment>) result).add(appt);
                 }
             }

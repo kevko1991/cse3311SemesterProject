@@ -53,6 +53,7 @@ public class GetAppointmentTest {
         instance.disconnectDB();
         Appointment newAppt = (Appointment)instance.getResult();
         System.out.println(newAppt.getStudentEmail());
+        System.out.println(newAppt.getStudentMajor());
         assertEquals(expectedID, newAppt.getApptID());
     }
     
