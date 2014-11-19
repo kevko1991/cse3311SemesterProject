@@ -18,9 +18,9 @@ import uta.cse4361.businessobjects.Appointment;
  *
  * @author Han
  */
-public class SaveAppointmentTest {
+public class EditAppointmentTest {
     
-    public SaveAppointmentTest() {
+    public EditAppointmentTest() {
     }
     
     @BeforeClass
@@ -40,49 +40,33 @@ public class SaveAppointmentTest {
     }
 
     /**
-     * Test of queryDB method, of class SaveAppointment.
+     * Test of queryDB method, of class EditAppointment.
      */
     @Test
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
-        String sName = "First Last";
-        String sID = "1000123456";
+        String sName = "Changed Name";
+        String sID = "1000654321";
         String sEmail = "test@test.com";
         String sMajor = "Software Engineering";
         String aName = "Advisor Name";
         String type = "Advising Type";
-        String dp = "This is the test ";
-        Date date = new Date();
+        String dp = "This is the test after edit Appointment";
+        Date date = new Date(114, 10, 17);
         int sH = 13;
         int eH = 0;
         int sM = 14;
         int eM = 0;
-        String expectedResult = "";
+        String expectedResult = "This is the test after edit Appointment";
         Appointment appt = new Appointment();
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
-        SaveAppointment instance = new SaveAppointment(appt);
+        EditAppointment instance = new EditAppointment(1, appt);
         instance.connectDB();
-        instance.conn.setAutoCommit(false);
-        instance.queryDB();
-        instance.conn.rollback();
+        instance.queryDB();        
+        Appointment newAppt = new DatabaseManager().getAppointment(1);
+        String result = newAppt.getDescription();
         instance.disconnectDB();
-        
-        String result = (String)instance.getResult();
-        System.out.println(result);
         assertEquals(expectedResult, result);
     }
-    
-    
-    /**
-     * Test of processResult method, of class SaveAppointment.
-     */
-    @Test
-    public void testProcessResult() {
-        System.out.println("processResult");
-        String expectedResult = "";
-        RDBImplCommand instance = new SaveAppointment(new Appointment());
-        instance.processResult();
-        String result = (String)instance.getResult();
-        assertEquals(expectedResult, result);
-    }
+
 }
