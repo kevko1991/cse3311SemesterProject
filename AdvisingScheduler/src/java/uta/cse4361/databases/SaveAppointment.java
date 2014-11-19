@@ -16,8 +16,8 @@ public class SaveAppointment extends RDBImplCommand {
 
     private Appointment appointment;
     private String sqlQuery = "INSERT INTO \"APPOINTMENT\"(\"ApptDate\", \"ApptStartHour\", \"ApptStartMin\", \"ApptEndHour\", \"ApptEndMin\", "
-            + "\"ApptType\", \"Description\", \"StudentID\", \"StudentName\", \"StudentEmail\", \"AdvisorName\") "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            + "\"ApptType\", \"Description\", \"StudentID\", \"StudentName\", \"StudentMajor\", \"StudentEmail\", \"AdvisorName\") "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public SaveAppointment(Appointment appt) {
         super();
@@ -37,8 +37,9 @@ public class SaveAppointment extends RDBImplCommand {
             statement.setString(7, appointment.getDescription());
             statement.setString(8, appointment.getStudentID());
             statement.setString(9, appointment.getStudentName());
-            statement.setString(10, appointment.getStudentEmail());
-            statement.setString(11, appointment.getAdvisorName());
+            statement.setString(10, appointment.getStudentMajor());
+            statement.setString(11, appointment.getStudentEmail());
+            statement.setString(12, appointment.getAdvisorName());
             statement.executeUpdate();
             processResult();
         } catch (SQLException e) {
