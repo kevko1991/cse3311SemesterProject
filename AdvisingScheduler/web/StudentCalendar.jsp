@@ -91,16 +91,16 @@
         <jsp:include page="header.jsp" />
         <table id="table" style="margin:0 auto;">       
             <tr>
-                <td >
+                <td style="vertical-align: top;">
                     
-                        <div id="scheduleAccordion">
+                        <div id="scheduleAccordion" style="vertical-align: top;">
                             <h3>Appointment Summary</h3>
                                 <div>                         
                                     <form name="appointmentSummary">
                                         <table>
                                             <tr>
                                                 <td>
-                                        Student ID:
+                                        Student ID
                                                 </td>
                                                 <td>
                                         <input type="text" name="sID" id="sID" size="30" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly"><br>
@@ -108,7 +108,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                        Student Name:
+                                        Student Name
                                                 </td>
                                                 <td>
                                         <input type="text" name="sName" id="sName" size="30" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
@@ -116,7 +116,7 @@
                                             </tr>
                                           <tr>
                                                 <td>
-                                        Advisor:
+                                        Advisor
                                                 </td>
                                                 <td>
                                         <input type="text" name="aName" id="aName" size="30" value="<jsp:getProperty name="newAppt" property="advisorName"/>" readonly="readonly"><br>
@@ -124,7 +124,7 @@
                                         </tr>
                                         <tr>
                                                 <td>
-                                        Advising Type:
+                                        Advising Type
                                                 </td>
                                                 <td>
                                         <input type="text" name="type" id="type" size="30" value="<jsp:getProperty name="newAppt" property="type"/>" readonly="readonly"><br>
@@ -132,7 +132,7 @@
                                         </tr>
                                         <tr>
                                                 <td>
-                                        Date:
+                                        Date
                                                 </td>
                                                 <td>
                                         <input type="text" name="date" id="date" size="30" value="<%= request.getParameter("date") %>" readonly="readonly"><br>
@@ -140,7 +140,7 @@
                                         </tr>
                                         <tr>
                                                 <td>
-                                        Start Time:
+                                        Start Time
                                                 </td>
                                                 <td>
                                         <input type="text" id="startTime" name="startTime" size="30" value="" readonly="readonly"><br>
@@ -148,7 +148,7 @@
                                         </tr>
                                         <tr>
                                                 <td>
-                                        End Time:
+                                        End Time
                                                 </td>
                                                 <td>
                                         <input type="text" id="endTime" name="endTime" size="30" value="" readonly="readonly"><br>
@@ -156,7 +156,7 @@
                                         </tr>
                                         <tr>
                                                 <td>
-                                        Description: 
+                                        Description 
                                                 </td>
                                                 <td>
                                         <textarea name="description" id="description" rows="6" cols="30" value="" readonly="readonly"></textarea><br>
@@ -165,7 +165,7 @@
                                                 <br>
                                                 <div class="centerthis">
                                         <input type="submit" value="Make Appointment" id="submitBtn">
-                                                </div>
+                                                </div><br><br>
                                     </form>
                                     <%if(timeSubmitted){
                                             String result = newAppt.scheduleAppointment(); 
@@ -181,7 +181,7 @@
                         </div>
 
                 <td style="vertical-align: top; float: right;">
-                    <div style="vertical-align: top; float: right; width:545px" id="timeaccordion">
+                    <div style="vertical-align: top; float: right" id="timeaccordion">
                         <h3>Calendar</h3>
                         <div id="calendar">                            
                         </div>                                           

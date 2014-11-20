@@ -116,22 +116,22 @@
             <h3>Schedule Appointment</h3>
             <div class="centerthis">
                 <form name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();">
-                                Student ID:<br>
+                                Student ID<br>
                                 <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID"  size="50" value=""><br>
                                 <br><br>
-                                Student Name:<br>
+                                Student Name<br>
                                 <input type="text" name="sName" id="sName" size="50" value="">
                                 <br><br>
-                                Advisor:<br>
-                                <select name="aName" id="aName">
+                                Advisor<br>
+                                <select name="aName" id="aName" style="min-width:36%;">
                                     <option value="Linda Barasch">Linda Barasch</option>
                                     <option value="Bob Weems">Bob Weems</option>
                                     <option value="Ramez Elmasri">Ramez Elmasri</option>
                                     <option value="Bahram Khalili">Bahram Khalili</option>
                                 </select>
                                 <br><br>
-                                Advising Type:<br>
-                                <select name="type" id="type">
+                                Advising Type<br>
+                                <select name="type" id="type" style="min-width:36%;">
                                     <option value="New Student">New Student</option>
                                     <option value="Returning Student">Returning Student</option>
                                     <option value="Drop Course">Drop Course</option>
@@ -139,10 +139,10 @@
                                     <option value="Others">Others</option>
                                 </select>
                                 <br><br>
-                                Date:<br>
+                                Date<br>
                                 <input type="text" name="date" size="50" id="date" readonly="true">
                                 <br><br>
-                                Description:<br>
+                                Description<br>
                                 <textarea name="description" id="description" rows="6" cols="50" value=""></textarea>
                                 <br><br>
                     <input type="submit" value="Submit" id="submitBtn">

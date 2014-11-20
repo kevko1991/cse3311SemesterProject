@@ -25,28 +25,22 @@
                             <h3>Appointments</h3>
                             <div>
                                 <form  name="appointmentForm" action="appointmentEdit.jsp">
-                                <table border="1" id="appointmentList" cellpadding= "3" cellspacing= "0" style="border: 1pt solid #000000; border-Collapse: collapse; margin: 0 auto;">
-                                    <tr>
-                                        <td>
-                                            Date
-                                        </td>
-                                        
-                                        <td>
-                                            Start
-                                        </td>
-                                        <td>
-                                            End
-                                        </td>
-                                        <td>
-                                            Advisor Name
-                                        </td>
-                                        <td>
-                                            Advising Type
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
+                                <table class="display" id="appointmentList" cellpadding= "3" cellspacing= "0" >
+                                    <thead>
+
+                                    <th>Date</th>
+
+                                    <th>Start</th>
+
+                                    <th>End</th>
+
+                                    <th>Advisor Name</th>
+
+                                    <th>Advising Type</th>
+                                    
+                                    <th></th>
+                                    </thead>
+                                    <tbody>
                                 <%
                                     dm = new uta.cse4361.databases.DatabaseManager(); 
                                     java.util.ArrayList<uta.cse4361.businessobjects.Appointment> appts = dm.getAppointments(); 
@@ -90,7 +84,9 @@
                                         out.print("</script>");
                                     }
                                     %>
+                                    </tbody>
                                 </table>
+                                <br>
                                    <input type="submit" value="Modify Appointment" id="submitBtn">
                                 </form>
                             </div>
@@ -99,6 +95,5 @@
             </div>
     <jsp:include page="footer.jsp" />                            
     </body>
-    
     <script type="text/javascript" src="js/modifyAppointment.js"></script>
 </html>

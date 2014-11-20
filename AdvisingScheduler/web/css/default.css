@@ -7,8 +7,11 @@ and open the template in the editor.
     Created on : Sep 12, 2014, 7:59:37 PM
     Author     : Melissa
 */
-
+html{
+    height:100%;
+}
 body { 
+    height:100%;
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     font-size: 16px; 
     color: #000000; 
@@ -16,13 +19,19 @@ body {
     /*width: 1280px;*/
     margin: 0 auto;
     white-space: nowrap;
-    min-height: 1024;
     }
     
-    
+
+.ui-datepicker-week-end {
+    display:none
+}
+
+
 #wrapper{
         width: 1280px;
         margin: 0 auto;
+        height: 1024px;
+        
     }
     
 header{
@@ -33,6 +42,12 @@ header{
     background-image: url("css/images/banner.png");
     background-repeat: no-repeat;
 }
+#footer{
+    /*display:block;*/
+    position: absolute;
+    height:60px;
+    bottom: 0;
+}
 
 .leftSide{
     color: #000000; 
@@ -42,7 +57,7 @@ header{
 }
 
 .rightSide{
-    float: left;
+    float: right;
     width: 640px;
     position: relative;
 }
@@ -145,5 +160,11 @@ select {
 
 #footer{
     position:relative;
-    bottom:0px;
+    bottom: -100px;
+}
+#footer.clear{
+    clear: both;
+}
+footer.clear{
+    clear: both;
 }

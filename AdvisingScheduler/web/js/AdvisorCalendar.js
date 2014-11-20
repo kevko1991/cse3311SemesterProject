@@ -4,7 +4,9 @@ $("#button").button();
 
 //Andrews code
 $(function () {
-    $("#datepicker").datepicker({minDate: 0, maxDate: "+14D"});
+    $("#datepicker").datepicker({
+        minDate: 0, 
+        maxDate: "+14D"});
 });
 
 options = {'step': 15,
@@ -73,12 +75,23 @@ $(document).ready(function () {
         slotDuration: "00:15",
         minTime: "07:00",
         maxTime: "19:00",
+        hiddenDays:[0,6],
         header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
         //load events
-        events: formattedEventData
+        events: formattedEventData,
+        
+        dayClick: function(date, event, view) {
+        $('#datepicker').val(date.format('MM/DD/YYYY'));
+        $('#datepicker').notify(date.format('MM/DD/YYYY') + " Selected", "success",
+        {
+//            elementPosition:'top center',
+            globalPosition:'top center'
+        })
+    },
+
     })//fullcalendar end
 });//ready end

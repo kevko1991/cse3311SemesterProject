@@ -150,7 +150,6 @@
                                     <br>
 
                                     End Time<br>
-                                    <br>
 
                                     <input type="datetime" id ="endtimepicker" name="endTime"<% if (endSubmitted) {
                                                     out.println(" value=\"" + request.getParameter("endTime") + "\"");

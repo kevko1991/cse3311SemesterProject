@@ -78,7 +78,9 @@ var calendar = $('#calendar').fullCalendar({
             
             if(event.title === 'Occupied')
             {
-                
+                $("#endTime").notify("Not available", "error", 
+                {elementPosition: 'bottom center',
+                 globalPosition: 'bottom center'})
             }
             else
             {
@@ -105,6 +107,9 @@ var calendar = $('#calendar').fullCalendar({
                 {
                     $('input[name="endTime"]').val((event.sHour)+":45");
                 }
+                $("#endTime").notify("Time selected", "success", 
+                {elementPosition: 'bottom center',
+                 globalPosition: 'bottom middle'});
             }
         },
         

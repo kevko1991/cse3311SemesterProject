@@ -15,6 +15,8 @@
 
     <body>
         <jsp:include page="navigationbar.jsp" />
+        
+  
         <div id="wrapper">
             <jsp:include page="header.jsp" />
             <jsp:useBean id="dm" class="uta.cse4361.databases.DatabaseManager" scope="session"/>
@@ -23,22 +25,17 @@
                 <h3>Timeslots</h3>
                 <div>
                     <form name="appointmentForm" action="timeslotEdit.jsp">
-                        <table border="1" id="appointmentList" cellpadding= "3" cellspacing= "0" style="border: 1pt solid #000000; border-Collapse: collapse; margin: 0 auto;">
-                            <tr>
-                                <td>
-                                    Date
-                                </td>
-
-                                <td>
-                                    Time
-                                </td>
-                                <td>
-                                    Appointment Information
-                                </td>
-                                <td>
-
-                                </td>
-                            </tr>
+                        <table id="timeslotList" class="display" cellpadding= "3" cellspacing= "0">
+                            <thead>
+                            <th>Date</th>
+                                
+                            <th>Time</th>
+                              
+                            <th>Appointment Information</th>
+                            
+                            <th></th>
+                            </thead>
+                            <tbody>
                             <%
                                 dm = new uta.cse4361.databases.DatabaseManager();
                                 java.util.ArrayList<Slot> slots = dm.getTypeSlots();
@@ -84,9 +81,11 @@
                                     out.print("</tr>");
                                 }
                             %>
+                            </tbody>
                         </table>
                         <input type="hidden" value ="true" name="first">
                         <div class="centerthis">
+                            <br>
                             <input type="submit" value="Modify Timeslots" id="submitBtn">
                         </div>
                     </form>
@@ -97,5 +96,6 @@
         </div>
     </body>
     <jsp:include page="footer.jsp" />
+    
     <script type="text/javascript" src="js/modifyTimeslot.js"></script>
 </html>
