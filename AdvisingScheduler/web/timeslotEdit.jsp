@@ -90,10 +90,11 @@
                                                 {
                                                     endMin = startMin + 15;
                                                 }
-                                                out.print("<table border='1' cellpadding= '3' cellspacing= '0' style='border: 1pt solid #000000; border-Collapse: collapse; margin: 0 auto;'>");
+                                                out.print("<table id='info' class='display'>");
+                                                out.print("<thead><th></th><th></th></thead><tbody>");
                                                 out.print("<tr>");                                          
                                                 out.print("<td>");
-                                                out.print("Date: ");
+                                                out.print("Date");
                                                 out.print("</td>");                                            
                                                 out.print("<td>");
                                                 out.print(slot.getDate().getMonth()+1+"/"+slot.getDate().getDate()+"/"+(slot.getDate().getYear()+1900));
@@ -103,7 +104,7 @@
 
                                                 out.print("<tr>");
                                                 out.print("<td>");
-                                                out.print("Start Time: ");
+                                                out.print("Start Time");
                                                 out.print("</td>");                                            
                                                 out.print("<td>");
                                                 out.print(slot.getHour()+ ":");
@@ -117,6 +118,7 @@
                                                 }
                                                 out.print("</td>");
                                                 out.print("</tr>");
+                                                out.print("</tbody>");
                                                 out.print("</table>");
 
                                             }
@@ -130,10 +132,11 @@
                                             startMin = appt.getStartMinute(); 
                                             endMin = appt.getEndMinute();
 
-                                            out.print("<table border='1' cellpadding= '3' cellspacing= '0' style='border: 1pt solid #000000; border-Collapse: collapse'>");
+                                            out.print("<table id='info2' class='display'>");
+                                            out.print("<thead><th></th><th></th></thead><tbody>");
                                             out.print("<tr>");                                          
                                             out.print("<td>");
-                                            out.print("Date: ");
+                                            out.print("Date");
                                             out.print("</td>");                                            
                                             out.print("<td>");
                                             out.print(appt.getDate().getMonth()+1+"/"+appt.getDate().getDate()+"/"+(appt.getDate().getYear()+1900));
@@ -143,7 +146,7 @@
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
-                                            out.print("Start Time: ");
+                                            out.print("Start Time");
                                             out.print("</td>");                                            
                                             out.print("<td>");
                                             out.print(appt.getStartHour()+ ":");
@@ -162,7 +165,7 @@
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
-                                            out.print("End Time: ");
+                                            out.print("End Time");
                                             out.print("</td>");                                            
                                             out.print("<td>");
                                             out.print(appt.getEndHour()+ ":");
@@ -180,7 +183,7 @@
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
-                                            out.print("Advisor: ");
+                                            out.print("Advisor");
                                             out.print("</td>");                                            
                                             out.print("<td>");
                                             out.print(appt.getAdvisorName());
@@ -190,7 +193,7 @@
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
-                                            out.print("Advising Type: ");
+                                            out.print("Advising Type");
                                             out.print("</td>");                                            
                                             out.print("<td>");
                                             out.print(appt.getType());
@@ -200,7 +203,7 @@
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
-                                            out.print("Student: ");
+                                            out.print("Student");
                                             out.print("</td>");                                            
                                             out.print("<td>");
                                             out.print(appt.getStudentName());
@@ -210,13 +213,13 @@
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
-                                            out.print("Description: ");
+                                            out.print("Description");
                                             out.print("</td>");                                            
                                             out.print("<td>");
                                             out.print(appt.getDescription());
                                             out.print("</td>");
                                             out.print("</tr>");
-                                            
+                                            out.print("</tbody>");
                                             out.print("</table>");
                                                     
                                         }
@@ -233,7 +236,7 @@
                                     }
                                         
                                 %>
-                            
+                                <br>
                                 <form name="cancel" action="timeslotEdit.jsp" type="submit">
                                     <input type="hidden" value="<%= request.getParameter("slotID") %>" name="slotID">
                                     <input type="hidden" value="false" name="first">
