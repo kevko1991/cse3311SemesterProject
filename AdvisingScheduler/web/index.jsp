@@ -17,16 +17,15 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
    </head>
-        <jsp:include page="header.jsp" />
-        
-        
+ 
     <body>
         <table id="table">
             <tr>
-                <jsp:include page="sidebar.jsp" />
-                
-                <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="mainAccordion">
+                <jsp:include page="navigationbar.jsp" />
+            <div id="wrapper">
+                <jsp:include page="header.jsp" />
+
+                <div id="mainAccordion" class="centerthis">
 
                             <h3>Welcome</h3>
                             <div>
@@ -34,7 +33,7 @@ and open the template in the editor.
                             </div>
 
                     </div>                   
-                </td>
+            </div>
                 
                 
             </tr>

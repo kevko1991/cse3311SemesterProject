@@ -8,52 +8,137 @@ and open the template in the editor.
     Author     : Melissa
 */
 
+body { 
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    font-size: 16px; 
+    color: #000000; 
+    background-color: #ffffff; 
+    /*width: 1280px;*/
+    margin: 0 auto;
+    white-space: nowrap;
+    min-height: 1024;
+    }
+    
+    
+#wrapper{
+        width: 1280px;
+        margin: 0 auto;
+    }
+    
+header{
+    width: 1280px;
+    height: 300px;
+    margin: 0 auto;
+    display:inline-block;
+    background-image: url("css/images/banner.png");
+    background-repeat: no-repeat;
+}
 
-body{
-		font: 80% "Trebuchet MS", sans-serif;
-		margin: 50px;
-                background-color: #001131;
-                width: 1104px;
-                margin:0 auto;
-	}
-        
-	.demoHeaders {
-		margin-top: 2em;
-	}
-	#dialog-link {
-		padding: .4em 1em .4em 20px;
-		text-decoration: none;
-		position: relative;
-	}
-	#dialog-link span.ui-icon {
-		margin: 0 5px 0 0;
-		position: absolute;
-		left: .2em;
-		top: 50%;
-		margin-top: -8px;
-	}
-	#icons {
-		margin: 0;
-		padding: 0;
-	}
-	#icons li {
-		margin: 2px;
-		position: relative;
-		padding: 4px 0;
-		cursor: pointer;
-		float: left;
-		list-style: none;
-	}
-	#icons span.ui-icon {
-		float: left;
-		margin: 0 4px;
-	}
-	.fakewindowcontain .ui-widget-overlay {
-		position: absolute;
-	}
-	select {
-		width: 200px;
-	}
+.leftSide{
+    color: #000000; 
+    float: left;
+    width: 640px;
+    position:relative;
+}
+
+.rightSide{
+    float: left;
+    width: 640px;
+    position: relative;
+}
+
+
+#navbar{
+    text-align: center;
+    background-color: #00204c;
+    
+}
+
+.navigation ul{
+    list-style: none;
+    /*background-color: #00204c;*/
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation li{
+    /*font-family: 'Oswald', sans-serif;*/
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 1px solid #005f9e;
+    display: inline-block;
+    width: 220px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -4px;
+    
+}
+
+.navigation a{
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: .3s background-color;
+}
+
+.navigation a:hover{
+    background-color: #005f9e;
+}
+
+.navigation a.active {
+  background-color: #ffb17f;
+  color: #444;
+  cursor: default;
+}
+
+.centerthis{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+}
+
+.demoHeaders {
+        margin-top: 2em;
+}
+#dialog-link {
+        padding: .4em 1em .4em 20px;
+        text-decoration: none;
+        position: relative;
+}
+#dialog-link span.ui-icon {
+        margin: 0 5px 0 0;
+        position: absolute;
+        left: .2em;
+        top: 50%;
+        margin-top: -8px;
+}
+#icons {
+        margin: 0;
+        padding: 0;
+}
+#icons li {
+        margin: 2px;
+        position: relative;
+        padding: 4px 0;
+        cursor: pointer;
+        float: left;
+        list-style: none;
+}
+#icons span.ui-icon {
+        float: left;
+        margin: 0 4px;
+}
+.fakewindowcontain .ui-widget-overlay {
+        position: absolute;
+}
+select {
+        width: 200px;
+}
 
 #outerContainer {
     }

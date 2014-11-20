@@ -18,12 +18,12 @@
     </head>
             <jsp:include page="header.jsp" />
     <body>
-        <table id="table">
-            <tr>
-                <jsp:include page="sidebar.jsp" />
+
+                <jsp:include page="navigationbar.jsp" />
                 
-                <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="mainAccordion">
+                    <div id="wrapper">
+                    <jsp:include page="header.jsp" />
+                    <div id="mainAccordion" class="centerthis">
 
                             <h3>Timeslot Edit</h3>
                             <div>
@@ -90,7 +90,7 @@
                                                 {
                                                     endMin = startMin + 15;
                                                 }
-                                                out.print("<table border='1' cellpadding= '3' cellspacing= '0' style='border: 1pt solid #000000; border-Collapse: collapse'>");
+                                                out.print("<table border='1' cellpadding= '3' cellspacing= '0' style='border: 1pt solid #000000; border-Collapse: collapse; margin: 0 auto;'>");
                                                 out.print("<tr>");                                          
                                                 out.print("<td>");
                                                 out.print("Date: ");
@@ -263,12 +263,7 @@
                             </div>
 
                     </div>                   
-                </td>
-                
-                
-            </tr>
-            
-        </table>
+    </div>
     </body>
     <jsp:include page="footer.jsp" />
         <script type="text/javascript" src="js/timeslotEdit.js"></script>

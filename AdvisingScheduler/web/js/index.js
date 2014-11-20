@@ -1,6 +1,4 @@
-$( "#navigationAccordion" ).accordion({ heightStyle: "content" });
 $(function() {
-    $( "#datepicker" ).datepicker();
-});
+    $( "#datepicker" ).datepicker();});
 $( "#mainAccordion" ).accordion({ heightStyle: "content" });
 $( "#tabs" ).tabs();

@@ -83,26 +83,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
-        <jsp:include page="header.jsp" />
 
     <body>    
-        <table id="table">
+        <jsp:include page="navigationbar.jsp" />
+        
+        <div id="wrapper">
+        <jsp:include page="header.jsp" />
+        <table id="table" style="margin:0 auto;">       
             <tr>
-                    <div style="width:1090px" id="navigationAccordion">
-                        <h3>Navigation</h3>
-                        <div>
-                            <a href="schedule.jsp">Schedule Appointment</a><br>
-                            <a href="AdvisorCalendar.jsp">Advisor Calendar</a><br> 
-                            <a href="modifyTimeslot.jsp">Modify Timeslot</a><br>
-                            <a href="modifyAppointment.jsp">Modify Appointment</a><br>
-                        </div>
-                    </div>
-                
-            </tr>          
-            <tr>
-                <td style="vertical-align: top; width:545px">
+                <td >
                     
-                        <div style="width:545px" id="scheduleAccordion">
+                        <div id="scheduleAccordion">
                             <h3>Appointment Summary</h3>
                                 <div>                         
                                     <form name="appointmentSummary">
@@ -171,7 +162,10 @@
                                         <textarea name="description" id="description" rows="6" cols="30" value="" readonly="readonly"></textarea><br>
                                                 </td>
                                         </table>
+                                                <br>
+                                                <div class="centerthis">
                                         <input type="submit" value="Make Appointment" id="submitBtn">
+                                                </div>
                                     </form>
                                     <%if(timeSubmitted){
                                             String result = newAppt.scheduleAppointment(); 
@@ -199,6 +193,7 @@
             </tr>
             
         </table>
+        </div>
 
     </body>
     

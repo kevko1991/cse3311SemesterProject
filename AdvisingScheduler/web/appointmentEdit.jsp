@@ -13,14 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modify Appointment</title>
     </head>
-            <jsp:include page="header.jsp" />
     <body>
-        <table id="table">
-            <tr>
-                <jsp:include page="sidebar.jsp" />
-                
-                <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="appointmentAccordion">
+                <jsp:include page="navigationbar.jsp" />
+            <div id="wrapper">
+                <jsp:include page="header.jsp" />
+                    <div id="appointmentAccordion" class="centerthis">
 
                             <h3>Appointment Edit</h3>
                             <div>
@@ -171,13 +168,8 @@
                                             
                             </div>
 
-                    </div>                   
-                </td>
-                
-                
-            </tr>
-            
-        </table>
+                    </div> 
+            </div>
     </body>
     <jsp:include page="footer.jsp" />
         <script type="text/javascript" src="js/appointmentEdit.js"></script>

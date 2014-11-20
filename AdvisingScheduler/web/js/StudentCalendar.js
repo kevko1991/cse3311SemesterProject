@@ -1,6 +1,5 @@
-$( "#timeaccordion" ).accordion({ heightStyle: "content", collapsible: true});
-$( "#navigationAccordion" ).accordion({ heightStyle: "fill", collapsible: true});
-$( "#scheduleAccordion" ).accordion({ heightStyle: "fill", collapsible: true});
+$( "#timeaccordion" ).accordion({ heightStyle: "content"});
+$( "#scheduleAccordion" ).accordion({ heightStyle: "fill"});
 //$( "#timeaccordion" ).accordion({ heightStyle: "content" });
 $("#submitBtn").button().click(function(){});
 

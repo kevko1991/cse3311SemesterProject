@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : Appointment
     Created on : Sep 19, 2014, 12:43:15 PM
     Author     : Han
@@ -15,7 +15,7 @@
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 
-        <jsp:include page="header.jsp" />
+
         <%
             DatabaseManager dm = new DatabaseManager();
 //            ArrayList<Date> availableDates = dm.getDatesForAvailability();
@@ -108,86 +108,51 @@
     <p id="demo"></p>
 
     <body>
-        <table id="table">
-            <tr>
-                <jsp:include page="sidebar.jsp" />
-                <td style="vertical-align: top; float: right;">
-                    <div id="accordion" style="width:780px">
-                        <h3>Schedule Appointment</h3>
-                        <div>
-
-                            <form name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Student ID:
-                                        </td>
-                                        <td>
-                                            <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID"  size="50" value=""><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Student Name:
-                                        </td>
-                                        <td>
-                                            <input type="text" name="sName" id="sName" size="50" value=""><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Advisor:
-                                        </td>
-                                        <td>
-                                            <select name="aName" id="aName">
-                                                <option value="Linda Barasch">Linda Barasch</option>
-                                                <option value="Bob Weems">Bob Weems</option>
-                                                <option value="Ramez Elmasri">Ramez Elmasri</option>
-                                                <option value="Bahram Khalili">Bahram Khalili</option>
-                                            </select><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Advising Type:
-                                        </td>
-                                        <td>
-                                            <select name="type" id="type">
-                                                <option value="New Student">New Student</option>
-                                                <option value="Returning Student">Returning Student</option>
-                                                <option value="Drop Course">Drop Course</option>
-                                                <option value="Enroll">Enroll</option>
-                                                <option value="Others">Others</option>
-                                            </select><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Date:
-                                        </td>
-                                        <td>
-                                            <input type="text" name="date" size="50" id="date" readonly="true"><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Description: 
-                                        </td>
-                                        <td>
-                                            <textarea name="description" id="description" rows="6" cols="50" value=""></textarea><br>
-                                        </td>
-                                    <tr>
-                                </table>
-                                <input type="submit" value="Submit" id="submitBtn">
-                                <input type="reset" value="Reset" id="resetBtn">
-                            </form>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <br>
-    </body>
-    <jsp:include page="footer.jsp" />
-    <script type="text/javascript" src="js/schedule.js"></script>    
+    <tr>
+        <jsp:include page="navigationbar.jsp" />
+    <div id="wrapper">
+        <jsp:include page="header.jsp" />
+        <div id="accordion" class="centerthis">
+            <h3>Schedule Appointment</h3>
+            <div class="centerthis">
+                <form name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();">
+                                Student ID:<br>
+                                <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID"  size="50" value=""><br>
+                                <br><br>
+                                Student Name:<br>
+                                <input type="text" name="sName" id="sName" size="50" value="">
+                                <br><br>
+                                Advisor:<br>
+                                <select name="aName" id="aName">
+                                    <option value="Linda Barasch">Linda Barasch</option>
+                                    <option value="Bob Weems">Bob Weems</option>
+                                    <option value="Ramez Elmasri">Ramez Elmasri</option>
+                                    <option value="Bahram Khalili">Bahram Khalili</option>
+                                </select>
+                                <br><br>
+                                Advising Type:<br>
+                                <select name="type" id="type">
+                                    <option value="New Student">New Student</option>
+                                    <option value="Returning Student">Returning Student</option>
+                                    <option value="Drop Course">Drop Course</option>
+                                    <option value="Enroll">Enroll</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                <br><br>
+                                Date:<br>
+                                <input type="text" name="date" size="50" id="date" readonly="true">
+                                <br><br>
+                                Description:<br>
+                                <textarea name="description" id="description" rows="6" cols="50" value=""></textarea>
+                                <br><br>
+                    <input type="submit" value="Submit" id="submitBtn">
+                    <input type="reset" value="Reset" id="resetBtn">
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+</body>
+<jsp:include page="footer.jsp" />
+<script type="text/javascript" src="js/schedule.js"></script>
 </html>
