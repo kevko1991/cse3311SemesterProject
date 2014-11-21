@@ -16,7 +16,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modify Timeslot</title>
     </head>
-            <jsp:include page="header.jsp" />
     <body>
 
                 <jsp:include page="navigationbar.jsp" />
