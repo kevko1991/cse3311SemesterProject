@@ -1,6 +1,7 @@
-$( "#navigationAccordion" ).accordion({ heightStyle: "content" });
 $(function() {
-    $( "#datepicker" ).datepicker();
-});
-$( "#mainAccordion" ).accordion({ heightStyle: "content" });
-$( "#tabs" ).tabs();
+    $( "#datepicker" ).datepicker();});
+$( "#leftAccordion" ).accordion({ heightStyle: content});
+$( "#rightAccordion" ).accordion({ heightStyle: content});
+$("#scheduleBtn").button().click(function(){});
+$("#loginBtn").button().click(function(){});
+

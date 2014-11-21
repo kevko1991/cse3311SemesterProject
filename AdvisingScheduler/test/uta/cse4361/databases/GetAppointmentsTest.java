@@ -51,7 +51,8 @@ public class GetAppointmentsTest {
         instance.disconnectDB();
         ArrayList<Appointment> appts = (ArrayList<Appointment>)instance.getResult();
         for (Appointment a: appts) {
-            System.out.println(a.getAdvisorName());
+            System.out.println(a.getStudentMajor());
+            System.out.println(a.getStudentEmail());
         }
         // TODO review the generated test code and remove the default call to fail.
         assertTrue(appts.size()!=0);

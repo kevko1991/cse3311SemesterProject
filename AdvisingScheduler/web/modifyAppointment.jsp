@@ -12,44 +12,35 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modify Appointment</title>
     </head>
-    <jsp:include page="header.jsp" />
+
     <body>
-        <table id="table">
+        
             <tr>
-                <jsp:include page="sidebar.jsp" />
+                <jsp:include page="navigationbar.jsp" />
                 <jsp:useBean id="dm" class="uta.cse4361.databases.DatabaseManager" scope="session"/>
-                
-                
-                
-                
-                <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="appointmentAccordion">
+            <div id="wrapper">
+                <jsp:include page="header.jsp" />
+                    <div id="appointmentAccordion" class="centerthis">
 
                             <h3>Appointments</h3>
                             <div>
                                 <form  name="appointmentForm" action="appointmentEdit.jsp">
-                                <table border="1" id="appointmentList" cellpadding= "3" cellspacing= "0" style="border: 1pt solid #000000; border-Collapse: collapse">
-                                    <tr>
-                                        <td>
-                                            Date
-                                        </td>
-                                        
-                                        <td>
-                                            Start
-                                        </td>
-                                        <td>
-                                            End
-                                        </td>
-                                        <td>
-                                            Advisor Name
-                                        </td>
-                                        <td>
-                                            Advising Type
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
+                                <table class="display" id="appointmentList" cellpadding= "3" cellspacing= "0" >
+                                    <thead>
+
+                                    <th>Date</th>
+
+                                    <th>Start</th>
+
+                                    <th>End</th>
+
+                                    <th>Advisor Name</th>
+
+                                    <th>Advising Type</th>
+                                    
+                                    <th></th>
+                                    </thead>
+                                    <tbody>
                                 <%
                                     dm = new uta.cse4361.databases.DatabaseManager(); 
                                     java.util.ArrayList<uta.cse4361.businessobjects.Appointment> appts = dm.getAppointments(); 
@@ -93,17 +84,16 @@
                                         out.print("</script>");
                                     }
                                     %>
+                                    </tbody>
                                 </table>
+                                <br>
                                    <input type="submit" value="Modify Appointment" id="submitBtn">
                                 </form>
                             </div>
 
                     </div>                   
-                </td>
-                             
-            </tr>            
-        </table>
+            </div>
+    <jsp:include page="footer.jsp" />                            
     </body>
-    <jsp:include page="footer.jsp" />
     <script type="text/javascript" src="js/modifyAppointment.js"></script>
 </html>

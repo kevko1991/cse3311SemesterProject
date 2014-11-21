@@ -17,8 +17,10 @@ import uta.cse4361.interfaces.Constants;
 public class ModifyAppointmentBean implements Constants 
 {
     private int apptID = 0;
+    private String studentMajor = null;
     private String studentName = null;
     private String studentId = null;
+    private String studentEmail = null;
     private String advisorName = null;
     private String description = null;
     private String type = null;
@@ -46,7 +48,7 @@ public class ModifyAppointmentBean implements Constants
         }
         else
         {
-            result = appointment.initialize(this.studentName, this.studentId,
+            result = appointment.initialize(this.studentMajor, this.studentName, this.studentId, this.studentEmail, 
                     this.advisorName, this.type, this.description, this.date, 
                     this.startHour, this.endHour, 
                     this.startMinute, this.endMinute);
@@ -73,12 +75,17 @@ public class ModifyAppointmentBean implements Constants
     {
         this.apptID = newAppointmentId;
     }
-    
+    public void setStudentMajor(String newStudentMajor) {
+        this.studentMajor = newStudentMajor;
+    }
     public void setStudentName(String newStudnetName) {
         this.studentName = newStudnetName;
     }
     public void setStudentId(String newStudentId) {
         this.studentId = newStudentId;
+    }
+    public void setStudentEmail(String newStudentEmail) {
+        this.studentEmail = newStudentEmail;
     }
     public void setAdvisorName(String newAdvisorName) {
         this.advisorName = newAdvisorName;
@@ -114,11 +121,17 @@ public class ModifyAppointmentBean implements Constants
     {
         return this.apptID;
     }
+    public String getStudentMajor() {
+        return this.studentMajor;
+    }
     public String getStudentName() {
         return this.studentName;
     }
     public String getStudentId() {
         return this.studentId;
+    }
+    public String getStudentEmail() {
+        return this.studentEmail;
     }
     public String getAdvisorName() {
         return this.advisorName;

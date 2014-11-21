@@ -1,6 +1,5 @@
-$( "#timeaccordion" ).accordion({ heightStyle: "content", collapsible: true});
-$( "#navigationAccordion" ).accordion({ heightStyle: "fill", collapsible: true});
-$( "#scheduleAccordion" ).accordion({ heightStyle: "fill", collapsible: true});
+$( "#timeaccordion" ).accordion({ heightStyle: "content"});
+$( "#scheduleAccordion" ).accordion({ heightStyle: "fill"});
 //$( "#timeaccordion" ).accordion({ heightStyle: "content" });
 $("#submitBtn").button().click(function(){});
 
@@ -79,7 +78,9 @@ var calendar = $('#calendar').fullCalendar({
             
             if(event.title === 'Occupied')
             {
-                
+                $("#endTime").notify("Not available", "error", 
+                {elementPosition: 'bottom center',
+                 globalPosition: 'bottom center'})
             }
             else
             {
@@ -106,6 +107,9 @@ var calendar = $('#calendar').fullCalendar({
                 {
                     $('input[name="endTime"]').val((event.sHour)+":45");
                 }
+                $("#endTime").notify("Time selected", "success", 
+                {elementPosition: 'bottom center',
+                 globalPosition: 'bottom middle'});
             }
         },
         

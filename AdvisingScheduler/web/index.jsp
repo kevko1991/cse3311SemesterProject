@@ -16,33 +16,49 @@ and open the template in the editor.
         <title>UTA Advising</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-   </head>
-        <jsp:include page="header.jsp" />
-        
-        
+    </head>
+
     <body>
-        <table id="table">
-            <tr>
-                <jsp:include page="sidebar.jsp" />
-                
-                <td style="vertical-align: top; float: right;">
-                    <div style="width:780px" id="mainAccordion">
 
-                            <h3>Welcome</h3>
-                            <div>
-                            Welcome to UTA Advising DEMO.
-                            </div>
+        <jsp:include page="navigationbar.jsp" />
+        <div id="wrapper">
+            <jsp:include page="header.jsp" />
+            <table class="centerthis" style="margin: 0 auto;">
+                <tr>
+                <td style="width: 640px">
+                    <div id="leftAccordion">
 
-                    </div>                   
+                        <h3>Faculty</h3>
+                        <div>
+                            Would you like to check on your current schedule?<br><br>
+                            <form action="#">
+                            <input type="submit" value="Login to your account" id="loginBtn">
+                            </form>
+                        </div>
+
+                    </div>
                 </td>
-                
-                
-            </tr>
-            
-        </table>
-       
+                <td style="width: 640px">
+                    <div id="rightAccordion">
+
+                        <h3>Student</h3>
+                        <div>
+                            Would you like to schedule an appointment with an advisor?<br><br>
+                            <form action="schedule.jsp">
+                            <input type="submit" value="Make an appointment" id="scheduleBtn">
+                            </form>
+                        </div>
+
+                    </div> 
+                </td>
+                </tr>
+            </table>
+
+
+        </div>
+
     </body>
-    
-        <jsp:include page="footer.jsp" />
-        <script type="text/javascript" src="js/index.js"></script>
+    <jsp:include page="footer.jsp" />
+
+    <script type="text/javascript" src="js/index.js"></script>
 </html>
