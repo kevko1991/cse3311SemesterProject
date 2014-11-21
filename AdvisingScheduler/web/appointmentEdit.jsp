@@ -30,6 +30,7 @@
                             int apptID = Integer.parseInt(request.getParameter("apptID"));
                             Appointment appt = dm.getAppointment(Integer.parseInt(request.getParameter("apptID")));
                             String advisorName = appt.getAdvisorName();
+                            String studentMajor = appt.getStudentMajor();
                             String description = appt.getDescription();
                             String date = "" + (appt.getDate().getMonth() + 1) + "/" + appt.getDate().getDate() + "/" + (appt.getDate().getYear() + 1900);
                             String startTime = "";
@@ -67,6 +68,7 @@
                                     <td>
                                         <input type="text" name="advisorName" size="50" id="advisorName" value = "<%=advisorName%>" readonly="true">
                                     </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         Advising Type
@@ -74,6 +76,7 @@
                                     <td>
                                         <input type="text" name="advisingType" size="50" id="advisingType" value = "<%=type%>" readonly="true">
                                     </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         Student Name
@@ -81,8 +84,17 @@
 
                                     <td>
                                         <input type="text" name="studentName" size="50" id="studentName" value = "<%=studentName%>" readonly="true">
-                                        <input type="hidden" name="studentID" size="50" id="studentID" value = "<%=studentID%>" readonly="true">
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Student Major
+                                    </td>
+
+                                    <td>
+                                        <input type="text" name="studentMajor" size="50" id="major" value = "<%=studentMajor%>" readonly="true">
+                                    </td>
+                                </tr>    
                                 <tr>
                                     <td>
                                         Date
@@ -90,6 +102,7 @@
                                     <td>
                                         <input type="text" name="date" size="50" id="date" value = "<%=date%>" readonly="true">
                                     </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         Start Time
@@ -97,6 +110,7 @@
                                     <td>
                                         <input type="text" name="startTime" size="50" id="startTime" value = "<%=startTime%>" readonly="true">
                                     </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         End Time
@@ -104,6 +118,7 @@
                                     <td>
                                         <input type="text" name="endTime" size="50" id="endTime" value = "<%=endTime%>" readonly="true">
                                     </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         Description</td>
@@ -114,6 +129,8 @@
                             </tbody>
                             <input type="hidden" value="false" name="remove">
                         </table>
+                            <input type="hidden" name="studentID" size="50" id="studentID" value = "<%=studentID%>" readonly="true">
+                            <br>
                             <input type="submit" value="Edit Appointment" id="submitBtn">
                             </form>   
                             <form method="submit" action="appointmentEdit.jsp">
@@ -136,6 +153,7 @@
                             <jsp:setProperty name="mab" property="apptID" value= '<%= appt.getApptID()%>'/>
                             <jsp:setProperty name="mab" property="studentName" value= '<%= appt.getStudentName()%>'/>
                             <jsp:setProperty name="mab" property="studentId" value= '<%= appt.getStudentID()%>'/>
+                            <jsp:setProperty name="mab" property="studentMajor" value= '<%= appt.getStudentMajor()%>'/>
                             <jsp:setProperty name="mab" property="advisorName" value= '<%= appt.getAdvisorName()%>'/>
                             <jsp:setProperty name="mab" property="description" value= '<%= request.getParameter("description")%>'/>
                             <jsp:setProperty name="mab" property="type" value= '<%= appt.getType()%>'/>

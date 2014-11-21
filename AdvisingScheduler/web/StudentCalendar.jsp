@@ -66,8 +66,10 @@
         
         <!--<script type="text/javascript" src="js/arrayProcess.js"></script>-->                
         <jsp:useBean id="newAppt" class="uta.cse4361.beans.ScheduleAppointmentBean"/> 
+        <jsp:setProperty name="newAppt" property="studentEmail" param="email" />
         <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
+        <jsp:setProperty name="newAppt" property="studentMajor" param="major" /> 
         <jsp:setProperty name="newAppt" property="advisorName" param="aName" /> 
         <jsp:setProperty name="newAppt" property="type" param="type" /> 
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
@@ -100,6 +102,14 @@
                                         <table>
                                             <tr>
                                                 <td>
+                                        Email
+                                                </td>
+                                                <td>
+                                        <input type="text" name="email" id="email" size="30" value="<jsp:getProperty name="newAppt" property="studentEmail"/>"  readonly="readonly"><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                         Student ID
                                                 </td>
                                                 <td>
@@ -114,7 +124,15 @@
                                         <input type="text" name="sName" id="sName" size="30" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
                                                 </td>
                                             </tr>
-                                          <tr>
+                                            <tr>
+                                                <td>
+                                        Major
+                                                </td>
+                                                <td>
+                                        <input type="text" name="major" id="major" size="30" value="<jsp:getProperty name="newAppt" property="studentMajor"/>" readonly="readonly"><br>
+                                                </td>
+                                        </tr>
+                                        <tr>
                                                 <td>
                                         Advisor
                                                 </td>
