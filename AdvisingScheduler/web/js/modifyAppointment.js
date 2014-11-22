@@ -1,5 +1,5 @@
 $( "#appointmentAccordion" ).accordion({ heightStyle: "content" });
-$("#submitBtn").button().click(function(){});
+//$("#submitBtn").button().click(function(){});
 $(document).ready( function () {
     $('#appointmentList').DataTable({
         "paging":   true,

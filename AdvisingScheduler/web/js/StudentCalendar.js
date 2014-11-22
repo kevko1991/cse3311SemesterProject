@@ -1,7 +1,7 @@
 $( "#timeaccordion" ).accordion({ heightStyle: "content"});
 $( "#scheduleAccordion" ).accordion({ heightStyle: "fill"});
 //$( "#timeaccordion" ).accordion({ heightStyle: "content" });
-$("#submitBtn").button().click(function(){});
+//$("#submitBtn").button().click(function(){});
 
 $(document).ready(function() {
 // page is now ready, initialize the calendar...       
