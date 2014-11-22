@@ -15,6 +15,7 @@ public interface Constants {
     final static String AVAILABLE_FLYWEIGHT_KEY = "AvailableFlyweight";
     final static String APPOINTMENT_FLYWEIGHT_KEY = "AppointmentFlyweight";
     final static String AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY = "SaveAvailableFlyweight";
+    final static String CREATE_ADVISOR_FAIL = "Advisor can't be added";
     
     final static String ILLEGAL_ARGUMENT_FAULT = "The times that you selected are not valid (i.e. the end hour was before the start hour)";
     final static String ILLEGAL_KEY_FAULT = "The type of flyweight you were attempting to create was not valid.";
