@@ -5,10 +5,13 @@
  */
 package uta.cse4361.beans;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import uta.cse4361.businessobjects.Slot;
 
 import uta.cse4361.businessobjects.SlotFactory;
+import uta.cse4361.databases.DatabaseManager;
 
 /**
  *
@@ -32,8 +35,9 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
     public String allocateTime() {
         String msg = SUCCESS_MESSAGE;
         SlotFactory aff = SlotFactory.getInstance();
-        msg = aff.createSlots(date, this.startHour, this.endHour, this.startMinute, this.endMinute,  AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
-        
+        ArrayList<Slot> slots = aff.generateSlots(date, this.startHour, this.endHour, this.startMinute, this.endMinute, 0, AVAILABLE_FLYWEIGHT_KEY);
+        DatabaseManager databaseManager = new DatabaseManager();
+        msg = databaseManager.saveSlots(slots);
         return msg;
     }
     

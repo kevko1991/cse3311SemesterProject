@@ -27,51 +27,12 @@ public class SlotFactoryTest implements uta.cse4361.interfaces.Constants{
 
     Date currentDate;
     
-    @BeforeClass
-    public static void beforeClass()
-    {
-        /*
-        File dataFile = new File(FlyweightDatabaseManager.FDB_FILE_NAME);
-        File tempDataFile = new File("backup_FDB_file");
-        
-        tempDataFile.delete();
-        
-        if(dataFile.exists())
-        {
-            if(!dataFile.renameTo(tempDataFile))
-            {
-                fail();
-            }
-        }
-       */ 
-    }
-    
-    @AfterClass
-    public static void afterClass()
-    {
-        /*
-        File dataFile = new File(FlyweightDatabaseManager.FDB_FILE_NAME);
-        File tempDataFile = new File("backup_FDB_file");
-        
-        if(tempDataFile.exists())
-        {
-            if(!tempDataFile.renameTo(dataFile))
-            {
-                fail();
-            }
-        }
-        
-        File toDelete = new File("backup_FDB_file");
-        toDelete.delete();
-        */
-    }
-    
     @Before
     public void setUp()
     {
         currentDate = new Date();
     }
-    
+    /*
     @Test
     public void createAvailableFlyweightTest()
     {
@@ -177,6 +138,6 @@ public class SlotFactoryTest implements uta.cse4361.interfaces.Constants{
     {
         return time % 60;
     }
-    
+    */
 }
 
