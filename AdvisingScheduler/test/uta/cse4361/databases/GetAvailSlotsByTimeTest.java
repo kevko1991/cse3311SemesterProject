@@ -5,37 +5,48 @@
  */
 package uta.cse4361.databases;
 
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
+import com.mockrunner.mock.jdbc.MockConnection;
+import com.mockrunner.mock.jdbc.MockResultSet;
+import java.util.ArrayList;
 import java.util.Date;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import uta.cse4361.businessobjects.Slot;
 
 /**
  *
  * @author Andrew
  */
-public class GetAvailSlotsByTimeTest {
+public class GetAvailSlotsByTimeTest extends BasicJDBCTestCaseAdapter{
     
-    public GetAvailSlotsByTimeTest() {
-    }
+    private long time;
     
     @BeforeClass
-    public static void setUpClass() {
+    public void setUpOnce()
+    {
+        time = System.currentTimeMillis();
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    private void prepareResultSet(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+        
+        MockResultSet result = resultSetHandler.createResultSet();
+        java.sql.Date date = new java.sql.Date(time);
+        result.addRow(new Object[] {"1", date, "8", "15"});
+        result.addRow(new Object[] {"2", date, "8", "30"});
+        
+        resultSetHandler.prepareGlobalResultSet(result);
     }
 
     /**
@@ -44,8 +55,22 @@ public class GetAvailSlotsByTimeTest {
     @Test
     public void testQueryDB() throws Exception {
         System.out.println("queryDB");
-        GetAvailSlotsByTime instance = new GetAvailSlotsByTime(new Date(System.currentTimeMillis()), 8, 9, 0, 30);;
+        prepareResultSet();
+        GetAvailSlotsByTime instance = new GetAvailSlotsByTime(new Date(time), 8, 9, 0, 30);;
         instance.execute();
+        assertNotNull(instance.getResult());
+        
+        ArrayList<Slot> slots = (ArrayList<Slot>)instance.getResult();
+        
+        assertEquals(8, slots.get(0).getHour());
+        assertEquals(15, slots.get(0).getMinute());
+        assertFalse(slots.get(0).isAppointment());
+        
+        assertEquals(8, slots.get(1).getHour());
+        assertEquals(30, slots.get(1).getMinute());
+        assertFalse(slots.get(1).isAppointment());
+        
     }
+    
     
 }

@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package uta.cse4361.databases;
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
+import com.mockrunner.mock.jdbc.MockConnection;
+import com.mockrunner.mock.jdbc.MockResultSet;
 import uta.cse4361.businessobjects.Slot;
 import uta.cse4361.businessobjects.AvailableSlot;
 import java.util.*;
@@ -19,32 +23,34 @@ import static org.junit.Assert.*;
  *
  * @author Andrew
  */
-public class SaveSlotsTest {
+public class SaveSlotsTest extends BasicJDBCTestCaseAdapter{
     
     public SaveSlotsTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
+    private void prepareResultSet(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+        
+        MockResultSet result = resultSetHandler.createResultSet();
+        result.addRow(new Object[] {"1"});
+        result.addRow(new Object[] {"2"});
+        result.addRow(new Object[] {"3"});
+        result.addRow(new Object[] {"4"});
+        result.addRow(new Object[] {"5"});
+        result.addRow(new Object[] {"6"});
+        
+        
+        resultSetHandler.prepareGlobalGeneratedKeys(result);
+    }
+    
     /**
      * Test of queryDB method, of class SaveSlots.
      */
     @Test
     public void testQueryDB() throws Exception {
+        prepareResultSet();
         System.out.println("queryDB");
         ArrayList<Slot> slots = new ArrayList<Slot>();
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0, 0));
@@ -55,24 +61,15 @@ public class SaveSlotsTest {
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         SaveSlots instance = new SaveSlots(slots);
         //instance.execute();
-        instance.connectDB();
-        instance.conn.setAutoCommit(false);
-        instance.queryDB();
-        instance.conn.rollback();
-        instance.disconnectDB();
+        instance.execute();
         //must have inserted all instances to result
-        assertNotNull(((ArrayList<Integer>)instance.getResult()).get(5));
+        ArrayList<Integer> savedSlots = (ArrayList<Integer>)instance.getResult();
+        assertEquals(6, savedSlots.size());
+        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
+        
     }
     
 
-    /**
-     * Test of processResult method, of class SaveSlots.
-     */
-    @Test
-    public void testProcessResult() {
-        System.out.println("processResult");
-        SaveSlots instance = new SaveSlots(new ArrayList<Slot>());
-        instance.processResult();
-    }
+    
     
 }

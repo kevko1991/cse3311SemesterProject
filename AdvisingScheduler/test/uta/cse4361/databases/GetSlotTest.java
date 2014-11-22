@@ -32,28 +32,9 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
 
         MockResultSet result = resultSetHandler.createResultSet();
         result.addRow(new String[] {"1", "2014-11-14", "8", "15"});
-
+        result.addRow(new String[] {"2", "2014-11-14", "8", "30"});
+        
         resultSetHandler.prepareGlobalResultSet(result);
-    }
-
-    
-    public GetSlotTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
@@ -67,7 +48,13 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
         instance.execute();
         assertNotNull(instance.getResult());
         ArrayList<Slot> pulledSlots = (ArrayList<Slot>) instance.getResult();
+        //Assert slot 1
+        
         assertEquals(8, pulledSlots.get(0).getHour());
+        assertEquals(15, pulledSlots.get(0).getMinute());
+        
+        assertEquals(8, pulledSlots.get(1).getHour());
+        assertEquals(30, pulledSlots.get(1).getMinute());
     }
     
 }
