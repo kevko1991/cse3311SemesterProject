@@ -5,6 +5,9 @@
  */
 package uta.cse4361.databases;
 
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
+import com.mockrunner.mock.jdbc.MockConnection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,25 +20,18 @@ import uta.cse4361.businessobjects.AdvisorAccount;
  *
  * @author Andrew
  */
-public class RegisterAdvisorTest {
+public class RegisterAdvisorTest extends BasicJDBCTestCaseAdapter{
     
     public RegisterAdvisorTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    private void prepareError(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+
+        resultSetHandler.prepareThrowsSQLException("INSERT INTO \"USER\"");
+
     }
 
     /**
@@ -47,13 +43,23 @@ public class RegisterAdvisorTest {
         AdvisorAccount aa = new AdvisorAccount();
         aa.initialize("admin", "admin@mavs.uta.edu", "CSE", "password", 0);
         RegisterAdvisor instance = new RegisterAdvisor(aa);
-        instance.connectDB();
-        instance.conn.setAutoCommit(false);
-        instance.queryDB();
-        instance.conn.rollback();
-        instance.disconnectDB();
+        instance.execute();
         // TODO review the generated test code and remove the default call to fail.
+        verifySQLStatementExecuted("INSERT INTO \"USER\"");
         assertNotNull(instance.getResult());
+        assertEquals("", instance.getResult());
+    }
+    
+    @Test
+    public void testError() throws Exception {
+        prepareError();
+        System.out.println("queryDB");
+        AdvisorAccount aa = new AdvisorAccount();
+        aa.initialize("admin", "admin@mavs.uta.edu", "CSE", "password", 0);
+        RegisterAdvisor instance = new RegisterAdvisor(aa);
+        instance.execute();
+        // TODO review the generated test code and remove the default call to fail.
+        verifySQLStatementNotExecuted("INSERT INTO \"USER\"");
     }
     
 }

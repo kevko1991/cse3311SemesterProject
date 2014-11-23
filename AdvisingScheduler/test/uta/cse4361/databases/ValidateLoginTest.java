@@ -5,6 +5,10 @@
  */
 package uta.cse4361.databases;
 
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
+import com.mockrunner.mock.jdbc.MockConnection;
+import com.mockrunner.mock.jdbc.MockResultSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,25 +20,34 @@ import static org.junit.Assert.*;
  *
  * @author Andrew
  */
-public class ValidateLoginTest {
+public class ValidateLoginTest extends BasicJDBCTestCaseAdapter{
     
     public ValidateLoginTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    private void prepareResultSet(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+
+        MockResultSet result = resultSetHandler.createResultSet();
+        result.addColumn("UserName", new Object[] {"admin"});
+        result.addColumn("UserEmail", new Object[]{"admin@mavs.uta.edu"});
+        result.addColumn("UserDepartment", new Object[]{"CSE"});
+        result.addColumn("UserID", new Object[]{"1"});
+        result.addColumn("UserRank", new Object[]{"0"});
+
+        
+        resultSetHandler.prepareGlobalResultSet(result);
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    private void prepareError(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+
+        resultSetHandler.prepareThrowsSQLException("SELECT * FROM \"USER\"");
+
     }
 
     /**
@@ -42,22 +55,24 @@ public class ValidateLoginTest {
      */
     @Test
     public void testQueryDB() throws Exception {
+        prepareResultSet();
         System.out.println("queryDB");
-        ValidateLogin instance = null;
-        instance.queryDB();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ValidateLogin instance = new ValidateLogin("admin@mavs.uta.edu", "temp");
+        instance.execute();
+        verifySQLStatementExecuted("SELECT * FROM \"USER\"");
+        String result = (String) instance.getResult();
+        
+        assertEquals("10", result);
     }
 
-    /**
-     * Test of processResult method, of class ValidateLogin.
-     */
     @Test
-    public void testProcessResult() {
-        System.out.println("processResult");
-        ValidateLogin instance = new ValidateLogin("admin", "password");
+    public void testSQLError() throws Exception {
+        prepareError();
+        System.out.println("queryDB");
+        ValidateLogin instance = new ValidateLogin("admin@mavs.uta.edu", "temp");
         instance.execute();
-        assertNotNull(instance.getResult());
+        verifySQLStatementNotExecuted("SELECT * FROM \"USER\"");
     }
+
     
 }

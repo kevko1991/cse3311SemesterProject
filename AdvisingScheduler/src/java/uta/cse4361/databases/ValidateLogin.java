@@ -44,7 +44,9 @@ public class ValidateLogin extends RDBImplCommand {
         try{
             result = "Invalid login";
             if(resultSet.next()){
-                result = "";
+                int ID = resultSet.getInt("UserID");
+                int rank = resultSet.getInt("UserRank");
+                result = "" + ID + rank;
             }
         }
         catch(SQLException e){

@@ -5,6 +5,7 @@
  */
 package uta.cse4361.databases;
 
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
 import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,35 +18,9 @@ import static org.junit.Assert.*;
  *
  * @author Andrew
  */
-public class RDBImplCommandTest{
+public class RDBImplCommandTest extends BasicJDBCTestCaseAdapter{
     
     public RDBImplCommandTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of execute method, of class RDBImplCommand.
-     */
-    @Test
-    public void testExecute() throws Exception {
-        System.out.println("execute");
-        RDBImplCommand instance = new RDBImplCommandImpl();
-        instance.execute();
     }
 
     /**
@@ -60,24 +35,17 @@ public class RDBImplCommandTest{
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of queryDB method, of class RDBImplCommand.
-     */
-    @Test
-    public void testQueryDB() throws Exception {
-        System.out.println("queryDB");
-        RDBImplCommand instance = new RDBImplCommandImpl();
-        instance.queryDB();
-    }
 
     /**
      * Test of processResult method, of class RDBImplCommand.
      */
-    @Test
-    public void testProcessResult() {
+    @Test(expected=SQLException.class)
+    public void testDisconnectError() throws Exception{
         System.out.println("processResult");
         RDBImplCommand instance = new RDBImplCommandImpl();
-        instance.processResult();
+        instance.connectDB();
+        instance.conn.close();
+        instance.disconnectDB();
     }
 
     public class RDBImplCommandImpl extends RDBImplCommand {
