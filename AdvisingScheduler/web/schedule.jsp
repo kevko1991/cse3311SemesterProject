@@ -152,50 +152,44 @@
         <div id="accordion" class="centerthis">
             <h3>Schedule Appointment</h3>
             <div class="centerthis">
-                <form name="schedule" id="schedform" action="StudentCalendar.jsp" onSubmit="return validate();">
-                                Email<br>
-                                <input type="text" name="email" id="email" size="50" value="">
-                                <br><br>
-                                Student ID<br>
-                                <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID"  size="50" value=""><br>
-                                <br><br>
-                                Student Name<br>
-                                <input type="text" name="sName" id="sName" size="50" value="">
-                                <br><br>
-                                Major<br>
-                                <select name="major" id="major" style="min-width:36%;">
-                                    <option value="CSE">CSE</option>
-                                    <option value="SE">SE</option>
-                                    <option value="CPE">CPE</option>
-                                    <option value="Undecided">Undecided</option>
-                                </select>
-                                <br><br>
-                                Advisor<br>
-                                <select name="aName" id="aName" style="min-width:36%;">
-                                    <option value="Linda Barasch">Linda Barasch</option>
-                                    <option value="Bob Weems">Bob Weems</option>
-                                    <option value="Eric Becker">Eric Becker</option>
-                                    <option value="Ramez Elmasri">Ramez Elmasri</option>
-                                    <option value="Bahram Khalili">Bahram Khalili</option>
-                                </select>
-                                <br><br>
-                                Advising Type<br>
-                                <select name="type" id="type" style="min-width:36%;">
-                                    <option value="New Student">New Student</option>
-                                    <option value="Returning Student">Returning Student</option>
-                                    <option value="Drop Course">Drop Course</option>
-                                    <option value="Enroll">Enroll</option>
-                                    <option value="Others">Others</option>
-                                </select>
-                                <br><br>
-                                Date<br>
-                                <input type="text" name="date" size="50" id="date" readonly="true">
-                                <br><br>
-                                Description<br>
-                                <textarea name="description" id="description" rows="6" cols="50" value=""></textarea>
-                                <br><br>
-                    <input type="submit" value="Submit" id="submitBtn">
-                    <input type="reset" value="Reset" id="resetBtn">
+                <form role="form" name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();" >
+                    <div class="form-group">
+                        <label for="sID">Student ID</label>
+                        <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="sName">Student Name</label>
+                        <input type="text" name="sName" id="sName" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="aName">Advisor</label>
+                        <select name="aName" id="aName" class="form-control" >
+                            <option value="Linda Barasch">Linda Barasch</option>
+                            <option value="Bob Weems">Bob Weems</option>
+                            <option value="Ramez Elmasri">Ramez Elmasri</option>
+                            <option value="Bahram Khalili">Bahram Khalili</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Advising Type</label>
+                        <select name="type" id="type" class="form-control">
+                            <option value="New Student">New Student</option>
+                            <option value="Returning Student">Returning Student</option>
+                            <option value="Drop Course">Drop Course</option>
+                            <option value="Enroll">Enroll</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="text" name="date"  id="date" readonly="true" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description"  value="" class="form-control"></textarea>
+                    </div>
+                    <input type="submit" value="Submit" id="submitBtn" class="btn btn-default">
+                    <input type="reset" value="Reset" id="resetBtn" class="btn btn-default">
                 </form>
             </div>
         </div>

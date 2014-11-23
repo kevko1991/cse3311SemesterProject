@@ -1,6 +1,6 @@
 $("#allocateAccordion").accordion({heightStyle: "content"});
 $("#timeaccordion").accordion({heightStyle: "content"});
-$("#button").button();
+//$("#button").button();
 
 //Andrews code
 $(function () {
@@ -86,7 +86,7 @@ $(document).ready(function () {
         
         dayClick: function(date, event, view) {
         $('#datepicker').val(date.format('MM/DD/YYYY'));
-        $('#datepicker').notify(date.format('MM/DD/YYYY') + " Selected", "success",
+        $('#datepicker').notify("Date" + " Selected", "success",
         {
 //            elementPosition:'top center',
             globalPosition:'top center'

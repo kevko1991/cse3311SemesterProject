@@ -86,7 +86,7 @@
                         <input type="hidden" value ="true" name="first">
                         <div class="centerthis">
                             <br>
-                            <input type="submit" value="Modify Timeslots" id="submitBtn">
+                            <input type="submit" value="Modify Timeslots" id="submitBtn" class="btn btn-default">
                         </div>
                     </form>
                 </div>

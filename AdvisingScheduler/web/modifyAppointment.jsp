@@ -87,7 +87,7 @@
                                     </tbody>
                                 </table>
                                 <br>
-                                   <input type="submit" value="Modify Appointment" id="submitBtn">
+                                   <input type="submit" value="Modify Appointment" id="submitBtn" class="btn btn-default" class="btn btn-default">
                                 </form>
                             </div>
 

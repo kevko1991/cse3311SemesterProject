@@ -91,99 +91,49 @@
         
         <div id="wrapper">
         <jsp:include page="header.jsp" />
-        <table id="table" style="margin:0 auto;">       
+        <table id="table" style="margin:0 auto; height:1024px">       
             <tr>
                 <td style="vertical-align: top;">
                     
-                        <div id="scheduleAccordion" style="vertical-align: top;">
+                        <div id="scheduleAccordion" style="vertical-align: top; height: inherit">
                             <h3>Appointment Summary</h3>
                                 <div>                         
-                                    <form name="appointmentSummary">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                        Email
-                                                </td>
-                                                <td>
-                                        <input type="text" name="email" id="email" size="30" value="<jsp:getProperty name="newAppt" property="studentEmail"/>"  readonly="readonly"><br>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                        Student ID
-                                                </td>
-                                                <td>
-                                        <input type="text" name="sID" id="sID" size="30" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly"><br>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                        Student Name
-                                                </td>
-                                                <td>
-                                        <input type="text" name="sName" id="sName" size="30" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly"><br>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                        Major
-                                                </td>
-                                                <td>
-                                        <input type="text" name="major" id="major" size="30" value="<jsp:getProperty name="newAppt" property="studentMajor"/>" readonly="readonly"><br>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                        Advisor
-                                                </td>
-                                                <td>
-                                        <input type="text" name="aName" id="aName" size="30" value="<jsp:getProperty name="newAppt" property="advisorName"/>" readonly="readonly"><br>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                        Advising Type
-                                                </td>
-                                                <td>
-                                        <input type="text" name="type" id="type" size="30" value="<jsp:getProperty name="newAppt" property="type"/>" readonly="readonly"><br>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                        Date
-                                                </td>
-                                                <td>
-                                        <input type="text" name="date" id="date" size="30" value="<%= request.getParameter("date") %>" readonly="readonly"><br>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                        Start Time
-                                                </td>
-                                                <td>
-                                        <input type="text" id="startTime" name="startTime" size="30" value="" readonly="readonly"><br>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                        End Time
-                                                </td>
-                                                <td>
-                                        <input type="text" id="endTime" name="endTime" size="30" value="" readonly="readonly"><br>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                        Description 
-                                                </td>
-                                                <td>
-                                        <textarea name="description" id="description" rows="6" cols="30" value="" readonly="readonly"></textarea><br>
-                                                </td>
-                                        </table>
-                                                <br>
-                                                <div class="centerthis">
-                                        <input type="submit" value="Make Appointment" id="submitBtn">
-                                                </div><br><br>
+                                    <form name="appointmentSummary" role="form">
+                                        <div class="form-group">
+                                            <label for="sID">Student ID</label>
+                                        <input class="form-control" type="text" name="sID" id="sID" size="30" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sName">Student Name</label>
+                                        <input class="form-control" type="text" name="sName" id="sName" size="30" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="aName">Advisor</label>
+                                        <input class="form-control" type="text" name="aName" id="aName" size="30" value="<jsp:getProperty name="newAppt" property="advisorName"/>" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="type">Advising Type</label>
+                                        <input type="text" name="type" id="type" size="30" value="<jsp:getProperty name="newAppt" property="type"/>" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="date">Date</label>
+                                        <input class="form-control" type="text" name="date" id="date" size="30" value="<%= request.getParameter("date") %>" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="startTime">Start Time</label>
+                                        <input class="form-control" type="text" id="startTime" name="startTime" size="30" value="" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endTime">End Time</label>
+                                        <input class="form-control" type="text" id="endTime" name="endTime" size="30" value="" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label> 
+                                        <textarea class="form-control" name="description" id="description" rows="6" cols="30" value="" readonly="readonly"></textarea>
+                                        </div>
+                                                <!--<div class="centerthis">-->
+                                        <input type="submit" value="Make Appointment" id="submitBtn" class="btn btn-default">
+<!--                                                </div>-->
                                     </form>
                                     <%if(timeSubmitted){
                                             String result = newAppt.scheduleAppointment(); 
@@ -198,7 +148,7 @@
                                 </div>                              
                         </div>
 
-                <td style="vertical-align: top; float: right;">
+                <td style="vertical-align: top; float: right; height:inherit">
                     <div style="vertical-align: top; float: right" id="timeaccordion">
                         <h3>Calendar</h3>
                         <div id="calendar">                            

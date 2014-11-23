@@ -31,9 +31,24 @@ and open the template in the editor.
                         <h3>Faculty</h3>
                         <div>
                             Would you like to check on your current schedule?<br><br>
-                            <form action="#">
-                            <input type="submit" value="Login to your account" id="loginBtn">
-                            </form>
+                            
+                            <input type="submit" value="Login to your account" id="loginBtn" class="btn btn-default">
+                            
+                            
+<!--                            <form role="form">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input class="form-control" type="text" name="username" id="username" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" type="text" name="password" id="password" value="">
+                                </div>
+                            </form>-->
+                            
+                            
+                            
+                            
                         </div>
 
                     </div>
@@ -45,7 +60,7 @@ and open the template in the editor.
                         <div>
                             Would you like to schedule an appointment with an advisor?<br><br>
                             <form action="schedule.jsp">
-                            <input type="submit" value="Make an appointment" id="scheduleBtn">
+                            <input type="submit" value="Make an appointment" id="scheduleBtn" class="btn btn-default">
                             </form>
                         </div>
 

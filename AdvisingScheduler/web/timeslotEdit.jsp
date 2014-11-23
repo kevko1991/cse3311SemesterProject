@@ -244,7 +244,7 @@
                                     <input type="hidden" value="<%= endHour %>" name="endHour">
                                     <input type="hidden" value="<%= startMin%>" name="startMin">
                                     <input type="hidden" value="<%= endMin%>" name="endMin">
-                                <input type="submit" value="Cancel Timeslot" id="cancelBtn">
+                                <input type="submit" value="Cancel Timeslot" id="cancelBtn" class="btn btn-default">
                                 </form>
  <%
                                     if(readyToDelete)

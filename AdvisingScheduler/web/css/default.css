@@ -8,10 +8,10 @@ and open the template in the editor.
     Author     : Melissa
 */
 html{
-    height:100%;
+    /*height:100%;*/
 }
 body { 
-    height:100%;
+    /*height:100%;*/
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     font-size: 16px; 
     color: #000000; 
@@ -19,8 +19,7 @@ body {
     /*width: 1280px;*/
     margin: 0 auto;
     white-space: nowrap;
-    }
-    
+}
 
 .ui-datepicker-week-end {
     display:none
@@ -28,12 +27,12 @@ body {
 
 
 #wrapper{
-        width: 1280px;
-        margin: 0 auto;
-        height: 1024px;
-        
-    }
-    
+    width: 1280px;
+    margin: 0 auto;
+    /*height: 1024px;*/
+
+}
+
 header{
     width: 1280px;
     height: 300px;
@@ -49,24 +48,10 @@ header{
     bottom: 0;
 }
 
-.leftSide{
-    color: #000000; 
-    float: left;
-    width: 640px;
-    position:relative;
-}
-
-.rightSide{
-    float: right;
-    width: 640px;
-    position: relative;
-}
-
-
 #navbar{
     text-align: center;
     background-color: #00204c;
-    
+
 }
 
 .navigation ul{
@@ -90,7 +75,7 @@ header{
     height: 50px;
     line-height: 50px;
     margin-left: -4px;
-    
+
 }
 
 .navigation a{
@@ -105,9 +90,9 @@ header{
 }
 
 .navigation a.active {
-  background-color: #ffb17f;
-  color: #444;
-  cursor: default;
+    background-color: #ffb17f;
+    color: #444;
+    cursor: default;
 }
 
 .centerthis{
@@ -118,45 +103,42 @@ header{
 }
 
 .demoHeaders {
-        margin-top: 2em;
+    margin-top: 2em;
 }
 #dialog-link {
-        padding: .4em 1em .4em 20px;
-        text-decoration: none;
-        position: relative;
+    padding: .4em 1em .4em 20px;
+    text-decoration: none;
+    position: relative;
 }
 #dialog-link span.ui-icon {
-        margin: 0 5px 0 0;
-        position: absolute;
-        left: .2em;
-        top: 50%;
-        margin-top: -8px;
+    margin: 0 5px 0 0;
+    position: absolute;
+    left: .2em;
+    top: 50%;
+    margin-top: -8px;
 }
 #icons {
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
 }
 #icons li {
-        margin: 2px;
-        position: relative;
-        padding: 4px 0;
-        cursor: pointer;
-        float: left;
-        list-style: none;
+    margin: 2px;
+    position: relative;
+    padding: 4px 0;
+    cursor: pointer;
+    float: left;
+    list-style: none;
 }
 #icons span.ui-icon {
-        float: left;
-        margin: 0 4px;
+    float: left;
+    margin: 0 4px;
 }
 .fakewindowcontain .ui-widget-overlay {
-        position: absolute;
+    position: absolute;
 }
 select {
-        width: 200px;
+    width: 200px;
 }
-
-#outerContainer {
-    }
 
 #footer{
     position:relative;

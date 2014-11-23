@@ -108,7 +108,7 @@
             <jsp:include page="header.jsp" />
             <table id="table">
                 <tr>
-                    <td style="vertical-align: top">
+                    <td style="vertical-align: top; float:left; width:300px;" >
 
                         <div  id="allocateAccordion">
                             <!--Andrews code-->
@@ -135,29 +135,30 @@
 
                             <h3>Allocate Time</h3>
                             <div>
-                                <form action="AdvisorCalendar.jsp" method="post">
+                                <form action="AdvisorCalendar.jsp" method="post" role="form">
                                     <div class="centerthis">
-                                    Date<br>
-                                    <input type="text" id="datepicker" name="date"<% if (dateSubmitted) {
+                                    <div class="form-group">
+                                        <label for="date">Date</label>
+                                    <input class="form-control" type="text" id="datepicker" name="date"<% if (dateSubmitted) {
                                                     out.println(" value=\"" + request.getParameter("date") + "\"");
-                                                }%> readonly></p>
-                                    <br>
-                                    Start Time<br>
+                                                }%> readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=starttimepicker">Start Time</label>
 
-                                    <input type="datetime" id = "starttimepicker" name="startTime"<% if (startSubmitted) {
+                                    <input class="form-control" type="datetime" id = "starttimepicker" name="startTime"<% if (startSubmitted) {
                                                     out.println(" value=\"" + request.getParameter("startTime") + "\"");
-                                                }%>></p>
-                                    <br>
-
-                                    End Time<br>
-
-                                    <input type="datetime" id ="endtimepicker" name="endTime"<% if (endSubmitted) {
+                                                }%>>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="endtimepicker">End Time</label>
+                                    <input class="form-control" type="datetime" id ="endtimepicker" name="endTime"<% if (endSubmitted) {
                                                     out.println(" value=\"" + request.getParameter("endTime") + "\"");
-                                                }%>></p>
-                                    <br>
-
-                                    Number of Repeats<br>
-                                    <select name="numbers" id="numbers">
+                                                }%>>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="numbers">Number of Repeats</label>
+                                    <select class="form-control" name="numbers" id="numbers">
                                         <option value="1">1 Week</option>
                                         <option value="2">2 Weeks</option>
                                         <option value="3">3 Weeks</option>
@@ -165,9 +166,8 @@
                                         <option value="6">6 Weeks</option>
                                         <option value="8">8 Weeks</option>
                                     </select>
-                                    <br><br>
-
-                                    <input id="button" type="submit" value="Submit">
+                                    </div>
+                                    <input id="button" type="submit" value="Submit" class="btn btn-default">
                                     </div>
                                 </form>
                                 <% if (validFormSubmitted) {
@@ -281,7 +281,7 @@
                         </div>
                     </td>
 
-                    <td style="vertical-align: top; float: right;">
+                    <td style="vertical-align: top; float: right; width:980px">
                         <div id="timeaccordion">
                             <h3>Calendar</h3>
                             <div id="calendar"></div>                        
