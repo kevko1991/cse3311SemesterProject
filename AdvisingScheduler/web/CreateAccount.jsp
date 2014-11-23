@@ -8,6 +8,63 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:useBean id="newadvisor" class="uta.cse4361.beans.CreateAdvisorAccountBean"/> 
+        <script type="text/javascript">
+            function validate() {
+                var username = document.forms["create"]["username"].value;
+                var email = document.forms["create"]["email"].value;
+                var atpos = email.indexOf("@");
+                var dotpos = email.lastIndexOf(".");
+                var mavs = email.indexOf("mavs.uta.edu"); 
+                var password = document.forms["create"]["password"].value;
+                var passwordConfirm = document.forms["create"]["passwordConfirm"].value;
+                var name = document.forms["create"]["name"].value;
+
+                if (username === null || username === "") {
+                    $("#username").notify("Please enter your username", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
+                if (email === null || email === "") {
+                    $("#email").notify("Please enter your email", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
+                if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length || mavs < 0) {
+                    $("#email").notify("Please enter a valid mavs email", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
+                if (password === null || password === "") {
+                    $("#password").notify("Please enter your password", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
+                if (passwordConfirm === null || passwordConfirm === "") {
+                    $("#passwordConfirm").notify("Please confirm your password", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
+                if (passwordConfirm != password) {
+                    $("#passwordConfirm").notify("Your password does not match", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
+                if (name === null || name === "") {
+                    $("#name").notify("Please enter your name", "error",
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
+                    return false;
+                }
+
+            }
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Account</title>
     </head>
@@ -17,7 +74,7 @@
             <jsp:include page="header.jsp" />
             <div id="accordion">
                 <h3>Create Advisor Account</h3>
-            <form role="form">
+                <form role="form" id="create"  onSubmit="return validate();">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input class="form-control" type="text" name="username" id="username" value="">
@@ -36,7 +93,7 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input class="form-control" type="text" name="name" id="email" value="">
+                        <input class="form-control" type="text" name="name" id="name" value="">
                     </div>
                     <div class="form-group">
                         <label for="dept">Department</label>
@@ -47,10 +104,11 @@
                             <option value="Bioengineering">Bioengineering</option>
                         </select>
                     </div>
-                <div class="centerthis">
-                    <input type="submit" value="Make Appointment" id="submitBtn" class="btn btn-default">
-                </div>
-            </form>
+                    <div class="centerthis">
+                        <input type="submit" value="Create Account" id="submitBtn" class="btn btn-default">
+                        <input type="reset" value="Reset" id="resetBtn" class="btn btn-default">
+                    </div>
+                </form>
             </div>
         </div>
     </body>

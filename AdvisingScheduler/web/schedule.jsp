@@ -142,8 +142,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Schedule Appointment</title>
     </head>
-    <p id="demo"></p>
-
     <body>
     <tr>
         <jsp:include page="navigationbar.jsp" />
@@ -155,7 +153,7 @@
                 <form role="form" name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();" >
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" onkeypress="return isNumberKey(event)" name="email" id="email" value="" class="form-control">
+                        <input type="text"  name="email" id="email" value="" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="sID">Student ID</label>
