@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package uta.cse4361.databases;
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
+import com.mockrunner.mock.jdbc.MockConnection;
+import com.mockrunner.mock.jdbc.MockResultSet;
 import uta.cse4361.businessobjects.Slot;
 import uta.cse4361.businessobjects.AvailableSlot;
 import java.util.*;
@@ -19,27 +23,20 @@ import static org.junit.Assert.*;
  *
  * @author Andrew
  */
-public class DeleteSlotTest {
+public class DeleteSlotTest extends BasicJDBCTestCaseAdapter{
     
     public DeleteSlotTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
+    private void prepareError(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+
+        resultSetHandler.prepareThrowsSQLException("DELETE FROM \"SLOT\"");
+
+    }
+    
     /**
      * Test of queryDB method, of class DeleteSlot.
      */
@@ -56,7 +53,30 @@ public class DeleteSlotTest {
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         SaveSlots saveInstance = new SaveSlots(slots);
         saveInstance.execute();
+        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
         DeleteSlot deleteInstance = new DeleteSlot(new Date(System.currentTimeMillis()), 8, 9, 0, 30); // 
         deleteInstance.execute();
+        verifySQLStatementExecuted("DELETE FROM \"SLOT\"");
+    }
+    
+    @Test
+    public void testSQLError()
+    {
+        prepareError();
+        System.out.println("queryDB");
+        Slot slot = new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0, 0);
+        ArrayList<Slot> slots = new ArrayList<Slot>();
+        slots.add(slot);
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 15, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 30, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 45, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
+        SaveSlots saveInstance = new SaveSlots(slots);
+        saveInstance.execute();
+        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
+        DeleteSlot deleteInstance = new DeleteSlot(new Date(System.currentTimeMillis()), 8, 9, 0, 30); // 
+        deleteInstance.execute();
+        verifySQLStatementNotExecuted("DELETE FROM \"SLOT\"");
     }
 }

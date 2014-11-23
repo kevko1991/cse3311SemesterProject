@@ -36,6 +36,15 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
         
         resultSetHandler.prepareGlobalResultSet(result);
     }
+    
+    private void prepareError(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+
+        resultSetHandler.prepareThrowsSQLException("SELECT * FROM \"SLOT\"");
+
+    }
 
     /**
      * Test of queryDB method, of class GetAllSlots.
@@ -46,6 +55,7 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         GetSlot instance = new GetSlot();
         instance.execute();
+        verifySQLStatementExecuted("SELECT * FROM \"SLOT\"");
         assertNotNull(instance.getResult());
         ArrayList<Slot> pulledSlots = (ArrayList<Slot>) instance.getResult();
         //Assert slot 1
@@ -55,6 +65,15 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
         
         assertEquals(8, pulledSlots.get(1).getHour());
         assertEquals(30, pulledSlots.get(1).getMinute());
+    }
+    
+    @Test
+    public void testSQLError() throws Exception {
+        System.out.println("queryDB");
+        prepareError();
+        GetSlot instance = new GetSlot();
+        instance.execute();
+        verifySQLStatementNotExecuted("SELECT * FROM \"SLOT\"");
     }
     
 }
