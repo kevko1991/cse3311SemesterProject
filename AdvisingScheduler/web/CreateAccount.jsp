@@ -18,21 +18,38 @@
             <div id="accordion">
                 <h3>Create Advisor Account</h3>
             <form role="form">
-                <div class="form-group">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" name="username" id="username" value="">
+                    </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input class="form-control" type="text" name="email" id="email" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="text" name="password" id="password" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordConfirm">Confirm Password</label>
+                        <input class="form-control" type="text" name="passwordConfirm" id="passwordConfirm" value="">
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input class="form-control" type="text" name="name" id="email" value="">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input class="form-control" type="text" name="password" id="password" value="">
+                        <label for="dept">Department</label>
+                        <select name="dept" id="dept" class="form-control" >
+                            <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Bioengineering">Bioengineering</option>
+                        </select>
                     </div>
+                <div class="centerthis">
+                    <input type="submit" value="Make Appointment" id="submitBtn" class="btn btn-default">
                 </div>
-
             </form>
             </div>
         </div>
