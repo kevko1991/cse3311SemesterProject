@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <label for="dept">Department</label>
                         <select name="dept" id="dept" class="form-control" >
-                            <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                            <option value="Computer Science">Computer Science</option>
                             <option value="Civil Engineering">Civil Engineering</option>
                             <option value="Electrical Engineering">Electrical Engineering</option>
                             <option value="Bioengineering">Bioengineering</option>
