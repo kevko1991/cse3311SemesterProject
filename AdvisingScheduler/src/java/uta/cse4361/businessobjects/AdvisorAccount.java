@@ -26,7 +26,7 @@ public class AdvisorAccount {
         this.name = name;
         this.email = email;
         this.department = department;
-        this.tempPassword = tempPassword;
+        this.tempPassword = hashPassword(tempPassword);
         this.rank = rank;
         return true;
     }
@@ -38,6 +38,12 @@ public class AdvisorAccount {
         this.ID = ID;
         this.rank = rank;
         return true;
+    }
+    
+    public static String hashPassword(String tempPassword)
+    {
+        int hash = tempPassword.hashCode();
+        return Integer.toString(hash);
     }
     
     public void setName(String name){
