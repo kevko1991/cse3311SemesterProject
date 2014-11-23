@@ -5,6 +5,11 @@
  */
 package uta.cse4361.beans;
 
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
+import com.mockrunner.mock.jdbc.MockConnection;
+import com.mockrunner.mock.jdbc.MockResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,12 +17,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import uta.cse4361.businessobjects.Slot;
+import uta.cse4361.businessobjects.SlotFactory;
+import uta.cse4361.databases.DatabaseManager;
 
 /**
  *
  * @author Han
  */
-public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Constants{
+public class ScheduleAppointmentBeanTest extends BasicJDBCTestCaseAdapter implements uta.cse4361.interfaces.Constants{
 
     private final String sMajor = "Software Engineering";
     private final String sName = "First Last";
@@ -29,29 +37,34 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
     private final String dp = "This is a description test";
     private final Date d = new Date(114, 10, 17);
     private final int sH = 11;
-    private final int eH = 13;
+    private final int eH = 11;
     private final int sM = 0;
-    private final int eM = 33;
+    private final int eM = 30;
 
     public ScheduleAppointmentBeanTest() {
     }
 
+    private long time;
+    
     @BeforeClass
-    public static void setUpClass() {
+    public void setUpOnce()
+    {
+        time = System.currentTimeMillis();
     }
+    
+    private void prepareResultSet(){
 
-    @AfterClass
-    public static void tearDownClass() {
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+        
+        MockResultSet result = resultSetHandler.createResultSet();
+        java.sql.Date date = new java.sql.Date(time);
+        result.addRow(new Object[] {"1", date, "11", "0"});
+        result.addRow(new Object[] {"2", date, "11", "15"});
+        
+        resultSetHandler.prepareGlobalResultSet(result);
     }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
+    
     /**
      * Test of scheduleAppointment method, of class ScheduleAppointmentControllerBean.
      */
@@ -74,13 +87,15 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         String result = instance.scheduleAppointment();
         assertEquals(expResult, result);
     }
-/*
+
     @Test
     public void testScheduleAppointmentSuccess() {
+        prepareResultSet();
         ScheduleAppointmentBean instance = new ScheduleAppointmentBean();
         SlotFactory aff = SlotFactory.getInstance();
         DatabaseManager dbMgr = new DatabaseManager();
-        aff.createSlots(d, sH, eH, sM, eM, AVAILABLE_FLYWEIGHT_KEY);
+        ArrayList<Slot> slots = aff.generateSlots(d, sH, eH, sM, eM, 0, AVAILABLE_FLYWEIGHT_KEY);
+        dbMgr.saveSlots(slots);
         instance.setStudentID(sID);
         instance.setStudentName(sName);
         instance.setAdvisorName(aName);
@@ -94,7 +109,9 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         String expResult = SUCCESS_MESSAGE;
         String result = instance.scheduleAppointment();
         assertEquals(expResult, result);
-    }*/
+        verifySQLStatementExecuted("SELECT * FROM \"AVAILSLOT\"");
+        verifySQLStatementExecuted("INSERT INTO \"APPOINTMENT\"");
+    }
     
     @Test
     public void testGenerageMessage() {
@@ -111,7 +128,7 @@ public class ScheduleAppointmentBeanTest implements uta.cse4361.interfaces.Const
         instance.setEndHour(eH);
         instance.setStartMinute(sM);
         instance.setEndMinute(eM);
-        String expectedResult = "You have an appointment with Advisor Name at 11/17/2014 from 11:0 to 13:33";
+        String expectedResult = "You have an appointment with Advisor Name at 11/17/2014 from 11:0 to 11:30";
         String result = instance.generateMessage();
         System.out.println(result);
         assertEquals(expectedResult, result);

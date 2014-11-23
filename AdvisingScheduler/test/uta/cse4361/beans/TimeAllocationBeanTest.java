@@ -5,6 +5,10 @@
  */
 package uta.cse4361.beans;
 
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
+import com.mockrunner.mock.jdbc.MockConnection;
+import com.mockrunner.mock.jdbc.MockResultSet;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,25 +21,22 @@ import static org.junit.Assert.*;
  *
  * @author Han
  */
-public class TimeAllocationBeanTest implements uta.cse4361.interfaces.Constants{
+public class TimeAllocationBeanTest extends BasicJDBCTestCaseAdapter implements uta.cse4361.interfaces.Constants{
     
     public TimeAllocationBeanTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    private void prepareResultSet(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+        
+        MockResultSet result = resultSetHandler.createResultSet();
+        result.addRow(new Object[] {"1"});
+        result.addRow(new Object[] {"2"});
+        result.addRow(new Object[] {"3"});
+
+        resultSetHandler.prepareGlobalGeneratedKeys(result);
     }
 
     /**
@@ -43,6 +44,20 @@ public class TimeAllocationBeanTest implements uta.cse4361.interfaces.Constants{
      */
     @Test
     public void testAllocateTime() {
+        prepareResultSet();
+        TimeAllocationBean instance = new TimeAllocationBean();
+        instance.setDate(new Date());
+        instance.setStartHour(15);
+        instance.setEndHour(15);
+        instance.setStartMinute(00);
+        instance.setEndMinute(45);
+        String expResult = SUCCESS_MESSAGE;
+        String result = instance.allocateTime();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testAllocateTimeRepeating() {
         TimeAllocationBean instance = new TimeAllocationBean();
         instance.setDate(new Date());
         instance.setStartHour(15);
@@ -50,7 +65,7 @@ public class TimeAllocationBeanTest implements uta.cse4361.interfaces.Constants{
         instance.setStartMinute(30);
         instance.setEndMinute(45);
         String expResult = SUCCESS_MESSAGE;
-        String result = instance.allocateTime();
+        String result = instance.allocateTimeRepeat(3);
         assertEquals(expResult, result);
     }
 

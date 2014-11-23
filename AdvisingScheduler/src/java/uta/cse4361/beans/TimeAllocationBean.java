@@ -70,7 +70,7 @@ public class TimeAllocationBean implements uta.cse4361.interfaces.Constants, jav
             date = selectedCal.getTime();
             allocateTime();
         }  
-        return "success";
+        return msg;
     }
     
     

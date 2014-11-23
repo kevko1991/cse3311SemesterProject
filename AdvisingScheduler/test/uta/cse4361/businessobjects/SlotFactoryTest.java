@@ -32,19 +32,14 @@ public class SlotFactoryTest implements uta.cse4361.interfaces.Constants{
     {
         currentDate = new Date();
     }
-    /*
+    
     @Test
     public void createAvailableFlyweightTest()
     {
-        String result = SlotFactory.getInstance().
-                createSlots(currentDate, MIN_HOUR, MIN_HOUR + 1, 
-                        MIN_MINUTE, MIN_MINUTE + 30, AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
+        ArrayList<Slot> savedFlyweights = SlotFactory.getInstance().
+                generateSlots(currentDate, MIN_HOUR, MIN_HOUR + 1, 
+                        MIN_MINUTE, MIN_MINUTE + 30, 0, AVAILABLE_FLYWEIGHT_KEY);
         
-        assertEquals("The factory did not return success", "", result);
-        
-        DatabaseManager dbMgr = new DatabaseManager();
-        
-        ArrayList<Slot> savedFlyweights = dbMgr.getSlots();
         
         int nextTime = savedFlyweights.get(0).getTime();
         
@@ -91,37 +86,37 @@ public class SlotFactoryTest implements uta.cse4361.interfaces.Constants{
     @Test
     public void createInvalidFlyweightTest()
     {
-        String result =SlotFactory.getInstance().
-                createSlots(currentDate, MIN_HOUR + 2, MIN_HOUR, 
-                        MIN_MINUTE, MIN_MINUTE + 15, 
+        ArrayList<Slot> result =SlotFactory.getInstance().
+                generateSlots(currentDate, MIN_HOUR + 2, MIN_HOUR, 
+                        MIN_MINUTE, MIN_MINUTE + 15, 0, 
                         AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
         
-        assertEquals("An invalid hour did not produce an error", ILLEGAL_ARGUMENT_FAULT, result);
+        assertEquals("An invalid hour did not produce an error", null, result);
         
         result =SlotFactory.getInstance().
-                createSlots(currentDate, MIN_HOUR, MIN_HOUR, 
-                        MIN_MINUTE+ 15, MIN_MINUTE, AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
+                generateSlots(currentDate, MIN_HOUR, MIN_HOUR, 
+                        MIN_MINUTE+ 15, MIN_MINUTE, 0, AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
         
-        assertEquals("An invalid minute did not produce an error", ILLEGAL_ARGUMENT_FAULT, result);
-        
-        result =SlotFactory.getInstance().
-                createSlots(currentDate, MIN_HOUR, MIN_HOUR + 2, 
-                        MIN_MINUTE, MIN_MINUTE + 15, "");
-        
-        assertEquals("An invalid key did not produce an error", ILLEGAL_KEY_FAULT, result);
+        assertEquals("An invalid minute did not produce an error", null, result);
         
         result =SlotFactory.getInstance().
-                createSlots(currentDate, MIN_HOUR - 1, MIN_HOUR, 
-                        MIN_MINUTE, MIN_MINUTE + 15, AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
+                generateSlots(currentDate, MIN_HOUR, MIN_HOUR + 2, 
+                        MIN_MINUTE, MIN_MINUTE + 15, 0, "");
         
-        assertEquals("An invalid flyweight time did not produce an error", ILLEGAL_FLYWEIGHT_FAULT, result);
+        assertEquals("An invalid key did not produce an error", null, result);
         
         result =SlotFactory.getInstance().
-                createSlots(currentDate, MIN_HOUR, MIN_HOUR + 1, 
-                        MIN_MINUTE - 15, MIN_MINUTE,  
+                generateSlots(currentDate, MIN_HOUR - 1, MIN_HOUR, 
+                        MIN_MINUTE, MIN_MINUTE + 15, 0, AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
+        
+        assertEquals("An invalid flyweight time did not produce an error", null, result);
+        
+        result =SlotFactory.getInstance().
+                generateSlots(currentDate, MIN_HOUR, MIN_HOUR + 1, 
+                        MIN_MINUTE - 15, MIN_MINUTE, 0,  
                         AVAILABLE_FLYWEIGHT_WITH_SAVE_KEY);
         
-        assertEquals("An invalid flyweight time did not produce an error", ILLEGAL_FLYWEIGHT_FAULT, result);
+        assertEquals("An invalid flyweight time did not produce an error", null, result);
     }
 
     private int getHour(int time) 
@@ -138,6 +133,6 @@ public class SlotFactoryTest implements uta.cse4361.interfaces.Constants{
     {
         return time % 60;
     }
-    */
+    
 }
 

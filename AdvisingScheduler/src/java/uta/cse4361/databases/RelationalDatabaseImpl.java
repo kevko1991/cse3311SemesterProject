@@ -26,7 +26,7 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         RDBImplCommand saveSlots = new SaveSlots(slots);
         saveSlots.execute();
         ArrayList<Integer> savedSlots = (ArrayList<Integer>)saveSlots.getResult();
-        if(savedSlots.size()>0){
+        if(savedSlots.size() == slots.size()){
             return "";
         }
         return "failed";

@@ -25,6 +25,7 @@ public class Scheduler implements uta.cse4361.interfaces.Constants{
 
     
     public String schedule(Appointment newAppointment){
+        databaseManager = new DatabaseManager();
         appointment = newAppointment;
         String msg = SUCCESS_MESSAGE;
         boolean isFree = databaseManager.isFree(appointment.getDate(), 

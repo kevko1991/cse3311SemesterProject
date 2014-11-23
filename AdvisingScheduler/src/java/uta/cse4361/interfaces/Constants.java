@@ -31,6 +31,6 @@ public interface Constants {
     final static int MAX_HOUR = 23;
     final static int MIN_MINUTE = 0;
     final static int MAX_MINUTE= 59;
-    final static int ILLEGAL_APPT_ID = -1;
+    final static int ILLEGAL_APPT_ID = 0;
     final static int VALID_ID = 1;
 }
