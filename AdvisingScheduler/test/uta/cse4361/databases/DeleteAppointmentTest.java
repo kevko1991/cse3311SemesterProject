@@ -9,39 +9,30 @@ import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
 import com.mockrunner.jdbc.PreparedStatementResultSetHandler;
 import com.mockrunner.mock.jdbc.MockConnection;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import uta.cse4361.businessobjects.Appointment;
 
 /**
  *
- * @author Han
+ * @author Frank R.
  */
-public class SaveAppointmentTest extends BasicJDBCTestCaseAdapter{
+public class DeleteAppointmentTest extends BasicJDBCTestCaseAdapter{
     
-    public SaveAppointmentTest() {
+    public DeleteAppointmentTest() {
     }
-    
+
     private void prepareError(){
 
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("INSERT INTO \"APPOINTMENT\"");
+        resultSetHandler.prepareThrowsSQLException("DELETE FROM \"APPOINTMENT\"");
 
     }
-
-    /**
-     * Test of queryDB method, of class SaveAppointment.
-     */
+    
     @Test
     public void testQueryDB() throws Exception {
-        System.out.println("queryDB");
-        String expectedResult = "";
         System.out.println("queryDB");
         String sName = "Changed Name";
         String sID = "1000654321";
@@ -55,26 +46,22 @@ public class SaveAppointmentTest extends BasicJDBCTestCaseAdapter{
         int eH = 0;
         int sM = 14;
         int eM = 0;
+        String expectedResult = "This is the test after edit Appointment";
         Appointment appt = new Appointment();
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         SaveAppointment instance = new SaveAppointment(appt);
         instance.execute();
         verifySQLStatementExecuted("INSERT INTO \"APPOINTMENT\"");
         
-        String result = (String)instance.getResult();
-        System.out.println(result);
-        assertEquals(expectedResult, result);
+        DeleteAppointment deleteInstance = new DeleteAppointment(1);
+        deleteInstance.execute();
+        verifySQLStatementExecuted("DELETE FROM \"APPOINTMENT\"");
     }
     
-    
-    /**
-     * Test of processResult method, of class SaveAppointment.
-     */
     @Test
-    public void testSQLError() {
+    public void testSQLError()
+    {
         prepareError();
-        System.out.println("queryDB");
-        String expectedResult = "";
         System.out.println("queryDB");
         String sName = "Changed Name";
         String sID = "1000654321";
@@ -88,10 +75,14 @@ public class SaveAppointmentTest extends BasicJDBCTestCaseAdapter{
         int eH = 0;
         int sM = 14;
         int eM = 0;
+        String expectedResult = "This is the test after edit Appointment";
         Appointment appt = new Appointment();
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         SaveAppointment instance = new SaveAppointment(appt);
         instance.execute();
-        verifySQLStatementNotExecuted("INSERT INTO \"APPOINTMENT\"");
+        verifySQLStatementExecuted("INSERT INTO \"APPOINTMENT\"");
+        
+        DeleteAppointment deleteInstance = new DeleteAppointment(1);
+        verifySQLStatementNotExecuted("DELETE FROM \"APPOINTMENT\"");        
     }
 }

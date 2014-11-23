@@ -45,6 +45,15 @@ public class SaveSlotsTest extends BasicJDBCTestCaseAdapter{
         resultSetHandler.prepareGlobalGeneratedKeys(result);
     }
     
+    private void prepareError(){
+
+        MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
+        PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
+
+        resultSetHandler.prepareThrowsSQLException("INSERT INTO \"SLOT\"");
+
+    }
+    
     /**
      * Test of queryDB method, of class SaveSlots.
      */
@@ -62,11 +71,29 @@ public class SaveSlotsTest extends BasicJDBCTestCaseAdapter{
         SaveSlots instance = new SaveSlots(slots);
         //instance.execute();
         instance.execute();
+        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
         //must have inserted all instances to result
         ArrayList<Integer> savedSlots = (ArrayList<Integer>)instance.getResult();
         assertEquals(6, savedSlots.size());
-        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
         
+        
+    }
+    
+    @Test
+    public void testSQLError() throws Exception {
+        prepareError();
+        System.out.println("queryDB");
+        ArrayList<Slot> slots = new ArrayList<Slot>();
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 0, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 15, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 30, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 8, 45, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0, 0));
+        slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
+        SaveSlots instance = new SaveSlots(slots);
+        //instance.execute();
+        instance.execute();
+        verifySQLStatementNotExecuted("INSERT INTO \"SLOT\"");
     }
     
 
