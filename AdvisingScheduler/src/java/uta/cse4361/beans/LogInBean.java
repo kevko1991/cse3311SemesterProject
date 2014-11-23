@@ -5,6 +5,7 @@
  */
 package uta.cse4361.beans;
 
+import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.databases.DatabaseManager;
 import uta.cse4361.interfaces.Constants;
 
@@ -38,7 +39,7 @@ public class LogInBean implements Constants{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = AdvisorAccount.hashPassword(password);
     }
     
     
