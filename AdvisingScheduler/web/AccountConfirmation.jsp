@@ -24,16 +24,11 @@
                 <h3>Account Confirmation</h3>
                 <%
                     String result = newadvisor.Advisor();
-                    out.print(request.getParameter("email")+"<br>");
-                    out.print(request.getParameter("password")+"<br>");
-                    out.print(request.getParameter("dept")+"<br><br>");
-                    out.print(request.getParameter("name")+"<br><br>");
                     if (result == "") {
-                        out.print("Account created");
+                        out.print(newadvisor.getName() +"'s has been Account created");
                     } 
                     else {
-                        newadvisor.getEmail();
-//                        out.print(result);
+                        out.print("Account could not be created.");
                     }
                 %>
             </div>
