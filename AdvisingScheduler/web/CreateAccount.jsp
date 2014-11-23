@@ -8,10 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:useBean id="newadvisor" class="uta.cse4361.beans.CreateAdvisorAccountBean"/> 
         <script type="text/javascript">
             function validate() {
-                var username = document.forms["create"]["username"].value;
+//                var username = document.forms["create"]["username"].value;
                 var email = document.forms["create"]["email"].value;
                 var atpos = email.indexOf("@");
                 var dotpos = email.lastIndexOf(".");
@@ -20,12 +19,12 @@
                 var passwordConfirm = document.forms["create"]["passwordConfirm"].value;
                 var name = document.forms["create"]["name"].value;
 
-                if (username === null || username === "") {
-                    $("#username").notify("Please enter your username", "error",
-                            {elementPosition: 'bottom center',
-                                globalPosition: 'bottom center'})
-                    return false;
-                }
+//                if (username === null || username === "") {
+//                    $("#username").notify("Please enter your username", "error",
+//                            {elementPosition: 'bottom center',
+//                                globalPosition: 'bottom center'})
+//                    return false;
+//                }
                 if (email === null || email === "") {
                     $("#email").notify("Please enter your email", "error",
                             {elementPosition: 'bottom center',
@@ -50,7 +49,7 @@
                                 globalPosition: 'bottom center'})
                     return false;
                 }
-                if (passwordConfirm != password) {
+                if (passwordConfirm !== password) {
                     $("#passwordConfirm").notify("Your password does not match", "error",
                             {elementPosition: 'bottom center',
                                 globalPosition: 'bottom center'})
@@ -74,11 +73,11 @@
             <jsp:include page="header.jsp" />
             <div id="accordion">
                 <h3>Create Advisor Account</h3>
-                <form role="form" id="create"  onSubmit="return validate();">
-                    <div class="form-group">
+                <form role="form" id="create"  onSubmit="return validate();" action="AccountConfirmation.jsp" method="POST">
+<!--                    <div class="form-group">
                         <label for="username">Username</label>
                         <input class="form-control" type="text" name="username" id="username" value="">
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input class="form-control" type="text" name="email" id="email" value="">
