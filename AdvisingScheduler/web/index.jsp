@@ -33,22 +33,7 @@ and open the template in the editor.
                             Would you like to check on your current schedule?<br><br>
                             
                             <input type="submit" value="Login to your account" id="loginBtn" class="btn btn-default">
-                            
-                            
-<!--                            <form role="form">
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input class="form-control" type="text" name="username" id="username" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input class="form-control" type="text" name="password" id="password" value="">
-                                </div>
-                            </form>-->
-                            
-                            
-                            
-                            
+                  
                         </div>
 
                     </div>

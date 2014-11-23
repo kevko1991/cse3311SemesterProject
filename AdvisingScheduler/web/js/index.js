@@ -3,7 +3,7 @@
 $("#loginBtn").on('click', function () {
     bootbox.dialog({
         title: "Login",
-        message: "<form role='form' id='loginform'>"
+        message: "<form role='form' id='loginform' method='POST' action='LoginValidation.jsp' onsubmit='return validate()'>"
                 + "<div class='form-group'>"
                 + "<label for='username'>Username</label>"
                 + "<input class='form-control' type='text' name='username' id='username' value=''>"
@@ -14,7 +14,7 @@ $("#loginBtn").on('click', function () {
                 + "</div>"
                 + "</form>"
 //                + "<input type='submit' value='Login' id='loginBtn2' class='btn btn-default'>"
-                    ,
+        ,
         buttons: {
             success: {
                 label: "Login",
@@ -31,3 +31,25 @@ $("#loginBtn").on('click', function () {
 $("#leftAccordion").accordion({heightStyle: content});
 $("#rightAccordion").accordion({heightStyle: content});
 //$("#scheduleBtn").button().click(function(){});
+
+
+function validate() {
+    var username = document.forms["loginform"]["username"].value;
+    var password = document.forms["loginform"]["password"].value;
+    
+    if (username === null || username === "") {
+        $("#username").notify("Please enter your username", "error",
+                {elementPosition: 'bottom center',
+                    globalPosition: 'bottom center'})
+        return false;
+    }
+
+    if (password === null || password === "") {
+        $("#password").notify("Please enter your password", "error",
+                {elementPosition: 'bottom center',
+                    globalPosition: 'bottom center'})
+        return false;
+    }
+
+    
+}

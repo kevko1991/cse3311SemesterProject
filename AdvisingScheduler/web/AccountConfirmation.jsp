@@ -22,6 +22,7 @@
             <jsp:include page="header.jsp" />
             <div id="accordion">
                 <h3>Account Confirmation</h3>
+                <div>
                 <%
                     String result = newadvisor.Advisor();
                     if (result == "") {
@@ -31,6 +32,7 @@
                         out.print("Account could not be created.");
                     }
                 %>
+                </div>
             </div>
         </div>
 
