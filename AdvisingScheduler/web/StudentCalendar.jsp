@@ -100,40 +100,46 @@
                                 <div>                         
                                     <form name="appointmentSummary" role="form">
                                         <div class="form-group">
+                                            <label for="email">Email</label>
+                                        <input class="form-control" type="text" name="email" id="email" value="<jsp:getProperty name="newAppt" property="studentEmail"/>"  readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="sID">Student ID</label>
-                                        <input class="form-control" type="text" name="sID" id="sID" size="30" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly">
+                                        <input class="form-control" type="text" name="sID" id="sID" value="<jsp:getProperty name="newAppt" property="studentID"/>"  readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="sName">Student Name</label>
-                                        <input class="form-control" type="text" name="sName" id="sName" size="30" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly">
+                                        <input class="form-control" type="text" name="sName" id="sName" value="<jsp:getProperty name="newAppt" property="studentName"/>" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="major">Major</label>
+                                        <input class="form-control" type="text" name="major" id="major" value="<jsp:getProperty name="newAppt" property="studentMajor"/>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="aName">Advisor</label>
-                                        <input class="form-control" type="text" name="aName" id="aName" size="30" value="<jsp:getProperty name="newAppt" property="advisorName"/>" readonly="readonly">
+                                        <input class="form-control" type="text" name="aName" id="aName" value="<jsp:getProperty name="newAppt" property="advisorName"/>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="type">Advising Type</label>
-                                        <input type="text" name="type" id="type" size="30" value="<jsp:getProperty name="newAppt" property="type"/>" readonly="readonly">
+                                        <input type="text" name="type" id="type" value="<jsp:getProperty name="newAppt" property="type"/>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="date">Date</label>
-                                        <input class="form-control" type="text" name="date" id="date" size="30" value="<%= request.getParameter("date") %>" readonly="readonly">
+                                        <input class="form-control" type="text" name="date" id="date" value="<%= request.getParameter("date") %>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="startTime">Start Time</label>
-                                        <input class="form-control" type="text" id="startTime" name="startTime" size="30" value="" readonly="readonly">
+                                        <input class="form-control" type="text" id="startTime" name="startTime" value="" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="endTime">End Time</label>
-                                        <input class="form-control" type="text" id="endTime" name="endTime" size="30" value="" readonly="readonly">
+                                        <input class="form-control" type="text" id="endTime" name="endTime" value="" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label> 
-                                        <textarea class="form-control" name="description" id="description" rows="6" cols="30" value="" readonly="readonly"></textarea>
+                                        <textarea class="form-control" name="description" id="description" value="" readonly="readonly"></textarea>
                                         </div>
-                                                <!--<div class="centerthis">-->
                                         <input type="submit" value="Make Appointment" id="submitBtn" class="btn btn-default">
-<!--                                                </div>-->
                                     </form>
                                     <%if(timeSubmitted){
                                             String result = newAppt.scheduleAppointment(); 

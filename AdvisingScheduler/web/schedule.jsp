@@ -76,64 +76,64 @@
                 var dp = document.forms["schedule"]["description"].value;
                 if (email === null || email === "") {
                     $("#email").notify("Please enter your email", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["email"].focus();
                     return false;
                 }
-                if (atpos< 1 || dotpos < atpos+2 || dotpos+2>= email.length) {
+                if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length) {
                     $("#email").notify("Please enter a valid email", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["email"].focus();
                     return false;
                 }
                 if (sID === null || sID === "") {
                     $("#sID").notify("Please enter your student ID", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["sID"].focus();
                     return false;
                 }
                 if (isNaN(sID)) {
                     $("#sID").notify("Your student ID must be a number", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["sID"].focus();
                     return false;
                 }
                 if (sID.length !== 10) {
                     $("#sID").notify("Your student ID must be a 10-digit number", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["sID"].focus();
                     return false;
                 }
                 if (sID.indexOf("1000") === -1 && sID.indexOf("6000") === -1) {
                     $("#sID").notify("Your student ID should begin with 1000 or 6000", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["sID"].focus();
                     return false;
                 }
                 if (sName === null || sName === "") {
                     $("#sName").notify("Please enter your name", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["sName"].focus();
                     return false;
                 }
                 if (ddate === null || ddate === "") {
                     $("#date").notify("Please select your appointment date", "error",
-                    {elementPosition: 'right middle',
-                    globalPosition: 'right middle'})
+                            {elementPosition: 'right middle',
+                                globalPosition: 'right middle'})
 //                    document.forms["schedule"]["date"].focus();
                     return false;
                 }
                 if (dp === null || dp === "") {
                     $("#description").notify("Please enter a proper description", "error",
-                    {elementPosition: 'bottom center',
-                    globalPosition: 'bottom center'})
+                            {elementPosition: 'bottom center',
+                                globalPosition: 'bottom center'})
                     document.forms["schedule"]["description"].focus();
                     return false;
                 }
@@ -154,6 +154,10 @@
             <div class="centerthis">
                 <form role="form" name="schedule" action="StudentCalendar.jsp" onSubmit="return validate();" >
                     <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" onkeypress="return isNumberKey(event)" name="email" id="email" value="" class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label for="sID">Student ID</label>
                         <input type="text" onkeypress="return isNumberKey(event)" name="sID" id="sID" value="" class="form-control">
                     </div>
@@ -162,10 +166,20 @@
                         <input type="text" name="sName" id="sName" value="" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="major">Major</label>
+                        <select name="major" id="major" class="form-control" >
+                            <option value="CSE">CSE</option>
+                            <option value="SE">SE</option>
+                            <option value="CPE">CPE</option>
+                            <option value="Undecided">Undecided</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="aName">Advisor</label>
                         <select name="aName" id="aName" class="form-control" >
                             <option value="Linda Barasch">Linda Barasch</option>
                             <option value="Bob Weems">Bob Weems</option>
+                            <option value="Eric Becker">Eric Becker</option>
                             <option value="Ramez Elmasri">Ramez Elmasri</option>
                             <option value="Bahram Khalili">Bahram Khalili</option>
                         </select>

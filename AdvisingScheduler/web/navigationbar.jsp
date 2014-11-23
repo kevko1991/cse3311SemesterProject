@@ -3,6 +3,9 @@
                 <li class="home">
                     <a href="index.jsp" >Home</a>
                 </li>
+                <li class="account">
+                    <a href="CreateAccount.jsp" >Create Account</a>
+                </li>
                 <li class="calendar">
                     <a href="AdvisorCalendar.jsp">Calendar</a>
                 </li>

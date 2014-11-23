@@ -202,6 +202,15 @@
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
+                                            out.print("Student ID");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getStudentID());
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
                                             out.print("Student");
                                             out.print("</td>");                                            
                                             out.print("<td>");
@@ -209,6 +218,16 @@
                                             out.print("</td>");
                                             out.print("</tr>");
                                             
+                                            
+                                            out.print("<tr>");
+                                            out.print("<td>");
+                                            out.print("Student Major");
+                                            out.print("</td>");                                            
+                                            out.print("<td>");
+                                            out.print(appt.getStudentMajor());
+                                            out.print("</td>");
+                                            out.print("</tr>");
+                                          
                                             
                                             out.print("<tr>");
                                             out.print("<td>");
