@@ -56,7 +56,7 @@ public class GetAppointmentsTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("SELECT * FROM \"APPOINTMENT\"");
+        resultSetHandler.prepareThrowsSQLException("SELECT * FROM APPOINTMENT");
 
     }
 
@@ -86,7 +86,7 @@ public class GetAppointmentsTest extends BasicJDBCTestCaseAdapter{
         prepareError();
         System.out.println("queryDB");
         int expectedID = 1;
-        RDBImplCommand instance = new GetAppointment(expectedID);
+        RDBImplCommand instance = new GetAppointments();
         instance.execute();
         verifySQLStatementNotExecuted("SELECT * FROM APPOINTMENT");
     }

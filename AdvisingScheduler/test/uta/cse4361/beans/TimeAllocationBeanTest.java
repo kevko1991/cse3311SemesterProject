@@ -53,6 +53,7 @@ public class TimeAllocationBeanTest extends BasicJDBCTestCaseAdapter implements 
         instance.setEndMinute(45);
         String expResult = SUCCESS_MESSAGE;
         String result = instance.allocateTime();
+        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
         assertEquals(expResult, result);
     }
     
@@ -66,6 +67,7 @@ public class TimeAllocationBeanTest extends BasicJDBCTestCaseAdapter implements 
         instance.setEndMinute(45);
         String expResult = SUCCESS_MESSAGE;
         String result = instance.allocateTimeRepeat(3);
+        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
         assertEquals(expResult, result);
     }
 
