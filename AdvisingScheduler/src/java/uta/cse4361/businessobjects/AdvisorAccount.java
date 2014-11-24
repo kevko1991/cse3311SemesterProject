@@ -23,21 +23,45 @@ public class AdvisorAccount {
     }
     
     public boolean initialize(String name, String email, String department, String tempPassword, int rank){
-        this.name = name;
-        this.email = email;
-        this.department = department;
-        this.tempPassword = hashPassword(tempPassword);
-        this.rank = rank;
-        return true;
+        boolean result = true;
+        
+        if(name != null && !name.isEmpty() && 
+                email != null && !email.isEmpty() && 
+                department != null && !department.isEmpty() && 
+                tempPassword != null && !tempPassword.isEmpty())
+        {
+            this.name = name;
+            this.email = email;
+            this.department = department;
+            this.tempPassword = hashPassword(tempPassword);
+            this.rank = rank;
+        }
+        else
+        {
+            result = false;
+        }
+        
+        return result;
     }
     
     public boolean initialize(String name, String email, String department, int ID, int rank){
-        this.name = name;
-        this.email = email;
-        this.department = department;
-        this.ID = ID;
-        this.rank = rank;
-        return true;
+        boolean result = true;
+        
+        if(name != null && !name.isEmpty() && 
+                email != null && !email.isEmpty() && 
+                department != null && !department.isEmpty())
+        {
+            this.name = name;
+            this.email = email;
+            this.department = department;
+            this.rank = rank;
+        }
+        else
+        {
+            result = false;
+        }
+        
+        return result;
     }
     
     public static String hashPassword(String tempPassword)
