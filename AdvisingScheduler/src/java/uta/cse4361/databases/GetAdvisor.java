@@ -31,9 +31,7 @@ public class GetAdvisor extends RDBImplCommand{
             System.out.println("GetAdvisor failed");
             conn.close();
         } finally {
-            if(statement != null){
-                statement.close();
-            }
+            statement.close();
         }
     }
     

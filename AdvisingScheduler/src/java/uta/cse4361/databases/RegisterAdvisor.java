@@ -37,9 +37,7 @@ public class RegisterAdvisor extends RDBImplCommand {
         System.out.println("RegisterAdvisor Failed");
             conn.close();
         } finally {
-            if (statement != null) {
-                statement.close();
-            }
+            statement.close();
         }
     }
     

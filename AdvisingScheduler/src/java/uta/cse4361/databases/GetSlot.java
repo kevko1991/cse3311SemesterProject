@@ -29,9 +29,7 @@ public class GetSlot extends RDBImplCommand{
             System.out.println("failed");
             conn.close();
         } finally {
-            if (statement != null) {
-                statement.close();
-            }
+            statement.close();
         }
     }
     public void processResult(){

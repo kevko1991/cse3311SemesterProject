@@ -52,9 +52,7 @@ public class EditAppointment extends RDBImplCommand{
         } catch (SQLException e) {
             System.out.println("EditAppointment query failed");
         } finally {
-            if (statement != null) {
-                statement.close();
-            }
+            statement.close();
         }
     }
 

@@ -53,9 +53,7 @@ public class DeleteSlot extends RDBImplCommand{
             e.printStackTrace();
             conn.close();
         } finally {
-            if(statement != null){
-                statement.close();
-            }
+            statement.close();
         }
     }
     

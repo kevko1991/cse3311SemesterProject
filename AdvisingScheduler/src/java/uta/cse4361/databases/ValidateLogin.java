@@ -34,9 +34,7 @@ public class ValidateLogin extends RDBImplCommand {
         System.out.println("ValidateLogin Failed");
             conn.close();
         } finally {
-            if (statement != null) {
-                statement.close();
-            }
+            statement.close();
         }
     }
     

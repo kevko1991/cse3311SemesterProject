@@ -34,9 +34,7 @@ public class GetAppointment extends RDBImplCommand {
             System.out.println("GetAppointment query failed");
             conn.close();
         } finally {
-            if(statement != null){
-                statement.close();
-            }
+            statement.close();
         }
     }
 
