@@ -22,7 +22,8 @@ public class DeleteSlot extends RDBImplCommand{
     java.sql.Date date;
     
     private String sqlQuery = "DELETE FROM \"SLOT\" WHERE "
-            + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? )" //slots during start hour
+            + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)"
+            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? )" //slots during start hour
             + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" > ? AND \"SlotStartHour\" < ?)"//slots between start and end hour
             + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)"; // slots during end hour
     public DeleteSlot(java.util.Date date, int startHour, int endHour, int startMin, int endMin){
@@ -39,12 +40,14 @@ public class DeleteSlot extends RDBImplCommand{
             statement.setDate(1, date);
             statement.setInt(2, startHour);
             statement.setInt(3, startMin); //slots during start hour
-            statement.setDate(4, date);
-            statement.setInt(5, startHour);
-            statement.setInt(6, endHour); //slots between start and end hour
-            statement.setDate(7,date);
-            statement.setInt(8, endHour);
-            statement.setInt(9, endMin); // slots during end hour
+            statement.setInt(4, endHour);
+            statement.setInt(5, endMin);
+            statement.setDate(6, date);
+            statement.setInt(7, startHour);
+            statement.setInt(8, endHour); //slots between start and end hour
+            statement.setDate(9,date);
+            statement.setInt(10, endHour);
+            statement.setInt(11, endMin); // slots during end hour
             statement.executeUpdate();
             processResult();
         }
