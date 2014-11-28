@@ -53,8 +53,8 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
-    public String modifySlot(Date d, int startHour, int endHour, int startMin, int endMin) {
-        RDBImplCommand modifySlot = new DeleteSlot(d, startHour, endHour, startMin, endMin);
+    public String modifySlot(Date d, int startHour, int endHour, int startMin, int endMin, int slotID) {
+        RDBImplCommand modifySlot = new DeleteSlot(d, startHour, endHour, startMin, endMin, slotID);
         modifySlot.execute();
         return (String) modifySlot.getResult();
     }

@@ -16,16 +16,17 @@ public class ModifyTimeSlotsBean implements Constants{
     private int startMin =0;
     private int endHr =0;
     private int endMin =0;
-    
+    private int slotID =-1;
     Date date = new Date();
 
     public ModifyTimeSlotsBean() {
     }
-    public ModifyTimeSlotsBean(int StartHr, int EndHr, int StartMin, int EndMin, Date date){
+    public ModifyTimeSlotsBean(int StartHr, int EndHr, int StartMin, int EndMin, Date date, int slotID){
         this.startHr =StartHr;
         this.endHr =EndHr;
         this.startMin =StartMin;
         this.endMin =EndMin;
+        this.slotID = slotID;
         this.date=date;
         
     }
@@ -54,6 +55,10 @@ public class ModifyTimeSlotsBean implements Constants{
         return endMin;
     }
 
+    public int slotID() {
+        return slotID;
+    }
+    
     public void setStartHr(int StartHr) {
         this.startHr = StartHr;
     }
@@ -70,13 +75,17 @@ public class ModifyTimeSlotsBean implements Constants{
         this.endMin = EndMin;
     }
 
+     public void setSlotID(int SlotID) {
+        this.slotID = SlotID;
+    }
+
      
     
     public String modifySlot(){
          String msg = SUCCESS_MESSAGE;
          DatabaseManager dm = new DatabaseManager();
          
-         msg = dm.modifySlot(date, startHr, startMin, endHr, endMin);
+         msg = dm.modifySlot(date, startHr, startMin, endHr, endMin, slotID);
          
          return msg;
     }

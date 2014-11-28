@@ -275,6 +275,7 @@
                                     <jsp:setProperty name="mtb" property="endHr" value= "<%= endHour %>"/>
                                     <jsp:setProperty name="mtb" property="startMin" value= "<%= startMin %>"/>
                                     <jsp:setProperty name="mtb" property="endMin" value= "<%= endMin %>"/>
+                                    <jsp:setProperty name="mtb" property="slotID" value= "<%= Integer.parseInt(request.getParameter("slotID").substring(1)) %>"/>
                                     <%
                                     mtb.modifySlot();
                                     response.sendRedirect("modifyTimeslot.jsp");
