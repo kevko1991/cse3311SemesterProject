@@ -35,7 +35,7 @@
                         session.setAttribute("confirmation", login.getPassword());
                         session.setAttribute("id",result.substring(0, result.length()-1));
                         session.setAttribute("rank", result.substring(result.length()-1));
-                        response.setHeader("Refresh", "5;url=index.jsp");
+                        response.sendRedirect("index.jsp");
                     } 
                     
                 %>

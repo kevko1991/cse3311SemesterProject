@@ -15,12 +15,12 @@
     </head>
 <%
             int rank = -1;
-            int id = -1;
+            int sessionid = -1;
             if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
                response.sendRedirect("index.jsp");
             }
             if (!(session.getAttribute("id") == null)) {
-                    id = Integer.parseInt((String) session.getAttribute("id"));
+                    sessionid = Integer.parseInt((String) session.getAttribute("id"));
                 }
                 if (!(session.getAttribute("rank") == null)) {
                     rank = Integer.parseInt((String) session.getAttribute("rank"));
