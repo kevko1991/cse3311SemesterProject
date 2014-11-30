@@ -16,6 +16,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Account Confirmation</title>
     </head>
+<%
+            int rank = -1;
+            int id = -1;
+            if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
+               response.sendRedirect("index.jsp");
+            }
+            if (!(session.getAttribute("id") == null)) {
+                    id = Integer.parseInt((String) session.getAttribute("id"));
+                }
+                if (!(session.getAttribute("rank") == null)) {
+                    rank = Integer.parseInt((String) session.getAttribute("rank"));
+            }
+            if(rank != 1)
+                {
+                    response.sendRedirect("index.jsp");
+                }
+        %>
     <body>
         <jsp:include page="navigationbar.jsp" />
         <div id="wrapper">

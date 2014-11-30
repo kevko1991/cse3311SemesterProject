@@ -24,15 +24,19 @@
                     
                 <%
                     String result = login.LogIn();
-                    if (result == "") {
-                        out.print("You have successfully logged in.");
-                        session.setAttribute("id", login.getEmail());
-                        session.setAttribute("confirmation", login.getPassword());
-                    } 
-                    else {
+                    if(result.equals("Invalid login"))
+                    {
                         out.print("Wrong username or password.");
                     }
-                    
+
+                    else{
+                        out.print("You have successfully logged in. <br> You will be redirected in 5 seconds.");
+                        session.setAttribute("email", login.getEmail());
+                        session.setAttribute("confirmation", login.getPassword());
+                        session.setAttribute("id",result.substring(0, result.length()-1));
+                        session.setAttribute("rank", result.substring(result.length()-1));
+                        response.setHeader("Refresh", "5;url=index.jsp");
+                    } 
                     
                 %>
                 </div>

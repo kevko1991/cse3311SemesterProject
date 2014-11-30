@@ -87,6 +87,7 @@ header{
 
 .navigation a:hover{
     background-color: #005f9e;
+    color: #ffde8e;
 }
 
 .navigation a.active {

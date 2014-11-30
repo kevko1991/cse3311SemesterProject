@@ -14,7 +14,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-
+<%
+            int rank = -1;
+            int id = -1;
+            if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
+               response.sendRedirect("index.jsp");
+            }
+            if (!(session.getAttribute("id") == null)) {
+                    id = Integer.parseInt((String) session.getAttribute("id"));
+                }
+                if (!(session.getAttribute("rank") == null)) {
+                    rank = Integer.parseInt((String) session.getAttribute("rank"));
+            }
+            if(rank != 0)
+                {
+                    response.sendRedirect("index.jsp");
+                }
+        %>
     <%--<jsp:useBean id="dm" class="DatabaseManager" scope="session"/>--%>
     <%
 

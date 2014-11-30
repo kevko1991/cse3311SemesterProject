@@ -8,13 +8,32 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%
+            int rank = -1;
+            int id = -1;
+            if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
+               response.sendRedirect("index.jsp");
+            }
+            if (!(session.getAttribute("id") == null)) {
+                    id = Integer.parseInt((String) session.getAttribute("id"));
+                }
+                if (!(session.getAttribute("rank") == null)) {
+                    rank = Integer.parseInt((String) session.getAttribute("rank"));
+            }
+                //Uncomment when there's a proper way to create an admin account
+                //this code redirects anyone who is not an admin back to the index page
+//            if(rank != 1)
+//                {
+//                    response.sendRedirect("index.jsp");
+//                }
+        %>
         <script type="text/javascript">
             function validate() {
 //                var username = document.forms["create"]["username"].value;
                 var email = document.forms["create"]["email"].value;
                 var atpos = email.indexOf("@");
                 var dotpos = email.lastIndexOf(".");
-                var mavs = email.indexOf("mavs.uta.edu"); 
+                var mavs = email.indexOf("mavs.uta.edu");
                 var password = document.forms["create"]["password"].value;
                 var passwordConfirm = document.forms["create"]["passwordConfirm"].value;
                 var name = document.forms["create"]["name"].value;
@@ -74,10 +93,10 @@
             <div id="accordion">
                 <h3>Create Advisor Account</h3>
                 <form role="form" id="create"  onSubmit="return validate();" action="AccountConfirmation.jsp" method="POST">
-<!--                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input class="form-control" type="text" name="username" id="username" value="">
-                    </div>-->
+                    <!--                    <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input class="form-control" type="text" name="username" id="username" value="">
+                                        </div>-->
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input class="form-control" type="text" name="email" id="email" value="">
