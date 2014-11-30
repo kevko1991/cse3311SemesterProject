@@ -9,19 +9,19 @@
 <html>
     <head>
         <%
-            int rank = -1;
-            int sessionid = -1;
-            if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
-               response.sendRedirect("index.jsp");
-            }
-            if (!(session.getAttribute("id") == null)) {
-                    sessionid = Integer.parseInt((String) session.getAttribute("id"));
-                }
-                if (!(session.getAttribute("rank") == null)) {
-                    rank = Integer.parseInt((String) session.getAttribute("rank"));
-            }
-                //Uncomment when there's a proper way to create an admin account
+            //Uncomment when there's a proper way to create an admin account
                 //this code redirects anyone who is not an admin back to the index page
+//            int rank = -1;
+//            int sessionid = -1;
+//            if ((session.getAttribute("id") == null) || (session.getAttribute("rank") == null)) {
+//               response.sendRedirect("index.jsp");
+//            }
+//            if (!(session.getAttribute("id") == null)) {
+//                    sessionid = Integer.parseInt((String) session.getAttribute("id"));
+//                }
+//                if (!(session.getAttribute("rank") == null)) {
+//                    rank = Integer.parseInt((String) session.getAttribute("rank"));
+//            }
 //            if(rank != 1)
 //                {
 //                    response.sendRedirect("index.jsp");
@@ -103,11 +103,11 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control" type="text" name="password" id="password" value="">
+                        <input class="form-control" type="password" name="password" id="password" value="">
                     </div>
                     <div class="form-group">
                         <label for="passwordConfirm">Confirm Password</label>
-                        <input class="form-control" type="text" name="passwordConfirm" id="passwordConfirm" value="">
+                        <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" value="">
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
