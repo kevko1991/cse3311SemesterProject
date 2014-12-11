@@ -53,7 +53,7 @@ public class ScheduleAppointmentBean implements Constants {
         return msg;
     }
 
-    public String generateMessage() {
+    public String generateStudentMessage() {
         String message = "";
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");      
         String dd = sdf.format(date);
@@ -61,10 +61,16 @@ public class ScheduleAppointmentBean implements Constants {
         return message;
     }
 
-    public void sendEmail() {
-        String receiptEmail = this.studentEmail;
-        String msg = this.generateMessage();
-        
+    public String generateAdvisorMessage() {
+        String message = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");      
+        String dd = sdf.format(date);
+        message = "You have an appointment with " + studentName + " at " + dd + " from " + startHour + ":" + startMinute + " to " + endHour + ":" + endMinute;
+        message += " for the following issues: \n"+description;
+        return message;
+    }
+    
+    public void sendEmail(String msg, String receiptEmail) {
         String from = "cse4361fall14@gmail.com";
         final String username = "cse4361fall14";
         final String password = "design.pattern";

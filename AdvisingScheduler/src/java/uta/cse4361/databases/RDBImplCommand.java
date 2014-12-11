@@ -14,6 +14,13 @@ import java.util.Properties;
  */
 public abstract class RDBImplCommand {
 
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/advising";
+
+    //  Database credentials
+    static final String USER = "root";
+    static final String PASS = "er1ja@18xs@3";
+
     protected Object result;
     protected Connection conn;
     protected PreparedStatement statement;
@@ -24,14 +31,17 @@ public abstract class RDBImplCommand {
             connectDB();
             queryDB();
             disconnectDB();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace(System.err);
             disconnectDB();
         }
     }
 
-    protected void connectDB() throws SQLException {
-        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/advising;create=true;user=advising;password=advising");
+    protected void connectDB() throws Exception {
+        System.out.println("Connecting MySQL DB");
+        Class.forName("com.mysql.jdbc.Driver");
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        //conn = DriverManager.getConnection("jdbc:derby://localhost:1527/advising;create=true;user=advising;password=advising");
     }
 
     protected void disconnectDB() {
