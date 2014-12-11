@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class DeleteAppointment extends RDBImplCommand{
     
     private int id;
-    private String sqlQuery = "DELETE FROM \"APPOINTMENT\" WHERE \"ApptID\" = ?";
+    private String sqlQuery = "DELETE FROM APPOINTMENT WHERE ApptID = ?";
     
     public DeleteAppointment(int apptID) {
         super();

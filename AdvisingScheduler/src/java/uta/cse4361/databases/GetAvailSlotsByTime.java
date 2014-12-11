@@ -22,10 +22,10 @@ public class GetAvailSlotsByTime extends RDBImplCommand {
     int endMin;
     java.sql.Date date;
     
-    private String sqlQuery = "SELECT * FROM \"AVAILSLOT\" WHERE "
-            + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? )" //slots during start hour
-            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" > ? AND \"SlotStartHour\" < ?)"//slots between start and end hour
-            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)"; // slots during end hour
+    private String sqlQuery = "SELECT * FROM AVAILSLOT WHERE "
+            + "(SlotDate = ? AND SlotStartHour = ? AND SlotStartMin >= ? )" //slots during start hour
+            + "OR (SlotDate = ? AND SlotStartHour > ? AND SlotStartHour < ?)"//slots between start and end hour
+            + "OR (SlotDate = ? AND SlotStartHour = ? AND SlotStartMin < ?)"; // slots during end hour
     
     public GetAvailSlotsByTime(java.util.Date date, int startHour, int endHour, int startMin, int endMin){
         this.startHour = startHour;

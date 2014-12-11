@@ -30,7 +30,7 @@ public class RegisterAdvisorTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("INSERT INTO \"USER\"");
+        resultSetHandler.prepareThrowsSQLException("INSERT INTO USER");
 
     }
 
@@ -45,7 +45,7 @@ public class RegisterAdvisorTest extends BasicJDBCTestCaseAdapter{
         RegisterAdvisor instance = new RegisterAdvisor(aa);
         instance.execute();
         // TODO review the generated test code and remove the default call to fail.
-        verifySQLStatementExecuted("INSERT INTO \"USER\"");
+        verifySQLStatementExecuted("INSERT INTO USER");
         assertNotNull(instance.getResult());
         assertEquals("", instance.getResult());
     }
@@ -59,7 +59,7 @@ public class RegisterAdvisorTest extends BasicJDBCTestCaseAdapter{
         RegisterAdvisor instance = new RegisterAdvisor(aa);
         instance.execute();
         // TODO review the generated test code and remove the default call to fail.
-        verifySQLStatementNotExecuted("INSERT INTO \"USER\"");
+        verifySQLStatementNotExecuted("INSERT INTO USER");
     }
     
 }

@@ -16,11 +16,11 @@ public class EditAppointment extends RDBImplCommand{
     
     private int id;
     private Appointment appointment;
-    private String sqlQuery = "UPDATE \"APPOINTMENT\" SET \"ApptDate\" = ?, \"ApptStartHour\" = ?, \"ApptStartMin\" = ?, "
-                                                        + "\"ApptEndHour\" = ?, \"ApptEndMin\" = ?, \"ApptType\" = ?, "
-                                                        + "\"Description\" = ?, \"StudentID\" = ?, \"StudentName\" = ?, "
-                                                        + "\"StudentMajor\" = ?, \"StudentEmail\" = ?, \"AdvisorName\" = ? "
-                                                        + "WHERE \"ApptID\" = ?";
+    private String sqlQuery = "UPDATE APPOINTMENT SET ApptDate = ?, ApptStartHour = ?, ApptStartMin = ?, "
+                                                        + "ApptEndHour = ?, ApptEndMin = ?, ApptType = ?, "
+                                                        + "Description = ?, StudentID = ?, StudentName = ?, "
+                                                        + "StudentMajor = ?, StudentEmail = ?, AdvisorName = ? "
+                                                        + "WHERE ApptID = ?";
     
     
     

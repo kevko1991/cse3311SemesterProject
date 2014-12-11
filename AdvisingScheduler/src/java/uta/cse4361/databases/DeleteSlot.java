@@ -22,12 +22,12 @@ public class DeleteSlot extends RDBImplCommand{
     int slotID;
     java.sql.Date date;
     
-    private String sqlQuery = "DELETE FROM \"SLOT\" WHERE "
-            + "(\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)"
-            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" >= ? )" //slots during start hour
-            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" > ? AND \"SlotStartHour\" < ?)"//slots between start and end hour
-            + "OR (\"SlotDate\" = ? AND \"SlotStartHour\" = ? AND \"SlotStartMin\" < ?)" // slots during end hour
-            +" OR (\"SlotID\" = ?)";
+    private String sqlQuery = "DELETE FROM SLOT WHERE "
+            + "(SlotDate = ? AND SlotStartHour = ? AND SlotStartMin >= ? AND SlotStartHour = ? AND SlotStartMin < ?)"
+            + "OR (SlotDate = ? AND SlotStartHour = ? AND SlotStartMin >= ? )" //slots during start hour
+            + "OR (SlotDate = ? AND SlotStartHour > ? AND SlotStartHour < ?)"//slots between start and end hour
+            + "OR (SlotDate = ? AND SlotStartHour = ? AND SlotStartMin < ?)" // slots during end hour
+            +" OR (SlotID = ?)";
 
     public DeleteSlot(java.util.Date date, int startHour, int endHour, int startMin, int endMin, int slotID){
         this.startHour = startHour;

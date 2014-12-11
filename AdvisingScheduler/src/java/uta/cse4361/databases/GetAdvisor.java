@@ -14,7 +14,7 @@ import uta.cse4361.businessobjects.AdvisorAccount;
  */
 public class GetAdvisor extends RDBImplCommand{
     private String email;
-    private String sqlQuery = "SELECT * FROM \"USER\" WHERE \"UserEmail\" = ?";
+    private String sqlQuery = "SELECT * FROM USER WHERE UserEmail = ?";
     
     public GetAdvisor(String email){
         this.email = email;

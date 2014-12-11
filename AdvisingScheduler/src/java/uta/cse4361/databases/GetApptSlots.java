@@ -16,7 +16,7 @@ import uta.cse4361.businessobjects.Slot;
  */
 public class GetApptSlots extends RDBImplCommand{
     
-    String sqlQuery = "SELECT * FROM \"APPTSLOT\"";
+    String sqlQuery = "SELECT * FROM APPTSLOT";
     
     public GetApptSlots(){}
     

@@ -27,7 +27,7 @@ public class DeleteAppointmentTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("DELETE FROM \"APPOINTMENT\"");
+        resultSetHandler.prepareThrowsSQLException("DELETE FROM APPOINTMENT");
 
     }
     
@@ -51,11 +51,11 @@ public class DeleteAppointmentTest extends BasicJDBCTestCaseAdapter{
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         SaveAppointment instance = new SaveAppointment(appt);
         instance.execute();
-        verifySQLStatementExecuted("INSERT INTO \"APPOINTMENT\"");
+        verifySQLStatementExecuted("INSERT INTO APPOINTMENT");
         
         DeleteAppointment deleteInstance = new DeleteAppointment(1);
         deleteInstance.execute();
-        verifySQLStatementExecuted("DELETE FROM \"APPOINTMENT\"");
+        verifySQLStatementExecuted("DELETE FROM APPOINTMENT");
     }
     
     @Test
@@ -80,9 +80,9 @@ public class DeleteAppointmentTest extends BasicJDBCTestCaseAdapter{
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         SaveAppointment instance = new SaveAppointment(appt);
         instance.execute();
-        verifySQLStatementExecuted("INSERT INTO \"APPOINTMENT\"");
+        verifySQLStatementExecuted("INSERT INTO APPOINTMENT");
         
         DeleteAppointment deleteInstance = new DeleteAppointment(1);
-        verifySQLStatementNotExecuted("DELETE FROM \"APPOINTMENT\"");        
+        verifySQLStatementNotExecuted("DELETE FROM APPOINTMENT");        
     }
 }

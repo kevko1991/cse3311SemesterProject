@@ -42,7 +42,7 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("SELECT * FROM \"SLOT\"");
+        resultSetHandler.prepareThrowsSQLException("SELECT * FROM SLOT");
 
     }
 
@@ -55,7 +55,7 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         GetSlot instance = new GetSlot();
         instance.execute();
-        verifySQLStatementExecuted("SELECT * FROM \"SLOT\"");
+        verifySQLStatementExecuted("SELECT * FROM SLOT");
         assertNotNull(instance.getResult());
         ArrayList<Slot> pulledSlots = (ArrayList<Slot>) instance.getResult();
         //Assert slot 1
@@ -73,7 +73,7 @@ public class GetSlotTest extends BasicJDBCTestCaseAdapter{
         prepareError();
         GetSlot instance = new GetSlot();
         instance.execute();
-        verifySQLStatementNotExecuted("SELECT * FROM \"SLOT\"");
+        verifySQLStatementNotExecuted("SELECT * FROM SLOT");
     }
     
 }

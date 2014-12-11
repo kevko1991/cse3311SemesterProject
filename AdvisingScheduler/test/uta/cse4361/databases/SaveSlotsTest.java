@@ -50,7 +50,7 @@ public class SaveSlotsTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("INSERT INTO \"SLOT\"");
+        resultSetHandler.prepareThrowsSQLException("INSERT INTO SLOT");
 
     }
     
@@ -71,7 +71,7 @@ public class SaveSlotsTest extends BasicJDBCTestCaseAdapter{
         SaveSlots instance = new SaveSlots(slots);
         //instance.execute();
         instance.execute();
-        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
+        verifySQLStatementExecuted("INSERT INTO SLOT");
         //must have inserted all instances to result
         ArrayList<Integer> savedSlots = (ArrayList<Integer>)instance.getResult();
         assertEquals(6, savedSlots.size());
@@ -93,7 +93,7 @@ public class SaveSlotsTest extends BasicJDBCTestCaseAdapter{
         SaveSlots instance = new SaveSlots(slots);
         //instance.execute();
         instance.execute();
-        verifySQLStatementNotExecuted("INSERT INTO \"SLOT\"");
+        verifySQLStatementNotExecuted("INSERT INTO SLOT");
     }
     
 

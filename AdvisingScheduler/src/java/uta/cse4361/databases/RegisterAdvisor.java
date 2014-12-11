@@ -15,8 +15,8 @@ import uta.cse4361.businessobjects.AdvisorAccount;
 public class RegisterAdvisor extends RDBImplCommand {
     
     private AdvisorAccount aa;
-    private String sqlQuery = "INSERT INTO \"USER\"(\"UserEmail\", \"UserPassword\","
-            + " \"UserName\", \"UserDepartment\", \"UserRank\") VALUES (?, ?, ?, ?, ?)";
+    private String sqlQuery = "INSERT INTO USER(UserEmail, UserPassword,"
+            + " UserName, UserDepartment, UserRank) VALUES (?, ?, ?, ?, ?)";
     public RegisterAdvisor(AdvisorAccount aa){
         this.aa = aa;
     }

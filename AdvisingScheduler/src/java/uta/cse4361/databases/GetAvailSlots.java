@@ -16,7 +16,7 @@ import uta.cse4361.businessobjects.Slot;
  */
 public class GetAvailSlots extends RDBImplCommand{
     
-    String sqlQuery = "SELECT * FROM \"AVAILSLOT\"";
+    String sqlQuery = "SELECT * FROM AVAILSLOT";
     
     public GetAvailSlots(){}
     

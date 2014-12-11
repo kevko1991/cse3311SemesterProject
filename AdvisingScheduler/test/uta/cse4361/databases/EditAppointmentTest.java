@@ -55,7 +55,7 @@ public class EditAppointmentTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("UPDATE \"APPOINTMENT\"");
+        resultSetHandler.prepareThrowsSQLException("UPDATE APPOINTMENT");
 
     }
 
@@ -83,9 +83,9 @@ public class EditAppointmentTest extends BasicJDBCTestCaseAdapter{
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         EditAppointment instance = new EditAppointment(1, appt);
         instance.execute(); 
-        verifySQLStatementExecuted("UPDATE \"APPOINTMENT\"");
+        verifySQLStatementExecuted("UPDATE APPOINTMENT");
         Appointment newAppt = new DatabaseManager().getAppointment(1);
-        verifySQLStatementExecuted("SELECT * FROM \"APPOINTMENT\"");
+        verifySQLStatementExecuted("SELECT * FROM APPOINTMENT");
         String result = newAppt.getDescription();
         assertEquals(expectedResult, result);   
     }
@@ -112,7 +112,7 @@ public class EditAppointmentTest extends BasicJDBCTestCaseAdapter{
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         EditAppointment instance = new EditAppointment(1, appt);
         instance.execute(); 
-        verifySQLStatementNotExecuted("UPDATE \"APPOINTMENT\"");
+        verifySQLStatementNotExecuted("UPDATE APPOINTMENT");
     }
     
 

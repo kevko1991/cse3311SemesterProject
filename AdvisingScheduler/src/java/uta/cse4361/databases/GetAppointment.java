@@ -16,7 +16,7 @@ import uta.cse4361.businessobjects.Appointment;
 public class GetAppointment extends RDBImplCommand {
 
     private int id;
-    private String sqlQuery = "SELECT * FROM \"APPOINTMENT\" WHERE \"ApptID\" = ?";
+    private String sqlQuery = "SELECT * FROM APPOINTMENT WHERE ApptID = ?";
 
     public GetAppointment(int apptID) {
         super();

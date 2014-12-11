@@ -33,7 +33,7 @@ public class DeleteSlotTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("DELETE FROM \"SLOT\"");
+        resultSetHandler.prepareThrowsSQLException("DELETE FROM SLOT");
 
     }
     
@@ -53,10 +53,10 @@ public class DeleteSlotTest extends BasicJDBCTestCaseAdapter{
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         SaveSlots saveInstance = new SaveSlots(slots);
         saveInstance.execute();
-        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
+        verifySQLStatementExecuted("INSERT INTO SLOT");
         DeleteSlot deleteInstance = new DeleteSlot(new Date(System.currentTimeMillis()), 8, 9, 0, 30); // 
         deleteInstance.execute();
-        verifySQLStatementExecuted("DELETE FROM \"SLOT\"");
+        verifySQLStatementExecuted("DELETE FROM SLOT");
     }
     
     @Test
@@ -74,9 +74,9 @@ public class DeleteSlotTest extends BasicJDBCTestCaseAdapter{
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         SaveSlots saveInstance = new SaveSlots(slots);
         saveInstance.execute();
-        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
+        verifySQLStatementExecuted("INSERT INTO SLOT");
         DeleteSlot deleteInstance = new DeleteSlot(new Date(System.currentTimeMillis()), 8, 9, 0, 30); // 
         deleteInstance.execute();
-        verifySQLStatementNotExecuted("DELETE FROM \"SLOT\"");
+        verifySQLStatementNotExecuted("DELETE FROM SLOT");
     }
 }

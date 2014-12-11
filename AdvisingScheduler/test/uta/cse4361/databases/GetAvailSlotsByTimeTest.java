@@ -54,7 +54,7 @@ public class GetAvailSlotsByTimeTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("SELECT * FROM \"AVAILSLOT\"");
+        resultSetHandler.prepareThrowsSQLException("SELECT * FROM AVAILSLOT");
 
     }
     
@@ -67,7 +67,7 @@ public class GetAvailSlotsByTimeTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         GetAvailSlotsByTime instance = new GetAvailSlotsByTime(new Date(time), 8, 9, 0, 30);;
         instance.execute();
-        verifySQLStatementExecuted("SELECT * FROM \"AVAILSLOT\"");
+        verifySQLStatementExecuted("SELECT * FROM AVAILSLOT");
         assertNotNull(instance.getResult());
         
         ArrayList<Slot> slots = (ArrayList<Slot>)instance.getResult();
@@ -88,7 +88,7 @@ public class GetAvailSlotsByTimeTest extends BasicJDBCTestCaseAdapter{
         prepareError();
         GetAvailSlotsByTime instance = new GetAvailSlotsByTime(new Date(time), 8, 9, 0, 30);;
         instance.execute();
-        verifySQLStatementNotExecuted("SELECT * FROM \"AVAILSLOT\"");
+        verifySQLStatementNotExecuted("SELECT * FROM AVAILSLOT");
     }
     
 }

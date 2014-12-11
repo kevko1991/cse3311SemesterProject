@@ -15,7 +15,7 @@ import uta.cse4361.businessobjects.Slot;
 
 public class SaveSlots extends RDBImplCommand {
     ArrayList<Slot> slots;
-    String sqlQuery = "INSERT INTO \"SLOT\"(\"SlotDate\", \"SlotStartHour\", \"SlotStartMin\") VALUES (?, ?, ?)";
+    String sqlQuery = "INSERT INTO SLOT (SlotDate, SlotStartHour, SlotStartMin) VALUES (?, ?, ?)";
     
     public SaveSlots(ArrayList<Slot> slots){
         this.slots = slots;

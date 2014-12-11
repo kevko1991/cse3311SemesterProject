@@ -15,7 +15,7 @@ public class ValidateLogin extends RDBImplCommand {
     
     private String email;
     private String password;
-    private String sqlQuery = "SELECT * FROM \"USER\" WHERE \"UserEmail\" = ? AND \"UserPassword\" = ?";
+    private String sqlQuery = "SELECT * FROM USER WHERE UserEmail = ? AND UserPassword = ?";
     
     public ValidateLogin(String email, String password){
         this.email = email;

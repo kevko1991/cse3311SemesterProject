@@ -43,7 +43,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         result.addRow(new Object[] {"1", date, "8", "15"});
         result.addRow(new Object[] {"2", date, "8", "30"});
         
-        resultSetHandler.prepareResultSet("SELECT * FROM \"AVAILSLOT\"", result);
+        resultSetHandler.prepareResultSet("SELECT * FROM AVAILSLOT", result);
         
         result = resultSetHandler.createResultSet();
         java.sql.Date date2 = new java.sql.Date(114, 10, 17);
@@ -77,7 +77,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         result.addColumn("AdvisorName", new Object[]{"Advisor Name"});
         result.addColumn("StudentMajor", new Object[]{"Software Engineering"});
         
-        resultSetHandler.prepareResultSet("SELECT * FROM \"APPOINTMENT\"", result);
+        resultSetHandler.prepareResultSet("SELECT * FROM APPOINTMENT", result);
         
         result = resultSetHandler.createResultSet();
         result.addRow(new Object[] {"1"});
@@ -88,7 +88,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         result.addRow(new Object[] {"6"});
         
         
-        resultSetHandler.prepareGeneratedKeys("INSERT INTO \"SLOT\"", result);
+        resultSetHandler.prepareGeneratedKeys("INSERT INTO SLOT", result);
         
         result = resultSetHandler.createResultSet();
         result.addColumn("ApptDate", new Object[] {date});
@@ -104,25 +104,25 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         result.addColumn("AdvisorName", new Object[]{"Advisor Name"});
         result.addColumn("StudentMajor", new Object[]{"Software Engineering"});
         
-        resultSetHandler.prepareResultSet("UPDATE \"APPOINTMENT\"", result);
+        resultSetHandler.prepareResultSet("UPDATE APPOINTMENT", result);
         
         result = resultSetHandler.createResultSet();
         result.addRow(new String[] {"1", "2014-11-14", "8", "15"});
         result.addRow(new String[] {"2", "2014-11-14", "8", "30"});
         
-        resultSetHandler.prepareResultSet("SELECT * FROM \"SLOT\"", result);
+        resultSetHandler.prepareResultSet("SELECT * FROM SLOT", result);
         
         result = resultSetHandler.createResultSet();
         result.addRow(new String[] {"1", "2014-11-14", "8", "15", "9"});
         result.addRow(new String[] {"2", "2014-11-14", "8", "30", "4"});
         
-        resultSetHandler.prepareResultSet("SELECT * FROM \"APPTSLOT\"", result);
+        resultSetHandler.prepareResultSet("SELECT * FROM APPTSLOT", result);
         
         result = resultSetHandler.createResultSet();
         result.addRow(new String[] {"1", "2014-11-14", "8", "15"});
         result.addRow(new String[] {"2", "2014-11-14", "8", "30"});
         
-        resultSetHandler.prepareResultSet("SELECT * FROM \"AVAILSLOT\"", result);
+        resultSetHandler.prepareResultSet("SELECT * FROM AVAILSLOT", result);
         
         result = resultSetHandler.createResultSet();
         result.addColumn("UserName", new Object[] {"admin"});
@@ -142,7 +142,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         result.addColumn("UserRank", new Object[]{"0"});
 
         
-        resultSetHandler.prepareResultSet("SELECT * FROM \"USER\"", result);
+        resultSetHandler.prepareResultSet("SELECT * FROM USER", result);
     }
     
     private void prepareSaveSlotsError(){
@@ -150,7 +150,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("INSERT INTO \"SLOT\"");
+        resultSetHandler.prepareThrowsSQLException("INSERT INTO SLOT");
 
     }
     
@@ -160,7 +160,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         boolean result = dbmgr.isFree(new Date(time), 8, 8, 15, 30);
-        verifySQLStatementExecuted("SELECT * FROM \"AVAILSLOT\"");
+        verifySQLStatementExecuted("SELECT * FROM AVAILSLOT");
         assertEquals(true, result);
     }
     @Test
@@ -180,7 +180,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         Appointment appt = dbmgr.getAppointment(1);
-        verifySQLStatementExecuted("SELECT * FROM \"APPOINTMENT\"");
+        verifySQLStatementExecuted("SELECT * FROM APPOINTMENT");
         assertEquals("Name", appt.getStudentName());
     }
     
@@ -197,7 +197,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0, 0));
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         String result = dbmgr.saveSlots(slots);
-        verifySQLStatementExecuted("INSERT INTO \"SLOT\"");
+        verifySQLStatementExecuted("INSERT INTO SLOT");
         assertEquals("", result);
     }
     
@@ -214,7 +214,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 0, 0));
         slots.add(new AvailableSlot(new Date(System.currentTimeMillis()), 9, 15, 0));
         String result = dbmgr.saveSlots(slots);
-        verifySQLStatementNotExecuted("INSERT INTO \"SLOT\"");
+        verifySQLStatementNotExecuted("INSERT INTO SLOT");
         assertEquals("failed", result);
     }
     
@@ -238,7 +238,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         Appointment appt = new Appointment();
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         String result = dbmgr.saveAppointment(appt);
-        verifySQLStatementExecuted("INSERT INTO \"APPOINTMENT\"");
+        verifySQLStatementExecuted("INSERT INTO APPOINTMENT");
         assertEquals("", result);
     }
     
@@ -262,7 +262,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         Appointment appt = new Appointment();
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         String result = dbmgr.modifyAppointment(1, appt);
-        verifySQLStatementExecuted("UPDATE \"APPOINTMENT\"");
+        verifySQLStatementExecuted("UPDATE APPOINTMENT");
         assertEquals("", result);
     }
     
@@ -273,7 +273,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         DatabaseManager dbmgr = new DatabaseManager();
         Appointment appt = null;
         String result = dbmgr.modifyAppointment(1, appt);
-        verifySQLStatementExecuted("DELETE FROM \"APPOINTMENT\"");
+        verifySQLStatementExecuted("DELETE FROM APPOINTMENT");
         assertEquals("", result);
     }
     
@@ -283,7 +283,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         String result = dbmgr.modifySlot(new Date(System.currentTimeMillis()), 8, 9, 0, 30);
-        verifySQLStatementExecuted("DELETE FROM \"SLOT\"");
+        verifySQLStatementExecuted("DELETE FROM SLOT");
         assertEquals("", result);
     }
     
@@ -293,7 +293,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         ArrayList<Slot> pulledSlots = dbmgr.getSlots();
-        verifySQLStatementExecuted("SELECT * FROM \"SLOT\"");
+        verifySQLStatementExecuted("SELECT * FROM SLOT");
         
         assertEquals(2, pulledSlots.size());
         
@@ -310,8 +310,8 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         ArrayList<Slot> slots = dbmgr.getTypeSlots();
-        verifySQLStatementExecuted("SELECT * FROM \"APPTSLOT\"");
-        verifySQLStatementExecuted("SELECT * FROM \"AVAILSLOT\"");
+        verifySQLStatementExecuted("SELECT * FROM APPTSLOT");
+        verifySQLStatementExecuted("SELECT * FROM AVAILSLOT");
         
         assertEquals(4, slots.size());
         
@@ -340,7 +340,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         ArrayList<Slot> pulledSlots = dbmgr.getAvailableSlots();
-        verifySQLStatementExecuted("SELECT * FROM \"AVAILSLOT\"");
+        verifySQLStatementExecuted("SELECT * FROM AVAILSLOT");
         
         assertEquals(2, pulledSlots.size());
         
@@ -359,7 +359,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         AdvisorAccount aa = new AdvisorAccount();
         aa.initialize("admin", "admin@mavs.uta.edu", "CSE", "password", 0);
         String result = dbmgr.register(aa);
-        verifySQLStatementExecuted("INSERT INTO \"USER\"");
+        verifySQLStatementExecuted("INSERT INTO USER");
         assertEquals("", result);
     }
     
@@ -369,7 +369,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         String result = dbmgr.validate("admin@mavs.uta.edu", "temp");
-        verifySQLStatementExecuted("SELECT * FROM \"USER\"");
+        verifySQLStatementExecuted("SELECT * FROM USER");
         assertEquals("10", result);
     }
     
@@ -379,7 +379,7 @@ public class DatabaseManagerTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         DatabaseManager dbmgr = new DatabaseManager();
         AdvisorAccount acct = dbmgr.getAccount("admin@mavs.uta.edu");
-        verifySQLStatementExecuted("SELECT * FROM \"USER\"");
+        verifySQLStatementExecuted("SELECT * FROM USER");
         assertEquals("admin", acct.getName());
     }
 }

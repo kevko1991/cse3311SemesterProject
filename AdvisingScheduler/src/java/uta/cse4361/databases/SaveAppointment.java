@@ -15,8 +15,8 @@ import uta.cse4361.businessobjects.Appointment;
 public class SaveAppointment extends RDBImplCommand {
 
     private Appointment appointment;
-    private String sqlQuery = "INSERT INTO \"APPOINTMENT\"(\"ApptDate\", \"ApptStartHour\", \"ApptStartMin\", \"ApptEndHour\", \"ApptEndMin\", "
-            + "\"ApptType\", \"Description\", \"StudentID\", \"StudentName\", \"StudentMajor\", \"StudentEmail\", \"AdvisorName\") "
+    private String sqlQuery = "INSERT INTO APPOINTMENT (ApptDate, ApptStartHour, ApptStartMin, ApptEndHour, ApptEndMin, "
+            + "ApptType, Description, StudentID, StudentName, StudentMajor, StudentEmail, AdvisorName) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public SaveAppointment(Appointment appt) {

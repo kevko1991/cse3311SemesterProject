@@ -47,7 +47,7 @@ public class GetAdvisorTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("SELECT * FROM \"USER\"");
+        resultSetHandler.prepareThrowsSQLException("SELECT * FROM USER");
 
     }
 
@@ -59,7 +59,7 @@ public class GetAdvisorTest extends BasicJDBCTestCaseAdapter{
         prepareResultSet();
         GetAdvisor instance = new GetAdvisor("admin@uta.edu");
         instance.execute();
-        verifySQLStatementExecuted("SELECT * FROM \"USER\"");
+        verifySQLStatementExecuted("SELECT * FROM USER");
         assertNotNull(instance.getResult());
         AdvisorAccount acct = (AdvisorAccount) instance.getResult();
         assertEquals("admin", acct.getName());
@@ -70,7 +70,7 @@ public class GetAdvisorTest extends BasicJDBCTestCaseAdapter{
         prepareError();
         GetAdvisor instance = new GetAdvisor("admin@uta.edu");
         instance.execute();
-        verifySQLStatementNotExecuted("SELECT * FROM \"USER\"");
+        verifySQLStatementNotExecuted("SELECT * FROM USER");
     }
 
     

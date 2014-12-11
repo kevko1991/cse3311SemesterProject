@@ -31,7 +31,7 @@ public class SaveAppointmentTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("INSERT INTO \"APPOINTMENT\"");
+        resultSetHandler.prepareThrowsSQLException("INSERT INTO APPOINTMENT");
 
     }
 
@@ -59,7 +59,7 @@ public class SaveAppointmentTest extends BasicJDBCTestCaseAdapter{
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         SaveAppointment instance = new SaveAppointment(appt);
         instance.execute();
-        verifySQLStatementExecuted("INSERT INTO \"APPOINTMENT\"");
+        verifySQLStatementExecuted("INSERT INTO APPOINTMENT");
         
         String result = (String)instance.getResult();
         System.out.println(result);
@@ -92,6 +92,6 @@ public class SaveAppointmentTest extends BasicJDBCTestCaseAdapter{
         appt.initialize(sMajor, sName, sID, sEmail, aName, type, dp, date, sH, eH, sM, eM);
         SaveAppointment instance = new SaveAppointment(appt);
         instance.execute();
-        verifySQLStatementNotExecuted("INSERT INTO \"APPOINTMENT\"");
+        verifySQLStatementNotExecuted("INSERT INTO APPOINTMENT");
     }
 }

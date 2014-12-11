@@ -46,7 +46,7 @@ public class ValidateLoginTest extends BasicJDBCTestCaseAdapter{
         MockConnection connection = getJDBCMockObjectFactory().getMockConnection();
         PreparedStatementResultSetHandler resultSetHandler = connection.getPreparedStatementResultSetHandler();
 
-        resultSetHandler.prepareThrowsSQLException("SELECT * FROM \"USER\"");
+        resultSetHandler.prepareThrowsSQLException("SELECT * FROM USER");
 
     }
 
@@ -59,7 +59,7 @@ public class ValidateLoginTest extends BasicJDBCTestCaseAdapter{
         System.out.println("queryDB");
         ValidateLogin instance = new ValidateLogin("admin@mavs.uta.edu", "temp");
         instance.execute();
-        verifySQLStatementExecuted("SELECT * FROM \"USER\"");
+        verifySQLStatementExecuted("SELECT * FROM USER");
         String result = (String) instance.getResult();
         
         assertEquals("10", result);
@@ -71,7 +71,7 @@ public class ValidateLoginTest extends BasicJDBCTestCaseAdapter{
         System.out.println("queryDB");
         ValidateLogin instance = new ValidateLogin("admin@mavs.uta.edu", "temp");
         instance.execute();
-        verifySQLStatementNotExecuted("SELECT * FROM \"USER\"");
+        verifySQLStatementNotExecuted("SELECT * FROM USER");
     }
 
     
