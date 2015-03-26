@@ -19,8 +19,8 @@ public class ModifyTimeSlotsBean implements Constants{
     private int slotID =-1;
     Date date = new Date();
 
-    public ModifyTimeSlotsBean() {
-    }
+    //public ModifyTimeSlotsBean() {
+    //}
     public ModifyTimeSlotsBean(int StartHr, int EndHr, int StartMin, int EndMin, Date date, int slotID){
         this.startHr =StartHr;
         this.endHr =EndHr;
