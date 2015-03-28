@@ -1,4 +1,4 @@
-<div id="navbar">
+<nav class="navbar navbar-inverse" >
     <% 
         int rank = -1;
         int sessionid = -1;
@@ -9,11 +9,20 @@
         rank = Integer.parseInt((String)session.getAttribute("rank"));
     }
     %>
-            <ul class="navigation">
-                <li class="home">
-                    <a href="index.jsp" >Home</a>
-                </li>
-    <%
+    
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="index.jsp">UTA Advising</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active home"><a href="index.jsp">Home</a></li>
+        <%
         if(session.getAttribute("rank") == null)
         {
             
@@ -46,6 +55,12 @@
                     + "<a href='schedule.jsp' >Schedule Appointment</a>"
                     + "</li>");
         }
-    %>                
-            </ul>
-        </div>
+        %> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
