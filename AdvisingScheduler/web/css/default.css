@@ -15,7 +15,13 @@ body {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     font-size: 16px; 
     color: #000000; 
-    background-color: #ffffff; 
+    background:
+        linear-gradient(
+        rgba(0, 0, 255, 0.45), 
+        rgba(0, 0, 255, 0.45)),
+        
+        url(images/BigALogo.jpg);
+    background-size: cover;
     /*width: 1280px;*/
     margin: 0 auto;
     white-space: nowrap;
@@ -48,10 +54,39 @@ header{
     bottom: 0;
 }
 
-#navbar{
-    text-align: center;
-    background-color: #00204c;
+.panel{
+    box-shadow: 10px 10px 30px grey;
+}
 
+nav{
+    box-shadow: 10px 10px 30px grey;
+}
+
+.navbar-inverse .navbar-brand{
+    color: black;
+}
+
+.navbar-inverse{
+    background: linear-gradient(orange, orangered)
+}
+
+.navbar-inverse .navbar-text{
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-nav > li:hover,
+.navbar-inverse .navbar-nav > li:focus{
+    background-color: #ff3f00;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+    color: #000000
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus{
+    color: #ffffff;
 }
 
 .navigation ul{
