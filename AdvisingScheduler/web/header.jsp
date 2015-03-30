@@ -10,9 +10,5 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/datatables/jquery.dataTables.css">
         <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="css/images/favicon.ico" type="image/x-icon" /> 
-        
-    <header>
-        <a href ="index.jsp"><img src="css/images/banner.png"></a>
-    </header>
+        <link rel="shortcut icon" href="css/images/favicon.ico" type="image/x-icon" />
 
