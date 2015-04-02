@@ -24,6 +24,7 @@ CREATE TABLE APPOINTMENT(   ApptID INTEGER NOT NULL AUTO_INCREMENT,
     StudentMajor VARCHAR(20),
     StudentEmail VARCHAR(40),
     AdvisorName VARCHAR(20) NOT NULL,
+    StudentDept VARCHAR(40),
     PRIMARY KEY (ApptID)
 );
 

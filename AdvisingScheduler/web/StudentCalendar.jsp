@@ -70,6 +70,7 @@
         <jsp:setProperty name="newAppt" property="studentID" param="sID" /> 
         <jsp:setProperty name="newAppt" property="studentName" param="sName" /> 
         <jsp:setProperty name="newAppt" property="studentMajor" param="major" /> 
+        <jsp:setProperty name="newAppt" property="studentDept" param="department" />
         <jsp:setProperty name="newAppt" property="advisorName" param="aName" /> 
         <jsp:setProperty name="newAppt" property="type" param="type" /> 
         <jsp:setProperty name="newAppt" property="date" value='<%= newDate%>' /> 
@@ -114,6 +115,10 @@
                                         <div class="form-group">
                                             <label for="major">Major</label>
                                         <input class="form-control" type="text" name="major" id="major" value="<jsp:getProperty name="newAppt" property="studentMajor"/>" readonly="readonly">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="department">Department</label>
+                                        <input class="form-control" type="text" name="department" id="department" value="<jsp:getProperty name="newAppt" property="studentDept"/>" readonly="readonly">
                                         </div>
                                         <div class="form-group">
                                             <label for="aName">Advisor</label>

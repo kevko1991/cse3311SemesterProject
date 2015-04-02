@@ -173,6 +173,12 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="department">Department</label>
+                        <select name="department" id="department" class="form-control" >
+                            <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="aName">Advisor</label>
                         <select name="aName" id="aName" class="form-control" >
                             <option value="Linda Barasch">Linda Barasch</option>
