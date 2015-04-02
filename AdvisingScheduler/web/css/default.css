@@ -27,6 +27,10 @@ body {
     white-space: nowrap;
 }
 
+#utalogo-banner{
+    background-color: #0948b1;
+}
+
 .ui-datepicker-week-end {
     display:none
 }
@@ -55,11 +59,11 @@ header{
 }
 
 .panel{
-    box-shadow: 10px 10px 30px grey;
+    box-shadow: 10px 10px 30px #330099;
 }
 
 nav{
-    box-shadow: 10px 10px 30px grey;
+    box-shadow: 10px 10px 30px #330099;
 }
 
 .navbar-inverse .navbar-brand{
