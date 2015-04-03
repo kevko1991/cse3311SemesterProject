@@ -15,10 +15,14 @@ body {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     font-size: 16px; 
     color: #000000; 
-    background-color: #ffffff; 
+    background-color: #005f9e;
     /*width: 1280px;*/
     margin: 0 auto;
     white-space: nowrap;
+}
+
+#utalogo-banner{
+    background-color: #0948b1;
 }
 
 .ui-datepicker-week-end {
@@ -48,10 +52,39 @@ header{
     bottom: 0;
 }
 
-#navbar{
-    text-align: center;
-    background-color: #00204c;
+.panel{
+    box-shadow: 10px 10px 30px #330099;
+}
 
+nav{
+    box-shadow: 10px 10px 30px #330099;
+}
+
+.navbar-inverse .navbar-brand{
+    color: black;
+}
+
+.navbar-inverse{
+    background: linear-gradient(orange, orangered);
+}
+
+.navbar-inverse .navbar-text{
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-nav > li:hover,
+.navbar-inverse .navbar-nav > li:focus{
+    background-color: #ff3f00;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+    color: #000000
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus{
+    color: #ffffff;
 }
 
 .navigation ul{
