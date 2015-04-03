@@ -11,7 +11,9 @@
             rank = Integer.parseInt((String)session.getAttribute("rank"));
         }
         %>
-
+        <div class="container-fluid" id="utalogo-banner">
+            <img src="css/images/utalogo.png" alt="UTA Logo">
+        </div>
       <div class="container-fluid">
         <div class="navbar-header">
           <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
@@ -59,7 +61,6 @@
             %> 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>

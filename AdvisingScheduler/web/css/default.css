@@ -15,13 +15,7 @@ body {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     font-size: 16px; 
     color: #000000; 
-    background:
-        linear-gradient(
-        rgba(0, 0, 255, 0.45), 
-        rgba(0, 0, 255, 0.45)),
-        
-        url(images/BigALogo.jpg);
-    background-size: cover;
+    background-color: #005f9e;
     /*width: 1280px;*/
     margin: 0 auto;
     white-space: nowrap;
@@ -71,7 +65,7 @@ nav{
 }
 
 .navbar-inverse{
-    background: linear-gradient(orange, orangered)
+    background: linear-gradient(orange, orangered);
 }
 
 .navbar-inverse .navbar-text{
