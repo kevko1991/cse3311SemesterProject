@@ -17,6 +17,12 @@ public class AdvisorAccount {
     private int ID;
     private String tempPassword;
     private int rank;
+    /*
+        -1 = Student
+        0 = Advisor
+        1 = Admin
+    */
+    private boolean FirstLog;
     
     public AdvisorAccount(){
         
@@ -35,6 +41,11 @@ public class AdvisorAccount {
             this.department = department;
             this.tempPassword = hashPassword(tempPassword);
             this.rank = rank;
+            
+            if(this.rank == 0){
+                this.FirstLog = true;
+            }
+            
         }
         else
         {
