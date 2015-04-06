@@ -24,7 +24,10 @@
           <a class="navbar-brand" href="index.jsp">UTA Advising</a>
         </div>
         <div class="collapse navbar-collapse navHeaderCollapse">
-          <ul class="nav navbar-nav">      
+          <ul class="nav navbar-nav">  
+              <li>
+                  <a href="ManageDepartmentAdvisors.jsp">Manage</a>
+              </li>   
             <%
             if(session.getAttribute("rank") == null)
             {
