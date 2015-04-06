@@ -28,5 +28,5 @@ public interface DatabaseImpInterface {
     public String validate(String email, String password);
     public AdvisorAccount getAccount(String email);
     public ArrayList<AdvisorAccount> getAdvisorsFromDepartment(String department);
-    public String getAdvisorDepartment(int ID);
+    public AdvisorAccount getAdvisorWithID(int ID);
 }

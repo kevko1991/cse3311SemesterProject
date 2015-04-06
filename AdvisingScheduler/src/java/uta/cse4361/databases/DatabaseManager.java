@@ -90,4 +90,8 @@ public class DatabaseManager {
     public ArrayList<AdvisorAccount> getAdvisorsFromDepartment(String department){
         return imp.getAdvisorsFromDepartment(department);
     }
-}
+    
+    public AdvisorAccount getAccount(int ID){
+        return imp.getAdvisorWithID(ID);
+    }
+ }

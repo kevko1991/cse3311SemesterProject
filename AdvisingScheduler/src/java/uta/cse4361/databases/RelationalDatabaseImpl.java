@@ -135,4 +135,11 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         getAccounts.execute();
         return (ArrayList<AdvisorAccount>)getAccounts.getResult();
     }
+    
+    @Override
+    public AdvisorAccount getAdvisorWithID(int ID){
+        RDBImplCommand getAdvisor = new GetAdvisorWithID(ID);
+        getAdvisor.execute();
+        return (AdvisorAccount)getAdvisor.getResult();
+    }
 }
