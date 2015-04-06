@@ -22,7 +22,7 @@ public class AdvisorAccount {
         0 = Advisor
         1 = Admin
     */
-    private boolean FirstLog;
+    //private boolean FirstLog = false;
     
     public AdvisorAccount(){
         
@@ -42,9 +42,13 @@ public class AdvisorAccount {
             this.tempPassword = hashPassword(tempPassword);
             this.rank = rank;
             
-            if(this.rank == 0){
+            //sets the correct value to FirstLog based on whether you are a Admin or Advisor.
+            /*if(this.rank == 0){
                 this.FirstLog = true;
             }
+            else{
+                this.FirstLog = false;
+            }*/
             
         }
         else
@@ -98,7 +102,7 @@ public class AdvisorAccount {
     }
     
     public void setTempPassword(String tempPassword){
-        this.tempPassword = tempPassword;
+        this.tempPassword = hashPassword(tempPassword);
     }
     
     public void setRank(int rank){

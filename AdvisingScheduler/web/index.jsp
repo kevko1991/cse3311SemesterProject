@@ -26,12 +26,16 @@ and open the template in the editor.
              <% 
                             int rank = -1;
                             int sessionid = -1;
+                            boolean firstlog = false;
                             if(!(session.getAttribute("id") == null)){
                             sessionid = Integer.parseInt((String)session.getAttribute("id"));
                         }
                             if(!(session.getAttribute("rank") == null)){
                             rank = Integer.parseInt((String)session.getAttribute("rank"));
                         }
+                            /*if(!(session.getAttribute("FirstLog") == null)){
+                                firstlog = Boolean.getBoolean((String)session.getAttribute("FirstLog"));
+                            }*/
              %>
              
              <div class="container panel panel-default">
@@ -53,6 +57,11 @@ and open the template in the editor.
                             }
                             if (rank == 0){
                                 out.print("Welcome faculty member.");
+                                
+                                //trying to create a call to the dialog box when it detects a first login
+                                /*if(firstlog == true){
+                                    out.print("<input type='hidden' value='First Login Dialog Box' id='FirstLog'>");
+                                }*/
                             }
                             %>
                          </div>

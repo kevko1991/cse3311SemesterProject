@@ -121,4 +121,11 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         getAccount.execute();
         return (AdvisorAccount)getAccount.getResult();
     }
+
+    @Override
+    public AdvisorAccount update(AdvisorAccount aa) {
+        RDBImplCommand update = new UpdateAdvisor(aa);
+        update.execute();
+        return (AdvisorAccount)update.getResult();
+    }
 }

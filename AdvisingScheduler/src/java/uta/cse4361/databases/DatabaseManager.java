@@ -78,6 +78,11 @@ public class DatabaseManager {
         return imp.register(aa);
     }
     
+    //This is a function to allow the advisor data to be updated in the database
+    public AdvisorAccount update(AdvisorAccount aa){
+        return imp.update(aa);
+    }
+    
     public String validate(String email, String password){
         return imp.validate(email, password);
     }

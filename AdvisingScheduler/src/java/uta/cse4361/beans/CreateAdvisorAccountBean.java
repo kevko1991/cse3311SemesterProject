@@ -10,6 +10,10 @@ import uta.cse4361.databases.DatabaseManager;
 import uta.cse4361.databases.RelationalDatabaseImpl;
 import uta.cse4361.interfaces.Constants;
 
+import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.Random;
+
 /**
  *
  * @author Nabin
@@ -21,6 +25,7 @@ public class CreateAdvisorAccountBean implements Constants{
     private int ID= 0;
     private String tempPassword = null;
     private int rank = 0;
+    //private boolean FirstLog = false;
 
     public CreateAdvisorAccountBean() {
     }
@@ -28,6 +33,10 @@ public class CreateAdvisorAccountBean implements Constants{
     
     public String Advisor(){
        String returnMessage = SUCCESS_MESSAGE;
+       //char[] CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+       //int length = 8;
+       
+       //this.tempPassword = createPassword(CHARSET, length);
        
        AdvisorAccount AA = new AdvisorAccount();
        boolean a = AA.initialize(this.name, this.email, this.department, this.tempPassword, this.rank);
@@ -85,6 +94,22 @@ public class CreateAdvisorAccountBean implements Constants{
         this.rank = rank;
     }
     
-    
+    public String createPassword(char[] charset, int length){
+        String pass = null;
+        int i = 0;
+        
+        Random random = new SecureRandom();
+        char[] result = new char[length];
+        for (i = 0; i < result.length; i++) {
+            // picks a random index out of character set > random character
+            int randomCharIndex = random.nextInt(charset.length);
+            result[i] = charset[randomCharIndex];
+        }
+        
+        pass = Arrays.toString(result);
+        System.out.println(pass);
+        
+        return pass;
+    }
     
 }
