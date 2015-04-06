@@ -38,6 +38,13 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         saveAppointment.execute();
         return (String)saveAppointment.getResult();
     }
+    
+    @Override
+    public String saveAdvisorAssignments(ArrayList<AdvisorAccount> advisors){
+        RDBImplCommand saveAssignments = new SaveAdvisorAssignments(advisors);
+        saveAssignments.execute();
+        return (String)saveAssignments.getResult();
+    }
 
     @Override
     public String modifyAppointment(int id, Appointment appt) {
@@ -120,5 +127,12 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         RDBImplCommand getAccount = new GetAdvisor(email);
         getAccount.execute();
         return (AdvisorAccount)getAccount.getResult();
+    }
+    
+    @Override
+    public ArrayList<AdvisorAccount> getAdvisorsFromDepartment(String department){
+        RDBImplCommand getAccounts = new GetAdvisorsFromDepartment(department);
+        getAccounts.execute();
+        return (ArrayList<AdvisorAccount>)getAccounts.getResult();
     }
 }

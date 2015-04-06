@@ -15,6 +15,7 @@ import uta.cse4361.businessobjects.AdvisorAccount;
 public interface DatabaseImpInterface {
     public String saveSlots(ArrayList<Slot> slots);
     public String saveAppointment(Appointment appt);
+    public String saveAdvisorAssignments(ArrayList<AdvisorAccount> advisors);
     public ArrayList<Appointment> getAppointments();
     public Appointment getAppointment(int apptID);
     public String modifyAppointment(int id, Appointment appt);
@@ -26,4 +27,5 @@ public interface DatabaseImpInterface {
     public String register(AdvisorAccount aa);
     public String validate(String email, String password);
     public AdvisorAccount getAccount(String email);
+    public ArrayList<AdvisorAccount> getAdvisorsFromDepartment(String department);
 }
