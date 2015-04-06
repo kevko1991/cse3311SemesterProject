@@ -86,4 +86,8 @@ public class DatabaseManager {
     public AdvisorAccount getAccount(String email){
         return imp.getAccount(email);
     }
+    
+    public ArrayList<AdvisorAccount> getAdvisorsFromDepartment(String department){
+        return imp.getAdvisorsFromDepartment(department);
+    }
 }
