@@ -17,6 +17,7 @@ public class AdvisorAccount {
     private int ID;
     private String tempPassword;
     private int rank;
+    private String assignment;
     
     public AdvisorAccount(){
         
@@ -64,6 +65,25 @@ public class AdvisorAccount {
         return result;
     }
     
+    public boolean initialize(String name, String department, int ID, String assignment){
+        boolean result = true;
+        
+        if(name != null && !name.isEmpty() && 
+                department != null && !department.isEmpty())
+        {
+            this.name = name;
+            this.department = department;
+            this.ID = ID;
+            this.assignment = assignment;
+        }
+        else
+        {
+            result = false;
+        }
+        
+        return result;
+    }
+    
     public static String hashPassword(String tempPassword)
     {
         int hash = tempPassword.hashCode();
@@ -94,6 +114,10 @@ public class AdvisorAccount {
         this.rank = rank;
     }
     
+    public void setAssignment(String assignment){
+        this.assignment = assignment;
+    }
+    
     public String getName(){
         return name;
     }
@@ -116,5 +140,9 @@ public class AdvisorAccount {
     
     public int getRank(){
         return rank;
+    }
+    
+    public String getAssignment(){
+        return assignment;
     }
 }
