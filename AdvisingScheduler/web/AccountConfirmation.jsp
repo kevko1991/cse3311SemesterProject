@@ -43,7 +43,8 @@
                 <%
                     String result = newadvisor.Advisor();
                     if (result == "") {
-                        out.print(newadvisor.getName() +"'s has been Account created");
+                        out.println(newadvisor.getName() +"'s Account has been created.");
+                        out.println("Your temporary password is "+newadvisor.getTempPassword()+".");
                     } 
                     else {
                         out.print("Account could not be created.");

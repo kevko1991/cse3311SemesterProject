@@ -7,6 +7,7 @@ package uta.cse4361.beans;
 
 import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.databases.DatabaseManager;
+import uta.cse4361.databases.Login;
 import uta.cse4361.interfaces.Constants;
 
 /**
@@ -20,8 +21,9 @@ public class LogInBean implements Constants{
     public LogInBean() {
     }
 
-    public String LogIn(){
-        String Msg = SUCCESS_MESSAGE;
+    public Login LogIn(){
+        //String Msg = SUCCESS_MESSAGE;
+        Login Msg = null;
         DatabaseManager DM = new DatabaseManager();
         Msg = DM.validate(this.email, this.password);           
         return Msg;

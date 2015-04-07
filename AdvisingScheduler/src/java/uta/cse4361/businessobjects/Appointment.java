@@ -15,6 +15,7 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
 
     private int apptID = 0;
     private String studentMajor = null;
+    private String studentDept = null;
     private String studentName = null;
     private String studentID = null;
     private String studentEmail = null;
@@ -31,8 +32,9 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
 
     }
     
-    public boolean initialize(String sMajor, String sName, String sID, String sEmail, String aName, String type, String dp, Date date, int sH, int eH, int sM, int eM) {
+    public boolean initialize(String sMajor, String sDept, String sName, String sID, String sEmail, String aName, String type, String dp, Date date, int sH, int eH, int sM, int eM) {
         this.setStudentMajor(sMajor);
+        this.setStudentDept(sDept);
         this.setStudentName(sName);
         if(this.setStudentID(sID) == false)
             return false;
@@ -48,9 +50,18 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
         return true;
     }
     
+    public static String hashID(String ID)
+    {
+        int hash = ID.hashCode();
+        return Integer.toString(hash);
+    }
+    
     // Setters
     public void setStudentMajor(String sMajor) {
         this.studentMajor = sMajor;
+    }
+    public void setStudentDept(String sDept){
+        this.studentDept = sDept;
     }
     public void setApptID(int apptID) {
         this.apptID = apptID;
@@ -63,7 +74,7 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
           return false;
       else if (!sID.startsWith("1000") && !sID.startsWith("6000"))
           return false;
-        this.studentID = sID;
+        this.studentID = hashID(sID);
         return true;
     }
     public void setStudentEmail(String sEmail) {
@@ -97,6 +108,9 @@ public class Appointment implements java.io.Serializable, Comparable<Appointment
     // Getters
     public String getStudentMajor() {
         return this.studentMajor;
+    }
+    public String getStudentDept(){
+        return this.studentDept;
     }
     public int getApptID() {
         return this.apptID;

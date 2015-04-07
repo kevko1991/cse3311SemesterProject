@@ -109,10 +109,10 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
     
     @Override
-    public String validate(String email, String password){
+    public Login validate(String email, String password){
         RDBImplCommand validate = new ValidateLogin(email, password);
         validate.execute();
-        return (String)validate.getResult();
+        return (Login)validate.getResult();
     }
     
     @Override
@@ -120,5 +120,12 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
         RDBImplCommand getAccount = new GetAdvisor(email);
         getAccount.execute();
         return (AdvisorAccount)getAccount.getResult();
+    }
+
+    @Override
+    public String update(String email, AdvisorAccount aa) {
+        RDBImplCommand update = new UpdateAdvisor(email, aa);
+        update.execute();
+        return (String)update.getResult();
     }
 }

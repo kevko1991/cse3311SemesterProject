@@ -1,11 +1,4 @@
-DROP VIEW AVAILSLOT;
-DROP VIEW APPTSLOT;
-DROP VIEW APPTFW;
-DROP TABLE SLOT;
-DROP TABLE APPOINTMENT;
-DROP TABLE USER;
 
-DROP DATABASE ADVISING;
 
 CREATE DATABASE ADVISING;
 
@@ -90,6 +83,7 @@ VALUES ('cdonald@uta.edu', '-1131323456', 'Cheryl Donaldson', 'ARCH', 0, 1);
 
 INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
 VALUES ('kung@uta.edu', '-1131323456', 'David Kung', 'CSE', 0, 1);
+
 
 CREATE VIEW APPTFW AS
 SELECT ApptID, ApptDate, ApptStartHour, ApptStartMin, ApptEndHour, ApptEndMin

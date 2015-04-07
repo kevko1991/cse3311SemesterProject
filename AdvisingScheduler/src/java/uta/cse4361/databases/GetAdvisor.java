@@ -13,17 +13,18 @@ import uta.cse4361.businessobjects.AdvisorAccount;
  * @author Andrew
  */
 public class GetAdvisor extends RDBImplCommand{
-    private String email;
+    private String UserEmail;
     private String sqlQuery = "SELECT * FROM USER WHERE UserEmail = ?";
     
     public GetAdvisor(String email){
-        this.email = email;
+        super();
+        UserEmail = email;
     }
     
     public void queryDB() throws SQLException{
         try{
             statement = conn.prepareStatement(sqlQuery);
-            statement.setString(1, email);
+            statement.setString(1, UserEmail);
             resultSet = statement.executeQuery();
             processResult();
         }

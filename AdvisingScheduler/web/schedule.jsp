@@ -173,6 +173,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="department">Department</label>
+                        <select name="department" id="department" class="form-control" >
+                            <option value="CSE">Computer Science and Engineering</option>
+                            <option value="MAE">Mechanical and Aerospace</option>
+                            <option value="ARCH">Architectural</option>
+                            <option value="EE">Electrical Engineering</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="aName">Advisor</label>
                         <select name="aName" id="aName" class="form-control" >
                             <option value="Linda Barasch">Linda Barasch</option>
@@ -180,6 +189,10 @@
                             <option value="Eric Becker">Eric Becker</option>
                             <option value="Ramez Elmasri">Ramez Elmasri</option>
                             <option value="Bahram Khalili">Bahram Khalili</option>
+                            <option value="Kathy Priester">Kathy Priester</option>
+                            <option value="Angeleah Chavis">Angeleah Chavis</option>
+                            <option value="Cheryl Donaldson">Cheryl Donaldson</option>
+                            <option value="David Kung">David Kung</option>
                         </select>
                     </div>
                     <div class="form-group">

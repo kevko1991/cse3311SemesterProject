@@ -17,6 +17,12 @@ public class AdvisorAccount {
     private int ID;
     private String tempPassword;
     private int rank;
+    /*
+        -1 = Student
+        0 = Advisor
+        1 = Admin
+    */
+    private int FirstLog = 1;
     
     public AdvisorAccount(){
         
@@ -35,6 +41,8 @@ public class AdvisorAccount {
             this.department = department;
             this.tempPassword = hashPassword(tempPassword);
             this.rank = rank;
+            
+            return result;
         }
         else
         {
@@ -55,9 +63,15 @@ public class AdvisorAccount {
             this.email = email;
             this.department = department;
             this.rank = rank;
+            
+            if(rank == 0){
+                this.FirstLog = 1;
+            }
+            else{
+                this.FirstLog = 0;
+            }
         }
-        else
-        {
+        else{
             result = false;
         }
         
@@ -87,11 +101,15 @@ public class AdvisorAccount {
     }
     
     public void setTempPassword(String tempPassword){
-        this.tempPassword = tempPassword;
+        this.tempPassword = hashPassword(tempPassword);
     }
     
     public void setRank(int rank){
         this.rank = rank;
+    }
+    
+    public void setLog(int Log){
+        this.FirstLog = Log;
     }
     
     public String getName(){
@@ -116,5 +134,9 @@ public class AdvisorAccount {
     
     public int getRank(){
         return rank;
+    }
+    
+    public int getLog(){
+        return this.FirstLog;
     }
 }

@@ -22,6 +22,7 @@ import javax.mail.internet.MimeMessage;
 public class ScheduleAppointmentBean implements Constants {
 
     private String studentMajor = null;
+    private String studentDept = null;
     private String studentName = null;
     private String studentID = null;
     private String studentEmail = null;
@@ -41,7 +42,7 @@ public class ScheduleAppointmentBean implements Constants {
     public String scheduleAppointment() {
         String msg = SUCCESS_MESSAGE;
         Appointment a = new Appointment();
-        boolean r = a.initialize(this.studentMajor, this.studentName, this.studentID, this.studentEmail, this.advisorName, this.type,
+        boolean r = a.initialize(this.studentMajor, this.studentDept, this.studentName, this.studentID, this.studentEmail, this.advisorName, this.type,
                 this.description, this.date,
                 this.startHour, this.endHour,
                 this.startMinute, this.endMinute);
@@ -120,6 +121,9 @@ public class ScheduleAppointmentBean implements Constants {
     public void setStudentMajor(String sMajor) {
         this.studentMajor = sMajor;
     }
+    public void setStudentDept(String sDept){
+        this.studentDept = sDept;
+    }
     public void setStudentName(String sName) {
         this.studentName = sName;
     }
@@ -167,6 +171,9 @@ public class ScheduleAppointmentBean implements Constants {
     // Getters
     public String getStudentMajor() {
         return this.studentMajor;
+    }
+    public String getStudentDept(){
+        return this.studentDept;
     }
     public String getStudentName() {
         return this.studentName;

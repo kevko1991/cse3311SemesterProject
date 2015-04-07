@@ -41,7 +41,7 @@
                     <%
 
                         DatabaseManager dm = new DatabaseManager();
-                        if (request.getParameter("apptID") == null || request.getParameter("apptID)") == "" || request.getParameter("apptID").equals("")) {
+                        if (request.getParameter("apptID") == null || request.getParameter("apptID") == "" || request.getParameter("apptID").equals("")) {
                             response.sendRedirect("modifyAppointment.jsp");
                         } else {
                             int apptID = Integer.parseInt(request.getParameter("apptID"));
