@@ -20,10 +20,10 @@
                response.sendRedirect("index.jsp");
             }
             if (!(session.getAttribute("id") == null)) {
-                    sessionid = Integer.parseInt((String) session.getAttribute("id"));
+                    sessionid = ((Integer) session.getAttribute("id"));
                 }
                 if (!(session.getAttribute("rank") == null)) {
-                    rank = Integer.parseInt((String) session.getAttribute("rank"));
+                    rank = ((Integer) session.getAttribute("rank"));
             }
             if(rank != 0)
                 {
@@ -41,7 +41,7 @@
                     <%
 
                         DatabaseManager dm = new DatabaseManager();
-                        if (request.getParameter("apptID") == null || request.getParameter("apptID)") == "" || request.getParameter("apptID").equals("")) {
+                        if (request.getParameter("apptID") == null || request.getParameter("apptID") == "" || request.getParameter("apptID").equals("")) {
                             response.sendRedirect("modifyAppointment.jsp");
                         } else {
                             int apptID = Integer.parseInt(request.getParameter("apptID"));

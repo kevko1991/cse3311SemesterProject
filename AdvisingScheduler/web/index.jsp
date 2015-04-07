@@ -33,6 +33,21 @@ and open the template in the editor.
                     rank = Integer.parseInt((String)session.getAttribute("rank"));
                 }
             %>
+            <jsp:include page='header.jsp' />
+             <% 
+                            int rank = -1;
+                            int sessionid = -1;
+                            int firstlog = -1;
+                            if(!(session.getAttribute("id") == null)){
+                            sessionid = ((Integer)session.getAttribute("id"));
+                        }
+                            if(!(session.getAttribute("rank") == null)){
+                            rank = ((Integer)session.getAttribute("rank"));
+                        }
+                            if(!(session.getAttribute("firstlog") == null)){
+                                firstlog = ((Integer)session.getAttribute("firstlog"));
+                            }
+             %>
              
              <div class="container panel panel-default">
                  
@@ -53,6 +68,11 @@ and open the template in the editor.
                             }
                             if (rank == 0){
                                 out.print("Welcome faculty member.");
+                                
+                                //trying to create a call to the dialog box when it detects a first login
+                                if(firstlog == 1){
+                                    response.sendRedirect("EditAccount.jsp");
+                                }
                             }
                             %>
                          </div>
