@@ -23,10 +23,10 @@
                response.sendRedirect("index.jsp");
             }
             if (!(session.getAttribute("id") == null)) {
-                    sessionid = Integer.parseInt((String) session.getAttribute("id"));
+                    sessionid = ((Integer) session.getAttribute("id"));
                 }
                 if (!(session.getAttribute("rank") == null)) {
-                    rank = Integer.parseInt((String) session.getAttribute("rank"));
+                    rank = ((Integer) session.getAttribute("rank"));
             }
             if(rank != 0)
                 {
