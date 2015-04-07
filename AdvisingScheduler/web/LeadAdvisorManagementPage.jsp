@@ -26,7 +26,7 @@
             AdvisorAccount leadAdvisor;
             java.util.ArrayList<AdvisorAccount> departmentAdvisors;
             
-            leadAdvisor = dm.getAccount(Integer.parseInt((String)session.getAttribute("id"))); 
+            leadAdvisor = dm.getAccount((Integer)session.getAttribute("id")); 
             departmentAdvisors = dm.getAdvisorsFromDepartment(leadAdvisor.getDepartment());
             bean = new uta.cse4361.beans.AssignStudentAdvisorBean(departmentAdvisors);
         %>
