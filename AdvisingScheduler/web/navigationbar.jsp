@@ -64,9 +64,10 @@
             %> 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href=# id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
       </div>
     </nav>
 </div>          
+<script type='text/javascript' src='js/index.js'></script>
