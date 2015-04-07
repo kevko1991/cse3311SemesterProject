@@ -21,22 +21,11 @@ and open the template in the editor.
     <body>
 
         <jsp:include page='navigationbar.jsp' />
-        <jsp:include page='header.jsp' />
-        
-            <% 
-                int rank = -1;
-                int sessionid = -1;
-                if(!(session.getAttribute("id") == null)){
-                    sessionid = Integer.parseInt((String)session.getAttribute("id"));
-                }
-                if(!(session.getAttribute("rank") == null)){
-                    rank = Integer.parseInt((String)session.getAttribute("rank"));
-                }
-            %>
+    
             <jsp:include page='header.jsp' />
-             <% 
-                            int rank = -1;
+             <%             
                             int sessionid = -1;
+                            int rank = -1;
                             int firstlog = -1;
                             if(!(session.getAttribute("id") == null)){
                             sessionid = ((Integer)session.getAttribute("id"));
