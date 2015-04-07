@@ -26,15 +26,15 @@ and open the template in the editor.
              <% 
                             int rank = -1;
                             int sessionid = -1;
-                            int firstlog = 0;
+                            int firstlog = -1;
                             if(!(session.getAttribute("id") == null)){
                             sessionid = ((Integer)session.getAttribute("id"));
                         }
                             if(!(session.getAttribute("rank") == null)){
                             rank = ((Integer)session.getAttribute("rank"));
                         }
-                            if(!(session.getAttribute("FirstLog") == null)){
-                                firstlog = ((Integer)session.getAttribute("FirstLog"));
+                            if(!(session.getAttribute("firstlog") == null)){
+                                firstlog = ((Integer)session.getAttribute("firstlog"));
                             }
              %>
              

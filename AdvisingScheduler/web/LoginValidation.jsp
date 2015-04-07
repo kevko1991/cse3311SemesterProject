@@ -30,7 +30,7 @@
                     session.setAttribute("confirmation", login.getPassword());
                     session.setAttribute("id", result.getID());
                     session.setAttribute("rank", result.getRank());
-                    session.setAttribute("firstLog", result.getLog());
+                    session.setAttribute("firstlog", result.getLog());
                     response.sendRedirect("index.jsp");
                 %>
                 </div>

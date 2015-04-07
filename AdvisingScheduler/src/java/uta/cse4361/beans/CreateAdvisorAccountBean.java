@@ -5,14 +5,14 @@
  */
 package uta.cse4361.beans;
 
+import static java.lang.System.out;
+import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.Random;
 import uta.cse4361.businessobjects.AdvisorAccount;
 import uta.cse4361.databases.DatabaseManager;
 import uta.cse4361.databases.RelationalDatabaseImpl;
 import uta.cse4361.interfaces.Constants;
-
-import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.Random;
 
 /**
  *
@@ -36,10 +36,11 @@ public class CreateAdvisorAccountBean implements Constants{
        
        //The tempPassword code below is for creating an Alphanumeric temporary password.
        
-       //char[] CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
-       //int length = 8;
+       char[] CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+       int length = 8;
        
-       //this.tempPassword = createPassword(CHARSET, length);
+       this.tempPassword = createPassword(CHARSET, length);
+       System.out.println(tempPassword);
        
        AdvisorAccount AA = new AdvisorAccount();
        boolean a = AA.initialize(this.name, this.email, this.department, this.tempPassword, this.rank);
@@ -100,7 +101,7 @@ public class CreateAdvisorAccountBean implements Constants{
     //This function will create a password based on a character set and desired length.
     
     public String createPassword(char[] charset, int length){
-        String pass = null;
+        String pass = "";
         int i = 0;
         
         Random random = new SecureRandom();
@@ -111,10 +112,11 @@ public class CreateAdvisorAccountBean implements Constants{
             result[i] = charset[randomCharIndex];
         }
         
-        pass = Arrays.toString(result);
+        for(i=0; i<result.length; i++){
+            pass += result[i];
+        }
         System.out.println(pass);
         
         return pass;
     }
-    
 }

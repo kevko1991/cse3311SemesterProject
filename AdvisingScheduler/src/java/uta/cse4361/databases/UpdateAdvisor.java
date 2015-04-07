@@ -29,7 +29,7 @@ public class UpdateAdvisor extends RDBImplCommand{
         try{
             statement = conn.prepareStatement(sqlQuery);
             statement.setString(1, aa.getTempPassword());
-            statement.setInt(2, aa.getLog());
+            statement.setInt(2, 0);
             statement.setString(3, aa.getEmail());
             statement.executeUpdate();
             processResult();

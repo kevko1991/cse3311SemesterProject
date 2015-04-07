@@ -98,4 +98,5 @@ public class EditAdvisorBean implements Constants{
     public void setLog(int Log){
         this.log = Log;
     }
+    
 }
