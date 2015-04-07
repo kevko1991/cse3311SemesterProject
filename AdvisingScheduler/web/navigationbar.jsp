@@ -25,8 +25,8 @@
         </div>
         <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class="nav navbar-nav">  
-              <li>
-                  <a href="ManageDepartmentAdvisors.jsp">Manage</a>
+              <li> <!--For demo purpose only.  Add code to hide from non Lead Advisors. Add code to determine who is a Lead advisor-->
+                  <a href="LeadAdvisorManagementPage.jsp">Manage</a>
               </li>   
             <%
             if(session.getAttribute("rank") == null)
@@ -62,10 +62,7 @@
                         + "</li>");
             }
             %> 
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href=# id="loginBtn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
+          </ul>          
         </div>
       </div>
     </nav>
