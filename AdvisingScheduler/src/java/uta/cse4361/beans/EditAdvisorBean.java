@@ -37,7 +37,7 @@ public class EditAdvisorBean implements Constants{
         AdvisorAccount aa = new AdvisorAccount();
         boolean a = aa.initialize(this.name, this.email, this.department, this.tempPassword, this.rank);
         if (a == false)
-           return this.CREATE_ADVISOR_FAIL;
+           return CREATE_ADVISOR_FAIL;
        DatabaseManager dm = new DatabaseManager();
        returnMessage = dm.update(aa.getEmail(), aa);
        return returnMessage;

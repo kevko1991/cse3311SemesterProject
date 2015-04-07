@@ -18,7 +18,7 @@ public class UpdateAdvisor extends RDBImplCommand{
 
     private AdvisorAccount aa;
     private String email;
-    private String sqlQuery = "UPDATE USER SET UserPassword = ?, WHERE UserEmail = ?";
+    private String sqlQuery = "UPDATE USER SET UserPassword = ?, FirstLog = ? WHERE UserEmail = ?";
     public UpdateAdvisor(String email, AdvisorAccount adv){
         this.email = email;
         this.aa = adv;
@@ -28,17 +28,15 @@ public class UpdateAdvisor extends RDBImplCommand{
     public void queryDB() throws SQLException {
         try{
             statement = conn.prepareStatement(sqlQuery);
-            statement.setString(1, aa.getEmail());
-            statement.setString(2, aa.getTempPassword());
-            statement.setString(3, aa.getName());
-            statement.setString(4, aa.getDepartment());
-            statement.setInt(5, aa.getRank());
-            statement.setInt(6, aa.getLog());
+            statement.setString(1, aa.getTempPassword());
+            statement.setInt(2, aa.getLog());
+            statement.setString(3, aa.getEmail());
             statement.executeUpdate();
             processResult();
         }
         catch(SQLException e){
-        System.out.println("UpdateAdvisor Failed");
+            //System.out.println("UpdateAdvisor Failed");
+            e.printStackTrace();
             conn.close();
         } finally {
             statement.close();

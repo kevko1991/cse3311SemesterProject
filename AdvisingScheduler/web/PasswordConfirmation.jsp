@@ -9,10 +9,10 @@
 <html>
     <head>
         <jsp:useBean id="newpass" class="uta.cse4361.beans.EditAdvisorBean"/> 
-        <jsp:setProperty name="newpass" property="email" value="<%=request.getParameter("email")%>" />
-        <jsp:setProperty name="newpass" property="tempPassword" value="<%=request.getParameter("password")%>" />
-        <jsp:setProperty name="newpass" property="department" value="<%=request.getParameter("dept")%>" />
-        <jsp:setProperty name="newpass" property="name" value="<%=request.getParameter("name")%>" />
+        <jsp:setProperty name="newpass" property="email" param="email" />
+        <jsp:setProperty name="newpass" property="name" param="name" />
+        <jsp:setProperty name="newpass" property="department" param="department" />
+        <jsp:setProperty name="newpass" property="tempPassword" param="password" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Password Confirmation</title>
     </head>
@@ -25,11 +25,18 @@
                 <div>
                 <%
                     String result = newpass.Advisor();
+                    out.print(result);
                     if (result == "") {
                         out.print(newpass.getName() +"'s Account has been updated");
                     } 
                     else {
                         out.print("Account could not be changed.");
+                        //out.print(result);
+                        out.print(newpass.getEmail());
+                        out.print(newpass.getDepartment());
+                        out.print(newpass.getName());
+                        out.print(newpass.getTempPassword());
+                        out.print(newpass.getRank());
                     }
                 %>
                 </div>

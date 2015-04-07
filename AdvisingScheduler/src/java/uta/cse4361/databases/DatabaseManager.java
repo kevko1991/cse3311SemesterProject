@@ -83,7 +83,7 @@ public class DatabaseManager {
         return imp.update(email, aa);
     }
     
-    public String validate(String email, String password){
+    public Login validate(String email, String password){
         return imp.validate(email, password);
     }
     

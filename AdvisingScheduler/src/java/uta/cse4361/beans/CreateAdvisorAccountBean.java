@@ -25,7 +25,7 @@ public class CreateAdvisorAccountBean implements Constants{
     private int ID= 0;
     private String tempPassword = null;
     private int rank = 0;
-    //private boolean FirstLog = false;
+    private int FirstLog = 1;
 
     public CreateAdvisorAccountBean() {
     }

@@ -22,7 +22,7 @@ public class AdvisorAccount {
         0 = Advisor
         1 = Admin
     */
-    private boolean FirstLog = false;
+    private int FirstLog = 1;
     
     public AdvisorAccount(){
         
@@ -42,14 +42,7 @@ public class AdvisorAccount {
             this.tempPassword = hashPassword(tempPassword);
             this.rank = rank;
             
-            //sets the correct value to FirstLog based on whether you are a Admin or Advisor.
-            /*if(this.rank == 0){
-                this.FirstLog = true;
-            }
-            else{
-                this.FirstLog = false;
-            }*/
-            
+            return result;
         }
         else
         {
@@ -70,9 +63,15 @@ public class AdvisorAccount {
             this.email = email;
             this.department = department;
             this.rank = rank;
+            
+            if(rank == 0){
+                this.FirstLog = 1;
+            }
+            else{
+                this.FirstLog = 0;
+            }
         }
-        else
-        {
+        else{
             result = false;
         }
         
@@ -109,7 +108,7 @@ public class AdvisorAccount {
         this.rank = rank;
     }
     
-    public void setLog(Boolean Log){
+    public void setLog(int Log){
         this.FirstLog = Log;
     }
     
@@ -138,11 +137,6 @@ public class AdvisorAccount {
     }
     
     public int getLog(){
-        if(this.FirstLog){
-            return 1;
-        }
-        else{
-            return 0;
-        }
+        return this.FirstLog;
     }
 }

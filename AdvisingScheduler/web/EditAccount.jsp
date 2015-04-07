@@ -81,6 +81,7 @@
                         <input type="reset" value="Reset" id="resetBtn" class="btn btn-default">
                     </div>
                 </form>
+                <%--
                 <jsp:useBean id="editadvisor" class="uta.cse4361.beans.EditAdvisorBean"/> 
                 <jsp:setProperty name="editadvisor" property="*"/>
                 <div style="position:relative;visibility:hidden"> 
@@ -93,11 +94,19 @@
                 log: ${editadvisor.log}<br>
                 </div>
                 
-                <%--<jsp:setProperty name="editadvisor" property="name" value= 'name'/>
+                <jsp:setProperty name="editadvisor" property="name" value= 'name'/>
                 <jsp:setProperty name="editadvisor" property="email" value= 'email'/>
                 <jsp:setProperty name="editadvisor" property="tempPassword" value= 'password'/>
                 <jsp:setProperty name="editadvisor" property="department" value= 'department'/>
                 <jsp:setProperty name="editadvisor" property="log" value='<%=log%>'/>--%>
+                
+                <%
+                    //String success = editadvisor.Advisor();
+                    //if (success.equals("")) {
+                    //    response.sendRedirect("index.jsp");
+                    //}
+                %>
+                
             </div>
         </div>
     </body>
