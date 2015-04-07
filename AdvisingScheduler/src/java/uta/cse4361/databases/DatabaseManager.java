@@ -52,6 +52,11 @@ public class DatabaseManager {
     public String saveAppointment(Appointment appt) {
         return imp.saveAppointment(appt);
     }
+    
+    public String saveAdvisorAssignments(ArrayList<AdvisorAccount> advisors){
+        return imp.saveAdvisorAssignments(advisors);
+    }
+    
     public String modifyAppointment(int id, Appointment appt) {
         return imp.modifyAppointment(id, appt);
     }
