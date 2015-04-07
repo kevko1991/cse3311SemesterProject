@@ -4,6 +4,7 @@ DROP VIEW APPTFW;
 DROP TABLE SLOT;
 DROP TABLE APPOINTMENT;
 DROP TABLE USER;
+DROP TABLE ASSIGNED;
 
 DROP DATABASE ADVISING;
 
@@ -65,6 +66,7 @@ CREATE TABLE USER( UserID INTEGER NOT NULL AUTO_INCREMENT,
     FirstLog BOOLEAN,
     PRIMARY KEY (UserID)
 );
+
 -- CREATE TABLE USER( UserID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 --     UserEmail VARCHAR(30) NOT NULL,
 --     UserPassword VARCHAR(20) NOT NULL,
@@ -72,6 +74,17 @@ CREATE TABLE USER( UserID INTEGER NOT NULL AUTO_INCREMENT,
 --     UserDepartment VARCHAR(30),
 --     UserRank INTEGER
 -- );
+
+CREATE TABLE ASSIGNED(UserID INTEGER(11) NOT NULL,
+	UserDepartment VARCHAR(30) NOT NULL,
+    UserName VARCHAR(30),
+    AssignedRange VARCHAR(10),
+    PRIMARY KEY (UserID)
+);
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `advising`.`user_AFTER_INSERT` AFTER INSERT ON `user` FOR EACH ROW
+    INSERT INTO ASSIGNED(UserID, UserDepartment, UserName, AssignedRange) 
+    VALUES(NEW.UserID, NEW.UserDepartment, NEW.UserName, "Not Set");
 
 INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
 VALUES ('admin@mavs.uta.edu', '92668751', 'Admin', 'CSE', 1, 0);
