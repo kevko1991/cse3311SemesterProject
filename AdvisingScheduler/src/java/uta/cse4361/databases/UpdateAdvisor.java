@@ -17,12 +17,11 @@ import uta.cse4361.businessobjects.AdvisorAccount;
 public class UpdateAdvisor extends RDBImplCommand{
 
     private AdvisorAccount aa;
-    private int ID;
-    private String sqlQuery = "UPDATE USER SET UserEmail = ?, UserPassword = ?,"
-            + " UserName = ?, UserDepartment = ?, UserRank = ?, FirstLog = ?, WHERE UserID = ?";
-    public UpdateAdvisor(AdvisorAccount aa){
-        this.aa = aa;
-        this.ID = aa.getID();
+    private String email;
+    private String sqlQuery = "UPDATE USER SET UserPassword = ?, WHERE UserEmail = ?";
+    public UpdateAdvisor(String email, AdvisorAccount adv){
+        this.email = email;
+        this.aa = adv;
     }
     
     @Override
@@ -35,7 +34,6 @@ public class UpdateAdvisor extends RDBImplCommand{
             statement.setString(4, aa.getDepartment());
             statement.setInt(5, aa.getRank());
             statement.setInt(6, aa.getLog());
-            statement.setInt(7, this.ID);
             statement.executeUpdate();
             processResult();
         }
@@ -49,7 +47,7 @@ public class UpdateAdvisor extends RDBImplCommand{
 
     @Override
     public void processResult() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        result = "";
     }
     
 }

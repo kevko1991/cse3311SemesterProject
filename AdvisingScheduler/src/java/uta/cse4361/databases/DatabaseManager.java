@@ -79,8 +79,8 @@ public class DatabaseManager {
     }
     
     //This is a function to allow the advisor data to be updated in the database
-    public AdvisorAccount update(AdvisorAccount aa){
-        return imp.update(aa);
+    public String update(String email, AdvisorAccount aa){
+        return imp.update(email, aa);
     }
     
     public String validate(String email, String password){

@@ -43,7 +43,7 @@
                 <%
                     String result = newadvisor.Advisor();
                     if (result == "") {
-                        out.print(newadvisor.getName() +"'s has been Account created");
+                        out.print(newadvisor.getName() +"'s Account has been created");
                     } 
                     else {
                         out.print("Account could not be created.");

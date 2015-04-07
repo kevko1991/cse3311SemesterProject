@@ -26,7 +26,7 @@ and open the template in the editor.
              <% 
                             int rank = -1;
                             int sessionid = -1;
-                            boolean firstlog = true;
+                            int firstlog = 1;
                             if(!(session.getAttribute("id") == null)){
                             sessionid = Integer.parseInt((String)session.getAttribute("id"));
                         }
@@ -34,7 +34,7 @@ and open the template in the editor.
                             rank = Integer.parseInt((String)session.getAttribute("rank"));
                         }
                             if(!(session.getAttribute("FirstLog") == null)){
-                                firstlog = Boolean.getBoolean((String)session.getAttribute("FirstLog"));
+                                firstlog = Integer.parseInt((String)session.getAttribute("FirstLog"));
                             }
              %>
              
@@ -59,8 +59,8 @@ and open the template in the editor.
                                 out.print("Welcome faculty member.");
                                 
                                 //trying to create a call to the dialog box when it detects a first login
-                                if(firstlog == true){
-                                    out.print("<input type='hidden' value='First Login Dialog Box' id='FirstLog'>");
+                                if(firstlog == 1){
+                                    response.sendRedirect("EditAccount.jsp");
                                 }
                             }
                             %>

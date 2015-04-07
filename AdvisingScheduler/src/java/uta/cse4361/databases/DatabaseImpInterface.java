@@ -24,7 +24,7 @@ public interface DatabaseImpInterface {
     public ArrayList<Slot> getAvailSlots();
     public ArrayList<Slot> getAvailSlotsByTime(Date d, int startHour, int endHour, int startMin, int endMin);
     public String register(AdvisorAccount aa);
-    public AdvisorAccount update (AdvisorAccount aa);
+    public String update (String email, AdvisorAccount aa);
     public String validate(String email, String password);
     public AdvisorAccount getAccount(String email);
 }
