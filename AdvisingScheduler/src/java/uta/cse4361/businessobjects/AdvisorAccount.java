@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,6 +18,7 @@ public class AdvisorAccount {
     private int ID;
     private String tempPassword;
     private int rank;
+    private String assignment;
     /*
         -1 = Student
         0 = Advisor
@@ -78,6 +80,25 @@ public class AdvisorAccount {
         return result;
     }
     
+    public boolean initialize(String name, String department, int ID, String assignment){
+        boolean result = true;
+        
+        if(name != null && !name.isEmpty() && 
+                department != null && !department.isEmpty())
+        {
+            this.name = name;
+            this.department = department;
+            this.ID = ID;
+            this.assignment = assignment;
+        }
+        else
+        {
+            result = false;
+        }
+        
+        return result;
+    }
+    
     public static String hashPassword(String tempPassword)
     {
         int hash = tempPassword.hashCode();
@@ -86,6 +107,10 @@ public class AdvisorAccount {
     
     public void setName(String name){
         this.name = name;
+    }
+    
+    public void setAssignment(String assignment){
+        this.assignment = assignment;
     }
     
     public void setEmail(String email){
@@ -138,5 +163,9 @@ public class AdvisorAccount {
     
     public int getLog(){
         return this.FirstLog;
+    }
+    
+    public String getAssignment(){
+        return assignment;
     }
 }

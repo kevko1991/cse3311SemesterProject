@@ -52,6 +52,11 @@ public class DatabaseManager {
     public String saveAppointment(Appointment appt) {
         return imp.saveAppointment(appt);
     }
+    
+    public String saveAdvisorAssignments(ArrayList<AdvisorAccount> advisors){
+        return imp.saveAdvisorAssignments(advisors);
+    }
+    
     public String modifyAppointment(int id, Appointment appt) {
         return imp.modifyAppointment(id, appt);
     }
@@ -91,4 +96,12 @@ public class DatabaseManager {
     public AdvisorAccount getAccount(String email){
         return imp.getAccount(email);
     }
-}
+    
+    public ArrayList<AdvisorAccount> getAdvisorsFromDepartment(String department){
+        return imp.getAdvisorsFromDepartment(department);
+    }
+    
+    public AdvisorAccount getAccount(int ID){
+        return imp.getAdvisorWithID(ID);
+    }
+ }
