@@ -19,7 +19,7 @@ public class UpdateAdvisor extends RDBImplCommand{
     private AdvisorAccount aa;
     private int ID;
     private String sqlQuery = "UPDATE USER SET UserEmail = ?, UserPassword = ?,"
-            + " UserName = ?, UserDepartment = ?, UserRank = ? WHERE UserID = ?";
+            + " UserName = ?, UserDepartment = ?, UserRank = ?, FirstLog = ?, WHERE UserID = ?";
     public UpdateAdvisor(AdvisorAccount aa){
         this.aa = aa;
         this.ID = aa.getID();
@@ -34,7 +34,8 @@ public class UpdateAdvisor extends RDBImplCommand{
             statement.setString(3, aa.getName());
             statement.setString(4, aa.getDepartment());
             statement.setInt(5, aa.getRank());
-            statement.setInt(6, aa.getID());
+            statement.setInt(6, aa.getLog());
+            statement.setInt(7, this.ID);
             statement.executeUpdate();
             processResult();
         }

@@ -123,6 +123,7 @@ public class RelationalDatabaseImpl implements DatabaseImpInterface{
     }
 
     @Override
+    //This is a function called by the Database manager to update the database.
     public AdvisorAccount update(AdvisorAccount aa) {
         RDBImplCommand update = new UpdateAdvisor(aa);
         update.execute();

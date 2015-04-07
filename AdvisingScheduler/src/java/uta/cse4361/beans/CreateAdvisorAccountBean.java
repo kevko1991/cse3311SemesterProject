@@ -33,6 +33,9 @@ public class CreateAdvisorAccountBean implements Constants{
     
     public String Advisor(){
        String returnMessage = SUCCESS_MESSAGE;
+       
+       //The tempPassword code below is for creating an Alphanumeric temporary password.
+       
        //char[] CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
        //int length = 8;
        
@@ -93,6 +96,8 @@ public class CreateAdvisorAccountBean implements Constants{
     public void setRank(int rank) {
         this.rank = rank;
     }
+    
+    //This function will create a password based on a character set and desired length.
     
     public String createPassword(char[] charset, int length){
         String pass = null;

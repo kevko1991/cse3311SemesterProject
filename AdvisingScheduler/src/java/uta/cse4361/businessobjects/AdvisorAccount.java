@@ -22,7 +22,7 @@ public class AdvisorAccount {
         0 = Advisor
         1 = Admin
     */
-    //private boolean FirstLog = false;
+    private boolean FirstLog = false;
     
     public AdvisorAccount(){
         
@@ -109,6 +109,10 @@ public class AdvisorAccount {
         this.rank = rank;
     }
     
+    public void setLog(Boolean Log){
+        this.FirstLog = Log;
+    }
+    
     public String getName(){
         return name;
     }
@@ -131,5 +135,14 @@ public class AdvisorAccount {
     
     public int getRank(){
         return rank;
+    }
+    
+    public int getLog(){
+        if(this.FirstLog){
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
 }

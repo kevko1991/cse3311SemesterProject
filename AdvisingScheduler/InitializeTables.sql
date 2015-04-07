@@ -55,6 +55,7 @@ CREATE TABLE USER( UserID INTEGER NOT NULL AUTO_INCREMENT,
     UserName VARCHAR(30),
     UserDepartment VARCHAR(30),
     UserRank INTEGER,
+    FirstLog BOOLEAN,
     PRIMARY KEY (UserID)
 );
 -- CREATE TABLE USER( UserID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -65,8 +66,24 @@ CREATE TABLE USER( UserID INTEGER NOT NULL AUTO_INCREMENT,
 --     UserRank INTEGER
 -- );
 
-INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank) 
-VALUES ('admin@mavs.uta.edu', '92668751', 'Admin', 'CSE', 1);
+INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
+VALUES ('admin@mavs.uta.edu', '92668751', 'Admin', 'CSE', 1, 0);
+
+INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
+VALUES ('advisor@mavs.uta.edu', '-1131323456', 'Advisor Professorly', 'CSE', 0, 1);
+
+INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
+VALUES ('priester@uta.edu', '-1131323456', 'Kathy Priester', 'MAE', 0, 1);
+
+INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
+VALUES ('achavis@uta.edu', '-1131323456', 'Angeleah Chavis', 'MATH', 0, 1);
+
+INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
+VALUES ('cdonald@uta.edu', '-1131323456', 'Cheryl Donaldson', 'ARCH', 0, 1);
+
+INSERT INTO USER (UserEmail, UserPassword, UserName, UserDepartment, UserRank, FirstLog) 
+VALUES ('kung@uta.edu', '-1131323456', 'David Kung', 'CSE', 0, 1);
+
 
 CREATE VIEW APPTFW AS
 SELECT ApptID, ApptDate, ApptStartHour, ApptStartMin, ApptEndHour, ApptEndMin
