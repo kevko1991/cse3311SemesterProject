@@ -62,7 +62,11 @@ nav{
 
 .navbar{
     min-height: 29px;
-    height: 29px;
+}
+
+.navbar .navbar-toggle{
+    padding: 5px 8px;
+    margin: 2px;
 }
 
 .navbar-inverse .navbar-brand{
