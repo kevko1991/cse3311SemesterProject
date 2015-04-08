@@ -1,5 +1,8 @@
 
 <div class="container">
+    <div class="container-fluid" id="utalogo-banner">
+            <img src="css/images/utalogo.png" alt="UTA Logo">
+    </div>
     <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
         <% 
             int rank = -1;
@@ -11,9 +14,6 @@
             rank = ((Integer)session.getAttribute("rank"));
         }
         %>
-        <div class="container-fluid" id="utalogo-banner">
-            <img src="css/images/utalogo.png" alt="UTA Logo">
-        </div>
       <div class="container-fluid">
         <div class="navbar-header">
           <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
