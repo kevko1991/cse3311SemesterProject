@@ -15,14 +15,14 @@ body {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     font-size: 16px; 
     color: #000000; 
-    background-image: url("images/site-bg.jpg");
+    background-color: #330099;
     /*width: 1280px;*/
     margin: 0 auto;
     white-space: nowrap;
 }
 
 #utalogo-banner{
-    margin-top: 40px;
+    margin-top: 42px;
     background-color: #0948b1;
     box-shadow: 10px 10px 30px #330099;
 }
