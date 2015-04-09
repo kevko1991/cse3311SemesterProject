@@ -19,16 +19,28 @@
         <jsp:include page="navigationbar.jsp"/>
         <jsp:include page="header.jsp"/>
         <jsp:useBean id="dm" class="uta.cse4361.databases.DatabaseManager" scope="page"/>
-        <jsp:useBean id="bean" class="uta.cse4361.beans.AssignStudentAdvisorBean" scope="page"/>
+        <jsp:useBean id="bean" class="uta.cse4361.beans.AssignStudentAdvisorBean" scope="request"/>
         
         <%
             dm = new uta.cse4361.databases.DatabaseManager();             
             AdvisorAccount leadAdvisor;
             java.util.ArrayList<AdvisorAccount> departmentAdvisors;
+            String message = "";
             
             leadAdvisor = dm.getAccount((Integer)session.getAttribute("id")); 
             departmentAdvisors = dm.getAdvisorsFromDepartment(leadAdvisor.getDepartment());
             bean = new uta.cse4361.beans.AssignStudentAdvisorBean(departmentAdvisors);
+            
+            if(!request.getParameterMap().isEmpty()){
+                for(AdvisorAccount aa: departmentAdvisors){
+                    if(!(request.getParameter("start" + Integer.toString(aa.getID())) == null)){
+                        aa.setAssignment(request.getParameter("start" + Integer.toString(aa.getID()))
+                                        + "-"
+                                        + request.getParameter("end" + Integer.toString(aa.getID())));                                
+                    }
+                            }
+                message = bean.execute();
+            }   
         %>
         
         <div class="container">
@@ -66,7 +78,7 @@
                             <h1 class="panel-title">Edit Advisor Assignments Form</h1>
                         </div>
                         <div class="panel-body">
-                            <form action="#" method="POST" id="assignmentform" role="form" class="form-horizontal">
+                            <form action="#" method="POST" id="assignmentform" role="form" class="form-inline">
                                 <%
                                     for(AdvisorAccount aa: departmentAdvisors){
                                         out.print("<fieldset>"
@@ -157,18 +169,10 @@
                             Form Response
                         </div>
                         <div class="panel-body">
-                             <%                      
-                                for(AdvisorAccount aa: departmentAdvisors){
-                                    if(!(request.getParameter("start" + Integer.toString(aa.getID())) == null)){
-                                        aa.setAssignment(request.getParameter("start" + Integer.toString(aa.getID()))
-                                                        + "-"
-                                                        + request.getParameter("end" + Integer.toString(aa.getID())));                                
-                                    }
-                                }                        
-                                if(!request.getParameterMap().isEmpty()){
-                                    out.print(bean.execute());
-                                }
+                            <%                      
+                                out.print(message);
                             %>
+                            
                         </div>
                     </div>                   
                 </div>
